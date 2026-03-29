@@ -1,11 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx next dev:*)"
+      "Bash(npx next dev:*)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_press_key",
+      "Bash(claude skill:*)",
+      "Bash(claude plugin:*)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "n8n-mcp"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }

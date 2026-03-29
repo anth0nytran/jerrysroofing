@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, League_Spartan, Manrope } from "next/font/google";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import "./globals.css";
 
-const bodyFont = Barlow({
+const bodyFont = Manrope({
   variable: "--font-app-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const displayFont = Barlow_Condensed({
+const displayFont = League_Spartan({
   variable: "--font-app-display",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
@@ -24,17 +26,46 @@ const monoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jimeneztreepro.com'),
-  title: "Tree Service in Pasadena & Houston, TX | Jimenez Tree Pro",
-  description: "Tree removal, tree trimming, stump grinding, and storm damage cleanup for homeowners in Pasadena, Houston, Pearland, Friendswood, League City, and Clear Lake. 24/7 emergency service and free estimates.",
+  metadataBase: new URL('https://hernandeztreeservice.com'),
+  title: {
+    default: "Tree Service & Landscaping — Humble, Spring, Baytown TX | José Hernández Tree Service",
+    template: "%s | José Hernández Tree Service",
+  },
+  description: "Affordable tree trimming, tree removal, and landscaping in Humble, Spring, Baytown, The Woodlands, Dayton & Conroe TX. 25+ years. Fully insured. 24/7 emergency service. Free estimates. Call (713) 291-6992.",
+  keywords: [
+    'tree service Humble TX',
+    'tree trimming Humble TX',
+    'tree removal Humble TX',
+    'tree service Spring TX',
+    'tree trimming Spring TX',
+    'tree removal Baytown TX',
+    'tree service The Woodlands TX',
+    'tree service Conroe TX',
+    'tree service Dayton TX',
+    'landscaping Humble TX',
+    'landscaping Spring TX',
+    'stump grinding Humble TX',
+    'storm damage cleanup Baytown TX',
+    'emergency tree removal Spring TX',
+    'affordable tree service near me',
+    'tree trimming Conroe TX',
+    'tree cutting service Baytown TX',
+    'tree pruning The Woodlands TX',
+    'lot clearing Humble TX',
+    'debris hauling Spring TX',
+    'landscaping service Baytown TX',
+    'flower bed installation Humble TX',
+    'mulching service Spring TX',
+    'insured tree company Humble TX',
+  ],
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Professional Tree Service for Houston Area Homeowners | Jimenez Tree Pro",
-    description: "Done right. Done safely. Done today. Emergency tree removal, large tree trimming, stump grinding, and storm cleanup. Call for a free estimate.",
-    url: 'https://jimeneztreepro.com',
-    siteName: 'Jimenez Tree Pro',
+    title: "Affordable Tree Service & Landscaping — Humble, Spring, Baytown TX | José Hernández Tree Service",
+    description: "25+ years serving homeowners in Humble, Spring, Baytown, The Woodlands, Dayton & Conroe. Tree trimming, removal, landscaping, stump grinding & storm cleanup. Fully insured. Free estimates. Call (713) 291-6992.",
+    url: 'https://hernandeztreeservice.com',
+    siteName: 'José Hernández Tree Service',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -42,14 +73,14 @@ export const metadata: Metadata = {
         url: '/tree_pro/og-tree.jpg',
         width: 1200,
         height: 630,
-        alt: 'Jimenez Tree Pro - Professional Tree Service',
+        alt: 'José Hernández Tree Service — Tree Trimming, Removal & Landscaping in Humble, Spring & Baytown TX',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Tree Service in Pasadena & Houston | Jimenez Tree Pro",
-    description: "24/7 emergency tree service. Tree removal, tree trimming, stump grinding, and storm cleanup for Houston area homeowners.",
+    title: "Affordable Tree Service & Landscaping | José Hernández Tree Service",
+    description: "24/7 emergency tree service. Tree trimming, removal, landscaping, stump grinding & storm cleanup for Humble, Spring, Baytown, The Woodlands, Dayton & Conroe. Free estimates.",
     images: ['/tree_pro/og-tree.jpg'],
   },
   icons: {
@@ -75,32 +106,39 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Jimenez Tree Pro",
-              "image": "https://jimeneztreepro.com/tree_pro/og-tree.jpg",
-              "@id": "https://jimeneztreepro.com",
-              "url": "https://jimeneztreepro.com",
-              "telephone": "+18329667045",
-              "description": "Professional tree removal, trimming, and storm damage cleanup for homeowners in Pasadena and surrounding Houston areas. 24/7 emergency service.",
+              "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+              "name": "José Hernández Tree Service",
+              "image": "https://hernandeztreeservice.com/tree_pro/og-tree.jpg",
+              "@id": "https://hernandeztreeservice.com",
+              "url": "https://hernandeztreeservice.com",
+              "telephone": "+17132916992",
+              "email": "josehernandeztree@gmail.com",
+              "description": "Affordable tree trimming, tree removal, and landscaping serving Humble, Dayton, Baytown, Spring, The Woodlands, and Conroe TX. 25+ years in business. Fully insured. 24/7 emergency service. Free estimates. Fair pricing guaranteed.",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Pasadena",
+                "addressLocality": "Humble",
                 "addressRegion": "TX",
+                "postalCode": "77338",
                 "addressCountry": "US"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 29.6911,
-                "longitude": -95.2091
+                "latitude": 29.9988,
+                "longitude": -95.2622
               },
               "areaServed": [
-                { "@type": "City", "name": "Pasadena" },
-                { "@type": "City", "name": "Houston" },
-                { "@type": "City", "name": "Alvin" },
-                { "@type": "City", "name": "Pearland" },
-                { "@type": "City", "name": "Friendswood" },
-                { "@type": "City", "name": "League City" },
-                { "@type": "City", "name": "Clear Lake" }
+                { "@type": "City", "name": "Humble", "sameAs": "https://en.wikipedia.org/wiki/Humble,_Texas" },
+                { "@type": "City", "name": "Dayton" },
+                { "@type": "City", "name": "Baytown" },
+                { "@type": "City", "name": "Spring" },
+                { "@type": "City", "name": "The Woodlands" },
+                { "@type": "City", "name": "Conroe" },
+                { "@type": "City", "name": "Atascocita" },
+                { "@type": "City", "name": "Kingwood" },
+                { "@type": "City", "name": "Crosby" },
+                { "@type": "City", "name": "Huffman" },
+                { "@type": "City", "name": "Porter" },
+                { "@type": "City", "name": "New Caney" }
               ],
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
@@ -108,15 +146,76 @@ export default function RootLayout({
                 "opens": "00:00",
                 "closes": "23:59"
               },
-              "priceRange": "$$",
+              "priceRange": "$",
+              "foundingDate": "2001",
+              "knowsLanguage": ["en", "es"],
+              "paymentAccepted": "Cash, Credit Card, Check, Zelle",
+              "currenciesAccepted": "USD",
+              "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 15 },
+              "slogan": "Affordable Tree Care & Landscaping You Can Trust",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "50",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Violetta Negrete" },
+                  "reviewBody": "José Hernández Tree Service did an amazing job trimming my tree. I highly recommend them for their detail and care.",
+                  "datePublished": "2025-08-15"
+                },
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Joycelyn Rodriguez Sanes" },
+                  "reviewBody": "José Hernández Tree Service is very professional. I was quoted a great price, they were on time, and they did an awesome job. I would definitely hire them again in the future.",
+                  "datePublished": "2025-07-22"
+                },
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Isury Watson" },
+                  "reviewBody": "They did an amazing job with my tree removal and stump grinding. The crew was on time, professional, and left everything super clean. Highly recommend.",
+                  "datePublished": "2025-09-10"
+                },
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Patricia Rodriguez" },
+                  "reviewBody": "José Hernández Tree Service really did an extraordinary job for me. I can sincerely recommend them for their excellent work and professionalism.",
+                  "datePublished": "2025-06-18"
+                },
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Christopher Celona" },
+                  "reviewBody": "José Hernández Tree Service takes care of all our properties. Highly recommend their consistent quality.",
+                  "datePublished": "2025-10-05"
+                },
+                {
+                  "@type": "Review",
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "author": { "@type": "Person", "name": "Maria Gonzalez" },
+                  "reviewBody": "So impressed with José Hernández Tree Service. I highly recommend them to anyone needing reliable tree work.",
+                  "datePublished": "2025-11-12"
+                }
+              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Tree Services",
+                "name": "Tree & Landscape Services",
                 "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency & Large Tree Removal" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large Tree Trimming & Structural Pruning" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Storm Damage Cleanup & Debris Hauling" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stump Grinding" } }
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Trimming & Pruning", "description": "Professional tree trimming, crown thinning, structural pruning, and canopy shaping in Humble, Spring, Baytown & surrounding areas" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "description": "Safe removal of dangerous, dead, or overgrown trees including emergency tree removal serving Humble, Dayton, Baytown, Spring, The Woodlands & Conroe TX" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscaping Services", "description": "Full-service landscaping, yard design, planting, sod installation, and maintenance for residential and commercial properties" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Storm Damage Cleanup", "description": "Emergency storm damage cleanup and debris hauling for homeowners in Humble, Baytown, Spring & surrounding areas" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stump Grinding", "description": "Stump grinding and stump removal below grade level in Humble, Spring, Baytown and surrounding areas" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mulching", "description": "Professional mulching services for flower beds, gardens, and landscape areas" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lot Clearing", "description": "Residential and commercial lot clearing and land clearing services" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Debris Hauling", "description": "Full debris removal and hauling for tree jobs and landscape projects" } }
                 ]
               }
             })
@@ -128,9 +227,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Jimenez Tree Pro",
-              "alternateName": ["Jimenez Tree Pro Pasadena", "JimenezTreePro.com"],
-              "url": "https://jimeneztreepro.com"
+              "name": "José Hernández Tree Service",
+              "alternateName": ["Jose Hernandez Tree Service", "Hernandez Tree Service Humble", "HernandezTreeService.com"],
+              "url": "https://hernandeztreeservice.com"
             })
           }}
         />
@@ -156,8 +255,14 @@ export default function RootLayout({
       <body
         className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} antialiased`}
       >
-        {children}
+        <div className="hernandez-site min-h-screen bg-white text-slate-900 selection:bg-[var(--hernandez-forest)] selection:text-white">
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
-    </html >
+    </html>
   );
 }
