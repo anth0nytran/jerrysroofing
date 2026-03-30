@@ -34,7 +34,7 @@ export default function AboutPageClient() {
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
         <div className="absolute inset-0">
           <NextImage
-            src="/tree_pro/trust_us.png"
+            src="/tree_pro/trust_us_v2.png"
             alt="José Hernández Tree Service crew on the job in Humble TX"
             fill
             priority
@@ -172,7 +172,7 @@ export default function AboutPageClient() {
               {/* Mobile image */}
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-xl lg:hidden">
                 <NextImage
-                  src="/tree_pro/trust_us.png"
+                  src="/tree_pro/trust_us_v2.png"
                   alt="José Hernández Tree Service crew on the job"
                   fill
                   sizes="100vw"
@@ -411,7 +411,7 @@ export default function AboutPageClient() {
       {/* ═══ CTA ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-forest-deep)] py-16 sm:py-20">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/done_right.jpg" alt="Professional tree service results" fill className="object-cover opacity-15" />
+          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="Professional tree service results" fill className="object-cover opacity-15" />
         </div>
         <div className={`${shell} relative z-10`}>
           <motion.div

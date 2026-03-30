@@ -31,7 +31,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
         <div className="absolute inset-0">
           <NextImage
-            src="/tree_pro/done_right.jpg"
+            src="/tree_pro/hernandez_hero_v2.png"
             alt="Professional tree service by José Hernández Tree Service"
             fill
             priority
@@ -223,7 +223,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
       {/* ═══ CTA — with background image ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-forest-deep)] py-16 sm:py-20">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/hernandez_hero.png" alt="Tree service work" fill className="object-cover opacity-15" />
+          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="Tree service work" fill className="object-cover opacity-15" />
         </div>
         <div className={`${shell} relative z-10`}>
           <motion.div

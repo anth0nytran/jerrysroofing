@@ -48,7 +48,7 @@ export const serviceData = [
   {
     slug: 'tree-trimming',
     title: 'Tree Trimming & Pruning',
-    image: '/tree_pro/hernandez_service_trimming.png',
+    image: '/tree_pro/hernandez_service_trimming_v2.png',
     summary: 'Shape your trees, clear your roofline, and reduce storm risk with proper structural pruning from experienced climbers.',
     details: [
       'Crown thinning, raising, and deadwood removal',
@@ -62,7 +62,7 @@ export const serviceData = [
   {
     slug: 'tree-removal',
     title: 'Tree Removal',
-    image: '/tree_pro/hernandez_service_removal.png',
+    image: '/tree_pro/hernandez_service_removal_v2.png',
     summary: 'Dangerous, dead, or overgrown trees taken down safely — even in tight spots next to homes, fences, and power lines.',
     details: [
       'Rigging and sectional cuts for confined areas',
@@ -76,7 +76,7 @@ export const serviceData = [
   {
     slug: 'landscaping',
     title: 'Landscaping Services',
-    image: '/tree_pro/hernandez_service_flowerbed.png',
+    image: '/tree_pro/hernandez_service_flowerbed_v2.png',
     summary: 'Full-service landscaping to transform your yard — from design and planting to cleanup and maintenance. Affordable options for every budget.',
     details: [
       'Yard design, planting, and seasonal cleanup',
@@ -90,7 +90,7 @@ export const serviceData = [
   {
     slug: 'storm-cleanup',
     title: 'Storm Cleanup',
-    image: '/tree_pro/hernandez_service_storm.png',
+    image: '/tree_pro/hernandez_service_storm_v2.png',
     summary: 'When a storm leaves your yard blocked or your home exposed, we mobilize fast to clear debris and make things safe.',
     details: [
       'Fallen trees and limbs removed from structures',
@@ -104,7 +104,7 @@ export const serviceData = [
   {
     slug: 'stump-grinding',
     title: 'Stump Grinding',
-    image: '/tree_pro/hernandez_service_stump.png',
+    image: '/tree_pro/hernandez_service_stump_v2.png',
     summary: 'Old stumps ground below grade so you can reclaim the space — whether you want to plant, build, or just have a clean yard.',
     details: [
       'Ground 6–8 inches below surface',
@@ -118,7 +118,7 @@ export const serviceData = [
   {
     slug: 'mulching',
     title: 'Mulching',
-    image: '/tree_pro/hernandez_service_mulch.png',
+    image: '/tree_pro/hernandez_service_mulch_v2.png',
     summary: 'Fresh mulch spread across your beds, around trees, and along walkways. Keeps moisture in, weeds down, and makes your yard look maintained year-round.',
     details: [
       'Beds cleared and prepped before application',

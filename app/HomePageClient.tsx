@@ -204,7 +204,7 @@ export default function HomePageClient() {
       {/* ═══ HERO ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/hernandez_hero.png" alt="José Hernández Tree Service crew performing professional tree trimming in Humble TX" fill priority sizes="100vw" className="object-cover object-center" />
+          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="José Hernández Tree Service crew performing professional tree trimming in Humble TX" fill priority sizes="100vw" className="object-cover object-center" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,8,0.92)] via-[rgba(5,12,8,0.8)] to-[rgba(5,12,8,0.45)]" />
 
@@ -362,7 +362,7 @@ export default function HomePageClient() {
             {/* Left — image + stats overlay */}
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                <NextImage src="/tree_pro/trust_us.png" alt="José Hernández Tree Service crew at work in Humble TX" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+                <NextImage src="/tree_pro/trust_us_v2.png" alt="José Hernández Tree Service crew at work in Humble TX" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--hernandez-forest-deep)]/80 to-transparent" />
               </div>
               <div className="absolute -bottom-6 left-4 right-4 sm:left-6 sm:right-6 grid grid-cols-3 gap-3">
@@ -418,7 +418,7 @@ export default function HomePageClient() {
       {/* ═══ HOW IT WORKS ═══ */}
       <section className="relative isolate bg-[var(--hernandez-ink)] py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/tree_pro/hernandez_service_trimming.png" alt="Tree trimming and pruning process by José Hernández Tree Service" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
+          <NextImage src="/tree_pro/hernandez_service_trimming_v2.png" alt="Tree trimming and pruning process by José Hernández Tree Service" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--hernandez-ink)]/95 via-[var(--hernandez-ink)]/80 to-[var(--hernandez-ink)]/40" />
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[var(--hernandez-cream)] to-transparent opacity-10" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--hernandez-ink)] to-transparent" />
@@ -508,7 +508,7 @@ export default function HomePageClient() {
       {/* ═══ REVIEWS (dark) ═══ */}
       <section id="reviews" className="relative isolate scroll-mt-20 bg-[var(--hernandez-ink)] py-20 text-white sm:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/tree_pro/hernandez_hero.png" alt="" fill sizes="100vw" className="object-cover opacity-15 mix-blend-luminosity grayscale" />
+          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="" fill sizes="100vw" className="object-cover opacity-15 mix-blend-luminosity grayscale" />
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--hernandez-ink)]/95 via-[var(--hernandez-ink)]/90 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--hernandez-ink)] to-transparent" />
         </div>
