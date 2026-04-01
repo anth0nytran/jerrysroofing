@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
 import { blogPosts, getPostBySlug, getAllSlugs } from '../posts';
@@ -155,43 +156,32 @@ export default async function BlogPostPage({
         }}
       />
 
-      {/* ── Hero ── */}
-      <section className="bg-[var(--hernandez-cream)] py-14 sm:py-18">
-        <div className={shell}>
-          {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-500">
-            <ol className="flex flex-wrap items-center gap-1.5">
-              <li>
-                <Link href="/" className="hover:text-[var(--hernandez-forest-deep)] transition-colors">
-                  Home
-                </Link>
-              </li>
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
+        <div className="absolute inset-0">
+          <Image src="/tree_pro/home_2.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+        </div>
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex flex-wrap items-center gap-2 text-sm text-white/40">
+              <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li>
-                <Link href="/blog" className="hover:text-[var(--hernandez-forest-deep)] transition-colors">
-                  Blog
-                </Link>
-              </li>
+              <li><Link href="/blog" className="hover:text-[var(--hernandez-gold)] transition-colors">Blog</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="font-semibold text-[var(--hernandez-forest-deep)] line-clamp-1">
-                {post.title}
-              </li>
+              <li className="font-semibold text-white/70 line-clamp-1">{post.title}</li>
             </ol>
           </nav>
 
-          {/* Category */}
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-[var(--hernandez-forest-deep)] mb-5">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[var(--hernandez-gold)] mb-4">
             <Tag className="h-3 w-3" />
             {post.category}
           </span>
 
-          {/* Title */}
-          <h1 className="font-[family-name:var(--font-app-display)] text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--hernandez-forest-deep)] mb-5 max-w-4xl leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-[1.1] max-w-3xl">
             {post.title}
           </h1>
 
-          {/* Meta */}
-          <div className="flex flex-wrap items-center gap-5 text-sm text-slate-500">
+          <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-white/40">
             <span className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
               {formattedDate}
@@ -200,9 +190,10 @@ export default async function BlogPostPage({
               <Clock className="h-4 w-4" />
               {post.readTime}
             </span>
-            <span className="text-slate-400">By {siteConfig.businessName}</span>
+            <span>By {siteConfig.businessName}</span>
           </div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
       {/* ── Article Content ── */}

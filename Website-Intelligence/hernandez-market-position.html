@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Position Report — José Hernández Tree Service</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+  :root {
+    --forest: #183726;
+    --forest-light: #1e4a33;
+    --red: #c0392b;
+    --accent: #22c55e;
+    --accent-dark: #16a34a;
+    --green: #27ae60;
+    --green-light: #e8f8f0;
+    --blue-light: #eef4fb;
+    --text: #0d1712;
+    --text-secondary: #4a4a5a;
+    --text-muted: #7a7a8a;
+    --bg: #ffffff;
+    --bg-warm: #f5efe6;
+    --bg-section: #f0ebe2;
+    --border: #d9d0bf;
+    --border-light: #e8dfce;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { font-size: 9.5pt; line-height: 1.45; }
+    .cover-page { min-height: auto; padding: 48pt 0; page-break-after: always; }
+    .cover-page h1 { font-size: 26pt; }
+    section { page-break-inside: avoid; padding: 20pt 36pt; }
+    .card, .competitor-row, .insight-card { page-break-inside: avoid; }
+    @page { margin: 0.6in; size: letter; }
+  }
+
+  .toolbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 28px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  }
+  .toolbar-brand { display: flex; align-items: center; gap: 10px; }
+  .toolbar-brand span { color: #fff; font-size: 13px; font-weight: 600; }
+  .toolbar-brand small { color: rgba(255,255,255,0.45); font-size: 11px; }
+  .btn-pdf {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 20px;
+    background: var(--accent); color: var(--forest);
+    border: none; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+  }
+  .btn-pdf:hover { background: #34d76a; transform: translateY(-1px); }
+  .btn-pdf svg { width: 15px; height: 15px; }
+
+  .cover-page {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    background: linear-gradient(165deg, #0b1f15 0%, var(--forest) 40%, var(--forest-light) 100%);
+    color: white;
+    padding: 80px 32px 60px;
+    position: relative; overflow: hidden;
+  }
+  .cover-page::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-for {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .cover-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.15;
+    margin-bottom: 16px; max-width: 680px;
+  }
+  .cover-sub {
+    font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.65);
+    max-width: 520px; margin-bottom: 40px;
+  }
+  .cover-divider { width: 50px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
+  .cover-meta { display: flex; gap: 28px; font-size: 12px; color: rgba(255,255,255,0.4); flex-wrap: wrap; justify-content: center; }
+  .cover-tag {
+    display: inline-block; padding: 5px 14px;
+    border: 1px solid rgba(34,197,94,0.35); border-radius: 100px;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 32px;
+  }
+
+  .content { padding-top: 52px; }
+  section { max-width: 880px; margin: 0 auto; padding: 52px 28px; }
+  section + section { border-top: 1px solid var(--border-light); }
+
+  .sec-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 6px;
+  }
+  section > h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--forest); margin-bottom: 6px; line-height: 1.25;
+  }
+  section > .sec-intro {
+    font-size: 15px; color: var(--text-secondary); margin-bottom: 28px; max-width: 640px;
+  }
+  h3 { font-size: 17px; font-weight: 700; color: var(--forest); margin: 28px 0 10px; }
+  h4 { font-size: 13px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin: 18px 0 8px; }
+  p { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; }
+  strong { color: var(--text); }
+  ul, ol { padding-left: 20px; margin: 6px 0 16px; }
+  li { margin-bottom: 5px; font-size: 14px; color: var(--text-secondary); }
+
+  .card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px 28px; margin: 14px 0;
+  }
+  .card-accent { border-left: 4px solid var(--accent); }
+  .card-green { border-left: 4px solid var(--green); background: var(--green-light); }
+  .card-forest { border-left: 4px solid var(--forest); }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px; margin: 20px 0;
+  }
+  .stat-box {
+    background: var(--bg-warm); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px; text-align: center;
+  }
+  .stat-box .num { font-size: 28px; font-weight: 900; color: var(--forest); line-height: 1.1; }
+  .stat-box .num small { font-size: 16px; font-weight: 600; }
+  .stat-box .label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  .competitor-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px 0; }
+  .competitor-row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 12px; align-items: center;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 20px; font-size: 13px;
+  }
+  .competitor-row.header {
+    background: var(--forest); color: white; font-weight: 700; font-size: 11px;
+    letter-spacing: 0.5px; text-transform: uppercase; border: none;
+  }
+  .competitor-row .name { font-weight: 700; color: var(--forest); }
+  .competitor-row .stars { color: var(--accent-dark); font-weight: 700; }
+  .cr-badge {
+    display: inline-block; padding: 2px 10px; border-radius: 100px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .cr-elite { background: #fde8e8; color: var(--red); }
+  .cr-strong { background: #e4f0f5; color: #1a6b8a; }
+  .cr-avg { background: #f5f4f0; color: var(--text-muted); }
+  .cr-you { background: var(--green-light); color: var(--green); border: 1.5px solid var(--green); }
+
+  .callout {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #f5dfa0;
+    border-radius: 10px; padding: 18px 22px; margin: 18px 0;
+    font-size: 14px; color: var(--text);
+  }
+  .callout strong { color: var(--forest); }
+  .callout-red {
+    background: linear-gradient(135deg, #fef2f2 0%, #fde8e8 100%);
+    border-color: #f5c6c6;
+  }
+  .callout-green {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-color: #bbf7d0;
+  }
+
+  .insight-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin: 10px 0; position: relative; padding-left: 56px;
+  }
+  .insight-num {
+    position: absolute; left: 18px; top: 20px;
+    width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+    background: var(--forest); color: var(--accent); border-radius: 50%;
+    font-size: 12px; font-weight: 800;
+  }
+  .insight-card h4 { margin: 0 0 4px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--forest); }
+  .insight-card p { font-size: 13px; margin-bottom: 0; }
+
+  .vs-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 20px 0;
+  }
+  .vs-box {
+    background: var(--bg-warm); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .vs-box h4 { margin-top: 0; }
+  .vs-box ul { margin-bottom: 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 13px; }
+  thead th {
+    background: var(--forest); color: white; padding: 9px 14px; text-align: left;
+    font-weight: 600; font-size: 11px; letter-spacing: 0.3px; text-transform: uppercase;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+  tbody tr:nth-child(even) { background: var(--bg-warm); }
+
+  .report-footer {
+    text-align: center; padding: 40px 28px; border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--text-muted);
+  }
+  .report-footer strong { color: var(--forest); }
+
+  @media (max-width: 640px) {
+    .competitor-row { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .vs-grid { grid-template-columns: 1fr; }
+    section { padding: 36px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar no-print">
+  <div class="toolbar-brand">
+    <span>Jos&eacute; Hern&aacute;ndez Tree Service</span>
+    <small>Market Position Report</small>
+  </div>
+  <button class="btn-pdf" onclick="window.print()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    Download PDF
+  </button>
+</div>
+
+<!-- ============ COVER ============ -->
+<div class="cover-page">
+  <div class="cover-tag">Market Intelligence &middot; March 2026</div>
+  <div class="cover-for">Prepared for</div>
+  <h1>Jos&eacute; Hern&aacute;ndez Tree Service</h1>
+  <div class="cover-divider"></div>
+  <p class="cover-sub">A clear picture of your market &mdash; who you're up against, where you stand, and why you're positioned to win.</p>
+  <div class="cover-meta">
+    <span>Prepared by QuickLaunchWeb</span>
+    <span>March 2026</span>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ============ 1: YOUR MARKET AT A GLANCE ============ -->
+<section>
+  <div class="sec-label">Market Snapshot</div>
+  <h2>Your Market at a Glance</h2>
+  <p class="sec-intro">We searched Google the exact way your customers do &mdash; "tree service Humble TX," "tree trimming Kingwood TX," "tree removal Spring TX," "tree service Atascocita" &mdash; and analyzed every company that shows up.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="num">9</div>
+      <div class="label">Companies Analyzed</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">3</div>
+      <div class="label">Elite Competitors</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">12</div>
+      <div class="label">Cities Searched</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">1</div>
+      <div class="label">Direct Humble Rival</div>
+    </div>
+  </div>
+
+  <p>Here's who shows up when a homeowner in Humble, Atascocita, Kingwood, or Spring searches for tree services. We ranked each company based on their online visibility, website quality, review count, and overall brand strength.</p>
+
+  <div class="competitor-grid">
+    <div class="competitor-row header">
+      <span>Company</span>
+      <span>Google Reviews</span>
+      <span>Level</span>
+      <span>What Makes Them Show Up</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">JJ Garcia Professional Tree Service</span>
+      <span class="stars">4.9 (241 reviews)</span>
+      <span><span class="cr-badge cr-elite">Elite</span></span>
+      <span>Humble, TX. 20+ years. 24/7 emergency. Dominates the Google Knowledge Panel for "tree service Humble TX." Active Google posting with seasonal promos (15% off). HomeAdvisor + Thumbtack presence. 6+ city pages. <strong>Your #1 direct rival.</strong></span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">ArborTrue</span>
+      <span class="stars">4.7 (245 reviews)</span>
+      <span><span class="cr-badge cr-elite">Elite</span></span>
+      <span>Kingwood, TX. "Science Based Tree Care" branding. Preferred insurance vendor. Trained arborists. Best website in the market with blog and educational content. Active on ALL social platforms. 15+ years.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Texas Tree Elite LLC</span>
+      <span class="stars">5.0 (234 reviews)</span>
+      <span><span class="cr-badge cr-elite">Elite</span></span>
+      <span>Spring, TX. Perfect rating at massive scale. 24-hour service. Uses Birdeye review management. Gallery, dedicated service area pages. In business since 2018.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Monster Tree Service of NW Houston</span>
+      <span class="stars">4.9 (258+ reviews)</span>
+      <span><span class="cr-badge cr-strong">Strong</span></span>
+      <span>National franchise. Corporate-grade website with best UX in the market. Multiple Houston locations. FAQs, blog, careers page. Covers Humble, Kingwood, The Woodlands, Conroe, and Spring.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Tree Solutions of Texas</span>
+      <span class="stars">5.0 (220+ reviews)</span>
+      <span><span class="cr-badge cr-strong">Strong</span></span>
+      <span>Houston area. BBB Accredited (A+ since 2020). Separate residential and commercial menus. Wide service area covering Humble, Katy, Spring, The Woodlands, Cypress, Sugar Land, and Atascocita. 10+ years.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Texas Tree Care</span>
+      <span class="stars">5.0 (106 reviews)</span>
+      <span><span class="cr-badge cr-avg">Average</span></span>
+      <span>Spring, TX. Family-owned, insured. Appointment booking system. 24/7 emergency service. Primarily serves Spring, Conroe, and south Montgomery County.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">TNT Tree Service</span>
+      <span class="stars">5.0 (88 reviews)</span>
+      <span><span class="cr-badge cr-avg">Average</span></span>
+      <span>Kingwood, TX. 13+ years in business (claims 26 years arborist experience). Strong Facebook community presence. Serves Kingwood, New Caney, Porter, Atascocita, and Huffman.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Houston Tree Surgeons</span>
+      <span class="stars">4.7 (77 reviews)</span>
+      <span><span class="cr-badge cr-avg">Average</span></span>
+      <span>Houston, TX. ISA Certified Arborists. Family-owned. Expert positioning and credentials-forward branding. Serves Houston, Humble, Kingwood, and Spring.</span>
+    </div>
+    <div class="competitor-row">
+      <span class="name">Gomez Tree Service LLC</span>
+      <span class="stars">4.6 (26 reviews)</span>
+      <span><span class="cr-badge cr-avg">Average</span></span>
+      <span>Houston, TX. WhatsApp integration for bilingual customers. Bold crew photos with branded orange uniforms. Similar target demographic. Serves Humble, Houston, Spring, The Woodlands, and Katy.</span>
+    </div>
+    <div class="competitor-row" style="border: 2px solid var(--green);">
+      <span class="name" style="color: var(--green);">Jos&eacute; Hern&aacute;ndez Tree Service (You)</span>
+      <span class="stars" style="color: var(--green);">0 reviews (just launched)</span>
+      <span><span class="cr-badge cr-you">New</span></span>
+      <span>Humble, TX. 25+ years experience, bilingual, 24/7 emergency, fully insured, same-day completion. Landscaping + tree care combo. AI-optimized website. Now building the online visibility to match the reputation.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2: WHAT THE TOP COMPANIES DO ============ -->
+<section>
+  <div class="sec-label">What Separates Page 1 from Everyone Else</div>
+  <h2>The 5 Things the Top Companies All Do</h2>
+  <p class="sec-intro">We studied every top-ranking tree service site in your market. The companies on page 1 of Google all share these 5 characteristics. The companies on page 2 and beyond are missing most of them.</p>
+
+  <div class="insight-card">
+    <span class="insight-num">1</span>
+    <h4>They Stack Trust Signals &mdash; Not Just One, But 4-5 at Once</h4>
+    <p>ArborTrue shows ISA certifications, insurance vendor status, and 15+ years of experience all on one page. JJ Garcia stacks 20+ years, 24/7 availability, and 241 reviews front and center. Texas Tree Elite displays their perfect 5.0 rating alongside 234 reviews. The average companies in your market show maybe one trust signal. The more you layer together, the faster a homeowner goes from "just browsing" to picking up the phone.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-num">2</span>
+    <h4>They Make It Ridiculously Easy to Contact Them</h4>
+    <p>Monster Tree Service's corporate site has "GET A FREE ESTIMATE" plastered everywhere with multiple CTAs per page. JJ Garcia shows their phone number 4-6 times per page. Gomez Tree Service has WhatsApp integration for instant bilingual communication. The average tree service sites bury one phone number in the footer. The easier you make it to call, the more calls you get.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-num">3</span>
+    <h4>They Have a Page for Every City They Serve</h4>
+    <p>Texas Tree Elite has dedicated service area pages for each city. ArborTrue targets Kingwood specifically with localized content. JJ Garcia targets 6+ cities with individual pages. When someone searches "tree removal Kingwood TX," the company with a page titled exactly that wins. Companies without city pages barely show up in local results outside their home city.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-num">4</span>
+    <h4>They Post Fresh Content Regularly</h4>
+    <p>JJ Garcia posts seasonal promos on Google Business &mdash; like 15% off spring specials &mdash; keeping their profile active and visible. ArborTrue blogs about pine bark beetles and tree identification, building topical authority. The top companies in your market post on Google Business weekly. Stale profiles with no recent activity sit on page 2.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-num">5</span>
+    <h4>They Use Safety and Expertise Language</h4>
+    <p>ArborTrue leads with "Science Based Tree Care" &mdash; positioning themselves as experts, not just laborers. Houston Tree Surgeons opens with "ISA Certified Arborists." The top companies sell peace of mind and tree health &mdash; preventing storm damage, protecting property value, keeping families safe. They don't say "we cut trees." This is the difference between a premium tree care brand and a guy-with-a-chainsaw website.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Why this matters for you:</strong> These 5 patterns aren't a mystery. They're a checklist. Your new website is being built with every single one of these baked in from day one &mdash; which puts you ahead of 6 out of 9 competitors in your market before you even start ranking.
+  </div>
+</section>
+
+<!-- ============ 3: YOUR DIRECT COMPETITOR ============ -->
+<section>
+  <div class="sec-label">Your Direct Rival</div>
+  <h2>JJ Garcia Professional Tree Service &mdash; The #1 Competitor in Humble</h2>
+  <p class="sec-intro">Out of 9 competitors, JJ Garcia is the company you need to beat. Same city, same services, same customer base. They currently dominate the "tree service Humble TX" Knowledge Panel. Here's how you compare head-to-head.</p>
+
+  <div class="vs-grid">
+    <div class="vs-box">
+      <h4>JJ Garcia Professional Tree Service</h4>
+      <ul>
+        <li>4.9 stars, 241 Google reviews</li>
+        <li>20+ years experience</li>
+        <li>24/7 emergency service</li>
+        <li>Active Google Business posting (seasonal promos, 15% off)</li>
+        <li>Dominates "tree service Humble TX" Knowledge Panel</li>
+        <li>Services: removal, trimming, lot clearing, stump grinding</li>
+        <li>HomeAdvisor + Thumbtack presence</li>
+        <li>6+ city pages targeting Houston, The Woodlands, Katy, Spring, Cypress</li>
+      </ul>
+    </div>
+    <div class="vs-box" style="border-color: var(--green); border-width: 2px;">
+      <h4 style="color: var(--green);">Jos&eacute; Hern&aacute;ndez Tree Service (You)</h4>
+      <ul>
+        <li>0 Google reviews (just launched) &mdash; building from scratch</li>
+        <li>25+ years experience <strong>&mdash; 5 more years than JJ Garcia</strong></li>
+        <li>24/7 emergency service + same-day completion</li>
+        <li>Bilingual service (English + Spanish) <strong>&mdash; JJ Garcia doesn't highlight this</strong></li>
+        <li>Landscaping, flower beds, mulching <strong>&mdash; services JJ Garcia doesn't offer</strong></li>
+        <li>Brand new, AI-optimized website <strong>&mdash; they aren't</strong></li>
+        <li>Lot clearing + full yard restoration <strong>&mdash; one-call solution</strong></li>
+        <li>Free estimates, fully insured</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-green callout">
+    <strong>Your edge:</strong> JJ Garcia has the reviews and the Knowledge Panel &mdash; that's real, and it matters. But you have 5 more years of experience, a bilingual advantage they don't market, and a full landscaping + tree care combination they don't offer. Your AI-optimized website is built to compete where theirs can't. Reviews will come. The foundation you're building right now is what puts you in position to overtake them.
+  </div>
+</section>
+
+<!-- ============ 4: YOUR ADVANTAGES ============ -->
+<section>
+  <div class="sec-label">Your Strengths</div>
+  <h2>What You Already Have That Most Competitors Don't</h2>
+  <p class="sec-intro">Before we even talk about growth tactics, here's what's already working in your favor. These are real competitive advantages grounded in what we found across the market.</p>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">25+ Years &mdash; The Longest Track Record in the Market</h3>
+    <p style="margin-bottom:0;">JJ Garcia has 20+. ArborTrue has 15+. Texas Tree Elite started in 2018. TNT Tree Service has 13+ years. Your quarter-century track record is unmatched by any competitor we analyzed. A homeowner choosing between you and someone who opened shop 6 years ago isn't even making a real comparison. Experience is the one thing your competitors can never shortcut.</p>
+  </div>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">25+ Years of Word-of-Mouth Reputation Now Going Digital</h3>
+    <p style="margin-bottom:0;">You've spent over two decades building your reputation the hardest way possible &mdash; one job at a time, one referral at a time. The competitors with 200+ Google reviews didn't earn them overnight. They just started asking sooner. Your reputation already exists across Humble, Atascocita, and beyond. Now you're translating that proven track record into the digital visibility it deserves. Every review you collect from here forward is backed by 25 years of real work.</p>
+  </div>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">Bilingual Service (English + Spanish) &mdash; A Market Nobody Else Owns</h3>
+    <p style="margin-bottom:0;">Only Gomez Tree Service leans into bilingual marketing &mdash; and they have just 26 reviews and a 4.6 rating. In the Humble, Atascocita, and Kingwood communities, a significant portion of homeowners prefer communicating in Spanish. You're the most experienced tree service making them feel welcome and understood. This is a massive untapped edge across all 12 cities you serve.</p>
+  </div>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">Full Landscaping + Tree Care &mdash; Nobody Else Combines Both</h3>
+    <p style="margin-bottom:0;">Most competitors ONLY do tree work &mdash; removal, trimming, stump grinding. You offer landscaping, flower beds, mulching, and lot clearing alongside tree services. Customers who need a tree removed AND their yard restored currently have to hire two companies. You're the only one-call solution in the market. That's a competitive moat none of your rivals are building.</p>
+  </div>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">24/7 Emergency + Same-Day Completion</h3>
+    <p style="margin-bottom:0;">While JJ Garcia and Texas Tree Care also offer 24/7 service, your same-day completion guarantee is a differentiator none of them explicitly match. When a tree falls on a homeowner's roof at 2 AM, they need help now &mdash; and they need to know it'll be handled today, not next week. Most tree services schedule days or weeks out. Your speed wins the highest-urgency, highest-value calls.</p>
+  </div>
+
+  <div class="card card-accent">
+    <h3 style="margin-top:0;">Lot Clearing &mdash; A Unique Service Nobody Markets</h3>
+    <p style="margin-bottom:0;">No other competitor in your market actively markets lot clearing as a standalone service. Construction companies, developers, and homeowners clearing overgrown properties need this. Combined with your landscaping capability, you can clear a lot AND build it back up &mdash; something no other tree service in the Humble, Spring, or Kingwood area offers as a package.</p>
+  </div>
+</section>
+
+<!-- ============ 5: WHERE THE GAPS ARE ============ -->
+<section>
+  <div class="sec-label">Opportunity</div>
+  <h2>Open Lanes in Your Market</h2>
+  <p class="sec-intro">After analyzing all 9 competitors, we found gaps that nobody is filling. These are opportunities where you can lead instead of chase.</p>
+
+  <table>
+    <thead>
+      <tr><th>Open Lane</th><th>What It Means for You</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Atascocita is underserved</strong></td>
+        <td>No single company dominates Atascocita-specific searches. JJ Garcia targets Houston and Katy. ArborTrue owns Kingwood. Texas Tree Elite owns Spring. City-specific landing pages for Atascocita could win this territory with minimal competition.</td>
+      </tr>
+      <tr>
+        <td><strong>Baytown and Dayton are wide open</strong></td>
+        <td>Almost zero established tree service companies show up for Baytown or Dayton searches. You already serve these areas &mdash; you just need pages targeting them. This is free territory waiting to be claimed.</td>
+      </tr>
+      <tr>
+        <td><strong>Bilingual service is barely marketed</strong></td>
+        <td>Only Gomez Tree Service (26 reviews, 4.6 stars) leans into bilingual marketing. You can own the bilingual tree service market across all 12 cities you serve. Spanish-language content and search terms have virtually zero competition.</td>
+      </tr>
+      <tr>
+        <td><strong>No competitor owns "lot clearing" + "landscaping" combined</strong></td>
+        <td>You offer both tree removal AND what comes after &mdash; landscaping, flower beds, sod. Nobody else markets this full-service approach. A homeowner clearing a lot for construction or restoring a yard after removal has to call two companies unless they call you.</td>
+      </tr>
+      <tr>
+        <td><strong>Zero competitors optimize for AI search</strong></td>
+        <td>When someone asks ChatGPT or Google Gemini for a tree service in Humble, your website is structured to appear. Nobody else has done this &mdash; giving you a first-mover advantage in the next wave of search.</td>
+      </tr>
+      <tr>
+        <td><strong>Most competitor GBP profiles are underoptimized</strong></td>
+        <td>JJ Garcia and ArborTrue take Google Business Profile seriously with regular posts and fresh photos. Everyone else has incomplete profiles with old photos and no posts. A fully optimized profile with weekly posts puts you ahead of 7 out of 9 competitors immediately.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 6: WHAT THIS ALL MEANS ============ -->
+<section>
+  <div class="sec-label">Bottom Line</div>
+  <h2>Where You Stand &mdash; and What Happens Next</h2>
+
+  <div class="card card-forest">
+    <h3 style="margin-top:0;">The Reality</h3>
+    <p>When someone searches "tree service Humble TX" right now, JJ Garcia's Knowledge Panel dominates with 241 reviews and 20+ years of online presence. ArborTrue owns Kingwood with the best website in the market. Texas Tree Elite owns Spring with a perfect 5.0 rating at scale. You don't show up yet &mdash; not because your work isn't good enough, but because you've spent 25 years building your reputation through word-of-mouth instead of Google. The quality has always been there. The digital visibility hasn't.</p>
+  </div>
+
+  <div class="card card-green">
+    <h3 style="margin-top:0;">The Opportunity</h3>
+    <p>You have more years in business than anyone we analyzed, services nobody else combines, a bilingual edge nobody else is marketing at your level, and an AI-optimized website none of them have built. The competitors online just got there first. With consistent effort on Google reviews, Google Business posts, and time for your new site to build authority, you close the gap month by month. Every review you earn is backed by 25 years of real work &mdash; that's a story no competitor can match.</p>
+  </div>
+
+  <div class="callout-green callout">
+    <strong>The short version:</strong> You have 25+ years of experience and a reputation built entirely on word-of-mouth. The competitors online just got there first. Now you're building the digital presence to match what you've already earned.
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="report-footer">
+  <p><strong>Prepared by QuickLaunchWeb</strong> for Jos&eacute; Hern&aacute;ndez Tree Service</p>
+  <p>March 2026 &middot; Market Position Report</p>
+  <p style="margin-top: 12px;">Questions? Reach out to your QuickLaunchWeb team anytime.</p>
+</div>
+
+</div>
+</body>
+</html>

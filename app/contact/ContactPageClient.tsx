@@ -9,9 +9,6 @@ import {
   Shield,
   CheckCircle2,
   ArrowRight,
-  MapPin,
-  Star,
-  Truck,
 } from 'lucide-react';
 import { siteConfig } from '../config';
 import { EstimateForm } from '../components/EstimateForm';
@@ -27,51 +24,38 @@ const fadeUp = {
 export default function ContactPageClient({ faqs }: { faqs: { q: string; a: string }[] }) {
   return (
     <>
-      {/* ═══ HERO — full-width with image, strong presence ═══ */}
-      <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
         <div className="absolute inset-0">
-          <NextImage
-            src="/tree_pro/hernandez_hero_v2.png"
-            alt="Professional tree service by José Hernández Tree Service"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <NextImage src="/tree_pro/hernandez_service_removal.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,8,0.94)] via-[rgba(5,12,8,0.85)] to-[rgba(5,12,8,0.6)]" />
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex items-center gap-2 text-sm text-white/40">
+              <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li className="font-semibold text-white/70">Contact</li>
+            </ol>
+          </nav>
 
-        <div className={`${shell} relative z-10 py-16 sm:py-24 lg:py-28`}>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-
-            className="max-w-xl"
-          >
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-4">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
               No Obligation &bull; No Cost
             </p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.06] tracking-tight">
-              Book your free <br />
-              <span className="text-[var(--hernandez-gold)]">consultation.</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-[1.1] tracking-tight max-w-md">
+              Book your free consultation.
             </h1>
-            <p className="mt-5 text-lg text-white/65 leading-relaxed max-w-md">
+            <p className="mt-3 text-base text-white/50 leading-relaxed max-w-md">
               Tell us what you need — we&apos;ll get back to you fast with an honest, affordable quote.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm font-semibold text-white/70">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[var(--hernandez-gold)]" /> Free estimates
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[var(--hernandez-gold)]" /> Same-day availability
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ years experience
-              </div>
+            <div className="mt-5 flex flex-wrap items-center gap-4 text-xs font-semibold text-white/40">
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> Free estimates</span>
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> Same-day availability</span>
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ years experience</span>
             </div>
           </motion.div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
       {/* ═══ FORM + SIDEBAR ═══ */}
@@ -126,31 +110,25 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
                 <p className="text-sm text-white/50">We pick up or call right back. Available 24/7 for emergencies.</p>
               </div>
 
-              {/* Trust badges */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
-                  <Clock className="h-5 w-5 text-[var(--hernandez-gold)] mb-2.5" />
-                  <div className="text-sm font-bold text-[var(--hernandez-forest-deep)]">24/7</div>
-                  <div className="text-xs text-slate-400 mt-0.5">Emergency Ready</div>
+              {/* Trust details */}
+              <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm space-y-3">
+                <div className="flex items-center gap-3">
+                  <Clock className="h-4 w-4 text-[var(--hernandez-gold)] shrink-0" />
+                  <span className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">24/7 Emergency Ready</span>
                 </div>
-                <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
-                  <Shield className="h-5 w-5 text-[var(--hernandez-gold)] mb-2.5" />
-                  <div className="text-sm font-bold text-[var(--hernandez-forest-deep)]">Fully Insured</div>
-                  <div className="text-xs text-slate-400 mt-0.5">Every Job Covered</div>
+                <div className="h-px bg-slate-100" />
+                <div className="flex items-center gap-3">
+                  <Shield className="h-4 w-4 text-[var(--hernandez-gold)] shrink-0" />
+                  <span className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">Fully Insured — Every Job</span>
                 </div>
               </div>
 
               {/* Service areas */}
               <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">We Serve</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {siteConfig.serviceAreas.map((area) => (
-                    <span key={area} className="rounded-full bg-[var(--hernandez-cream)] border border-[var(--hernandez-line)] px-3 py-1.5 text-xs font-semibold text-[var(--hernandez-forest-deep)]">
-                      {area}
-                    </span>
-                  ))}
-                  <span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-400">+ more</span>
-                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">We Serve</div>
+                <p className="text-sm font-semibold text-[var(--hernandez-forest-deep)] leading-relaxed">
+                  {siteConfig.serviceAreas.join(' · ')} <span className="text-slate-400 font-normal">& more</span>
+                </p>
               </div>
 
               {/* Reviews */}
@@ -223,7 +201,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
       {/* ═══ CTA — with background image ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-forest-deep)] py-16 sm:py-20">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="Tree service work" fill className="object-cover opacity-15" />
+          <NextImage src="/tree_pro/emergency_service.png" alt="Tree service work" fill className="object-cover opacity-15" />
         </div>
         <div className={`${shell} relative z-10`}>
           <motion.div

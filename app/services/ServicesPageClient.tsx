@@ -9,11 +9,8 @@ import {
   Clock,
   Phone,
   ChevronDown,
-  TreePine,
-  Shield,
 } from 'lucide-react';
 import { siteConfig } from '../config';
-import { Stars } from '../components/Stars';
 import { useState } from 'react';
 
 interface ServiceItem {
@@ -84,59 +81,48 @@ export default function ServicesPageClient({
 }) {
   return (
     <>
-      {/* ═══ HERO — left-aligned, not centered block ═══ */}
-      <section className="relative overflow-hidden bg-[var(--hernandez-ink)] py-20 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--hernandez-forest-deep)]/40 via-transparent to-[var(--hernandez-ink)]" />
-
-        <div className={`${shell} relative z-10`}>
-          <nav aria-label="Breadcrumb" className="mb-8">
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
+        <div className="absolute inset-0">
+          <NextImage src="/tree_pro/hernandez_service_trimming.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+        </div>
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
             <ol className="flex items-center gap-2 text-sm text-white/40">
               <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="font-semibold text-[var(--hernandez-gold)]">Services</li>
+              <li className="font-semibold text-white/70">Services</li>
             </ol>
           </nav>
 
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }}>
-            <div className="max-w-2xl">
-              <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.08]">
-                Tree Trimming, Removal &amp; Landscaping in Humble, TX
-              </h1>
-              <p className="mt-5 text-base leading-relaxed text-white/55 sm:text-lg max-w-xl">
-                {siteConfig.yearsInBusiness}+ years serving Humble, Dayton, Baytown, Spring,
-                The Woodlands, and Conroe. Affordable pricing on every job.
-              </p>
-            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl leading-[1.1] max-w-xl">
+              Tree Trimming, Removal &amp; Landscaping in Humble, TX
+            </h1>
+            <p className="mt-3 text-base leading-relaxed text-white/50 max-w-lg">
+              {siteConfig.yearsInBusiness}+ years serving Humble, Dayton, Baytown, Spring,
+              The Woodlands, and Conroe. Affordable pricing on every job.
+            </p>
           </motion.div>
 
-          {/* Quick-nav — pills row */}
+          {/* Quick-nav */}
           <motion.div
             initial="hidden" animate="visible" variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.12 }}
-            className="mt-10 flex flex-wrap gap-2.5"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/40"
           >
-            {services.map((s) => (
+            {services.map((s, i) => (
               <a
                 key={s.slug}
                 href={`#${s.slug}`}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/70 hover:border-[var(--hernandez-gold)]/50 hover:text-[var(--hernandez-gold)] transition-all sm:text-sm"
+                className="font-semibold hover:text-[var(--hernandez-gold)] transition-colors py-1"
               >
-                {s.title}
+                {s.title}{i < services.length - 1 && <span className="ml-4 text-white/15">·</span>}
               </a>
             ))}
           </motion.div>
-
-          {/* Trust line — subtle, not pills */}
-          <motion.div
-            initial="hidden" animate="visible" variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wider text-white/35"
-          >
-            <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> Fully Insured</span>
-            <span className="flex items-center gap-1.5"><TreePine className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ Years</span>
-            <span className="flex items-center gap-1.5"><Stars count={5} size="h-3 w-3" /> {siteConfig.rating} Rating</span>
-          </motion.div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
       {/* ═══ SERVICE SECTIONS — varied layouts ═══ */}

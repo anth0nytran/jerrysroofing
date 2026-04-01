@@ -6,16 +6,12 @@ import { motion } from 'framer-motion';
 import {
   Shield,
   Heart,
-  CheckCircle2,
   Clock,
   Star,
   Sparkles,
   Users,
-  MapPin,
   ArrowRight,
   Phone,
-  TreePine,
-  Truck,
 } from 'lucide-react';
 import { siteConfig } from '../config';
 import { Stars } from '../components/Stars';
@@ -30,65 +26,39 @@ const fadeUp = {
 export default function AboutPageClient() {
   return (
     <>
-      {/* ═══ HERO — full-width image with overlay, matches homepage energy ═══ */}
-      <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
         <div className="absolute inset-0">
-          <NextImage
-            src="/tree_pro/trust_us_v2.png"
-            alt="José Hernández Tree Service crew on the job in Humble TX"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          <NextImage src="/tree_pro/done_right.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,8,0.92)] via-[rgba(5,12,8,0.82)] to-[rgba(5,12,8,0.5)]" />
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex items-center gap-2 text-sm text-white/40">
+              <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li className="font-semibold text-white/70">About</li>
+            </ol>
+          </nav>
 
-        <div className={`${shell} relative z-10 py-20 sm:py-28 lg:py-36`}>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-
-            className="max-w-2xl"
-          >
-            <div className="flex items-center gap-2 mb-5">
-              <Stars count={5} size="h-4 w-4 text-[#FBBC05]" />
-              <span className="text-[0.65rem] font-bold uppercase tracking-widest text-white/90">
-                {siteConfig.rating} Stars &bull; {siteConfig.reviewCount}+ Google Reviews
-              </span>
-            </div>
-
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-4">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
               Family-Owned &bull; Humble, Texas
             </p>
-            <h1 className="text-4xl font-extrabold leading-[1.06] text-white sm:text-5xl lg:text-[3.75rem] tracking-tight">
-              Built on trust. <br />
-              <span className="text-[var(--hernandez-gold)]">Driven by fair pricing.</span>
+            <h1 className="text-3xl font-extrabold leading-[1.1] text-white sm:text-4xl tracking-tight max-w-lg">
+              Built on trust. Driven by fair pricing.
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-xl">
+            <p className="mt-3 text-base text-white/50 leading-relaxed max-w-lg">
               For {siteConfig.yearsInBusiness}+ years, José Hernández has served homeowners across
               Humble, Dayton, Baytown, Spring, The Woodlands, and Conroe with
               the same simple promise: quality work at prices that make sense.
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold text-white">
-                <Shield className="h-4 w-4 text-[var(--hernandez-gold)]" /> Fully Insured
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold text-white">
-                <CheckCircle2 className="h-4 w-4 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ Years
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold text-white">
-                <Clock className="h-4 w-4 text-[var(--hernandez-gold)]" /> 24/7 Emergency
-              </div>
-            </div>
           </motion.div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
       {/* ═══ STORY — rich two-column ═══ */}
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-white py-14 sm:py-24">
         <div className={shell}>
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start">
             <motion.div
@@ -134,50 +104,45 @@ export default function AboutPageClient() {
               </div>
             </motion.div>
 
-            {/* Right — stats strip */}
+            {/* Right — image + supporting details */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
               variants={fadeUp}
-
-              className="space-y-5"
+              className="space-y-6"
             >
-              <div className="rounded-2xl bg-[var(--hernandez-forest-deep)] p-8 text-white">
-                <div className="text-5xl font-extrabold tracking-tight">{siteConfig.yearsInBusiness}+</div>
-                <div className="mt-1 text-sm font-medium text-white/50">Years in business</div>
-                <div className="mt-4 h-px bg-white/10" />
-                <p className="mt-4 text-[0.85rem] leading-relaxed text-white/60">
-                  Licensed, fully insured, bilingual crew. We&apos;ve seen every kind of tree
-                  job and every kind of Texas storm.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl border border-slate-200 bg-[var(--hernandez-cream)] p-6">
-                  <div className="text-3xl font-extrabold text-[var(--hernandez-forest-deep)]">{siteConfig.reviewCount}+</div>
-                  <div className="mt-1 text-xs font-semibold text-slate-400">5-Star Reviews</div>
-                </div>
-                <div className="rounded-xl border border-slate-200 bg-[var(--hernandez-cream)] p-6">
-                  <div className="text-3xl font-extrabold text-[var(--hernandez-forest-deep)]">24/7</div>
-                  <div className="mt-1 text-xs font-semibold text-slate-400">Emergency Ready</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 rounded-xl bg-[var(--hernandez-cream)] border border-[var(--hernandez-line)] px-5 py-4">
-                <Shield className="h-5 w-5 text-[var(--hernandez-gold)] shrink-0" />
-                <span className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">Full liability insurance on every job — no exceptions</span>
-              </div>
-
-              {/* Mobile image */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-xl lg:hidden">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-xl">
                 <NextImage
-                  src="/tree_pro/trust_us_v2.png"
+                  src="/tree_pro/trust_us.png"
                   alt="José Hernández Tree Service crew on the job"
                   fill
-                  sizes="100vw"
+                  sizes="(min-width:1024px) 40vw, 100vw"
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--hernandez-forest-deep)]/70 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex items-end justify-between gap-4">
+                  <div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none">{siteConfig.yearsInBusiness}+</div>
+                    <div className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/60 mt-1">Years in business</div>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/80">
+                    <div className="text-center">
+                      <div className="text-lg font-extrabold leading-none">5.0</div>
+                      <Stars count={5} size="h-2.5 w-2.5 mt-1" />
+                    </div>
+                    <div className="h-8 w-px bg-white/20" />
+                    <div className="text-center">
+                      <div className="text-lg font-extrabold leading-none">24/7</div>
+                      <div className="text-[0.55rem] font-bold uppercase tracking-wider text-white/50 mt-1">Emergency</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-sm text-slate-600 leading-relaxed">
+                <Shield className="h-4 w-4 text-[var(--hernandez-gold)] shrink-0 mt-0.5" />
+                <span>Licensed, fully insured, bilingual crew. Full liability coverage on every job — no exceptions.</span>
               </div>
             </motion.div>
           </div>
@@ -185,7 +150,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ═══ TESTIMONIALS — social proof strip ═══ */}
-      <section className="bg-[var(--hernandez-cream)] py-16 sm:py-20 border-y border-[var(--hernandez-line)]">
+      <section className="bg-[var(--hernandez-cream)] py-12 sm:py-16 border-y border-[var(--hernandez-line)]">
         <div className={shell}>
           <motion.div
             initial="hidden"
@@ -199,7 +164,7 @@ export default function AboutPageClient() {
               What Our Customers Say
             </p>
             <h2 className="text-3xl font-extrabold text-[var(--hernandez-forest-deep)] sm:text-4xl">
-              {siteConfig.reviewCount}+ five-star reviews and counting.
+              5-star rated and counting.
             </h2>
           </motion.div>
 
@@ -247,7 +212,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ═══ VALUES — dark section with mixed layout ═══ */}
-      <section className="bg-[var(--hernandez-forest-deep)] py-20 sm:py-28">
+      <section className="bg-[var(--hernandez-forest-deep)] py-14 sm:py-22">
         <div className={shell}>
           <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-start">
             {/* Left — heading area */}
@@ -271,139 +236,98 @@ export default function AboutPageClient() {
               <div className="mt-6 h-px w-16 bg-gradient-to-r from-[var(--hernandez-gold)]/50 to-transparent" />
             </motion.div>
 
-            {/* Right — values in varied layout */}
-            <div className="space-y-4">
-              {/* Featured value */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-40px' }}
-                variants={fadeUp}
-    
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 hover:bg-white/[0.07] transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--hernandez-gold)]/15">
-                    <Shield className="h-5 w-5 text-[var(--hernandez-gold)]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white">Integrity</h3>
-                </div>
-                <p className="text-[0.9rem] leading-relaxed text-white/55">
-                  We give fair, affordable pricing, never upsell work you don&apos;t need, and stand behind every job we do. If something isn&apos;t right, we come back and fix it — no charge, no argument.
-                </p>
-              </motion.div>
-
-              {/* 2-col row */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Heart, title: 'Safety', desc: 'Every crew member is trained in safe rigging, proper cuts, and equipment handling. Your property and our people come first.' },
-                  { icon: Star, title: 'Quality', desc: 'We don\'t cut corners. From the first cut to the final cleanup, every detail gets the attention it deserves.' },
-                ].map((v, i) => (
-                  <motion.div
-                    key={v.title}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-40px' }}
-                    variants={fadeUp}
-    
-                    className="rounded-xl border border-white/10 bg-white/[0.03] p-6 hover:bg-white/[0.06] transition-colors"
-                  >
-                    <v.icon className="h-5 w-5 text-[var(--hernandez-gold)] mb-3" />
-                    <h3 className="text-base font-bold text-white mb-1.5">{v.title}</h3>
+            {/* Right — values as simple list */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              variants={fadeUp}
+              className="space-y-0"
+            >
+              {[
+                { icon: Shield, title: 'Integrity', desc: 'Fair pricing, no upselling. If something isn\'t right, we come back and fix it — no charge, no argument.' },
+                { icon: Heart, title: 'Safety', desc: 'Every crew member is trained in safe rigging, proper cuts, and equipment handling. Your property and our people come first.' },
+                { icon: Star, title: 'Quality', desc: 'We don\'t cut corners. From the first cut to the final cleanup, every detail gets the attention it deserves.' },
+                { icon: Clock, title: 'Reliability', desc: 'When we say we\'ll be there, we\'re there. On time, every time.' },
+                { icon: Users, title: 'Community', desc: 'This community raised us. We take pride in serving our neighbors.' },
+                { icon: Sparkles, title: 'Clean Worksite', desc: 'Every branch, every leaf — cleaned up. We leave your yard spotless.' },
+              ].map((v, i) => (
+                <div
+                  key={v.title}
+                  className={`flex items-start gap-4 py-5 sm:py-6 ${i > 0 ? 'border-t border-white/[0.06]' : ''}`}
+                >
+                  <v.icon className="h-5 w-5 text-[var(--hernandez-gold)] shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="text-[0.95rem] font-bold text-white mb-1">{v.title}</h3>
                     <p className="text-sm leading-relaxed text-white/50">{v.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* 3-col compact row */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {[
-                  { icon: Clock, title: 'Reliability', desc: 'When we say we\'ll be there, we\'re there.' },
-                  { icon: Users, title: 'Community', desc: 'This community raised us. We take pride in serving our neighbors.' },
-                  { icon: Sparkles, title: 'Clean Worksite', desc: 'Every branch, every leaf — hauled away.' },
-                ].map((v, i) => (
-                  <motion.div
-                    key={v.title}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-40px' }}
-                    variants={fadeUp}
-    
-                    className="rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:bg-white/[0.06] transition-colors text-center sm:text-left"
-                  >
-                    <v.icon className="h-5 w-5 text-[var(--hernandez-gold)] mb-2 mx-auto sm:mx-0" />
-                    <h3 className="text-sm font-bold text-white mb-1">{v.title}</h3>
-                    <p className="text-xs leading-relaxed text-white/45">{v.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ═══ SERVICE AREAS ═══ */}
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-white py-14 sm:py-20">
         <div className={shell}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={fadeUp}
-
-            className="max-w-3xl"
-          >
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
-              Where We Work
-            </p>
-            <h2 className="text-3xl font-extrabold text-[var(--hernandez-forest-deep)] sm:text-4xl leading-tight">
-              Serving Humble to Conroe and everywhere in between.
-            </h2>
-            <p className="mt-4 text-base text-slate-500 leading-relaxed">
-              Our crews cover the greater Lake Houston area and beyond. If you&apos;re not
-              sure whether we serve your neighborhood, just call — we probably do.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
-            variants={fadeUp}
-            className="mt-10 flex flex-wrap gap-2.5"
-          >
-            {siteConfig.allServiceAreas.map((area, i) => {
-              const isPrimary = i < 6;
-              return (
-                <span
-                  key={area}
-                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
-                    isPrimary
-                      ? 'bg-[var(--hernandez-forest-deep)] text-white'
-                      : 'bg-[var(--hernandez-cream)] text-[var(--hernandez-forest-deep)] border border-[var(--hernandez-line)]'
-                  }`}
-                >
-                  <MapPin className="h-3.5 w-3.5 shrink-0" />
-                  {area}
-                </span>
-              );
-            })}
-          </motion.div>
-
-          <div className="mt-8">
-            <p className="text-sm text-slate-400 leading-relaxed">
-              <span className="font-semibold text-slate-500">Plus neighborhoods:</span>{' '}
-              {siteConfig.neighborhoods}
-            </p>
-          </div>
-
-          <div className="mt-6">
-            <a
-              href={`tel:${siteConfig.cleanPhone}`}
-              className="inline-flex items-center gap-2 text-sm font-bold text-[var(--hernandez-forest)] hover:text-[var(--hernandez-gold)] transition-colors"
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-start">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+              variants={fadeUp}
             >
-              <Phone className="h-4 w-4" /> {siteConfig.phone} — Call to check your area
-            </a>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
+                Where We Work
+              </p>
+              <h2 className="text-2xl font-extrabold text-[var(--hernandez-forest-deep)] sm:text-3xl leading-tight">
+                Serving Humble to Conroe and everywhere in between.
+              </h2>
+              <p className="mt-3 text-[0.92rem] text-slate-500 leading-relaxed">
+                Our crews cover the greater Lake Houston area and beyond. If you&apos;re not
+                sure whether we serve your neighborhood, just call — we probably do.
+              </p>
+
+              <div className="mt-6">
+                <a
+                  href={`tel:${siteConfig.cleanPhone}`}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[var(--hernandez-forest)] hover:text-[var(--hernandez-gold)] transition-colors"
+                >
+                  <Phone className="h-4 w-4" /> {siteConfig.phone} — Call to check your area
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              variants={fadeUp}
+            >
+              <div className="space-y-4">
+                <div>
+                  <div className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-slate-400 mb-2">Primary Areas</div>
+                  <p className="text-[0.95rem] font-semibold text-[var(--hernandez-forest-deep)] leading-relaxed">
+                    {siteConfig.allServiceAreas.slice(0, 6).join(' · ')}
+                  </p>
+                </div>
+                <div className="h-px bg-slate-150 bg-slate-200" />
+                <div>
+                  <div className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-slate-400 mb-2">Also Serving</div>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {siteConfig.allServiceAreas.slice(6).join(', ')}
+                  </p>
+                </div>
+                <div className="h-px bg-slate-200" />
+                <div>
+                  <div className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-slate-400 mb-2">Neighborhoods</div>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {siteConfig.neighborhoods}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -411,7 +335,7 @@ export default function AboutPageClient() {
       {/* ═══ CTA ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--hernandez-forest-deep)] py-16 sm:py-20">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="Professional tree service results" fill className="object-cover opacity-15" />
+          <NextImage src="/tree_pro/trust_us.png" alt="Professional tree service results" fill className="object-cover opacity-15" />
         </div>
         <div className={`${shell} relative z-10`}>
           <motion.div

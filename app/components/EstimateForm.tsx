@@ -121,7 +121,7 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
         <Stars count={5} size="h-3 w-3" />
         <span className="font-bold text-slate-600">{siteConfig.rating.toFixed(1)}</span>
         <span>|</span>
-        <span>{siteConfig.reviewCount}+ happy customers</span>
+        <span>5-Star Rated</span>
       </div>
     </div>
   );

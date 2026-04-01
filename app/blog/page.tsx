@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
 import { blogPosts } from './posts';
@@ -69,25 +70,27 @@ export default function BlogPage() {
         }}
       />
 
-      {/* ── Hero ── */}
-      <section className="bg-[var(--hernandez-cream)] py-14 sm:py-18">
-        <div className={shell}>
-          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-slate-400">
-            <ol className="flex items-center gap-1.5">
-              <li><Link href="/" className="hover:text-[var(--hernandez-forest-deep)] transition-colors">Home</Link></li>
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
+        <div className="absolute inset-0">
+          <Image src="/tree_pro/home_3.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+        </div>
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex items-center gap-2 text-sm text-white/40">
+              <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="font-semibold text-[var(--hernandez-forest-deep)]">Blog</li>
+              <li className="font-semibold text-white/70">Blog</li>
             </ol>
           </nav>
-          <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--hernandez-forest-deep)] leading-tight">
-              Tree Care Blog
-            </h1>
-            <p className="mt-3 text-base text-slate-500 leading-relaxed">
-              Tips, cost guides, and seasonal advice from the crew at {siteConfig.businessName}.
-            </p>
-          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-[1.1]">
+            Tree Care Blog
+          </h1>
+          <p className="mt-3 text-base text-white/50 leading-relaxed max-w-lg">
+            Tips, cost guides, and seasonal advice from the crew at {siteConfig.businessName}.
+          </p>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
       {/* ── Post Grid ── */}

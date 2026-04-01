@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Phone, TreePine } from 'lucide-react';
 import { siteConfig } from '../config';
@@ -17,20 +18,6 @@ export const metadata: Metadata = {
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10';
 
-const projects = [
-  { service: 'Tree Trimming', location: 'Humble' },
-  { service: 'Storm Cleanup', location: 'Dayton' },
-  { service: 'Tree Removal', location: 'Baytown' },
-  { service: 'Stump Grinding', location: 'Spring' },
-  { service: 'Landscaping', location: 'The Woodlands' },
-  { service: 'Mulching', location: 'Conroe' },
-  { service: 'Tree Removal', location: 'Humble' },
-  { service: 'Storm Cleanup', location: 'Baytown' },
-  { service: 'Tree Trimming', location: 'Spring' },
-  { service: 'Stump Grinding', location: 'The Woodlands' },
-  { service: 'Landscaping', location: 'Dayton' },
-  { service: 'Mulching', location: 'Conroe' },
-];
 
 export default function GalleryPage() {
   return (
@@ -49,58 +36,49 @@ export default function GalleryPage() {
         }}
       />
 
-      {/* ═══ HERO — compact, left-aligned ═══ */}
-      <section className="bg-[var(--hernandez-cream)] py-16 sm:py-20">
-        <div className={shell}>
-          <div className="max-w-2xl">
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
-              Project Gallery
-            </p>
-            <h1 className="text-4xl font-extrabold leading-tight text-[var(--hernandez-forest-deep)] sm:text-5xl">
-              Our work speaks for itself.
-            </h1>
-            <p className="mt-4 text-base text-slate-500 leading-relaxed">
-              Real projects from Humble, Dayton, Baytown, Spring, The Woodlands, Conroe
-              and surrounding areas. Every photo here is a job we completed.
-            </p>
-          </div>
+      {/* Sub-hero */}
+      <section className="relative overflow-hidden bg-[var(--hernandez-forest-deep)]">
+        <div className="absolute inset-0">
+          <Image src="/tree_pro/storm_cleanup.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
+        <div className={`${shell} relative z-10 py-12 sm:py-16`}>
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex items-center gap-2 text-sm text-white/40">
+              <li><Link href="/" className="hover:text-[var(--hernandez-gold)] transition-colors">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li className="font-semibold text-white/70">Gallery</li>
+            </ol>
+          </nav>
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)] mb-3">
+            Project Gallery
+          </p>
+          <h1 className="text-3xl font-extrabold leading-[1.1] text-white sm:text-4xl max-w-lg">
+            Our work speaks for itself.
+          </h1>
+          <p className="mt-3 text-base text-white/50 leading-relaxed max-w-lg">
+            Real projects from Humble, Dayton, Baytown, Spring, The Woodlands, Conroe
+            and surrounding areas.
+          </p>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--hernandez-gold)]/20 to-transparent" />
       </section>
 
-      {/* ═══ GALLERY — mixed grid sizes for visual interest ═══ */}
+      {/* ═══ GALLERY — Coming Soon ═══ */}
       <section className="bg-white py-16 sm:py-20">
         <div className={shell}>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, i) => {
-              // Make first and every 5th card taller for visual variety
-              const isFeatured = i === 0 || i === 4 || i === 8;
-
-              return (
-                <div
-                  key={`${project.service}-${project.location}-${i}`}
-                  className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-[var(--hernandez-cream)] ${
-                    isFeatured ? 'sm:row-span-2' : ''
-                  }`}
-                >
-                  {/* Placeholder */}
-                  <div className={`relative flex flex-col items-center justify-center gap-3 ${
-                    isFeatured ? 'aspect-[3/4]' : 'aspect-[4/3]'
-                  }`}>
-                    <TreePine className="h-10 w-10 text-[var(--hernandez-forest-deep)] opacity-15" />
-                    <span className="text-4xl font-extrabold leading-none text-[var(--hernandez-gold)] opacity-60">?</span>
-                    <span className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-slate-400">Client Photo</span>
-                  </div>
-
-                  {/* Info strip */}
-                  <div className="absolute inset-x-0 bottom-0 bg-white/95 backdrop-blur-sm border-t border-slate-100 px-4 py-3 flex items-center justify-between">
-                    <div>
-                      <span className="text-[0.6rem] font-bold uppercase tracking-wider text-[var(--hernandez-gold)]">{project.service}</span>
-                      <p className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">{project.location}, TX</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-[var(--hernandez-cream)] py-24 sm:py-32 px-6 text-center">
+            <TreePine className="h-14 w-14 text-[var(--hernandez-forest-deep)] opacity-20 mb-5" />
+            <span className="inline-block rounded-full bg-[var(--hernandez-gold)]/15 px-5 py-2 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[var(--hernandez-gold)] mb-4">Coming Soon</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--hernandez-forest-deep)]">Project photos on the way!</h2>
+            <p className="mt-3 text-base text-slate-500 max-w-lg leading-relaxed">
+              We&apos;re collecting photos from our tree trimming, removal, stump grinding, landscaping, and storm cleanup jobs across Humble, Dayton, Baytown, Spring, The Woodlands &amp; Conroe. Check back soon to see our work in action.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[var(--hernandez-gold)] px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white hover:brightness-110 transition-all"
+            >
+              Get a Free Estimate <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

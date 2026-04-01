@@ -7,7 +7,8 @@
       "mcp__plugin_playwright_playwright__browser_resize",
       "mcp__plugin_playwright_playwright__browser_press_key",
       "Bash(claude skill:*)",
-      "Bash(claude plugin:*)"
+      "Bash(claude plugin:*)",
+      "Bash(node -e \"const sharp = require\\('sharp'\\); sharp\\('public/tree_pro/hernandez_service_stump.png'\\).resize\\(640, 640, { fit: 'cover', position: 'center' }\\).toFile\\('public/tree_pro/hernandez_service_stump_resized.png'\\).then\\(\\(\\) => { const fs = require\\('fs'\\); fs.renameSync\\('public/tree_pro/hernandez_service_stump_resized.png', 'public/tree_pro/hernandez_service_stump.png'\\); console.log\\('done'\\); }\\)\")"
     ]
   },
   "enableAllProjectMcpServers": true,

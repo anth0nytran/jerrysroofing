@@ -11,11 +11,9 @@ import {
   Shield,
   Star,
   TreePine,
-  Zap,
   Clock,
   Truck,
   HardHat,
-  Lock,
   User,
   MapPin,
   ClipboardList,
@@ -58,47 +56,47 @@ function HeroEstimateForm() {
 
   return (
     <div>
-      <form className="grid gap-4 sm:gap-4.5" action="/api/lead" method="POST" onSubmit={handleSubmit}>
+      <form className="grid gap-3" action="/api/lead" method="POST" onSubmit={handleSubmit}>
         <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
         <input type="hidden" name="_ts" value={formTimestamp} />
         <input type="hidden" name="page" value={pageUrl} />
 
-        <div className="grid gap-4 sm:gap-4.5 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Full Name <span className="text-red-500">*</span></label>
+            <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Full Name <span className="text-red-500">*</span></label>
             <div className="relative">
-              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
-              <input required name="name" type="text" placeholder="John Doe" autoComplete="name" pattern="[A-Za-z\s\-']{2,50}" className="w-full rounded-lg border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+              <input required name="name" type="text" placeholder="John Doe" autoComplete="name" pattern="[A-Za-z\s\-']{2,50}" className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20" />
             </div>
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Phone Number <span className="text-red-500">*</span></label>
+            <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Phone <span className="text-red-500">*</span></label>
             <div className="relative">
-              <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
-              <input required name="phone" type="tel" placeholder="(713) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full rounded-lg border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm" />
+              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+              <input required name="phone" type="tel" placeholder="(713) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20" />
             </div>
           </div>
         </div>
 
-        <div className="grid gap-4 sm:gap-4.5 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Property Address <span className="text-red-500">*</span></label>
+            <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Address <span className="text-red-500">*</span></label>
             <div className="relative">
-              <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
-              <input required name="address" type="text" placeholder="123 Main St" autoComplete="street-address" className="w-full rounded-lg border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm" />
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+              <input required name="address" type="text" placeholder="123 Main St" autoComplete="street-address" className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20" />
             </div>
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">ZIP Code <span className="text-red-500">*</span></label>
-            <input required name="zipCode" type="text" inputMode="numeric" placeholder="77002" autoComplete="postal-code" pattern="\d{5}" className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm" />
+            <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">ZIP <span className="text-red-500">*</span></label>
+            <input required name="zipCode" type="text" inputMode="numeric" placeholder="77002" autoComplete="postal-code" pattern="\d{5}" className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 sm:w-24" />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Service Needed <span className="text-red-500">*</span></label>
+          <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Service <span className="text-red-500">*</span></label>
           <div className="relative">
-            <ClipboardList className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
-            <select required name="service" defaultValue="" className="w-full rounded-lg border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm appearance-none">
+            <ClipboardList className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+            <select required name="service" defaultValue="" className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 appearance-none">
               <option value="" disabled>Select a service...</option>
               {[siteConfig.primaryService, ...siteConfig.services].map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
@@ -106,35 +104,25 @@ function HeroEstimateForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Project Details <span className="text-slate-400 font-normal normal-case tracking-normal">(Optional)</span></label>
-          <textarea name="message" rows={3} maxLength={5000} placeholder="Describe the tree, access to the yard, or any specific concerns..." className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 shadow-sm min-h-[80px] resize-y" />
+          <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Details <span className="text-slate-400 font-normal normal-case tracking-normal">(Optional)</span></label>
+          <textarea name="message" rows={2} maxLength={5000} placeholder="Describe the tree or any concerns..." className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--hernandez-forest)] focus:ring-2 focus:ring-[var(--hernandez-forest)]/20 min-h-[56px] resize-y" />
         </div>
 
-        <div className="pt-2">
-          <button type="submit" disabled={formStatus === 'sending'} className="relative w-full overflow-hidden rounded-lg bg-[var(--hernandez-forest-deep)] py-4 text-[0.85rem] font-bold uppercase tracking-[0.15em] text-white shadow-lg transition-all hover:bg-[var(--hernandez-forest)] active:scale-[0.98] disabled:opacity-60 disabled:active:scale-100 group">
+        <div className="pt-1">
+          <button type="submit" disabled={formStatus === 'sending'} className="relative w-full overflow-hidden rounded-lg bg-[var(--hernandez-forest-deep)] py-3 text-[0.8rem] font-bold uppercase tracking-[0.15em] text-white shadow-lg transition-all hover:bg-[var(--hernandez-forest)] active:scale-[0.98] disabled:opacity-60 disabled:active:scale-100 group">
             <span className="relative z-10 flex items-center justify-center gap-2">
               {formStatus === 'sending' ? 'Processing...' : 'Book Consultation'}
-              {formStatus !== 'sending' && <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />}
+              {formStatus !== 'sending' && <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />}
             </span>
           </button>
-          <p className="mt-3 text-center text-[0.65rem] leading-relaxed text-slate-400 font-medium px-2">
-            By clicking request, you agree to receive SMS or emails containing details for this estimate and related tree care services. Message &amp; data rates may apply. You can reply STOP to opt-out.
+          <p className="mt-2 text-center text-[0.6rem] leading-relaxed text-slate-400 px-1">
+            By submitting, you agree to receive SMS or emails for this estimate. Message &amp; data rates may apply. Reply STOP to opt-out.
           </p>
-          <div className="mt-3 flex items-center justify-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-widest text-emerald-700/80">
-            <Lock className="h-3 w-3" />
-            <span>100% Secure &amp; Confidential</span>
-          </div>
         </div>
 
-        {formStatus === 'success' && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 font-medium">Got it — we&apos;ll be in touch shortly.</div>}
-        {formStatus === 'error' && <div className="rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800 font-medium">{formError}</div>}
+        {formStatus === 'success' && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-sm text-emerald-800 font-medium">Got it — we&apos;ll be in touch shortly.</div>}
+        {formStatus === 'error' && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2.5 text-sm text-rose-800 font-medium">{formError}</div>}
       </form>
-      <div className="mt-5 flex items-center justify-center gap-3 text-xs text-slate-400">
-        <Stars count={5} size="h-3 w-3" />
-        <span className="font-bold text-slate-600">{siteConfig.rating.toFixed(1)}</span>
-        <span>|</span>
-        <span>{siteConfig.reviewCount}+ happy customers</span>
-      </div>
     </div>
   );
 }
@@ -194,7 +182,7 @@ export default function HomePageClient() {
                 "@type": "HowToStep",
                 "position": 3,
                 "name": "Professional Service and Full Cleanup",
-                "text": "Our fully insured tree care crew handles the job flawlessly. We haul away all logs, debris, and branches, leaving your yard pristine and ready to enjoy."
+                "text": "Our fully insured tree care crew handles the job safely and efficiently. We clean up every branch and leave your yard looking better than we found it."
               }
             ]
           })
@@ -202,56 +190,44 @@ export default function HomePageClient() {
       />
 
       {/* ═══ HERO ═══ */}
-      <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)]">
+      <section className="relative isolate overflow-hidden bg-[var(--hernandez-ink)] lg:max-h-[calc(100vh-var(--nav-h,72px))]">
         <div className="absolute inset-0">
-          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="José Hernández Tree Service crew performing professional tree trimming in Humble TX" fill priority sizes="100vw" className="object-cover object-center" />
+          <NextImage src="/tree_pro/hernandez_hero.png" alt="José Hernández Tree Service crew performing professional tree trimming in Humble TX" fill priority sizes="100vw" className="object-cover object-center" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,8,0.92)] via-[rgba(5,12,8,0.8)] to-[rgba(5,12,8,0.45)]" />
 
-        <div className={`${shell} relative z-10 py-14 sm:py-20 lg:py-24`}>
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14 lg:items-center">
+        <div className={`${shell} relative z-10 py-8 sm:py-12 lg:py-14`}>
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:items-center">
 
             {/* Left */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-white pb-6 lg:pb-0">
-              <div className="flex items-center gap-2 mb-5">
-                <Stars count={5} size="h-4 w-4 text-[#FBBC05]" />
-                <span className="text-[0.65rem] font-bold uppercase tracking-widest text-white/90">{siteConfig.rating} Stars &bull; {siteConfig.reviewCount}+ Google Reviews</span>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-white">
+              <div className="flex items-center gap-2 mb-4">
+                <Stars count={5} size="h-3.5 w-3.5 text-[#FBBC05]" />
+                <span className="text-[0.6rem] font-bold uppercase tracking-widest text-white/80">5-Star Rated on Google</span>
               </div>
 
-              <h1 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-[4rem] tracking-tight text-white mb-6">
-                José Hernández Tree Service. <br className="hidden lg:block" />
-                <span className="text-[var(--hernandez-gold)] lg:text-[3.5rem] tracking-tight block mt-1">Affordable Tree Care <br className="lg:hidden" />You Can Trust.</span>
+              <h1 className="text-[1.65rem] font-extrabold leading-[1.1] sm:text-4xl lg:text-[3.25rem] tracking-tight text-white mb-3 lg:mb-4">
+                José Hernández<br className="sm:hidden" /> Tree Service.{' '}
+                <span className="text-[var(--hernandez-gold)]">Affordable Tree Care You Can Trust.</span>
               </h1>
 
-              <h2 className="text-base sm:text-lg leading-relaxed text-white/90 max-w-[550px] mb-10">
-                <strong className="text-white font-bold">Fair pricing. Quality work.</strong> We specialize in tree trimming, tree removal, landscaping, stump grinding, and emergency storm cleanup across Humble, Spring, Baytown, The Woodlands, Dayton &amp; Conroe. Fully insured, 24/7 available, and we clean up every last leaf.
-              </h2>
+              <p className="text-[0.85rem] sm:text-base leading-relaxed text-white/75 max-w-[500px] mb-5 lg:mb-6">
+                Tree trimming, removal, landscaping, stump grinding &amp; storm cleanup across Humble, Spring, Baytown, The Woodlands, Dayton &amp; Conroe. Fully insured. Fair pricing.
+              </p>
 
-              {/* Trust Info Pills */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-                <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold">
-                  <Shield className="h-4 w-4 text-[var(--hernandez-gold)]" /> Fully Insured
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold">
-                  <Clock className="h-4 w-4 text-[var(--hernandez-gold)]" /> 24/7 Emergency
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-black/40 border border-white/10 text-sm font-bold">
-                  <CheckCircle2 className="h-4 w-4 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ Years Exp.
-                </div>
-              </div>
-
-              {/* Assurance Line */}
-              <div className="flex flex-wrap gap-4 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-white/60">
-                <div className="flex items-center gap-1.5"><Truck className="h-3.5 w-3.5 text-white/50" /> We Haul Everything</div>
-                <div className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-[var(--hernandez-gold)]" /> Same-Day Availability</div>
+              {/* Trust line */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/50">
+                <span className="flex items-center gap-1.5"><Shield className="h-3 w-3 text-[var(--hernandez-gold)]" /> Fully Insured</span>
+                <span className="flex items-center gap-1.5"><Clock className="h-3 w-3 text-[var(--hernandez-gold)]" /> 24/7 Emergency</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--hernandez-gold)]" /> {siteConfig.yearsInBusiness}+ Years</span>
               </div>
             </motion.div>
 
             {/* Right — form card */}
             <motion.div id="hero-form" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="scroll-mt-28">
-              <div className="rounded-2xl bg-white p-6 sm:p-8 shadow-2xl">
-                <h2 className="text-xl font-extrabold text-[var(--hernandez-forest-deep)] sm:text-2xl">Book Your Free Consultation</h2>
-                <p className="text-sm text-slate-400 mb-6">No cost, no pressure — just an honest, affordable quote.</p>
+              <div className="rounded-2xl bg-white p-5 sm:p-6 shadow-2xl">
+                <h2 className="text-lg font-extrabold text-[var(--hernandez-forest-deep)] sm:text-xl">Book Your Free Consultation</h2>
+                <p className="text-[0.8rem] text-slate-400 mb-4">No cost, no pressure — just an honest quote.</p>
                 <HeroEstimateForm />
               </div>
             </motion.div>
@@ -263,10 +239,10 @@ export default function HomePageClient() {
           <div className="review-ticker">
             <div className="review-ticker-track">
               {[...siteConfig.testimonials, ...siteConfig.testimonials].map((t, i) => (
-                <div key={`${t.name}-${i}`} className="mx-4 inline-flex shrink-0 items-center gap-4 py-3.5 sm:py-4">
-                  <Stars count={5} size="h-3 w-3" />
-                  <span className="text-sm text-white/60 whitespace-nowrap">&ldquo;{t.quote.length > 35 ? t.quote.slice(0, 35) + '...' : t.quote}&rdquo;</span>
-                  <span className="text-xs font-semibold text-white/30">— {t.name.split(' ')[0]}</span>
+                <div key={`${t.name}-${i}`} className="mx-4 inline-flex shrink-0 items-center gap-3 py-2.5 sm:py-3">
+                  <Stars count={5} size="h-2.5 w-2.5" />
+                  <span className="text-xs text-white/60 whitespace-nowrap">&ldquo;{t.quote.length > 35 ? t.quote.slice(0, 35) + '...' : t.quote}&rdquo;</span>
+                  <span className="text-[0.65rem] font-semibold text-white/30">— {t.name.split(' ')[0]}</span>
                 </div>
               ))}
             </div>
@@ -275,9 +251,9 @@ export default function HomePageClient() {
       </section>
 
       {/* ═══ SERVICES ═══ (white) */}
-      <section id="services" className="scroll-mt-20 bg-white py-20 sm:py-24">
+      <section id="services" className="scroll-mt-20 bg-white py-14 sm:py-20">
         <div className={shell}>
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)]">Tree Service &amp; Landscaping — Humble, Spring, Baytown &amp; Beyond</p>
             <h2 className="mt-3 text-3xl font-extrabold text-[var(--hernandez-forest-deep)] sm:text-4xl">Tree trimming, removal, landscaping, and everything in between.</h2>
             <p className="mt-3 text-base text-slate-500">From expert tree trimming to full landscaping — every job comes with a free estimate, affordable pricing, full cleanup, and the same crew from start to finish.</p>
@@ -306,7 +282,7 @@ export default function HomePageClient() {
                         </li>
                       ))}
                     </ul>
-                    <Link href={`/services#${s.slug}`} className="mt-auto self-start inline-flex items-center gap-1.5 bg-[var(--hernandez-gold)] px-5 py-2 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[#b8904f] transition-colors">
+                    <Link href={`/services#${s.slug}`} className="mt-auto self-start inline-flex items-center gap-1.5 bg-[var(--hernandez-gold)] px-5 py-2 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[var(--hernandez-gold-hover)] transition-colors">
                       Learn More <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </Link>
                   </div>
@@ -316,22 +292,20 @@ export default function HomePageClient() {
           </div>
 
           {/* Secondary services — 4-col compact cards */}
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
             {serviceData.slice(2).map((s) => (
-              <div key={s.title} className="flex flex-col h-full group relative overflow-hidden rounded-2xl border border-slate-200 bg-white hover:border-[var(--hernandez-gold)]/30 hover:shadow-lg transition-all duration-300">
+              <div key={s.title} className="flex flex-col h-full group relative overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-[var(--hernandez-gold)]/30 hover:shadow-lg transition-all duration-300">
                 <div className="relative aspect-[3/2] shrink-0 overflow-hidden">
                   <NextImage src={s.image} alt={`${s.title} in Humble TX by José Hernández Tree Service`} fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[0.55rem] font-bold uppercase tracking-wider text-[var(--hernandez-forest-deep)]">
-                    <Clock className="h-2.5 w-2.5" /> {s.turnaround}
+                  <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[0.5rem] sm:text-[0.55rem] font-bold uppercase tracking-wider text-[var(--hernandez-forest-deep)]">
+                    <Clock className="h-2 w-2 sm:h-2.5 sm:w-2.5" /> {s.turnaround}
                   </div>
                 </div>
-                <div className="flex flex-col flex-1 p-5">
-                  <h3 className="text-base font-extrabold text-[var(--hernandez-forest-deep)]">{s.title}</h3>
-                  <div className="min-h-[3.6rem]">
-                    <p className="mt-2 text-[0.8rem] leading-relaxed text-slate-500 line-clamp-3">{s.summary}</p>
-                  </div>
-                  <ul className="mt-4 mb-6 space-y-2.5 flex-1">
+                <div className="flex flex-col flex-1 p-3 sm:p-5">
+                  <h3 className="text-sm sm:text-base font-extrabold text-[var(--hernandez-forest-deep)]">{s.title}</h3>
+                  <p className="mt-1 sm:mt-2 text-[0.7rem] sm:text-[0.8rem] leading-relaxed text-slate-500 line-clamp-2 sm:line-clamp-3">{s.summary}</p>
+                  <ul className="mt-2 sm:mt-4 mb-3 sm:mb-6 space-y-1.5 sm:space-y-2.5 flex-1 hidden sm:block">
                     {s.details.map((d) => (
                       <li key={d} className="flex items-start gap-2 text-[0.75rem] text-slate-600">
                         <CheckCircle2 className="h-[14px] w-[14px] mt-[2px] shrink-0 text-[var(--hernandez-gold)]" />
@@ -339,7 +313,7 @@ export default function HomePageClient() {
                       </li>
                     ))}
                   </ul>
-                  <Link href={`/services#${s.slug}`} className="mt-auto w-full flex items-center justify-center gap-1.5 border border-[var(--hernandez-gold)] py-2.5 text-[0.7rem] font-bold uppercase tracking-wider text-[var(--hernandez-gold)] hover:bg-[var(--hernandez-gold)] hover:text-white transition-colors">
+                  <Link href={`/services#${s.slug}`} className="mt-auto w-full flex items-center justify-center gap-1.5 border border-[var(--hernandez-gold)] py-2 sm:py-2.5 text-[0.6rem] sm:text-[0.7rem] font-bold uppercase tracking-wider text-[var(--hernandez-gold)] hover:bg-[var(--hernandez-gold)] hover:text-white transition-colors">
                     Learn More <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
@@ -356,19 +330,19 @@ export default function HomePageClient() {
       </section>
 
       {/* ═══ ABOUT / WHY US ═══ */}
-      <section id="about" className="scroll-mt-20 bg-[var(--hernandez-cream)] py-20 sm:py-24">
+      <section id="about" className="scroll-mt-20 bg-[var(--hernandez-cream)] py-14 sm:py-20">
         <div className={shell}>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16 lg:items-center">
             {/* Left — image + stats overlay */}
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                <NextImage src="/tree_pro/trust_us_v2.png" alt="José Hernández Tree Service crew at work in Humble TX" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+                <NextImage src="/tree_pro/trust_us.png" alt="José Hernández Tree Service crew at work in Humble TX" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--hernandez-forest-deep)]/80 to-transparent" />
               </div>
               <div className="absolute -bottom-6 left-4 right-4 sm:left-6 sm:right-6 grid grid-cols-3 gap-3">
                 {[
                   { value: `${siteConfig.yearsInBusiness}+`, label: 'Years' },
-                  { value: `${siteConfig.reviewCount}+`, label: 'Reviews' },
+                  { value: '5★', label: 'Rated' },
                   { value: '24/7', label: 'Available' },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-lg bg-white p-3 sm:p-4 text-center shadow-lg">
@@ -387,27 +361,22 @@ export default function HomePageClient() {
                 José Hernández started this tree service and landscaping company {siteConfig.yearsInBusiness} years ago with a truck, a chainsaw, and a simple rule: leave every yard better than we found it — at a price that&apos;s fair. That hasn&apos;t changed. Whether it&apos;s trimming your trees, removing a dangerous one, landscaping your yard, or grinding a stump — we show up on time, give you an honest price, do the work right, and clean up everything before we go.
               </p>
 
-              <div className="mt-8 grid grid-cols-2 gap-4">
+              <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
                 {[
-                  { icon: Shield, title: 'Fully Insured', desc: 'Your property is always protected.' },
-                  { icon: Clock, title: 'On Time, Every Time', desc: 'No guessing, no runaround.' },
-                  { icon: Truck, title: 'Full Cleanup', desc: 'We haul everything off.' },
-                  { icon: HardHat, title: `${siteConfig.yearsInBusiness} Years Experience`, desc: 'Every kind of tree job.' },
+                  { icon: Shield, label: 'Fully Insured' },
+                  { icon: Clock, label: 'On Time, Every Time' },
+                  { icon: Truck, label: 'Full Site Cleanup' },
+                  { icon: HardHat, label: `${siteConfig.yearsInBusiness} Years Experience` },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--hernandez-forest-deep)]/10">
-                      <item.icon className="h-4 w-4 text-[var(--hernandez-forest)]" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-[var(--hernandez-forest-deep)]">{item.title}</div>
-                      <div className="text-xs text-slate-500">{item.desc}</div>
-                    </div>
+                  <div key={item.label} className="flex items-center gap-2">
+                    <item.icon className="h-4 w-4 shrink-0 text-[var(--hernandez-gold)]" />
+                    <span className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">{item.label}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link href="/about" className="inline-flex items-center justify-center gap-2 bg-[var(--hernandez-gold)] px-6 py-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[#b8904f] transition-colors">Learn More About Us <ArrowRight className="h-3.5 w-3.5" /></Link>
+                <Link href="/about" className="inline-flex items-center justify-center gap-2 bg-[var(--hernandez-gold)] px-6 py-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[var(--hernandez-gold-hover)] transition-colors">Learn More About Us <ArrowRight className="h-3.5 w-3.5" /></Link>
                 <a href={`tel:${cleanPhone}`} className="inline-flex items-center justify-center gap-2 border border-[var(--hernandez-forest-deep)]/15 bg-white px-6 py-3 text-[0.75rem] font-bold text-[var(--hernandez-forest-deep)] hover:bg-white/80 transition-colors"><Phone className="h-3.5 w-3.5" /> {siteConfig.phone}</a>
               </div>
             </div>
@@ -416,9 +385,9 @@ export default function HomePageClient() {
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
-      <section className="relative isolate bg-[var(--hernandez-ink)] py-16 sm:py-24 overflow-hidden">
+      <section className="relative isolate bg-[var(--hernandez-ink)] py-12 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/tree_pro/hernandez_service_trimming_v2.png" alt="Tree trimming and pruning process by José Hernández Tree Service" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
+          <NextImage src="/tree_pro/hernandez_service_trimming.png" alt="Tree trimming and pruning process by José Hernández Tree Service" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--hernandez-ink)]/95 via-[var(--hernandez-ink)]/80 to-[var(--hernandez-ink)]/40" />
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[var(--hernandez-cream)] to-transparent opacity-10" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--hernandez-ink)] to-transparent" />
@@ -445,7 +414,7 @@ export default function HomePageClient() {
               {[
                 { n: '01', title: 'Call or Text for a Free Consultation', desc: 'Contact José Hernández Tree Service. Describe your tree or landscaping issue, send a few photos if possible, and our expert team will respond quickly.', icon: Phone },
                 { n: '02', title: 'Site Evaluation & Firm Quote', desc: 'Our arborists walk your property, determine the safest approach for tree removal or trimming, and provide a firm, straightforward price right there — no hidden fees.', icon: TreePine },
-                { n: '03', title: 'Professional Service & Full Cleanup', desc: 'Our fully insured tree care crew handles the job flawlessly. We haul away all logs, debris, and branches, leaving your yard pristine and ready to enjoy.', icon: CheckCircle2 },
+                { n: '03', title: 'Professional Service & Full Cleanup', desc: 'Our fully insured tree care crew handles the job safely and efficiently. We clean up every branch and leave your yard looking better than we found it.', icon: CheckCircle2 },
               ].map((step) => (
                 <div key={step.n} className="group relative flex flex-col sm:flex-row gap-5 sm:gap-6 p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] shadow-2xl backdrop-blur-sm overflow-hidden hover:bg-white/[0.04] hover:border-[var(--hernandez-gold)]/30 hover:-translate-y-1 transition-all duration-500">
                   <div className="absolute -right-4 -bottom-6 text-[7rem] sm:text-[8rem] font-black text-white/[0.03] leading-none select-none z-0 tracking-tighter pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500">
@@ -468,7 +437,7 @@ export default function HomePageClient() {
       </section>
 
       {/* ═══ OUR WORK / PORTFOLIO (white) ═══ */}
-      <section id="work" className="scroll-mt-20 bg-white py-20 sm:py-24">
+      <section id="work" className="scroll-mt-20 bg-white py-12 sm:py-16">
         <div className={shell}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)]">Our Work</p>
@@ -476,39 +445,26 @@ export default function HomePageClient() {
             <p className="mt-3 text-base text-slate-500">Every job gets the same care — from a single stump to a full lot clearing.</p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { label: 'Tree Trimming — Humble' },
-              { label: 'Tree Removal — Spring' },
-              { label: 'Landscaping — Baytown' },
-              { label: 'Storm Cleanup — The Woodlands' },
-              { label: 'Stump Grinding — Dayton' },
-              { label: 'Emergency Service — Conroe' },
-            ].map((item) => (
-              <div key={item.label} className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200 bg-[var(--hernandez-cream)]">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_top,#ffffff,transparent_55%)]">
-                  <span className="text-7xl font-extrabold leading-none text-[var(--hernandez-gold)]/85">?</span>
-                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-slate-400">Client Photo Here</span>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 border-t border-slate-200 bg-white/92 px-4 py-4">
-                  <p className="text-sm font-semibold text-[var(--hernandez-forest-deep)]">{item.label}</p>
-                </div>
-              </div>
-            ))}
+          {/* Coming Soon state — replace with real gallery grid once photos are available */}
+          <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-[var(--hernandez-cream)] py-20 px-6 text-center">
+            <TreePine className="h-12 w-12 text-[var(--hernandez-forest-deep)] opacity-20 mb-4" />
+            <span className="inline-block rounded-full bg-[var(--hernandez-gold)]/15 px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[var(--hernandez-gold)] mb-3">Coming Soon</span>
+            <p className="text-lg font-bold text-[var(--hernandez-forest-deep)]">Project photos on the way!</p>
+            <p className="mt-2 text-sm text-slate-500 max-w-md">We&apos;re putting together photos of our tree trimming, removal, landscaping, and storm cleanup jobs across Humble, Spring, Baytown &amp; beyond. Check back soon.</p>
           </div>
 
           <div className="mt-10 text-center">
-            <Link href="/gallery" className="inline-flex items-center gap-2 bg-[var(--hernandez-gold)] px-6 py-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[#b8904f] transition-colors">
-              View Full Gallery <ArrowRight className="h-3.5 w-3.5" />
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-[var(--hernandez-gold)] px-6 py-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-white hover:bg-[var(--hernandez-gold-hover)] transition-colors">
+              Get a Free Estimate <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* ═══ REVIEWS (dark) ═══ */}
-      <section id="reviews" className="relative isolate scroll-mt-20 bg-[var(--hernandez-ink)] py-20 text-white sm:py-28 overflow-hidden">
+      <section id="reviews" className="relative isolate scroll-mt-20 bg-[var(--hernandez-ink)] py-14 text-white sm:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/tree_pro/hernandez_hero_v2.png" alt="" fill sizes="100vw" className="object-cover opacity-15 mix-blend-luminosity grayscale" />
+          <NextImage src="/tree_pro/large_tree_Service.png" alt="" fill sizes="100vw" className="object-cover opacity-15 mix-blend-luminosity grayscale" />
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--hernandez-ink)]/95 via-[var(--hernandez-ink)]/90 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--hernandez-ink)] to-transparent" />
         </div>
@@ -535,7 +491,7 @@ export default function HomePageClient() {
               </h2>
 
               <p className="text-[0.95rem] leading-relaxed text-white/50 max-w-sm font-medium">
-                {siteConfig.reviewCount}+ five-star reviews from real homeowners across Humble, Spring, Baytown &amp; beyond. No paid reviews, no fake accounts.
+                Five-star rated by real homeowners across Humble, Spring, Baytown &amp; beyond. No paid reviews, no fake accounts.
               </p>
 
               {/* Official Badges Row */}
@@ -559,7 +515,7 @@ export default function HomePageClient() {
               </div>
 
               <div className="mt-10">
-                <Link href="/contact" className="inline-flex items-center gap-2 bg-[var(--hernandez-gold)] px-8 py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-white hover:bg-[#b8904f] transition-all rounded-lg shadow-[0_0_30px_rgba(250,187,5,0.15)] hover:shadow-[0_0_40px_rgba(250,187,5,0.3)]">
+                <Link href="/contact" className="inline-flex items-center gap-2 bg-[var(--hernandez-gold)] px-8 py-4.5 text-xs font-bold uppercase tracking-[0.15em] text-white hover:bg-[var(--hernandez-gold-hover)] transition-all rounded-lg shadow-[0_0_30px_rgba(34,197,94,0.15)] hover:shadow-[0_0_40px_rgba(34,197,94,0.25)]">
                   Get Your Estimate <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -608,7 +564,7 @@ export default function HomePageClient() {
       </section>
 
       {/* ═══ FAQ (white) ═══ */}
-      <section id="faq" className="scroll-mt-20 bg-white py-20 sm:py-24">
+      <section id="faq" className="scroll-mt-20 bg-white py-14 sm:py-20">
         <div className={`${shell} grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16`}>
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--hernandez-gold)]">Questions</p>
