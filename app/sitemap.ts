@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllSlugs } from './blog/posts';
 
-const BASE_URL = 'https://hernandeztreeservice.com';
+const BASE_URL = 'https://jhernandeztreeservice.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

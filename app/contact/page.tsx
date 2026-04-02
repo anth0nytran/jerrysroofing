@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Contact & Book Consultation | José Hernández Tree Service — Humble TX',
     description:
       'Book your consultation today. Serving Humble, Dayton, Baytown, Spring, The Woodlands, Conroe & surrounding areas.',
-    url: 'https://hernandeztreeservice.com/contact',
+    url: 'https://jhernandeztreeservice.com/contact',
   },
 };
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Project Gallery | José Hernández Tree Service — Humble TX',
     description: 'Real tree service and landscaping projects from Humble, Spring, Baytown & surrounding areas.',
-    url: 'https://hernandeztreeservice.com/gallery',
+    url: 'https://jhernandeztreeservice.com/gallery',
   },
 };
 

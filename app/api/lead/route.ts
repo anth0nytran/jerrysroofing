@@ -198,7 +198,7 @@ export async function POST(req: Request) {
   const brandAddress = 'Humble, TX';
   const brandPrimary = '#166534';
   const brandAccent = '#22c55e';
-  const fromEmail = process.env.LEAD_FROM_EMAIL || 'José Hernández Tree Service <leads@hernandeztreeservice.com>';
+  const fromEmail = process.env.LEAD_FROM_EMAIL || 'José Hernández Tree Service <leads@jhernandeztreeservice.com>';
   const subject = `New Lead: ${safeService} | ${safeName}`;
 
   const pageUrlIsDev =

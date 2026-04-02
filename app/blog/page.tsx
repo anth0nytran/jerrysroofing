@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tree Care Blog | José Hernández Tree Service — Humble TX',
     description: 'Expert tree care tips and guides for Humble, Spring, Baytown & area homeowners.',
-    url: 'https://hernandeztreeservice.com/blog',
+    url: 'https://jhernandeztreeservice.com/blog',
   },
 };
 
@@ -34,13 +34,13 @@ export default function BlogPage() {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://hernandeztreeservice.com',
+                item: 'https://jhernandeztreeservice.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Blog',
-                item: 'https://hernandeztreeservice.com/blog',
+                item: 'https://jhernandeztreeservice.com/blog',
               },
             ],
           }),
@@ -56,13 +56,13 @@ export default function BlogPage() {
             '@type': 'CollectionPage',
             'name': 'Tree Care Blog — Humble, Spring, Baytown & Beyond',
             'description': 'Expert tree care tips, cost guides, and seasonal advice for homeowners in Humble, Spring, Baytown & surrounding areas.',
-            'url': 'https://hernandeztreeservice.com/blog',
+            'url': 'https://jhernandeztreeservice.com/blog',
             'mainEntity': {
               '@type': 'ItemList',
               'itemListElement': blogPosts.map((post, i) => ({
                 '@type': 'ListItem',
                 'position': i + 1,
-                'url': `https://hernandeztreeservice.com/blog/${post.slug}`,
+                'url': `https://jhernandeztreeservice.com/blog/${post.slug}`,
                 'name': post.title,
               })),
             },

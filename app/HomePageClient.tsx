@@ -170,7 +170,7 @@ export default function HomePageClient() {
                 "position": 1,
                 "name": "Call or Text for a Free Consultation",
                 "text": "Contact José Hernández Tree Service at (713) 291-6992. Describe your tree or landscaping issue, send a few photos if possible, and our expert team will respond quickly.",
-                "url": "https://hernandeztreeservice.com/contact"
+                "url": "https://jhernandeztreeservice.com/contact"
               },
               {
                 "@type": "HowToStep",

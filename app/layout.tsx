@@ -26,7 +26,7 @@ const monoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hernandeztreeservice.com'),
+  metadataBase: new URL('https://jhernandeztreeservice.com'),
   title: {
     default: "Tree Service & Landscaping — Humble, Spring, Baytown TX | José Hernández Tree Service",
     template: "%s | José Hernández Tree Service",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Affordable Tree Service & Landscaping — Humble, Spring, Baytown TX | José Hernández Tree Service",
     description: "25+ years serving homeowners in Humble, Spring, Baytown, The Woodlands, Dayton & Conroe. Tree trimming, removal, landscaping, stump grinding & storm cleanup. Fully insured. Free estimates. Call (713) 291-6992.",
-    url: 'https://hernandeztreeservice.com',
+    url: 'https://jhernandeztreeservice.com',
     siteName: 'José Hernández Tree Service',
     locale: 'en_US',
     type: 'website',
@@ -108,9 +108,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
               "name": "José Hernández Tree Service",
-              "image": "https://hernandeztreeservice.com/tree_pro/og-tree.jpg",
-              "@id": "https://hernandeztreeservice.com",
-              "url": "https://hernandeztreeservice.com",
+              "image": "https://jhernandeztreeservice.com/tree_pro/og-tree.jpg",
+              "@id": "https://jhernandeztreeservice.com",
+              "url": "https://jhernandeztreeservice.com",
               "telephone": "+17132916992",
               "email": "josehernandeztree@gmail.com",
               "description": "Affordable tree trimming, tree removal, and landscaping serving Humble, Dayton, Baytown, Spring, The Woodlands, and Conroe TX. 25+ years in business. Fully insured. 24/7 emergency service. Free estimates. Fair pricing guaranteed.",
@@ -228,8 +228,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "José Hernández Tree Service",
-              "alternateName": ["Jose Hernandez Tree Service", "Hernandez Tree Service Humble", "HernandezTreeService.com"],
-              "url": "https://hernandeztreeservice.com"
+              "alternateName": ["Jose Hernandez Tree Service", "Hernandez Tree Service Humble", "JHernandezTreeService.com"],
+              "url": "https://jhernandeztreeservice.com"
             })
           }}
         />

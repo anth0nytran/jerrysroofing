@@ -4,7 +4,7 @@ export const siteConfig = {
   phone: '(713) 291-6992',
   cleanPhone: '+17132916992',
   email: 'josehernandeztree@gmail.com',
-  domain: 'https://hernandeztreeservice.com',
+  domain: 'https://jhernandeztreeservice.com',
   primaryService: 'Tree Trimming',
   services: [
     'Tree Removal',

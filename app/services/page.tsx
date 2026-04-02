@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Our Services | José Hernández Tree Service — Humble & Surrounding Areas',
     description:
       'Tree trimming, tree removal, landscaping, stump grinding, storm cleanup, flower beds & mulching. 25+ years experience. Affordable rates.',
-    url: 'https://hernandeztreeservice.com/services',
+    url: 'https://jhernandeztreeservice.com/services',
   },
 };
 

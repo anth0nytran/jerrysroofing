@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'About Us | José Hernández Tree Service — Humble, TX',
     description:
       'Family-owned, locally rooted. 25+ years of affordable, trusted tree care & landscaping for homeowners in Humble, Dayton, Baytown, Spring, The Woodlands & Conroe.',
-    url: 'https://hernandeztreeservice.com/about',
+    url: 'https://jhernandeztreeservice.com/about',
   },
 };
 
@@ -19,8 +19,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hernandeztreeservice.com/' },
-    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://hernandeztreeservice.com/about' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://jhernandeztreeservice.com/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://jhernandeztreeservice.com/about' },
   ],
 };
 

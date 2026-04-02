@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Affordable Tree Service & Landscaping | José Hernández Tree Service',
     description: '25+ years serving homeowners in Humble, Spring, Baytown, The Woodlands & Conroe. Tree trimming, removal, landscaping & more. Fully insured. Free estimates.',
-    url: 'https://hernandeztreeservice.com',
+    url: 'https://jhernandeztreeservice.com',
   },
 };
 
