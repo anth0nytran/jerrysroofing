@@ -138,7 +138,7 @@ export async function POST(req: Request) {
   }
 
   // 3. Content filtering - detect spam patterns
-  const combinedText = `${name} ${address} ${zipCode} ${message}`.toLowerCase();
+  const combinedText = `${name} ${address} ${zipCode} ${service} ${message}`.toLowerCase();
 
   // 3a. Check for excessive URLs (more than 2 is suspicious)
   const urlPattern = /https?:\/\/|www\./gi;
@@ -149,16 +149,63 @@ export async function POST(req: Request) {
 
   // 3b. Check for spam keywords
   const spamKeywords = [
-    'crypto', 'bitcoin', 'ethereum', 'nft',
+    // Crypto / financial scams
+    'crypto', 'bitcoin', 'ethereum', 'nft', 'forex', 'investment opportunity',
+    // Gambling
     'casino', 'poker', 'gambling', 'bet ',
+    // Pharma
     'viagra', 'cialis', 'pharmacy',
-    'seo services', 'backlinks', 'web traffic',
+    // SEO / marketing solicitation
+    'seo', 'backlinks', 'web traffic', 'ranking', 'search engine',
+    'link building', 'domain authority', 'page rank', 'serp',
+    'digital marketing', 'social media marketing', 'lead generation',
+    'google ads', 'ppc', 'keyword research', 'organic traffic',
+    'website redesign', 'web design services', 'web development services',
+    // Classic scams
     'nigerian prince', 'lottery winner', 'congratulations you won',
     'click here now', 'act now', 'limited time',
     'work from home', 'make money fast', 'earn $$',
+    // Sales / solicitation patterns
+    'free report', 'free audit', 'free consultation', 'free quote',
+    'free analysis', 'free review', 'free assessment',
+    'i prepared', 'i noticed your', 'i found your',
+    'your website', 'your site', 'your business',
+    'reply "', "reply '", 'reply with', 'reply yes', 'reply sure',
+    'schedule a call', 'book a call', 'hop on a call',
+    'we can help', 'we specialize', 'we offer',
+    'growth strategy', 'increase your', 'boost your',
+    'actionable', 'roi', 'conversion rate',
   ];
   if (spamKeywords.some(keyword => combinedText.includes(keyword))) {
     return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
+  // 3b2. Check name field for business/marketing names
+  const spamNamePatterns = [
+    /\bseo\b/i, /\bmarketing\b/i, /\bagency\b/i, /\bconsulting\b/i,
+    /\bdigital\b/i, /\bmedia\b/i, /\bsolutions\b/i, /\bservices\b/i,
+    /\bgroup\b/i, /\bpartners\b/i, /\bventures\b/i, /\bgrowth\b/i,
+    /\bleads?\b/i, /\bweb\b/i, /\bdesign\b/i, /\bdev\b/i,
+  ];
+  const nameLower = name.toLowerCase();
+  if (spamNamePatterns.some(pattern => pattern.test(nameLower))) {
+    return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
+  // 3b3. Solicitation detection - someone offering services instead of requesting them
+  if (message) {
+    const msgLower = message.toLowerCase();
+    const solicitationSignals = [
+      /\bi (?:can|will|could|would|prepared|created|made|noticed|found|checked|reviewed|analyzed)\b/,
+      /\bour (?:team|company|agency|service|platform|tool)\b/,
+      /\breply\s*["'`]?\s*(?:yes|sure|ok|interested|send)\b/,
+      /\bfree\s+(?:report|audit|analysis|consultation|assessment|review|demo|trial)\b/i,
+      /\.(?:com|net|org|io|co)\b/,
+    ];
+    const matchCount = solicitationSignals.filter(p => p.test(msgLower)).length;
+    if (matchCount >= 2) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
   }
 
   // 3c. Check for all-caps messages (spam indicator)
