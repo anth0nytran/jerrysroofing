@@ -3,13 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #111827;
-  --hernandez-ink: #0d1712;
-  --hernandez-forest: #183726;
-  --hernandez-forest-deep: #0b2417;
-  --hernandez-gold: #22c55e;
-  --hernandez-gold-hover: #1da34e;
-  --hernandez-cream: #f2f4f0;
-  --hernandez-line: #d9d0bf;
+  --jerry-navy: #0A2E5B;
+  --jerry-navy-deep: #061D3A;
+  --jerry-navy-light: #0E3D7A;
+  --jerry-lime: #E3FE08;
+  --jerry-lime-hover: #c8e007;
+  --jerry-cream: #F8FAFC;
+  --jerry-slate: #1E293B;
+  --jerry-line: #CBD5E1;
+  --jerry-ink: #020617;
 }
 
 @theme inline {
@@ -30,25 +32,25 @@ body {
   font-family: var(--font-app-body), "Segoe UI", sans-serif;
 }
 
-.hernandez-site h1,
-.hernandez-site h2,
-.hernandez-site h3 {
-  letter-spacing: -0.045em;
+.jerry-site h1,
+.jerry-site h2,
+.jerry-site h3 {
+  letter-spacing: -0.035em;
 }
 
-.hernandez-site h1,
-.hernandez-site h2,
-.hernandez-site h3,
-.hernandez-site h4,
-.hernandez-site h5,
-.hernandez-site h6,
-.hernandez-site .font-black,
-.hernandez-site .font-extrabold,
-.hernandez-site .eyebrow {
+.jerry-site h1,
+.jerry-site h2,
+.jerry-site h3,
+.jerry-site h4,
+.jerry-site h5,
+.jerry-site h6,
+.jerry-site .font-black,
+.jerry-site .font-extrabold,
+.jerry-site .eyebrow {
   font-family: var(--font-app-display), "Arial Narrow", sans-serif;
 }
 
-.hernandez-site .eyebrow {
+.jerry-site .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
@@ -58,17 +60,32 @@ body {
   text-transform: uppercase;
 }
 
-.hernandez-site .eyebrow::before {
+.jerry-site .eyebrow::before {
   content: "";
   display: inline-block;
   width: 2.25rem;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.55;
+  height: 2px;
+  background: var(--jerry-lime);
 }
 
-.hernandez-site .section-heading {
+.jerry-site .section-heading {
   text-wrap: balance;
+}
+
+/* ── Lime accent underline for headings ── */
+.jerry-site .heading-accent {
+  position: relative;
+  display: inline-block;
+}
+
+.jerry-site .heading-accent::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--jerry-lime);
 }
 
 .proof-marquee {
@@ -125,11 +142,11 @@ body {
 }
 
 .hero-form-field:focus {
-  border-bottom-color: var(--hernandez-gold);
+  border-bottom-color: var(--jerry-lime);
 }
 
 .hero-form-field option {
-  background: #0d1712;
+  background: var(--jerry-navy-deep);
   color: #fff;
 }
 
@@ -158,8 +175,7 @@ body {
 /* ── Standard form fields (light sections) ── */
 .form-field {
   width: 100%;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 1.5px solid rgba(10, 46, 91, 0.12);
   background: rgba(255, 255, 255, 0.92);
   color: #0f172a;
   padding: 1rem 1.1rem;
@@ -177,9 +193,9 @@ body {
 }
 
 .form-field:focus {
-  border-color: rgba(24, 55, 38, 0.5);
+  border-color: var(--jerry-navy);
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(24, 55, 38, 0.1);
+  box-shadow: 0 0 0 4px rgba(10, 46, 91, 0.1);
 }
 
 details summary {
@@ -227,7 +243,7 @@ details[open] > *:not(summary) {
 
 /* ── Blog prose content ── */
 .blog-prose h2 {
-  color: var(--hernandez-forest-deep);
+  color: var(--jerry-navy);
   font-family: var(--font-app-display);
   font-weight: 700;
   font-size: 1.625rem;
@@ -237,7 +253,7 @@ details[open] > *:not(summary) {
 }
 
 .blog-prose h3 {
-  color: var(--hernandez-forest-deep);
+  color: var(--jerry-navy);
   font-family: var(--font-app-display);
   font-weight: 600;
   font-size: 1.25rem;
@@ -254,7 +270,7 @@ details[open] > *:not(summary) {
 }
 
 .blog-prose a {
-  color: var(--hernandez-gold);
+  color: var(--jerry-navy-light);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -262,7 +278,7 @@ details[open] > *:not(summary) {
 }
 
 .blog-prose a:hover {
-  color: #b08a4e;
+  color: var(--jerry-navy);
 }
 
 .blog-prose ul {
@@ -280,10 +296,35 @@ details[open] > *:not(summary) {
 }
 
 .blog-prose strong {
-  color: var(--hernandez-ink);
+  color: var(--jerry-slate);
   font-weight: 700;
 }
 
 .blog-prose h2:first-child {
   margin-top: 0;
+}
+
+/* ── Lime CTA button pulse ── */
+@keyframes limePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(227, 254, 8, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(227, 254, 8, 0);
+  }
+}
+
+.cta-pulse {
+  animation: limePulse 2.5s ease-in-out infinite;
+}
+
+/* ── Diagonal stripe background pattern ── */
+.diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(227, 254, 8, 0.03) 10px,
+    rgba(227, 254, 8, 0.03) 20px
+  );
 }

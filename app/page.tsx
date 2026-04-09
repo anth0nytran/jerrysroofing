@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
-  title: 'Affordable Tree Service & Landscaping — Humble, Spring, Baytown TX | José Hernández Tree Service',
-  description: 'Affordable tree trimming, tree removal, and landscaping in Humble, Spring, Baytown, The Woodlands, Dayton & Conroe TX. 25+ years. Fully insured. 24/7 emergency. Free estimates. Call (713) 291-6992.',
+  title: "Roof Replacement & Roofing Contractor — Katy, Cypress, Cinco Ranch TX | Jerry's Roofing",
+  description: "Trusted roofing contractor in Katy, TX. Roof replacement, rejuvenation, gutters, siding & painting. dedicated service since 2024. Free inspections & estimates. Honest pricing. Call (409) 351-1529.",
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Affordable Tree Service & Landscaping | José Hernández Tree Service',
-    description: '25+ years serving homeowners in Humble, Spring, Baytown, The Woodlands & Conroe. Tree trimming, removal, landscaping & more. Fully insured. Free estimates.',
-    url: 'https://jhernandeztreeservice.com',
+    title: "Trusted Roofing Contractor — Katy TX | Jerry's Roofing",
+    description: "Serving homeowners in Katy, Cypress, Cinco Ranch, Richmond & Fulshear. Roof replacement, rejuvenation, gutters, siding & painting. Free inspections. Honest pricing.",
+    url: 'https://roofingbyjerry.com',
   },
 };
 

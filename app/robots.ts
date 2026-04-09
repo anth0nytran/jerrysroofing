@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/api/',
         },
-        sitemap: 'https://jhernandeztreeservice.com/sitemap.xml',
+        sitemap: 'https://roofingbyjerry.com/sitemap.xml',
     };
 }

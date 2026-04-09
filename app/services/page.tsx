@@ -3,19 +3,18 @@ import { siteConfig, serviceData } from '../config';
 import ServicesPageClient from './ServicesPageClient';
 
 export const metadata: Metadata = {
-  title: 'Tree Trimming, Tree Removal & Landscaping | José Hernández Tree Service',
+  title: "Roof Replacement, Gutters, Siding & Painting | Jerry's Roofing — Katy TX",
   description:
-    'Affordable tree trimming, tree removal, and landscaping services in Humble, Dayton, Baytown, Spring, The Woodlands & Conroe TX. Fair pricing. Fully insured. Call (713) 291-6992.',
+    "Trusted roofing & exterior services in Katy, Cypress, Cinco Ranch & Richmond TX. Roof replacement, rejuvenation, gutters, siding, painting & driveway repaints. Free estimates. Call (409) 351-1529.",
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'Our Services | José Hernández Tree Service — Humble & Surrounding Areas',
+    title: "Our Services | Jerry's Roofing — Katy & Surrounding Areas",
     description:
-      'Tree trimming, tree removal, landscaping, stump grinding, storm cleanup, flower beds & mulching. 25+ years experience. Affordable rates.',
-    url: 'https://jhernandeztreeservice.com/services',
+      "Roof replacement, rejuvenation, gutters, siding, painting & driveway repaints. dedicated service since 2024. Honest pricing.",
+    url: 'https://roofingbyjerry.com/services',
   },
 };
 
-/* ─── Structured Data ─── */
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -37,28 +36,28 @@ const breadcrumbJsonLd = {
 
 const serviceFaqs = [
   {
-    q: 'How much does tree removal cost in Humble, TX?',
-    a: 'Tree removal costs vary based on the size, location, and complexity of the job. Small tree removals may start around $300, while large or hazardous removals can range higher. We offer affordable options with fair pricing — book a consultation and we\'ll give you an honest quote before any work begins.',
+    q: 'How much does a roof replacement cost in Katy, TX?',
+    a: "Roof replacement costs vary based on the size of your home, the roofing material, and the complexity of the job. The average residential roof replacement in the Katy area ranges from $8,500 to $12,000. We provide free inspections and clear written estimates — no hidden fees, no surprises.",
   },
   {
-    q: 'When is the best time to trim trees in the Humble and Spring area?',
-    a: 'Most trees in the Humble, Spring, and Baytown area can be trimmed year-round, but late winter (January–March) is ideal for major pruning because trees are dormant and recovery is fastest. Dead or hazardous limbs should be removed as soon as they are noticed, regardless of season.',
+    q: 'How do I know if I need a roof replacement or just repairs?',
+    a: "Signs you may need a replacement include shingles that are curling, cracking, or missing granules, multiple leaks, a roof that's 20+ years old, or visible sagging. Jerry personally inspects every roof and gives you an honest assessment — if repairs will do the job, we'll tell you.",
   },
   {
-    q: 'Do I need a permit to remove a tree in Humble or Baytown?',
-    a: 'In most cases, you do not need a permit to remove a tree on private residential property in unincorporated Harris County. However, some cities and HOAs in the Humble, Baytown, Spring, and Conroe areas have specific tree ordinances. We can help you determine if a permit is required for your situation.',
+    q: 'Do you help with insurance claims for storm damage?',
+    a: `Absolutely. We work with your insurance company through the entire claims process. From the initial inspection to documenting damage and filing paperwork, we make sure you get the coverage you're entitled to. In Texas, you have up to two years after a natural disaster to file a claim. Call us at ${siteConfig.phone} to get started.`,
   },
   {
-    q: 'How long does stump grinding take?',
-    a: 'Most residential stumps are ground down in 30 minutes to 2 hours depending on the size. We grind 6–8 inches below grade so the area is ready for sod, landscaping, or whatever you have planned next. Multiple stumps can usually be completed in a single visit.',
+    q: 'What is roof rejuvenation and how does it work?',
+    a: "Roof rejuvenation uses a bio-based treatment that penetrates asphalt shingles and restores the essential oils that dry out over time from Texas sun and heat. It reverses brittleness, stops granule loss, and can extend your roof's lifespan by 5 to 10 years — at a fraction of the cost of a full replacement.",
   },
   {
-    q: 'Do you offer emergency tree removal after storms?',
-    a: `Yes — our crew is available 24/7 for emergency storm damage and tree removal. Call us immediately at ${siteConfig.phone} and we will mobilize as quickly and safely as possible to clear fallen trees and debris from your property.`,
+    q: 'How long does a roof replacement take?',
+    a: "Most residential roof replacements are completed in 1-2 days, depending on the size and complexity. We'll give you a clear timeline before work begins so you can plan accordingly.",
   },
   {
-    q: 'What is included in your flower bed installation service?',
-    a: 'Our flower bed installation includes bed design, excavation, soil amendment, edging installation, planting, and a fresh layer of mulch to finish. We handle every step so your landscaping looks polished and professional from day one.',
+    q: 'What roofing materials do you use?',
+    a: "We use premium shingles from IKO, CertainTeed, and GAF — the top manufacturers in the industry. We'll help you choose the right material for your home's style, budget, and the Texas climate.",
   },
 ];
 

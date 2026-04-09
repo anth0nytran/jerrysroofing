@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry's Roofing — Online Presence Audit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0c0f14;
+            --surface: #151922;
+            --surface-2: #1c2130;
+            --border: rgba(255,255,255,0.06);
+            --text: #e8e9ec;
+            --text-muted: #6b7280;
+            --text-dim: #3d4452;
+            --white: #ffffff;
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,0.12);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245,158,11,0.12);
+            --green: #22c55e;
+            --green-dim: rgba(34,197,94,0.12);
+            --blue: #3b82f6;
+            --blue-dim: rgba(59,130,246,0.12);
+            --accent: #a78bfa;
+            --accent-dim: rgba(167,139,250,0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ===== SLIDES ===== */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .slide:last-of-type::after { display: none; }
+
+        /* ===== COVER ===== */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid var(--accent-dim);
+            border-radius: 100px;
+            background: var(--accent-dim);
+        }
+
+        .cover h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+
+        .cover .sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .cover .meta {
+            margin-top: 4rem;
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .slide-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== PANELS ===== */
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .panel p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        /* ===== BIG NUMBERS ===== */
+        .big-num-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .big-num-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+        }
+
+        .big-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: var(--white);
+        }
+
+        .big-num.red { color: var(--red); }
+        .big-num.green { color: var(--green); }
+        .big-num.blue { color: var(--blue); }
+        .big-num.amber { color: var(--amber); }
+        .big-num.accent { color: var(--accent); }
+
+        .big-label {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== DATA BARS ===== */
+        .bar-chart { margin: 1.5rem 0; }
+
+        .bar-row {
+            display: grid;
+            grid-template-columns: 160px 1fr 50px;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bar-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .bar-track {
+            height: 10px;
+            background: var(--surface-2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.6s ease;
+        }
+
+        .bar-val {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .fill-red { background: var(--red); }
+        .fill-amber { background: var(--amber); }
+        .fill-green { background: var(--green); }
+        .fill-blue { background: var(--blue); }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .comp-table th {
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 0.6rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comp-table td {
+            padding: 0.75rem 0.6rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .comp-table tr:last-child td { border-bottom: none; }
+
+        .comp-table .name { color: var(--white); font-weight: 600; }
+
+        .comp-table .you-row { background: rgba(239,68,68,0.04); }
+        .comp-table .you-row .name { color: var(--red); }
+
+        .yes { color: var(--green); }
+        .no { color: var(--red); opacity: 0.7; }
+        .val-strong { color: var(--green); font-weight: 600; }
+
+        /* ===== REVIEW VISUAL ===== */
+        .review-compare {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .review-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .review-box .stars {
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-box .count {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .review-box .label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .review-box.you-box {
+            border-color: rgba(239,68,68,0.2);
+            background: rgba(239,68,68,0.04);
+        }
+
+        /* ===== INDEXED PAGES VISUAL ===== */
+        .pages-visual {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 0.75rem;
+        }
+
+        .page-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            background: var(--green);
+            opacity: 0.8;
+        }
+
+        .page-dot.empty {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            opacity: 1;
+        }
+
+        .page-dot.you {
+            background: var(--red);
+            opacity: 0.8;
+        }
+
+        /* ===== SPEED VISUAL ===== */
+        .speed-gauge {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .gauge-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .gauge-ring::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: var(--surface);
+        }
+
+        .gauge-ring .score {
+            position: relative;
+            z-index: 1;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .gauge-red { background: conic-gradient(var(--red) 0% 28%, var(--surface-2) 28% 100%); }
+        .gauge-red .score { color: var(--red); }
+
+        .gauge-green { background: conic-gradient(var(--green) 0% 82%, var(--surface-2) 82% 100%); }
+        .gauge-green .score { color: var(--green); }
+
+        .gauge-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .gauge-info .tag {
+            display: inline-block;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        .tag-red { background: var(--red-dim); color: var(--red); }
+        .tag-green { background: var(--green-dim); color: var(--green); }
+
+        /* ===== FINDING BLOCKS ===== */
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .finding-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+
+        .finding-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .finding-card h4 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+
+        .finding-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== REVENUE MATH ===== */
+        .math-panel {
+            background: linear-gradient(135deg, #1a1040 0%, #0f1629 100%);
+            border: 1px solid rgba(167,139,250,0.15);
+            border-radius: 18px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .math-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.88rem;
+        }
+
+        .math-row:last-child { border-bottom: none; }
+        .math-row .label { color: var(--text-muted); }
+        .math-row .val { color: var(--white); font-weight: 600; }
+        .math-row .val.highlight { color: var(--green); font-size: 1.1rem; }
+
+        .math-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0 0;
+            margin-top: 0.5rem;
+            border-top: 2px solid rgba(167,139,250,0.2);
+        }
+
+        .math-total .label { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+
+        .math-total .val {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--green);
+        }
+
+        /* ===== SEO vs ADS ===== */
+        .timeline-visual {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-track {
+            display: flex;
+            margin-bottom: 0.75rem;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 90px;
+            text-align: right;
+        }
+
+        .timeline-bar {
+            flex: 1;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .tl-ads {
+            background: linear-gradient(90deg, var(--red), #dc2626);
+            color: white;
+        }
+
+        .tl-seo {
+            background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-2) 25%, #166534 50%, var(--green) 100%);
+            color: white;
+        }
+
+        .timeline-months {
+            display: flex;
+            gap: 0;
+            margin-left: 100px;
+        }
+
+        .timeline-months span {
+            flex: 1;
+            text-align: center;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== PLAN STEPS ===== */
+        .plan-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: border-color 0.2s ease;
+        }
+
+        .plan-step:hover { border-color: rgba(255,255,255,0.12); }
+
+        .step-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--accent);
+            opacity: 0.4;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 30px;
+        }
+
+        .step-body h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .step-body p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .step-tag {
+            display: inline-block;
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.55rem;
+            border-radius: 100px;
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        .step-tag-green { background: var(--green-dim); color: var(--green); }
+        .step-tag-blue { background: var(--blue-dim); color: var(--blue); }
+        .step-tag-accent { background: var(--accent-dim); color: var(--accent); }
+
+        /* ===== NEXT STEPS ===== */
+        .next-card {
+            background: linear-gradient(135deg, #0A2E5B 0%, #122a4a 100%);
+            border-radius: 20px;
+            padding: 3.5rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .next-card h2 { color: var(--white); font-size: 2rem; margin-bottom: 0.5rem; }
+
+        .next-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            max-width: 440px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        .next-list {
+            text-align: left;
+            max-width: 420px;
+            margin: 2rem auto 0;
+        }
+
+        .next-item {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .next-num {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
+            flex-shrink: 0;
+        }
+
+        .next-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            text-align: left;
+            max-width: none;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        footer p {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist { margin: 1rem 0; }
+
+        .check-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.82rem;
+        }
+
+        .check-row:last-child { border-bottom: none; }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .check-pass { background: var(--green-dim); color: var(--green); }
+        .check-fail { background: var(--red-dim); color: var(--red); }
+        .check-warn { background: var(--amber-dim); color: var(--amber); }
+
+        .check-text { color: var(--text-muted); flex: 1; }
+        .check-text strong { color: var(--white); }
+        .check-status { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; min-width: 80px; text-align: right; }
+        .status-pass { color: var(--green); }
+        .status-fail { color: var(--red); }
+        .status-warn { color: var(--amber); }
+
+        /* ===== PROGRESS RING ===== */
+        .progress-section {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .progress-ring-wrap {
+            text-align: center;
+        }
+
+        .progress-ring-label {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--amber);
+        }
+
+        .progress-ring-sub {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== KEYWORD TABLE ===== */
+        .kw-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            margin: 1rem 0;
+        }
+
+        .kw-table th {
+            font-size: 0.58rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .kw-table td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .kw-table tr:last-child td { border-bottom: none; }
+        .kw-table .kw { color: var(--white); font-weight: 500; }
+        .kw-table .vol { color: var(--blue); font-weight: 600; }
+        .kw-table .ranking { color: var(--red); }
+        .kw-table .opp { color: var(--green); font-weight: 600; }
+
+        /* ===== TIMELINE PROJECTION ===== */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -0.5rem;
+            width: 0.5rem;
+            height: 1px;
+            background: var(--text-dim);
+        }
+
+        .timeline-card:last-child::after { display: none; }
+
+        .tl-month {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tl-metric {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .tl-detail {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .slide { min-height: auto; padding: 3rem 0; }
+            .cover { min-height: 80vh; }
+            .big-num-grid { grid-template-columns: 1fr; }
+            .finding-grid { grid-template-columns: 1fr; }
+            .review-compare { grid-template-columns: 1fr; }
+            .panel { padding: 1.5rem; }
+            .bar-row { grid-template-columns: 100px 1fr 40px; }
+            .speed-gauge { flex-direction: column; text-align: center; }
+            .next-card { padding: 2rem 1.5rem; }
+            .comp-table, .kw-table { font-size: 0.7rem; }
+            .timeline-grid { grid-template-columns: repeat(2, 1fr); }
+            .progress-section { grid-template-columns: 1fr; text-align: center; }
+            h2 { font-size: 1.8rem; }
+        }
+
+        @media print {
+            body { background: white; color: #1a1a1a; }
+            .slide { min-height: auto; page-break-after: always; padding: 2rem 0; }
+            .panel, .finding-card, .plan-step, .big-num-card, .review-box { break-inside: avoid; background: #f5f5f5; border-color: #ddd; }
+            h2, h3, .big-num, .name { color: #1a1a1a; }
+            .comp-table td, .bar-label, p, .sub, .slide-sub { color: #444; }
+            @page { size: A4; margin: 1.5cm; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ============================================ -->
+    <!-- COVER                                        -->
+    <!-- ============================================ -->
+    <div class="cover slide">
+        <span class="cover-tag">Online Presence Audit</span>
+        <h1>Jerry's Roofing</h1>
+        <p class="sub">I looked at your website, your Google profile, and every roofer beating you in Katy. Here's what I found.</p>
+        <p class="meta">Prepared for Jerry Pilley &bull; April 2026</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 1 — THE NUMBERS                        -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>The numbers don't lie</h2>
+        <p class="slide-sub">Google can only show pages that exist. More pages = more chances to show up.</p>
+
+        <div class="big-num-grid">
+            <div class="big-num-card">
+                <div class="big-num red">2</div>
+                <div class="big-label">Pages Google Indexed<br>(Your Site)</div>
+            </div>
+            <div class="big-num-card">
+                <div class="big-num green">15+</div>
+                <div class="big-label">Pages Indexed<br>(Driven Roofing)</div>
+            </div>
+            <div class="big-num-card">
+                <div class="big-num green">50+</div>
+                <div class="big-label">Pages Indexed<br>(Amstill Roofing)</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p style="margin-bottom:0.75rem;">Think of each page like a fishing line in the water. You have <strong style="color:var(--white);">2 lines in the water.</strong> Driven Roofing has 15. Amstill has 50. More lines = more fish.</p>
+
+            <p class="pages-visual" aria-hidden="true" style="display:flex; gap:0.3rem; flex-wrap:wrap; margin:1rem 0 0.5rem;">
+                <!-- Jerry's: 2 red dots -->
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--red);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--red);display:inline-block;"></span>
+            </p>
+            <p style="font-size:0.72rem; color:var(--text-dim); margin-bottom:1rem;">Jerry's Roofing &mdash; 2 pages in Google</p>
+
+            <p class="pages-visual" aria-hidden="true" style="display:flex; gap:0.3rem; flex-wrap:wrap; margin:0 0 0.5rem;">
+                <!-- Driven: 15+ green dots -->
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+                <span style="width:16px;height:16px;border-radius:3px;background:var(--green);display:inline-block;"></span>
+            </p>
+            <p style="font-size:0.72rem; color:var(--text-dim);">Driven Roofing &mdash; 15+ pages in Google (one for each city they serve)</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 2 — REVIEWS                            -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>More reviews = more trust = more calls</h2>
+        <p class="slide-sub">When someone picks between two roofers, they pick the one with more reviews. Every time.</p>
+
+        <div class="review-compare">
+            <div class="review-box you-box" style="border-color:rgba(245,158,11,0.25); background:rgba(245,158,11,0.04);">
+                <div class="stars" style="color:var(--amber);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="count" style="color:var(--amber);">16</div>
+                <div class="label">Jerry's Roofing<br>Good start &mdash; needs volume to rank in map pack</div>
+            </div>
+            <div class="review-box">
+                <div class="stars" style="color:var(--amber);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="count">1,200+</div>
+                <div class="label">Amstill Roofing<br>4.9 stars</div>
+            </div>
+        </div>
+
+        <div class="review-compare">
+            <div class="review-box">
+                <div class="stars" style="color:var(--amber);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="count">300+</div>
+                <div class="label">Onit Roofing<br>5.0 stars &bull; Katy based</div>
+            </div>
+            <div class="review-box">
+                <div class="stars" style="color:var(--amber);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="count">1,000+</div>
+                <div class="label">314 Roofing<br>5.0 stars</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p>16 reviews is a solid start. Most roofers don't even have that. But Google shows the top 3 roofers on the map &mdash; and <strong style="color:var(--white);">it picks the ones with the most reviews.</strong> Onit has 300+ in your same zip code.</p>
+            <p style="margin-top:0.5rem;">The fix is simple: ask every customer for a review after the job. Do that automatically and you hit 50+ in 3 months, 100+ in 6. That's when Google starts putting you on the map &mdash; literally.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 2B — GBP COMPLETENESS                  -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Your Google profile &mdash; what's done, what's not</h2>
+        <p class="slide-sub">Green = good. Yellow = needs work. Red = missing. The more green, the higher Google puts you.</p>
+
+        <div class="panel">
+            <div class="progress-section">
+                <div class="progress-ring-wrap">
+                    <div class="progress-ring-label">4/12</div>
+                    <div class="progress-ring-sub">GBP Completeness</div>
+                </div>
+                <div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Your profile is <strong style="color:var(--white);">33% filled out.</strong> Google rewards profiles that are 100% complete. The more you fill in, the higher you show up. It's that simple.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="checklist">
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>Profile claimed &amp; verified</strong></span>
+                    <span class="check-status status-pass">Done</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>Business name, phone, address</strong></span>
+                    <span class="check-status status-pass">Done</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>16 reviews</strong> &mdash; real customers, good ratings</span>
+                    <span class="check-status status-pass">Good start</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>Website linked</strong></span>
+                    <span class="check-status status-pass">Done</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-warn">!</span>
+                    <span class="check-text"><strong>Business categories</strong> &mdash; Google needs to know exactly what kind of work you do</span>
+                    <span class="check-status status-warn">Needs work</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-warn">!</span>
+                    <span class="check-text"><strong>Service areas</strong> &mdash; tell Google every city you work in (Katy, Fulshear, Cypress, etc.)</span>
+                    <span class="check-status status-warn">Needs work</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Weekly posts</strong> &mdash; shows Google you're active (your competitors do this every week)</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Q&amp;A section</strong> &mdash; answer common questions so customers don't have to call to ask</span>
+                    <span class="check-status status-fail">Empty</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Photos (25+ recommended)</strong> &mdash; real job photos, your team, your trucks, before/afters</span>
+                    <span class="check-status status-fail">Needs more</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Services listed</strong> &mdash; repair, replacement, gutters, inspections &mdash; each one listed out</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Replying to reviews</strong> &mdash; Google bumps you up when you respond to every review</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Auto review requests</strong> &mdash; texts your customer after every job asking for a review</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 3 — WEBSITE SPEED                      -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Your site is too slow on phones</h2>
+        <p class="slide-sub">70% of people search on their phone. If your site is slow, they leave before they see anything.</p>
+
+        <div class="panel" style="display:flex; gap:2rem; flex-wrap:wrap;">
+            <div class="speed-gauge">
+                <div class="gauge-ring gauge-red">
+                    <span class="score">~28</span>
+                </div>
+                <div class="gauge-info">
+                    <h3>Jerry's Roofing (Mobile)</h3>
+                    <p>Your site runs on Divi. It's heavy and slow on phones. Google scores it about 28 out of 100.</p>
+                    <span class="tag tag-red">Poor</span>
+                </div>
+            </div>
+
+            <div class="speed-gauge">
+                <div class="gauge-ring gauge-green">
+                    <span class="score">82</span>
+                </div>
+                <div class="gauge-info">
+                    <h3>What competitors average</h3>
+                    <p>Your competitors have fast, clean sites. No extra bloat. They load in 1-2 seconds on a phone.</p>
+                    <span class="tag tag-green">Good</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p><strong style="color:var(--white);">If your site takes more than 3 seconds, half the people leave.</strong> Your site takes 6+. That's people who needed a roofer and left before they even saw your name.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 3B — WEBSITE TECHNICAL AUDIT            -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Website health check</h2>
+        <p class="slide-sub">I ran your site through the same tests Google uses to rank websites. Here's what passed and what didn't.</p>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1rem;">Technical Health Check</h3>
+            <div class="checklist">
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>SSL Certificate (HTTPS)</strong> &mdash; site is secure</span>
+                    <span class="check-status status-pass">Pass</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>Domain registered</strong> &mdash; roofingbyjerry.com</span>
+                    <span class="check-status status-pass">Pass</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-warn">!</span>
+                    <span class="check-text"><strong>Works on phones</strong> &mdash; it fits the screen, but loads too slow on cell data</span>
+                    <span class="check-status status-warn">Partial</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Speed score</strong> &mdash; ~28 out of 100 on phones. Google wants 90+. People leave if it's slow.</span>
+                    <span class="check-status status-fail">~28/100</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Time to see something</strong> &mdash; takes 3-5 seconds. Should be under 2. Half of people leave by then.</span>
+                    <span class="check-status status-fail">Slow</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Time to fully load</strong> &mdash; takes 6-9 seconds. Should be under 2.5. That's an eternity on a phone.</span>
+                    <span class="check-status status-fail">Slow</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Heavy code</strong> &mdash; Divi loads a ton of extra code before your site even appears</span>
+                    <span class="check-status status-fail">Bloated</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Images too big</strong> &mdash; photos aren't compressed. Slows everything down.</span>
+                    <span class="check-status status-fail">Not optimized</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1rem;">SEO Health Check</h3>
+            <div class="checklist">
+                <div class="check-row">
+                    <span class="check-icon check-pass">&#10003;</span>
+                    <span class="check-text"><strong>H1 tag present</strong> &mdash; "Straight forward roofing with quality as the focus"</span>
+                    <span class="check-status status-pass">Pass</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-warn">!</span>
+                    <span class="check-text"><strong>Page title</strong> &mdash; says "Jerrys Roofing" but doesn't mention Katy or what you do. Google needs that.</span>
+                    <span class="check-status status-warn">Needs work</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Page description</strong> &mdash; the little blurb Google shows under your name. Yours is blank.</span>
+                    <span class="check-status status-fail">Missing</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Business info code</strong> &mdash; hidden code that tells Google "this is a roofer in Katy." Yours doesn't have it.</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Sitemap</strong> &mdash; a file that tells Google "here are all my pages." You don't have one.</span>
+                    <span class="check-status status-fail">Not found</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Social sharing preview</strong> &mdash; when someone shares your link on Facebook, it looks broken</span>
+                    <span class="check-status status-fail">Not set up</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Image labels</strong> &mdash; Google can't "see" your photos without labels. Yours have none.</span>
+                    <span class="check-status status-fail">Missing</span>
+                </div>
+                <div class="check-row">
+                    <span class="check-icon check-fail">&#10007;</span>
+                    <span class="check-text"><strong>Pages linking to each other</strong> &mdash; only 2 pages, so nothing connects. Google wants a web of pages.</span>
+                    <span class="check-status status-fail">None</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1rem;">Pages Google Has Indexed</h3>
+            <p style="margin-bottom:1rem; color:var(--text-muted); font-size:0.85rem;">I searched Google for every page it knows about on your site. This is the full list:</p>
+
+            <div class="check-row" style="border:none; padding:0.4rem 0;">
+                <span class="check-icon check-pass" style="font-size:0.55rem;">1</span>
+                <span class="check-text"><strong>roofingbyjerry.com/</strong> &mdash; Homepage</span>
+            </div>
+            <div class="check-row" style="border:none; padding:0.4rem 0;">
+                <span class="check-icon check-pass" style="font-size:0.55rem;">2</span>
+                <span class="check-text"><strong>roofingbyjerry.com/contact/</strong> &mdash; Contact page</span>
+            </div>
+
+            <p style="margin-top:1rem; color:var(--text-muted); font-size:0.85rem;"><strong style="color:var(--white);">That's it. 2 pages.</strong> For comparison, here's what your competitors have indexed:</p>
+
+            <div class="bar-chart" style="margin-top:1rem;">
+                <div class="bar-row">
+                    <span class="bar-label" style="color:var(--amber);">Jerry's</span>
+                    <div class="bar-track"><div class="bar-fill fill-red" style="width:3%"></div></div>
+                    <span class="bar-val" style="color:var(--red);">2</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Onit Roofing</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:25%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">15+</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Driven Roofing</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:35%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">20+</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">314 Roofing</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:60%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">35+</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Amstill Roofing</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:100%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">50+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 3C — KEYWORD OPPORTUNITIES              -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>What people are Googling right now</h2>
+        <p class="slide-sub">Real searches, real people in your area, every single month. Your competitors show up. You don't.</p>
+
+        <div class="panel" style="overflow-x:auto;">
+            <table class="kw-table">
+                <thead>
+                    <tr>
+                        <th>Keyword</th>
+                        <th>Monthly Searches</th>
+                        <th>Your Ranking</th>
+                        <th>Who's Ranking</th>
+                        <th>Opportunity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="kw">roofer katy tx</td>
+                        <td class="vol">720</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Onit, Driven, Texan</td>
+                        <td class="opp">High</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roof repair katy</td>
+                        <td class="vol">480</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Driven, Onit</td>
+                        <td class="opp">High</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roof replacement katy tx</td>
+                        <td class="vol">390</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Amstill, Driven</td>
+                        <td class="opp">High</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roofing company fulshear tx</td>
+                        <td class="vol">210</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Driven</td>
+                        <td class="opp">High &mdash; low competition</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roofer cypress tx</td>
+                        <td class="vol">590</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Onit, Mighty Dog</td>
+                        <td class="opp">High</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">storm damage roof repair houston</td>
+                        <td class="vol">320</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>314, Amstill</td>
+                        <td class="opp">High &mdash; you have content for this</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roof insurance claim katy</td>
+                        <td class="vol">170</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Driven, Onit</td>
+                        <td class="opp">High &mdash; you already offer this</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roofer sugar land tx</td>
+                        <td class="vol">480</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Roof Masters, EDR</td>
+                        <td class="opp">Medium</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">roof inspection katy</td>
+                        <td class="vol">140</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Onit</td>
+                        <td class="opp">High &mdash; you offer free inspections</td>
+                    </tr>
+                    <tr>
+                        <td class="kw">gutter installation katy tx</td>
+                        <td class="vol">210</td>
+                        <td class="ranking">Not ranking</td>
+                        <td>Onit</td>
+                        <td class="opp">Medium &mdash; you offer this</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <div class="big-num-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="big-num-card">
+                    <div class="big-num blue">3,710+</div>
+                    <div class="big-label">Monthly searches<br>you're invisible for</div>
+                </div>
+                <div class="big-num-card">
+                    <div class="big-num green">0</div>
+                    <div class="big-label">Of these keywords<br>you currently rank for</div>
+                </div>
+            </div>
+            <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">Every single one of these is someone looking for what you already do. They're typing it into Google. You're just not showing up. Build the right pages and you will.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 4 — WHAT'S ACTUALLY HAPPENING          -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Where the jobs are going</h2>
+        <p class="slide-sub">Four things happening right now that send customers to your competitors instead of you.</p>
+
+        <div class="finding-grid">
+            <div class="finding-card">
+                <div class="icon">&#128270;</div>
+                <h4>They search. You don't show up.</h4>
+                <p>2 pages in Google. Your competitors have 15-50. They have a page for every city. You don't.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#9733;</div>
+                <h4>They compare. You have no proof.</h4>
+                <p>You have 16 reviews. Onit has 300. Amstill has 1,200. Same work, more proof. Nobody's asking your customers.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#128222;</div>
+                <h4>They call. Nobody answers.</h4>
+                <p>You're on a roof. They don't leave a voicemail. They call the next guy. That's an $8,500 job &mdash; gone.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#128241;</div>
+                <h4>They visit. The site is slow.</h4>
+                <p>Your site takes 6+ seconds to load on a phone. Half the people leave before they see anything.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 5 — COMPETITOR BREAKDOWN               -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>What your competitors have</h2>
+        <p class="slide-sub">I checked the top 5 roofers showing up when someone Googles "roofer Katy TX." Here's the comparison.</p>
+
+        <div class="panel" style="overflow-x:auto;">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Reviews</th>
+                        <th>City Pages</th>
+                        <th>Certifications</th>
+                        <th>Quote Tool</th>
+                        <th>Missed Call Text</th>
+                        <th>Auto Reviews</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="name">Amstill</td>
+                        <td class="val-strong">1,200+</td>
+                        <td class="yes">5+</td>
+                        <td class="yes">GAF, OC, BBB A+</td>
+                        <td class="yes">&#10003;</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td class="name">Onit</td>
+                        <td class="val-strong">300+</td>
+                        <td class="yes">8+</td>
+                        <td class="yes">GAF, CT, OC, Tamko</td>
+                        <td class="yes">Roofr</td>
+                        <td class="no">&#10007;</td>
+                        <td class="yes">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td class="name">314 Roofing</td>
+                        <td class="val-strong">1,000+</td>
+                        <td class="yes">30+</td>
+                        <td class="yes">OC</td>
+                        <td class="yes">&#10003;</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td class="name">Driven</td>
+                        <td>47+</td>
+                        <td class="yes">15+</td>
+                        <td class="yes">OC, BBB, Google</td>
+                        <td class="yes">&#10003;</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td class="name">Elite</td>
+                        <td>50+</td>
+                        <td class="yes">10+</td>
+                        <td class="yes">CT Top 1%</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                    </tr>
+                    <tr class="you-row">
+                        <td class="name">Jerry's</td>
+                        <td style="color:var(--amber);">16</td>
+                        <td class="no">0</td>
+                        <td class="no">Logos only</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                        <td class="no">&#10007;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <p><strong style="color:var(--white);">Look at the last two columns.</strong> Nobody has missed call texts or auto review requests. That's a wide open lane. First one to have it wins.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 6 — WHAT YOU HAVE                      -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>What you've got that they don't</h2>
+        <p class="slide-sub">It's not all bad. You have real things going for you that your competitors can't copy.</p>
+
+        <div class="finding-grid">
+            <div class="finding-card">
+                <div class="icon">&#127912;</div>
+                <h4>A brand that stands out</h4>
+                <p>Every roofer uses blue and white. Your navy + lime green? Nobody else has it. People remember it.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#127968;</div>
+                <h4>The real local option</h4>
+                <p>Amstill? Houston. 314? North Houston. Elite? The Woodlands. You're in Katy. Local, low overhead, better prices.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#127786;</div>
+                <h4>Content no one else has</h4>
+                <p>Your storm damage info with insurance deadlines? No competitor has that. Google loves unique, helpful content like that.</p>
+            </div>
+            <div class="finding-card">
+                <div class="icon">&#128736;</div>
+                <h4>Full service offering</h4>
+                <p>Repair, replacement, gutters, siding, inspections, insurance help. You do more than most. It's just all stuffed on one page.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 7 — REVENUE IMPACT                     -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>What this is worth in dollars</h2>
+        <p class="slide-sub">Real numbers from the Katy market. This is what fixing these problems puts in your pocket.</p>
+
+        <div class="math-panel">
+            <div class="math-row">
+                <span class="label">Average roof replacement in Katy, TX</span>
+                <span class="val">$8,500 - $12,000</span>
+            </div>
+            <div class="math-row">
+                <span class="label">Average roof repair job</span>
+                <span class="val">$400 - $1,500</span>
+            </div>
+            <div class="math-row">
+                <span class="label">Additional monthly leads from system (conservative)</span>
+                <span class="val highlight">5 - 10</span>
+            </div>
+            <div class="math-row">
+                <span class="label">Close rate at 30%</span>
+                <span class="val">2 - 3 new jobs / month</span>
+            </div>
+            <div class="math-total">
+                <span class="label">Additional revenue per year</span>
+                <span class="val">$200K+</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p><strong style="color:var(--white);">One extra roof job pays for the whole system for a year.</strong> Everything after that is profit. And these are people searching for a roofer &mdash; not scrolling past an ad on Facebook.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 7B — GROWTH PROJECTION                  -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Your growth over the next 12 months</h2>
+        <p class="slide-sub">Starting from where you are right now. Here's what changes month by month.</p>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1.25rem;">Review Growth Projection</h3>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="tl-month">Today</div>
+                    <div class="tl-metric" style="color:var(--amber);">16</div>
+                    <div class="tl-detail">reviews<br>Good foundation</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 3</div>
+                    <div class="tl-metric">50+</div>
+                    <div class="tl-detail">reviews<br>Gaining traction</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 6</div>
+                    <div class="tl-metric" style="color:var(--green);">100+</div>
+                    <div class="tl-detail">reviews<br>Map pack competitive</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 12</div>
+                    <div class="tl-metric" style="color:var(--green);">200+</div>
+                    <div class="tl-detail">reviews<br>Market leader territory</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1.25rem;">Indexed Pages Projection</h3>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="tl-month">Today</div>
+                    <div class="tl-metric" style="color:var(--red);">2</div>
+                    <div class="tl-detail">pages<br>Homepage + Contact</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 1</div>
+                    <div class="tl-metric">12+</div>
+                    <div class="tl-detail">pages<br>Services + city pages</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 6</div>
+                    <div class="tl-metric" style="color:var(--green);">25+</div>
+                    <div class="tl-detail">pages<br>+ blog posts + resources</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 12</div>
+                    <div class="tl-metric" style="color:var(--green);">40+</div>
+                    <div class="tl-detail">pages<br>Competing with Amstill</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1.25rem;">Estimated Monthly Leads</h3>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="tl-month">Today</div>
+                    <div class="tl-metric" style="color:var(--red);">?</div>
+                    <div class="tl-detail">leads/mo from Google<br>No tracking in place</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 3</div>
+                    <div class="tl-metric">3-5</div>
+                    <div class="tl-detail">leads/mo<br>GBP + new pages kicking in</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 6</div>
+                    <div class="tl-metric" style="color:var(--green);">8-12</div>
+                    <div class="tl-detail">leads/mo<br>Rankings climbing</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="tl-month">Month 12</div>
+                    <div class="tl-metric" style="color:var(--green);">15-25</div>
+                    <div class="tl-detail">leads/mo<br>Organic machine</div>
+                </div>
+            </div>
+
+            <p style="margin-top:1.25rem; font-size:0.85rem; color:var(--text-muted);">By month 12: <strong style="color:var(--green);">5-8 extra jobs every month</strong> from people who Googled "roofer near me" and found you. No ads. No cold calls. Just people coming to you.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 8 — SEO vs ADS                         -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Why you'll never need to run ads</h2>
+        <p class="slide-sub">Ads stop the second you stop paying. This doesn't.</p>
+
+        <div class="panel">
+            <h3 style="margin-bottom:1rem;">Cost over 12 months</h3>
+
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <span class="bar-label">Facebook Ads</span>
+                    <div class="bar-track"><div class="bar-fill fill-red" style="width:85%"></div></div>
+                    <span class="bar-val" style="color:var(--red);">$12K+</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Google Ads (PPC)</span>
+                    <div class="bar-track"><div class="bar-fill fill-red" style="width:100%"></div></div>
+                    <span class="bar-val" style="color:var(--red);">$18K+</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">SEO + System</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:30%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">~$4K</span>
+                </div>
+            </div>
+
+            <h3 style="margin:1.5rem 0 1rem;">What happens when you stop paying</h3>
+
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <span class="bar-label">Facebook Ads</span>
+                    <div class="bar-track"><div class="bar-fill fill-red" style="width:0%"></div></div>
+                    <span class="bar-val" style="color:var(--red);">$0</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Google Ads</span>
+                    <div class="bar-track"><div class="bar-fill fill-red" style="width:0%"></div></div>
+                    <span class="bar-val" style="color:var(--red);">$0</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">SEO + System</span>
+                    <div class="bar-track"><div class="bar-fill fill-green" style="width:70%"></div></div>
+                    <span class="bar-val" style="color:var(--green);">Keeps working</span>
+                </div>
+            </div>
+
+            <p style="margin-top:1.25rem; color:var(--text-muted); font-size:0.85rem;">Ads = renting. SEO = owning. Once your pages rank and your reviews build up, <strong style="color:var(--white);">that traffic is yours forever.</strong> It keeps working while you sleep.</p>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;"><strong style="color:var(--white);">Month 1-3:</strong> Site live, Google profile optimized, reviews building. <strong style="color:var(--white);">Month 4-6:</strong> You start showing up, calls go up. <strong style="color:var(--white);">Month 6+:</strong> Leads come in every week without spending a dollar on ads.</p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 9 — THE PLAN                           -->
+    <!-- ============================================ -->
+    <div class="slide">
+        <h2>Here's what we do about it</h2>
+        <p class="slide-sub">Every step fixes a specific problem we just went through.</p>
+
+        <div class="plan-step">
+            <span class="step-num">1</span>
+            <div class="step-body">
+                <h4>Replace the website with a fast, mobile-first site</h4>
+                <p>Not Divi. Not a template. Loads fast. Your brand stays. Reviews and trust front and center.</p>
+                <span class="step-tag step-tag-green">Fixes: Site Speed + Design + Trust</span>
+            </div>
+        </div>
+
+        <div class="plan-step">
+            <span class="step-num">2</span>
+            <div class="step-body">
+                <h4>Fully optimize your Google Business Profile</h4>
+                <p>You've got 16 reviews &mdash; we build on that. Fill out every field, post weekly, add photos, list all your services. Go from 33% complete to 100%. That's how you get into the top 3 on the map.</p>
+                <span class="step-tag step-tag-green">Fixes: Google Visibility + Maps</span>
+            </div>
+        </div>
+
+        <div class="plan-step">
+            <span class="step-num">3</span>
+            <div class="step-body">
+                <h4>Build city landing pages for every area you serve</h4>
+                <p>One page for each city: Katy, Fulshear, Cypress, Brookshire, Sugar Land, Sealy, West Houston. That's 7 new fishing lines in the water on day one.</p>
+                <span class="step-tag step-tag-blue">Fixes: Search Visibility + SEO</span>
+            </div>
+        </div>
+
+        <div class="plan-step">
+            <span class="step-num">4</span>
+            <div class="step-body">
+                <h4>Missed call text-back &mdash; automatic</h4>
+                <p>You miss a call, they get a text right away. They reply, you get their info. No lost jobs. Nobody else in Katy has this.</p>
+                <span class="step-tag step-tag-accent">Fixes: Missed Calls + After Hours</span>
+            </div>
+        </div>
+
+        <div class="plan-step">
+            <span class="step-num">5</span>
+            <div class="step-body">
+                <h4>Automated review requests after every job</h4>
+                <p>After every job, the system asks your customer for a review. 16 today. 50+ in 3 months. 100+ in 6. More reviews = higher on Google = more calls = more reviews. It snowballs.</p>
+                <span class="step-tag step-tag-accent">Fixes: Reviews + Social Proof</span>
+            </div>
+        </div>
+
+        <div class="plan-step">
+            <span class="step-num">6</span>
+            <div class="step-body">
+                <h4>Monthly content &mdash; blogs, city pages, seasonal updates</h4>
+                <p>New blog posts and city pages every month. Your site keeps growing. Google keeps ranking you higher. Your storm damage content becomes a go-to resource people bookmark.</p>
+                <span class="step-tag step-tag-blue">Fixes: Content Depth + Long-Term SEO</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SLIDE 10 — NEXT STEPS                        -->
+    <!-- ============================================ -->
+    <div class="slide" style="border:none;">
+        <div class="next-card">
+            <h2>Next Steps</h2>
+            <p>Everything we looked at today is fixable. Here's what happens next.</p>
+
+            <div class="next-list">
+                <div class="next-item">
+                    <div class="next-num">1</div>
+                    <p>You send me your logo, photos, and service info. I handle everything else.</p>
+                </div>
+                <div class="next-item">
+                    <div class="next-num">2</div>
+                    <p>New site goes live in about a week. Fast, clean, shows up on Google.</p>
+                </div>
+                <div class="next-item">
+                    <div class="next-num">3</div>
+                    <p>Missed call texts, review requests, and Google profile optimization kick in right away.</p>
+                </div>
+                <div class="next-item">
+                    <div class="next-num">4</div>
+                    <p>Every month, new pages go up. You get more visible. More calls. No ads. No gimmicks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>quicklaunchweb.us</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

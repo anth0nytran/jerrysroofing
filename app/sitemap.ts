@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getAllSlugs } from './blog/posts';
+import { serviceData } from './config';
 
-const BASE_URL = 'https://jhernandeztreeservice.com';
+const BASE_URL = 'https://roofingbyjerry.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -43,6 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const servicePages: MetadataRoute.Sitemap = serviceData.map((s) => ({
+    url: `${BASE_URL}/services/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
     lastModified: new Date(),
@@ -50,5 +58,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...blogPages];
 }

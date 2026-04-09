@@ -241,11 +241,11 @@ export async function POST(req: Request) {
   }).format(new Date());
   const safeName = name || 'Website Form';
   const safeService = service || 'Website Form';
-  const brandName = 'José Hernández Tree Service';
-  const brandAddress = 'Humble, TX';
-  const brandPrimary = '#166534';
-  const brandAccent = '#22c55e';
-  const fromEmail = process.env.LEAD_FROM_EMAIL || 'José Hernández Tree Service <leads@jhernandeztreeservice.com>';
+  const brandName = "Jerry's Roofing";
+  const brandAddress = 'Katy, TX';
+  const brandPrimary = '#0A2E5B';
+  const brandAccent = '#E3FE08';
+  const fromEmail = process.env.LEAD_FROM_EMAIL || "Jerry's Roofing <leads@roofingbyjerry.com>";
   const subject = `New Lead: ${safeService} | ${safeName}`;
 
   const pageUrlIsDev =
@@ -309,7 +309,7 @@ export async function POST(req: Request) {
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
             <tr>
               <td style="padding:0 0 10px;">
-                <a href="tel:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandAccent};color:#ffffff;text-decoration:none;font-weight:800;font-size:14px;text-align:center;padding:14px 18px;border-radius:10px;">
+                <a href="tel:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandAccent};color:#061D3A;text-decoration:none;font-weight:800;font-size:14px;text-align:center;padding:14px 18px;border-radius:10px;">
                   Hold to Call Lead
                 </a>
               </td>
@@ -357,7 +357,7 @@ export async function POST(req: Request) {
       <tr>
         <td style="padding:0 20px 22px;">
           <div style="border-left:4px solid ${brandAccent};padding:12px;background:#f8fafc;border-radius:8px;font-size:12px;color:#475569;line-height:1.5;">
-            This lead came from the José Hernández Tree Service website form.
+            This lead came from the Jerry&apos;s Roofing website form.
             <span style="display:block;margin-top:6px;font-weight:700;color:${brandPrimary};">${brandAddress}</span>
           </div>
         </td>

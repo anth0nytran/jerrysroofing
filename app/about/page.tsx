@@ -1,17 +1,16 @@
 import type { Metadata } from 'next';
-import { siteConfig } from '../config';
 import AboutPageClient from './AboutPageClient';
 
 export const metadata: Metadata = {
-  title: 'About José Hernández Tree Service — Affordable Tree Care in Humble, TX & Surrounding Areas',
+  title: "About Jerry's Roofing — Trusted Roofing Contractor in Katy, TX",
   description:
-    'Family-owned tree service & landscape company serving Humble, Dayton, Baytown, Spring, The Woodlands & Conroe for 25+ years. Licensed, fully insured, 5-star rated. Affordable tree trimming, removal & landscaping. Call (713) 291-6992.',
+    "Locally owned roofing company serving Katy, Cypress, Cinco Ranch & Richmond since 2024. Licensed, fully insured, 5-star rated. Honest pricing on roof replacement, rejuvenation, gutters, siding & painting. Call (409) 351-1529.",
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Us | José Hernández Tree Service — Humble, TX',
+    title: "About Us | Jerry's Roofing — Katy, TX",
     description:
-      'Family-owned, locally rooted. 25+ years of affordable, trusted tree care & landscaping for homeowners in Humble, Dayton, Baytown, Spring, The Woodlands & Conroe.',
-    url: 'https://jhernandeztreeservice.com/about',
+      "Locally owned, community rooted. Trusted roofing & exterior services for homeowners in Katy, Cypress, Cinco Ranch, Richmond & Fulshear.",
+    url: 'https://roofingbyjerry.com/about',
   },
 };
 
@@ -19,8 +18,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://jhernandeztreeservice.com/' },
-    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://jhernandeztreeservice.com/about' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://roofingbyjerry.com/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://roofingbyjerry.com/about' },
   ],
 };
 

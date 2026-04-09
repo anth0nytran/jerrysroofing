@@ -3,15 +3,15 @@ import { siteConfig } from '../config';
 import ContactPageClient from './ContactPageClient';
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Book a Tree Service Consultation in Humble, TX',
+  title: "Contact Us — Get a Free Roof Estimate in Katy, TX | Jerry's Roofing",
   description:
-    'Book a consultation with José Hernández Tree Service. Tree trimming, tree removal, landscaping services & more in Humble, Dayton, Baytown, Spring, The Woodlands & Conroe. Affordable options & fair pricing. Call (713) 291-6992.',
+    "Get a free roof inspection and estimate from Jerry's Roofing. Roof replacement, rejuvenation, gutters, siding & painting in Katy, Cypress, Cinco Ranch & Richmond. Call (409) 351-1529.",
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact & Book Consultation | José Hernández Tree Service — Humble TX',
+    title: "Contact & Free Estimate | Jerry's Roofing — Katy TX",
     description:
-      'Book your consultation today. Serving Humble, Dayton, Baytown, Spring, The Woodlands, Conroe & surrounding areas.',
-    url: 'https://jhernandeztreeservice.com/contact',
+      'Get your free estimate today. Serving Katy, Cypress, Cinco Ranch, Richmond & surrounding areas.',
+    url: 'https://roofingbyjerry.com/contact',
   },
 };
 
@@ -27,19 +27,19 @@ const breadcrumbJsonLd = {
 const contactFaqs = [
   {
     q: 'How fast do you respond?',
-    a: 'Most consultation requests get a reply within 1–2 hours during business hours. For emergencies, call (713) 291-6992 directly — our crew can often be on-site the same day.',
+    a: 'Most estimate requests get a reply within 1–2 hours during business hours. For urgent issues, call (409) 351-1529 directly — Jerry is available any time.',
   },
   {
-    q: 'Is the consultation really free?',
-    a: 'Yes — 100% free, zero obligation. We assess the job and give you an honest, upfront price. No hidden fees, no pressure.',
+    q: 'Is the inspection really free?',
+    a: 'Yes — 100% free, zero obligation. We inspect your roof and give you an honest, upfront estimate. No hidden fees, no pressure.',
   },
   {
     q: 'What info do you need from me?',
-    a: 'Just your phone number and address. That\'s it. We\'ll reach out to schedule a time that works for you.',
+    a: "Just your phone number and address. That's it. We'll reach out to schedule a time that works for you.",
   },
   {
-    q: 'Do you offer payment plans?',
-    a: 'We offer flexible options on larger jobs. During your consultation, let us know your budget and we\'ll work with you. We accept cash, checks, and all major credit cards.',
+    q: 'Do you offer financing or payment plans?',
+    a: "We offer flexible options on larger jobs like roof replacements. During your consultation, let us know your budget and we'll work with you. We accept cash, checks, and all major credit cards.",
   },
 ];
 
