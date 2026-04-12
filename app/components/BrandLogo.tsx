@@ -9,7 +9,7 @@ type BrandLogoProps = {
 
 export function BrandLogo({
   className,
-  alt = "Jerry's Roofing logo",
+  alt = "Jerrys Roofing logo",
   priority = false,
   sizes = '100vw',
 }: BrandLogoProps) {

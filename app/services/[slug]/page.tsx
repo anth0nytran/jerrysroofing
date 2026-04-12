@@ -18,12 +18,12 @@ export async function generateMetadata({
   if (!service) return { title: 'Service Not Found' };
 
   return {
-    title: `${service.title} in Katy, TX | Jerry's Roofing`,
+    title: `${service.title} in Katy, Texas | Jerrys Roofing`,
     description: `${service.longDescription.slice(0, 155)}...`,
     keywords: service.keywords,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.title} | Jerry's Roofing — Katy TX`,
+      title: `${service.title} | Jerrys Roofing — Katy, Texas`,
       description: service.summary,
       url: `https://roofingbyjerry.com/services/${service.slug}`,
     },
@@ -59,7 +59,7 @@ export default async function ServicePage({
     description: service.longDescription,
     provider: {
       '@type': 'RoofingContractor',
-      name: "Jerry's Roofing",
+      name: "Jerrys Roofing",
       telephone: siteConfig.cleanPhone,
       areaServed: siteConfig.allServiceAreas.map((a) => ({
         '@type': 'City',

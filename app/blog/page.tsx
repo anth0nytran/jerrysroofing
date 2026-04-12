@@ -2,16 +2,22 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
-import { blogPosts } from './posts';
+import { allBlogPosts } from './posts';
 import { siteConfig } from '../config';
 
+/**
+ * ISR: re-render the blog index at most once per hour so staged (future-dated)
+ * blog posts automatically appear on their publish date without a manual redeploy.
+ */
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
- title: "Roofing Blog — Tips & Guides for Katy, Cypress & Cinco Ranch Homeowners | Jerry's Roofing",
+ title: "Roofing Blog — Tips & Guides for Katy, Texas, Cypress & Cinco Ranch Homeowners | Jerrys Roofing",
  description:
- "Expert roofing tips, cost guides, and storm damage advice for homeowners in Katy, Cypress, Cinco Ranch, Richmond & Fulshear. From Jerry's Roofing — Trusted service since 2024.",
+ "Expert roofing tips, cost guides, and storm damage advice for homeowners in Katy, Texas, Cypress, Cinco Ranch, Richmond & Fulshear. From Jerrys Roofing — 7 years experience, dedicated service since 2024.",
  alternates: { canonical: '/blog' },
  openGraph: {
- title: "Roofing Blog | Jerry's Roofing — Katy TX",
+ title: "Roofing Blog | Jerrys Roofing — Katy, Texas",
  description: 'Expert roofing tips and guides for Katy, Cypress, Cinco Ranch & area homeowners.',
  url: 'https://roofingbyjerry.com/blog',
  },
@@ -47,7 +53,7 @@ export default function BlogPage() {
  'url': 'https://roofingbyjerry.com/blog',
  'mainEntity': {
  '@type': 'ItemList',
- 'itemListElement': blogPosts.map((post, i) => ({
+ 'itemListElement': allBlogPosts.map((post, i) => ({
  '@type': 'ListItem',
  'position': i + 1,
  'url': `https://roofingbyjerry.com/blog/${post.slug}`,
@@ -85,7 +91,7 @@ export default function BlogPage() {
  <section className="py-14 sm:py-16 bg-white">
  <div className={shell}>
  <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
- {blogPosts.map((post) => {
+ {allBlogPosts.map((post) => {
  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
  year: 'numeric',
  month: 'long',

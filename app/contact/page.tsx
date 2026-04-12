@@ -3,12 +3,12 @@ import { siteConfig } from '../config';
 import ContactPageClient from './ContactPageClient';
 
 export const metadata: Metadata = {
-  title: "Contact Us — Get a Free Roof Estimate in Katy, TX | Jerry's Roofing",
+  title: "Contact Us — Get a Free Roof Estimate in Katy, Texas | Jerrys Roofing",
   description:
-    "Get a free roof inspection and estimate from Jerry's Roofing. Roof replacement, rejuvenation, gutters, siding & painting in Katy, Cypress, Cinco Ranch & Richmond. Call (409) 351-1529.",
+    "Get a free roof inspection and estimate from Jerrys Roofing. Roof replacement, Roof Rejoov, gutters, siding & painting in Katy, Texas, Cypress, Cinco Ranch & Richmond. Call (409) 351-1529.",
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: "Contact & Free Estimate | Jerry's Roofing — Katy TX",
+    title: "Contact & Free Estimate | Jerrys Roofing — Katy, Texas",
     description:
       'Get your free estimate today. Serving Katy, Cypress, Cinco Ranch, Richmond & surrounding areas.',
     url: 'https://roofingbyjerry.com/contact',

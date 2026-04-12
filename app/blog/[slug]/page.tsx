@@ -2,10 +2,23 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
-import { blogPosts, getPostBySlug, getAllSlugs } from '../posts';
+import { allBlogPosts, getPostBySlug, getAllSlugs } from '../posts';
 import { siteConfig } from '../../config';
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10';
+
+/**
+ * ISR: regenerate post pages hourly so staged posts go live on schedule
+ * and any stale `related posts` strips refresh as new posts appear.
+ */
+export const revalidate = 3600;
+
+/**
+ * Allow dynamic rendering for slugs not in generateStaticParams at build time —
+ * this is what lets a staged post (once its publish date arrives) be served
+ * even if the blog index hasn't regenerated yet.
+ */
+export const dynamicParams = true;
 
 /* ── Static params for all slugs ── */
 export function generateStaticParams() {
@@ -36,8 +49,8 @@ export async function generateMetadata({
  url: `https://roofingbyjerry.com/blog/${post.slug}`,
  type: 'article',
  publishedTime: post.date,
- authors: ["Jerry's Roofing"],
- siteName: "Jerry's Roofing",
+ authors: ["Jerrys Roofing"],
+ siteName: "Jerrys Roofing",
  },
  twitter: {
  card: 'summary_large_image',
@@ -79,8 +92,25 @@ export default async function BlogPostPage({
  day: 'numeric',
  });
 
+ const formattedUpdated = post.dateModified
+ ? new Date(post.dateModified).toLocaleDateString('en-US', {
+ year: 'numeric',
+ month: 'long',
+ day: 'numeric',
+ })
+ : null;
+
+ const authorName = post.author?.name || 'Jerry W. Pilley';
+ const authorRole = post.author?.role || 'Owner & Lead Roofer';
+
+ // Wrap any inline <table> in the post content with a scroll-friendly wrapper
+ // so wide cost/comparison tables become horizontally scrollable on mobile.
+ const processedContent = post.content
+ .replace(/<table([^>]*)>/g, '<div class="table-wrap"><table$1>')
+ .replace(/<\/table>/g, '</table></div>');
+
  /* Related posts: same category first, then most recent, excluding current */
- const relatedPosts = blogPosts
+ const relatedPosts = allBlogPosts
  .filter((p) => p.slug !== post.slug)
  .sort((a, b) => {
  if (a.category === post.category && b.category !== post.category) return -1;
@@ -132,15 +162,21 @@ export default async function BlogPostPage({
  headline: post.title,
  description: post.description,
  datePublished: post.date,
- dateModified: post.date,
+ dateModified: post.dateModified || post.date,
  author: {
+ '@type': 'Person',
+ name: post.author?.name || 'Jerry W. Pilley',
+ jobTitle: post.author?.role || 'Owner & Lead Roofer, Jerrys Roofing',
+ url: 'https://roofingbyjerry.com/about',
+ worksFor: {
  '@type': 'Organization',
- name: "Jerry's Roofing",
+ name: 'Jerrys Roofing',
  url: 'https://roofingbyjerry.com',
+ },
  },
  publisher: {
  '@type': 'Organization',
- name: "Jerry's Roofing",
+ name: "Jerrys Roofing",
  url: 'https://roofingbyjerry.com',
  logo: {
  '@type': 'ImageObject',
@@ -184,13 +220,13 @@ export default async function BlogPostPage({
  <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-white/40">
  <span className="flex items-center gap-1.5">
  <Calendar className="h-4 w-4" />
- {formattedDate}
+ {formattedUpdated ? `Updated ${formattedUpdated}` : formattedDate}
  </span>
  <span className="flex items-center gap-1.5">
  <Clock className="h-4 w-4" />
  {post.readTime}
  </span>
- <span>By {siteConfig.businessName}</span>
+ <span>By {authorName}, {authorRole}</span>
  </div>
  </div>
  <div className="h-px bg-gradient-to-r from-transparent via-[var(--jerry-lime)]/20 to-transparent" />
@@ -200,10 +236,43 @@ export default async function BlogPostPage({
  <section className="py-14 sm:py-18 bg-white">
  <div className={shell}>
  <div className="max-w-3xl">
+ {/* TL;DR / Quick Answer Box — only render if content does not already contain an inline tldr block */}
+ {post.tldr && !post.content.includes('class="tldr"') && (
+ <div className="mb-10 border-l-4 border-[var(--jerry-lime)] bg-slate-50 p-5 sm:p-6 rounded-r-lg">
+ <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[var(--jerry-navy-deep)] mb-2">
+ Quick Answer
+ </p>
+ <p className="text-[0.95rem] sm:text-base leading-relaxed text-slate-800">
+ {post.tldr}
+ </p>
+ </div>
+ )}
+
  <article
  className="blog-prose"
- dangerouslySetInnerHTML={{ __html: post.content }}
+ dangerouslySetInnerHTML={{ __html: processedContent }}
  />
+
+ {/* Author Bio — E-E-A-T signal */}
+ <div className="mt-14 pt-8 border-t border-slate-200 flex items-start gap-4">
+ <div className="h-14 w-14 rounded-full bg-[var(--jerry-navy-deep)] text-[var(--jerry-lime)] flex items-center justify-center text-lg font-extrabold shrink-0">
+ JP
+ </div>
+ <div>
+ <p className="text-sm font-bold text-[var(--jerry-navy-deep)]">
+ {authorName}
+ </p>
+ <p className="text-xs text-slate-500 mb-2">
+ {authorRole} &middot; 7 years roofing experience in the Katy area
+ </p>
+ <p className="text-sm text-slate-600 leading-relaxed">
+ Jerry personally inspects every roof Jerrys Roofing works on across Katy, Cypress, Cinco Ranch, Richmond, Fulshear, and Sugar Land. He installs IKO, CertainTeed, GAF, and F-Wave synthetic shingles and offers Roof Rejoov bio-based shingle restoration.
+ {formattedUpdated && (
+ <> Last updated <strong>{formattedUpdated}</strong>.</>
+ )}
+ </p>
+ </div>
+ </div>
  </div>
  </div>
  </section>

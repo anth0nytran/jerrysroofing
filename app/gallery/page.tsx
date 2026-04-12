@@ -5,12 +5,12 @@ import { ArrowRight, Phone, Hammer } from 'lucide-react';
 import { siteConfig } from '../config';
 
 export const metadata: Metadata = {
- title: "Our Work — Roof Replacement, Gutters & Exterior Photos | Katy TX | Jerry's Roofing",
+ title: "Our Work — Roof Replacement, Gutters & Exterior Photos | Katy, Texas | Jerrys Roofing",
  description:
- "See real roof replacement, rejuvenation, gutter installation, siding, and painting projects completed by Jerry's Roofing across Katy, Cypress, Cinco Ranch & Richmond. Before & after gallery.",
+ "See real roof replacement, Roof Rejoov, gutter installation, siding, and painting projects completed by Jerrys Roofing across Katy, Texas, Cypress, Cinco Ranch & Richmond. Before & after gallery.",
  alternates: { canonical: '/gallery' },
  openGraph: {
- title: "Project Gallery | Jerry's Roofing — Katy TX",
+ title: "Project Gallery | Jerrys Roofing — Katy, Texas",
  description: "Real roofing and exterior projects from Katy, Cypress, Cinco Ranch & surrounding areas.",
  url: 'https://roofingbyjerry.com/gallery',
  },
@@ -38,7 +38,7 @@ export default function GalleryPage() {
  {/* Sub-hero */}
  <section className="relative overflow-hidden bg-[var(--jerry-navy-deep)]">
  <div className="absolute inset-0">
- <Image src="/roofing/jerry_service_replacement.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+ <Image src="/roofing/jerry_service_replacement.png" alt="" fill sizes="100vw" className="object-cover opacity-15" />
  </div>
  <div className={`${shell} relative z-10 py-10 sm:py-14`}>
  <nav aria-label="Breadcrumb" className="mb-5">

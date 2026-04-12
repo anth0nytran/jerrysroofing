@@ -13,12 +13,45 @@ import { BrandLogo } from './BrandLogo';
 
 const serviceIconMap: Record<string, typeof Home> = {
  'roof-replacement': Home,
- 'roof-rejuvenation': RefreshCw,
+ 'roof-rejoov': RefreshCw,
  'gutters': Droplets,
  'siding': Layers,
  'painting': Paintbrush,
  'driveway-repaints': SquareStack,
 };
+
+function USFlag({ className = '' }: { className?: string }) {
+ return (
+ <svg
+ viewBox="0 0 7410 3900"
+ xmlns="http://www.w3.org/2000/svg"
+ className={className}
+ aria-label="United States flag"
+ role="img"
+ preserveAspectRatio="xMidYMid meet"
+ >
+ <rect width="7410" height="3900" fill="#B22234" />
+ <path
+ d="M0,450 H7410 M0,1050 H7410 M0,1650 H7410 M0,2250 H7410 M0,2850 H7410 M0,3450 H7410"
+ stroke="#ffffff"
+ strokeWidth="300"
+ />
+ <rect width="2964" height="2100" fill="#3C3B6E" />
+ <g fill="#ffffff">
+ {Array.from({ length: 9 }).flatMap((_, row) => {
+ const cols = row % 2 === 0 ? 6 : 5;
+ const yStep = 2100 / 10;
+ const xStep = 2964 / 12;
+ const xOffset = row % 2 === 0 ? xStep : xStep * 2;
+ const y = yStep + row * yStep;
+ return Array.from({ length: cols }).map((__, col) => (
+ <circle key={`${row}-${col}`} cx={xOffset + col * xStep * 2} cy={y} r={70} />
+ ));
+ })}
+ </g>
+ </svg>
+ );
+}
 
 export function Header() {
  const pathname = usePathname();
@@ -81,13 +114,14 @@ export function Header() {
 
  {/* ── MOBILE HEADER ── */}
  <div className="lg:hidden mx-auto w-full max-w-7xl px-5 sm:px-8">
- <div className="flex items-center justify-between h-[4.5rem] sm:h-20">
- <Link href="/" className="shrink-0 overflow-hidden h-[3.25rem] sm:h-[4rem]">
+ <div className="flex items-center justify-between h-[4.75rem] sm:h-[5.5rem]">
+ <Link href="/" className="flex items-center gap-0 shrink-0 min-w-0">
  {/* eslint-disable-next-line @next/next/no-img-element */}
- <img src="/pictures/logo-transparent.svg" alt="Jerry's Roofing" className="h-[5rem] sm:h-[6rem] w-auto object-contain object-left-top" />
+ <img src="/pictures/logo-transparent.svg" alt="Jerrys Roofing" className="h-[5rem] sm:h-24 w-auto object-contain shrink-0 translate-y-2 sm:translate-y-2.5" />
+ <USFlag className="h-[1.1rem] sm:h-5 w-auto shrink-0 rounded-[2px] ring-1 ring-slate-200/70 shadow-sm -ml-2.5 sm:-ml-3" />
  </Link>
  <div className="flex items-center gap-2">
- <a href={`tel:${siteConfig.cleanPhone}`} className="flex items-center justify-center h-10 w-10 bg-[var(--jerry-navy)]/5">
+ <a href={`tel:${siteConfig.cleanPhone}`} className="flex items-center justify-center h-10 w-10 bg-[var(--jerry-navy)]/5 rounded-lg">
  <Phone className="h-4 w-4 text-[var(--jerry-navy)]" />
  </a>
  <button className="flex items-center justify-center h-10 w-10 text-[var(--jerry-navy)] cursor-pointer" onClick={() => setMobileMenuOpen((o) => !o)} aria-label="Menu">
@@ -99,37 +133,39 @@ export function Header() {
 
  {/* ── DESKTOP HEADER ── */}
  <div className="hidden lg:block mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
- <div className="flex items-center justify-between h-[5.5rem] xl:h-[6.5rem]">
+ <div className="flex items-center justify-between h-24 xl:h-28">
 
- {/* Logo — left, large. SVG has ~40% bottom whitespace so we render big & clip */}
- <Link href="/" className="shrink-0 overflow-hidden h-[5rem] xl:h-[6rem]">
+ {/* Logo + USA flag — left */}
+ <Link href="/" className="flex items-center gap-0 shrink-0">
  {/* eslint-disable-next-line @next/next/no-img-element */}
- <img src="/pictures/logo-transparent.svg" alt="Jerry's Roofing" className="h-[7.5rem] xl:h-[9rem] w-auto object-contain object-left-top" />
+ <img src="/pictures/logo-transparent.svg" alt="Jerrys Roofing" className="h-[7rem] xl:h-[8rem] w-auto object-contain shrink-0 translate-y-3 xl:translate-y-3.5" />
+ <USFlag className="h-6 xl:h-7 w-auto shrink-0 rounded-[3px] ring-1 ring-slate-200 shadow-sm -ml-4 xl:-ml-5" />
  </Link>
 
- {/* Nav + CTA — right-aligned, sitting at the bottom */}
- <div className="flex items-center gap-0">
- <nav className="flex items-center" aria-label="Main navigation">
- {navLinks.map((l, i) => {
+ {/* Nav + CTA — right-aligned */}
+ <div className="flex items-center gap-5 xl:gap-6">
+ <nav className="flex items-center gap-1" aria-label="Main navigation">
+ {navLinks.map((l) => {
  const isServices = l.label === 'Services';
+ const isRoofRejoov = l.label === 'Roof Rejoov';
  const isActive = l.href === '/' ? pathname === '/' : pathname.startsWith(l.href.replace('/#', '/'));
 
  if (isServices) {
  return (
  <div key={l.href} className="relative" onMouseEnter={handleServicesEnter} onMouseLeave={handleServicesLeave}>
- <Link href={l.href} className={`relative px-5 py-2.5 text-[0.95rem] font-semibold transition-colors duration-200 group inline-flex items-center gap-1.5 ${isActive || servicesOpen ? 'text-[var(--jerry-navy)]' : 'text-slate-500 hover:text-[var(--jerry-navy)]'}`}>
+ <Link href={l.href} className={`relative px-3.5 py-2 text-[0.82rem] font-semibold tracking-tight transition-colors duration-200 group inline-flex items-center gap-1 ${isActive || servicesOpen ? 'text-[var(--jerry-navy)]' : 'text-slate-500 hover:text-[var(--jerry-navy)]'}`}>
  {l.label}
  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
- <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-300 ${isActive ? 'w-6 bg-[var(--jerry-lime)]' : 'w-0 bg-[var(--jerry-lime)] group-hover:w-6'}`} />
+ <span className={`pointer-events-none absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-300 ${isActive ? 'w-6 bg-[var(--jerry-lime)]' : 'w-0 bg-[var(--jerry-lime)] group-hover:w-6'}`} />
  </Link>
  <AnimatePresence>
  {servicesOpen && (
  <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }} className="absolute top-full left-0 pt-2.5 z-50">
- <div className="w-[320px] bg-white border border-slate-100 shadow-2xl shadow-slate-900/8">
+ <div className="w-[320px] bg-white border border-slate-100 shadow-2xl shadow-slate-900/8 rounded-xl overflow-hidden">
  <div className="px-5 pt-4 pb-1"><span className="text-[0.5rem] font-bold uppercase tracking-[0.3em] text-slate-300">Roofing</span></div>
  <div className="px-2 pb-1.5">
- {serviceData.filter(s => ['roof-replacement', 'roof-rejuvenation'].includes(s.slug)).map((s) => (
- <Link key={s.slug} href={`/services/${s.slug}`} className="group/item flex items-center justify-between px-3 py-2.5 hover:bg-[var(--jerry-cream)] transition-colors duration-150 cursor-pointer">
+ {serviceData.filter(s => ['roof-replacement', 'roof-rejoov'].includes(s.slug)).map((s) => (
+ <Link key={s.slug} href={s.slug === 'roof-rejoov' ? '/roof-rejoov' : `/services/${s.slug}`} className="group/item flex items-center justify-between px-3 py-2.5 hover:bg-[var(--jerry-cream)] transition-colors duration-150 cursor-pointer rounded-lg">
  <span className="text-[0.82rem] font-bold text-[var(--jerry-navy)] group-hover/item:text-[var(--jerry-navy-light)] transition-colors">{s.title}</span>
  <ArrowRight className="h-3 w-3 text-slate-200 group-hover/item:text-[var(--jerry-navy)] transition-all opacity-0 group-hover/item:opacity-100 duration-200" />
  </Link>
@@ -137,14 +173,14 @@ export function Header() {
  </div>
  <div className="px-5 pt-2.5 pb-1 border-t border-slate-100"><span className="text-[0.5rem] font-bold uppercase tracking-[0.3em] text-slate-300">Exterior</span></div>
  <div className="px-2 pb-1.5">
- {serviceData.filter(s => !['roof-replacement', 'roof-rejuvenation'].includes(s.slug)).map((s) => (
- <Link key={s.slug} href={`/services/${s.slug}`} className="group/item flex items-center justify-between px-3 py-2.5 hover:bg-[var(--jerry-cream)] transition-colors duration-150 cursor-pointer">
+ {serviceData.filter(s => !['roof-replacement', 'roof-rejoov'].includes(s.slug)).map((s) => (
+ <Link key={s.slug} href={`/services/${s.slug}`} className="group/item flex items-center justify-between px-3 py-2.5 hover:bg-[var(--jerry-cream)] transition-colors duration-150 cursor-pointer rounded-lg">
  <span className="text-[0.82rem] font-bold text-[var(--jerry-navy)] group-hover/item:text-[var(--jerry-navy-light)] transition-colors">{s.title}</span>
  <ArrowRight className="h-3 w-3 text-slate-200 group-hover/item:text-[var(--jerry-navy)] transition-all opacity-0 group-hover/item:opacity-100 duration-200" />
  </Link>
  ))}
  </div>
- <div className="px-5 py-2.5 border-t border-slate-100 bg-slate-50/60">
+ <div className="px-5 py-2.5 border-t border-slate-100 bg-slate-50/60 rounded-b-xl">
  <Link href="/services" className="inline-flex items-center gap-1.5 text-[0.62rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy)] hover:text-[var(--jerry-navy-light)] transition-colors cursor-pointer">All Services <ArrowRight className="h-3 w-3" /></Link>
  </div>
  </div>
@@ -156,14 +192,14 @@ export function Header() {
  }
 
  return (
- <Link key={l.href} href={l.href} className={`relative px-5 py-2.5 text-[0.95rem] font-semibold transition-colors duration-200 group ${isActive ? 'text-[var(--jerry-navy)]' : 'text-slate-500 hover:text-[var(--jerry-navy)]'}`}>
+ <Link key={l.href} href={l.href} className={`relative px-3.5 py-2 text-[0.82rem] font-semibold tracking-tight group ${isRoofRejoov ? 'purple-text-pulse' : `transition-colors duration-200 ${isActive ? 'text-[var(--jerry-navy)]' : 'text-slate-500 hover:text-[var(--jerry-navy)]'}`}`}>
  {l.label}
- <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-300 ${isActive ? 'w-6 bg-[var(--jerry-lime)]' : 'w-0 bg-[var(--jerry-lime)] group-hover:w-6'}`} />
+ <span className={`pointer-events-none absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-300 ${isActive ? (isRoofRejoov ? 'w-6 bg-[var(--jerry-purple)]' : 'w-6 bg-[var(--jerry-lime)]') : (isRoofRejoov ? 'w-0 bg-[var(--jerry-purple)] group-hover:w-6' : 'w-0 bg-[var(--jerry-lime)] group-hover:w-6')}`} />
  </Link>
  );
  })}
  </nav>
- <Link href="/contact" className="ml-5 bg-[var(--jerry-lime)] px-7 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
+ <Link href="/contact" className="inline-flex items-center bg-[var(--jerry-lime)] px-5 xl:px-6 h-10 xl:h-11 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer rounded-lg">
  Get a Quote
  </Link>
  </div>
@@ -184,7 +220,9 @@ export function Header() {
  <div className="px-5 sm:px-8 pb-6 pt-2">
  {/* Nav links */}
  <nav className="flex flex-col">
- {navLinks.map((l, i) => {
+ {navLinks.map((l) => {
+ const isRoofRejoov = l.label === 'Roof Rejoov';
+
  if (l.label === 'Services') {
  return (
  <div key={l.href}>
@@ -200,7 +238,7 @@ export function Header() {
  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
  <div className="py-1 border-b border-slate-100">
  {serviceData.map((s) => (
- <Link key={s.slug} href={`/services/${s.slug}`} className="block py-2.5 pl-4 text-[0.82rem] font-semibold text-slate-600 hover:text-[var(--jerry-navy)] transition-colors cursor-pointer">
+ <Link key={s.slug} href={s.slug === 'roof-rejoov' ? '/roof-rejoov' : `/services/${s.slug}`} className="block py-2.5 pl-4 text-[0.82rem] font-semibold text-slate-600 hover:text-[var(--jerry-navy)] transition-colors cursor-pointer">
  {s.title}
  </Link>
  ))}
@@ -212,7 +250,7 @@ export function Header() {
  );
  }
  return (
- <Link key={l.href} href={l.href} className="block py-3.5 text-[0.9rem] font-bold text-[var(--jerry-navy)] border-b border-slate-100 transition-colors hover:text-[var(--jerry-navy-light)]">
+ <Link key={l.href} href={l.href} className={`block py-3.5 text-[0.9rem] font-bold border-b border-slate-100 transition-colors ${isRoofRejoov ? 'purple-text-pulse' : 'text-[var(--jerry-navy)] hover:text-[var(--jerry-navy-light)]'}`}>
  {l.label}
  </Link>
  );
@@ -221,10 +259,10 @@ export function Header() {
 
  {/* CTA */}
  <div className="mt-5 flex flex-col gap-3">
- <a href={`tel:${siteConfig.cleanPhone}`} className="flex items-center justify-center gap-2.5 py-3 border border-[var(--jerry-navy)]/10 text-[0.8rem] font-bold text-[var(--jerry-navy)]">
+ <a href={`tel:${siteConfig.cleanPhone}`} className="flex items-center justify-center gap-2.5 py-3 border border-[var(--jerry-navy)]/10 text-[0.8rem] font-bold text-[var(--jerry-navy)] rounded-lg">
  <Phone className="h-4 w-4" /> {siteConfig.phone}
  </a>
- <Link href="/contact" className="block text-center bg-[var(--jerry-lime)] py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
+ <Link href="/contact" className="block text-center bg-[var(--jerry-lime)] py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer rounded-lg">
  Request a Quote
  </Link>
  </div>

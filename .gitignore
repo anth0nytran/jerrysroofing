@@ -53,3 +53,13 @@ public/images/*-upscaled-2x.png
 .playwright-mcp/
 .codex-next-dev.log
 $log
+
+# internal working files — NOT for deployment
+# SEO audit notes, competitor research, content drafts
+webaudit/
+/.original_*.txt
+/hero-*.png
+/page-*.png
+
+# raw source photos (unused originals — clean renamed copies are used by the app)
+public/roofing/Photo Apr 11*.jpg

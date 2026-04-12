@@ -241,11 +241,11 @@ export async function POST(req: Request) {
   }).format(new Date());
   const safeName = name || 'Website Form';
   const safeService = service || 'Website Form';
-  const brandName = "Jerry's Roofing";
+  const brandName = "Jerrys Roofing";
   const brandAddress = 'Katy, TX';
   const brandPrimary = '#0A2E5B';
   const brandAccent = '#E3FE08';
-  const fromEmail = process.env.LEAD_FROM_EMAIL || "Jerry's Roofing <leads@roofingbyjerry.com>";
+  const fromEmail = process.env.LEAD_FROM_EMAIL || "Jerrys Roofing <leads@roofingbyjerry.com>";
   const subject = `New Lead: ${safeService} | ${safeName}`;
 
   const pageUrlIsDev =
@@ -357,7 +357,7 @@ export async function POST(req: Request) {
       <tr>
         <td style="padding:0 20px 22px;">
           <div style="border-left:4px solid ${brandAccent};padding:12px;background:#f8fafc;border-radius:8px;font-size:12px;color:#475569;line-height:1.5;">
-            This lead came from the Jerry&apos;s Roofing website form.
+            This lead came from the Jerrys Roofing website form.
             <span style="display:block;margin-top:6px;font-weight:700;color:${brandPrimary};">${brandAddress}</span>
           </div>
         </td>

@@ -42,7 +42,7 @@ const fadeUp = {
 
 const serviceIconMap: Record<string, typeof Home> = {
  'roof-replacement': Home,
- 'roof-rejuvenation': RefreshCw,
+ 'roof-rejoov': RefreshCw,
  'gutters': Droplets,
  'siding': Layers,
  'painting': Paintbrush,

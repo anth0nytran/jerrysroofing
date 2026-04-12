@@ -164,15 +164,15 @@ export default function HomePageClient() {
  __html: JSON.stringify({
  "@context": "https://schema.org",
  "@type": "HowTo",
- "name": "How to Get Professional Roofing Service in Katy, Cypress & Cinco Ranch TX",
- "description": "Get expert roofing from Jerry's Roofing in 3 simple steps. Free inspections, honest pricing, quality craftsmanship.",
+ "name": "How to Get Professional Roofing Service in Katy, Texas, Cypress & Cinco Ranch",
+ "description": "Get expert roofing from Jerrys Roofing in 3 simple steps. Free inspections, honest pricing, quality craftsmanship.",
  "totalTime": "PT2H",
  "step": [
  {
  "@type": "HowToStep",
  "position": 1,
  "name": "Request a Free Inspection",
- "text": "Contact Jerry's Roofing at (409) 351-1529 or fill out our online form. Describe your roofing concern and we'll schedule a free inspection at your convenience.",
+ "text": "Contact Jerrys Roofing at (409) 351-1529 or fill out our online form. Describe your roofing concern and we'll schedule a free inspection at your convenience.",
  "url": "https://roofingbyjerry.com/contact"
  },
  {
@@ -185,7 +185,7 @@ export default function HomePageClient() {
  "@type": "HowToStep",
  "position": 3,
  "name": "Quality Work, Done Right",
- "text": "Our experienced crew completes the job using premium materials from IKO, CertainTeed, or GAF. Full cleanup included — we leave your property spotless."
+ "text": "Our experienced crew completes the job using premium materials from IKO, CertainTeed, GAF, or F-Wave synthetic. Full cleanup included — we leave your property spotless."
  }
  ]
  })
@@ -193,44 +193,62 @@ export default function HomePageClient() {
  />
 
  {/* ═══ HERO ═══ */}
- <section className="relative isolate overflow-hidden bg-[var(--jerry-navy-deep)] flex flex-col min-h-[calc(100vh-104px)]">
+ {/* Background is a warm dark slate rather than pure navy — lets the image breathe,
+     white text stays high-contrast, less "heavy blue" cast. */}
+ <section className="relative isolate overflow-hidden bg-[#0f1419] flex flex-col min-h-[calc(100vh-104px)]">
  <div className="absolute inset-0">
- <NextImage src="/pictures/20260406_153929.jpg" alt="Jerry's Roofing crew performing professional roof replacement in Katy TX" fill priority sizes="100vw" className="object-cover object-center" />
+ <NextImage src="/roofing/subhero-bg.jpg" alt="Jerrys Roofing crew performing professional roof replacement in Katy, Texas" fill priority sizes="100vw" className="object-cover object-center" />
  </div>
- <div className="absolute inset-0 bg-gradient-to-r from-[rgba(6,29,58,0.88)] via-[rgba(6,29,58,0.55)] to-[rgba(6,29,58,0.15)]" />
+ {/* Dark-slate overlay gradient (was navy blue) — lighter, more neutral, better image visibility */}
+ <div className="absolute inset-0 bg-gradient-to-r from-[rgba(15,20,25,0.82)] via-[rgba(15,20,25,0.48)] to-[rgba(15,20,25,0.15)]" />
 
  <div className={`${shell} relative z-10 py-8 sm:py-12 lg:py-14 flex-1 flex flex-col justify-center`}>
- <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:items-center">
+ <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:items-center">
 
- {/* Left */}
- <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-white">
- <div className="flex items-center gap-2 mb-4">
+ {/* Left — left-aligned, tightly stacked */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.5 }}
+ className="text-white"
+ >
+ {/* Rating eyebrow */}
+ <div className="flex items-center gap-2 mb-1">
  <Stars count={5} size="h-3.5 w-3.5 text-[#FBBC05]" />
  <span className="text-[0.6rem] font-bold uppercase tracking-widest text-white/80">5-Star Rated on Google</span>
  </div>
 
- <h1 className="mb-3 lg:mb-4">
- <span className="block text-[2.5rem] sm:text-5xl lg:text-[4.5rem] font-extrabold leading-[1.1] tracking-tight text-white my-1 sm:my-3"><span className="text-[var(--jerry-lime)]">Jerry&apos;s</span> <span className="text-[#3b82f6]">Roofing.</span></span>
- <span className="mt-3 block text-[1.2rem] font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:max-w-2xl">
- Straight Forward Roofing with Quality as the Focus.
- </span>
- </h1>
+ {/* Logo wordmark — replaces the "Jerrys Roofing" text.
+     The SVG has whitespace at the bottom of its viewBox, so we use a large negative
+     margin on the tagline below to pull it up flush against the logo. */}
+ <BrandLogo
+ className="block h-auto w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[440px] -ml-2 sm:-ml-3 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
+ sizes="(min-width:1024px) 440px, (min-width:640px) 360px, 280px"
+ priority
+ alt="Jerrys Roofing — Katy, Texas"
+ />
 
- <p className="text-[0.85rem] sm:text-base leading-relaxed text-white/75 max-w-[500px] mb-5 lg:mb-6">
- Roof replacement, rejuvenation, gutters, siding &amp; painting across Katy, Cypress, Cinco Ranch, Richmond &amp; Fulshear. Dedicated service since 2024. Honest pricing. We do what we say.
+ {/* Tagline — pulled up into the logo's bottom whitespace */}
+ <p className="-mt-6 sm:-mt-8 lg:-mt-11 text-[1rem] sm:text-[1.15rem] lg:text-[1.25rem] font-extrabold leading-[1.25] tracking-tight text-white drop-shadow-lg max-w-[34ch]">
+ Katy, Texas&apos; Straight Forward Roofing with Quality as the Focus.
+ </p>
+
+ {/* Description — tight to tagline */}
+ <p className="mt-3 text-[0.85rem] sm:text-base leading-relaxed text-white/75 max-w-[52ch]">
+ Roof replacement, Roof Rejoov, gutters, siding &amp; painting across Katy, Texas, Cypress, Cinco Ranch, Richmond &amp; Fulshear. 7 years experience. Dedicated service since 2024. Honest pricing. We do what we say.
  </p>
 
  {/* Trust line */}
- <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/50">
+ <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/55">
  <span className="flex items-center gap-1.5"><Shield className="h-3 w-3 text-[var(--jerry-lime)]" /> Fully Insured</span>
- <span className="flex items-center gap-1.5"><Award className="h-3 w-3 text-[var(--jerry-lime)]" /> IKO &middot; CertainTeed &middot; GAF</span>
- <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--jerry-lime)]" /> Since 2024</span>
+ <span className="flex items-center gap-1.5"><Award className="h-3 w-3 text-[var(--jerry-lime)]" /> IKO &middot; CertainTeed &middot; GAF &middot; F-Wave</span>
+ <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--jerry-lime)]" /> 7 Years Experience</span>
  </div>
  </motion.div>
 
  {/* Right — form card */}
  <motion.div id="hero-form" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="scroll-mt-28">
- <div className=" bg-white p-5 sm:p-6 shadow-2xl">
+ <div className="rounded-2xl bg-white p-5 sm:p-6 shadow-2xl">
  <h2 className="text-lg font-extrabold text-[var(--jerry-navy)] sm:text-xl">Request a Quote</h2>
  <p className="text-[0.8rem] text-slate-400 mb-4">No cost, no pressure — just an honest quote.</p>
  <HeroEstimateForm />
@@ -264,18 +282,18 @@ export default function HomePageClient() {
  <p className="mt-3 text-base text-slate-500">We only use industry-leading materials built to withstand the Texas climate.</p>
  </div>
 
- <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 max-w-4xl mx-auto items-center">
+ <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 max-w-5xl mx-auto items-center">
  {siteConfig.manufacturerLogos.map((logo) => (
  <div
  key={logo.name}
- className="flex h-[108px] items-center justify-center rounded-sm border border-slate-100 bg-slate-50/50 px-3 py-3 sm:h-[124px] sm:px-4 sm:py-4 hover:shadow-md transition-shadow duration-300"
+ className="flex h-[130px] items-center justify-center rounded-xl border border-slate-100 bg-slate-50/50 px-3 py-3 sm:h-[156px] sm:px-4 sm:py-4 hover:shadow-md transition-shadow duration-300"
  >
  <div className={`relative mx-auto ${logo.frameClassName}`}>
  <NextImage
  src={logo.src}
  alt={logo.alt}
  fill
- sizes="(min-width: 640px) 240px, 86vw"
+ sizes="(min-width: 640px) 240px, 42vw"
  className="object-contain"
  />
  </div>
@@ -285,17 +303,17 @@ export default function HomePageClient() {
  </div>
  </section>
 
- {/* ═══ ROOF REJUVENATION SPOTLIGHT ═══ */}
+ {/* ═══ ROOF REJOOV SPOTLIGHT ═══ */}
  <section id="rejuvenation" className="scroll-mt-20 bg-[var(--jerry-navy-deep)] py-12 sm:py-16">
  <div className={shell}>
  <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
  {/* Left — copy */}
  <div>
- <p className="eyebrow text-[var(--jerry-lime)]">Roof Rejuvenation</p>
+ <p className="eyebrow text-[var(--jerry-lime)]">Roof Rejoov</p>
  <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl section-heading">Not every roof needs replacing.</h2>
  <p className="mt-2 text-lg font-bold text-[var(--jerry-lime)] sm:text-xl">But every roof needs this.</p>
  <p className="mt-5 text-[0.85rem] sm:text-[0.9rem] leading-relaxed text-white/60 max-w-lg">
- Texas sun bakes the essential oils out of your shingles year after year. Roof rejuvenation restores them — extending your roof&apos;s life at a fraction of the cost of replacement.
+ Texas sun bakes the essential oils out of your shingles year after year. Roof Rejoov restores them — extending your roof&apos;s life at a fraction of the cost of replacement.
  </p>
 
  {/* Stats */}
@@ -305,7 +323,7 @@ export default function HomePageClient() {
  { val: '80%', unit: '', label: 'Less than replacing' },
  { val: '1', unit: 'day', label: 'Single visit' },
  ].map((s) => (
- <div key={s.label} className="border border-white/8 bg-white/[0.03] p-3.5 sm:p-4">
+ <div key={s.label} className="rounded-xl border border-white/8 bg-white/[0.03] p-3.5 sm:p-4">
  <div className="flex items-baseline gap-0.5">
  <span className="text-xl sm:text-2xl font-extrabold text-white">{s.val}</span>
  {s.unit && <span className="text-[0.6rem] font-bold text-[var(--jerry-lime)]/60 ml-0.5">{s.unit}</span>}
@@ -318,7 +336,7 @@ export default function HomePageClient() {
  {/* How it works — typographic, no icons */}
  <div className="mt-8 space-y-4">
  {[
- { n: '01', title: 'Free Inspection', text: 'We assess your roof honestly — if rejuvenation works, we\'ll tell you. If you need a replacement, we\'ll tell you that too.' },
+ { n: '01', title: 'Free Inspection', text: 'We assess your roof honestly — if Roof Rejoov works, we\'ll tell you. If you need a replacement, we\'ll tell you that too.' },
  { n: '02', title: 'Bio-Based Treatment', text: 'A plant-based formula restores the essential oils Texas heat dried out of your shingles.' },
  { n: '03', title: 'Restored & Protected', text: 'Shingles regain flexibility. Granule loss stops. No tear-off, no mess.' },
  ].map((step) => (
@@ -334,7 +352,7 @@ export default function HomePageClient() {
 
  {/* CTAs */}
  <div className="mt-8 flex flex-wrap gap-3">
- <Link href="/services#roof-rejuvenation" className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-6 py-3 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
+ <Link href="/roof-rejoov" className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-6 py-3 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
  Learn More <ArrowRight className="h-3.5 w-3.5" />
  </Link>
  <a href={`tel:${siteConfig.cleanPhone}`} className="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/70 hover:bg-white/5 hover:text-white transition-all cursor-pointer">
@@ -345,38 +363,54 @@ export default function HomePageClient() {
 
  {/* Right — Before & After side-by-side */}
  <div>
- <div className="grid grid-cols-2 gap-[2px] sm:gap-1">
- {/* Before */}
+ <div className="grid grid-cols-2 gap-[2px] sm:gap-1 rounded-xl overflow-hidden">
+ {/* Before — real project photo */}
  <div className="relative overflow-hidden">
- <div className="aspect-[3/4] sm:aspect-[4/5] bg-gradient-to-b from-stone-700/60 to-stone-900/80" />
- <div className="absolute top-0 left-0 right-0 bg-white/10 py-1.5 sm:py-2 text-center">
- <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-white/70">Before</span>
+ <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+ <NextImage
+ src="/roofing/rejoov-before.jpg"
+ alt="Aged asphalt shingle roof before Roof Rejoov treatment — brittle, losing granules, sun-baked in Katy, Texas"
+ fill
+ sizes="(min-width: 1024px) 25vw, 50vw"
+ className="object-cover"
+ />
  </div>
- <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
- <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/60 leading-snug">Dried, brittle shingles losing granules</p>
+ <div className="absolute top-0 left-0 right-0 bg-black/60 backdrop-blur-sm py-1.5 sm:py-2 text-center">
+ <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-white">Before</span>
+ </div>
+ <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
+ <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/85 leading-snug">Dried, brittle shingles losing granules</p>
  </div>
  </div>
- {/* After */}
+ {/* After — real project photo */}
  <div className="relative overflow-hidden">
- <div className="aspect-[3/4] sm:aspect-[4/5] bg-gradient-to-b from-[var(--jerry-navy-light)]/40 to-[var(--jerry-navy)]/60" />
+ <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+ <NextImage
+ src="/roofing/rejoov-after.jpg"
+ alt="Asphalt shingle roof after Roof Rejoov bio-based treatment — restored flexibility and water resistance"
+ fill
+ sizes="(min-width: 1024px) 25vw, 50vw"
+ className="object-cover"
+ />
+ </div>
  <div className="absolute top-0 left-0 right-0 bg-[var(--jerry-lime)] py-1.5 sm:py-2 text-center">
- <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-[var(--jerry-navy-deep)]">After</span>
+ <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-[var(--jerry-navy-deep)]">After Rejoov</span>
  </div>
- <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
- <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/60 leading-snug">Restored, flexible, protected</p>
+ <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
+ <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/85 leading-snug">Restored, flexible, protected</p>
  </div>
  </div>
  </div>
- <p className="mt-2.5 text-[0.55rem] uppercase tracking-[0.2em] text-white/20 text-center">Real project photos coming soon</p>
+ <p className="mt-2.5 text-[0.55rem] uppercase tracking-[0.2em] text-white/30 text-center">Real Jerrys Roofing project · Katy, TX</p>
 
  {/* Testimonial */}
- <div className="mt-6 border border-white/8 bg-white/[0.03] p-4 sm:p-5">
+ <div className="mt-6 rounded-xl border border-white/8 bg-white/[0.03] p-4 sm:p-5">
  <div className="flex gap-0.5 mb-2.5">
  {[...Array(5)].map((_, i) => (
  <Star key={i} className="h-2.5 w-2.5 fill-[var(--jerry-lime)] text-[var(--jerry-lime)]" />
  ))}
  </div>
- <p className="text-[0.78rem] leading-relaxed text-white/65 italic">&ldquo;Jerry told us we didn&apos;t need a new roof — just rejuvenation. Saved us thousands.&rdquo;</p>
+ <p className="text-[0.78rem] leading-relaxed text-white/65 italic">&ldquo;Jerry told us we didn&apos;t need a new roof — just Roof Rejoov. Saved us thousands.&rdquo;</p>
  <p className="mt-2.5 text-[0.55rem] font-bold uppercase tracking-[0.2em] text-white/25">— Homeowner, Cinco Ranch</p>
  </div>
  </div>
@@ -401,9 +435,9 @@ export default function HomePageClient() {
  {/* Featured — Roof Replacement (wide cinematic card) */}
  <div className="mb-5">
  {serviceData.filter(s => s.slug === 'roof-replacement').map((s) => (
- <div key={s.title} className="group relative overflow-hidden bg-[var(--jerry-navy-deep)]">
+ <div key={s.title} className="group relative overflow-hidden rounded-2xl bg-[var(--jerry-navy-deep)]">
  <div className="relative aspect-[2/1] sm:aspect-[21/8]">
- <NextImage src={s.image} alt={`${s.title} in Katy TX by Jerry's Roofing`} fill sizes="100vw" className="object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-700 group-hover:scale-[1.02]" />
+ <NextImage src={s.image} alt={`${s.title} in Katy, Texas by Jerrys Roofing`} fill sizes="100vw" className="object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-700 group-hover:scale-[1.02]" />
  <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/60 to-transparent" />
  </div>
  <div className="absolute inset-0 flex items-center">
@@ -427,12 +461,14 @@ export default function HomePageClient() {
  ))}
  </div>
 
- {/* Remaining services — typography-driven cards, no icons */}
+ {/* Remaining services — typography-driven cards, no icons
+     Only featured flagship services appear here. Secondary services
+     (roof repair, storm damage, roof inspection) live on /services and in the footer. */}
  <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
- {serviceData.filter(s => s.slug !== 'roof-replacement' && s.slug !== 'roof-rejuvenation').map((s, i) => (
- <Link key={s.title} href={`/services#${s.slug}`} className="group flex flex-col h-full bg-white border border-slate-200/80 hover:border-[var(--jerry-navy)]/15 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
+ {serviceData.filter(s => s.featured && s.slug !== 'roof-replacement' && s.slug !== 'roof-rejoov').map((s, i) => (
+ <Link key={s.title} href={`/services#${s.slug}`} className="group flex flex-col h-full rounded-xl bg-white border border-slate-200/80 hover:border-[var(--jerry-navy)]/15 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
  <div className="relative aspect-[4/3] shrink-0 overflow-hidden">
- <NextImage src={s.image} alt={`${s.title} in Katy TX by Jerry's Roofing`} fill sizes="(min-width:1024px) 25vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+ <NextImage src={s.image} alt={`${s.title} in Katy, Texas by Jerrys Roofing`} fill sizes="(min-width:1024px) 25vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
  <span className="text-[0.5rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] text-white/50">{s.turnaround}</span>
@@ -451,6 +487,31 @@ export default function HomePageClient() {
  </Link>
  ))}
  </div>
+
+ {/* Also available — secondary services, subtle strip */}
+ <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-200">
+ <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+ <p className="text-[0.55rem] sm:text-[0.6rem] font-bold uppercase tracking-[0.2em] text-slate-400 shrink-0">
+ Also Available
+ </p>
+ <div className="flex flex-wrap gap-2">
+ {[
+ { label: 'Free Roof Inspection', href: '/services/roof-inspection' },
+ { label: 'Roof Repair', href: '/services/roof-repair' },
+ { label: 'Storm Damage Restoration', href: '/services/storm-damage' },
+ { label: 'Insurance Claim Help', href: '/insurance-claims' },
+ ].map((link) => (
+ <Link
+ key={link.href}
+ href={link.href}
+ className="inline-flex items-center gap-1.5 bg-white border border-slate-200 hover:border-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-navy-deep)] hover:text-[var(--jerry-lime)] px-3 py-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold text-[var(--jerry-navy-deep)] transition-all cursor-pointer"
+ >
+ {link.label} <ArrowRight className="h-3 w-3 text-[var(--jerry-lime)]" />
+ </Link>
+ ))}
+ </div>
+ </div>
+ </div>
  </div>
  </section>
 
@@ -460,17 +521,17 @@ export default function HomePageClient() {
  <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16 lg:items-center">
  {/* Left — image + stats overlay */}
  <div className="relative pb-10 lg:pb-0 mb-4 lg:mb-0">
- <div className="relative aspect-[4/3] overflow-hidden ">
- <NextImage src="/pictures/selfie.jpg" alt="Jerry Pilley, owner of Jerry's Roofing in Katy TX" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+ <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+ <NextImage src="/pictures/selfie.jpg" alt="Jerry Pilley, founder of Jerrys Roofing in Katy, Texas" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
  <div className="absolute inset-0 bg-gradient-to-t from-[var(--jerry-navy-deep)]/80 to-transparent" />
  </div>
  <div className="absolute -bottom-6 left-4 right-4 sm:left-6 sm:right-6 grid grid-cols-3 gap-3">
  {[
- { value: '2024', label: 'Est.' },
- { value: '5\u2605', label: 'Rated' },
+ { value: '7+', label: 'Years Exp.' },
+ { value: '5★', label: 'Rated' },
  { value: 'Free', label: 'Estimates' },
  ].map((stat) => (
- <div key={stat.label} className=" bg-white p-3 sm:p-4 text-center shadow-lg">
+ <div key={stat.label} className="rounded-xl bg-white p-3 sm:p-4 text-center shadow-lg">
  <div className="text-xl sm:text-2xl font-extrabold text-[var(--jerry-navy)]">{stat.value}</div>
  <div className="text-[0.55rem] font-semibold uppercase tracking-wider text-slate-400">{stat.label}</div>
  </div>
@@ -480,10 +541,10 @@ export default function HomePageClient() {
 
  {/* Right — copy + trust points */}
  <div className="pt-4 lg:pt-0">
- <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">About Jerry&apos;s Roofing</p>
+ <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">About Jerrys Roofing</p>
  <h2 className="mt-3 text-3xl font-extrabold leading-tight text-[var(--jerry-navy)] sm:text-4xl">Locally owned. Straight talk. Quality you can trust.</h2>
  <p className="mt-4 text-[0.92rem] leading-relaxed text-slate-600">
- Born and raised in Texas, Jerry Pilley has been in the roofing industry since 2024. After working for larger companies, he started Jerry&apos;s Roofing in Katy with a simple philosophy: be honest, do quality work, and charge a fair price. With lower overhead than the big corporate outfits, Jerry passes those savings on to you. Much like a homeowner is invested in their house, Jerry is invested in the Katy community.
+ Born and raised in Texas, Jerry Pilley has been in the roofing industry since 2019. After working for larger companies, he started Jerrys Roofing in Katy, Texas in 2024 with a simple philosophy: be honest, do quality work, and charge a fair price. With 7 years of hands-on experience and lower overhead than the big corporate outfits, Jerry passes those savings on to you.
  </p>
 
  <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
@@ -491,7 +552,7 @@ export default function HomePageClient() {
  { icon: Shield, label: 'Fully Insured' },
  { icon: ThumbsUp, label: 'Honest Pricing' },
  { icon: Home, label: 'Full Exterior Services' },
- { icon: HardHat, label: 'Since 2024' },
+ { icon: HardHat, label: '7 Years Experience' },
  ].map((item) => (
  <div key={item.label} className="flex items-center gap-2">
  <item.icon className="h-4 w-4 shrink-0 text-[var(--jerry-lime)]" />
@@ -512,7 +573,7 @@ export default function HomePageClient() {
  {/* ═══ HOW IT WORKS ═══ */}
  <section className="relative isolate bg-[var(--jerry-ink)] py-10 sm:py-16 overflow-hidden">
  <div className="absolute inset-0 z-0 pointer-events-none">
- <NextImage src="/roofing/jerry_service_replacement.jpg" alt="Roof replacement process by Jerry's Roofing" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
+ <NextImage src="/roofing/jerry_service_replacement.jpg" alt="Roof replacement process by Jerrys Roofing" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
  <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-ink)]/95 via-[var(--jerry-ink)]/80 to-[var(--jerry-ink)]/40" />
  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--jerry-ink)] to-transparent" />
  </div>
@@ -528,7 +589,7 @@ export default function HomePageClient() {
  Quality Roofing in 3 Simple Steps.
  </h2>
  <p className="mt-5 text-[0.9rem] leading-relaxed text-white/50 max-w-sm">
- Whether you need a full roof replacement, rejuvenation, or exterior work, we make the entire process simple, transparent, and stress-free.
+ Whether you need a full roof replacement, Roof Rejoov, or exterior work, we make the entire process simple, transparent, and stress-free.
  </p>
  <div className="mt-6 h-px w-20 bg-gradient-to-r from-[var(--jerry-lime)]/60 to-transparent" />
  </div>
@@ -538,14 +599,14 @@ export default function HomePageClient() {
  {[
  { n: '01', title: 'Request a Free Inspection', desc: "Call, text, or fill out our form. We'll schedule a free roof inspection at your convenience. No pressure, no obligation — just an honest assessment of your roof's condition.", icon: Phone },
  { n: '02', title: 'Get a Clear Written Estimate', desc: "Jerry personally inspects your roof, identifies any issues, and provides a straightforward written estimate. If insurance is involved, we walk you through the entire claims process.", icon: ClipboardList },
- { n: '03', title: 'Quality Work, Done Right', desc: "Our experienced crew completes the job with premium materials from IKO, CertainTeed, or GAF. Full cleanup included — we leave your property looking better than we found it.", icon: CheckCircle2 },
+ { n: '03', title: 'Quality Work, Done Right', desc: "Our experienced crew completes the job with premium materials from IKO, CertainTeed, GAF, or F-Wave synthetic. Full cleanup included — we leave your property looking better than we found it.", icon: CheckCircle2 },
  ].map((step) => (
- <div key={step.n} className="group relative flex flex-col sm:flex-row gap-5 sm:gap-6 p-6 sm:p-8 bg-white/[0.02] border border-white/[0.05] shadow-2xl backdrop-blur-sm overflow-hidden hover:bg-white/[0.04] hover:border-[var(--jerry-lime)]/30 hover:-translate-y-1 transition-all duration-500">
+ <div key={step.n} className="group relative flex flex-col sm:flex-row gap-5 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] shadow-2xl backdrop-blur-sm overflow-hidden hover:bg-white/[0.04] hover:border-[var(--jerry-lime)]/30 hover:-translate-y-1 transition-all duration-500">
  <div className="absolute -right-4 -bottom-6 text-[7rem] sm:text-[8rem] font-black text-white/[0.03] leading-none select-none z-0 tracking-tighter pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500">
  {step.n}
  </div>
  <div className="relative z-10 shrink-0">
- <div className="flex h-12 w-12 items-center justify-center bg-gradient-to-br from-[var(--jerry-lime)]/20 to-transparent border border-[var(--jerry-lime)]/30 shadow-inner group-hover:border-[var(--jerry-lime)]/60 transition-colors duration-500">
+ <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--jerry-lime)]/20 to-transparent border border-[var(--jerry-lime)]/30 shadow-inner group-hover:border-[var(--jerry-lime)]/60 transition-colors duration-500">
  <step.icon className="h-5 w-5 text-[var(--jerry-lime)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
  </div>
  </div>
@@ -565,15 +626,15 @@ export default function HomePageClient() {
  <div className={shell}>
  <div className="text-center max-w-2xl mx-auto mb-12">
  <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">Our Work</p>
- <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Recent jobs around Katy, Cypress &amp; Cinco Ranch</h2>
+ <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Recent jobs around Katy, Texas, Cypress &amp; Cinco Ranch</h2>
  <p className="mt-3 text-base text-slate-500">Every job gets the same care — from a roof patch to a full replacement.</p>
  </div>
 
- <div className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 bg-white py-20 px-6 text-center">
+ <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-white py-20 px-6 text-center">
  <Hammer className="h-12 w-12 text-[var(--jerry-navy)] opacity-20 mb-4" />
  <span className="inline-block bg-[var(--jerry-lime)]/15 px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[var(--jerry-navy)] mb-3">Coming Soon</span>
  <p className="text-lg font-bold text-[var(--jerry-navy)]">Project photos on the way!</p>
- <p className="mt-2 text-sm text-slate-500 max-w-md">We&apos;re putting together before &amp; after photos of our roof replacements, rejuvenations, gutter installs, and exterior projects across the Katy area. Check back soon.</p>
+ <p className="mt-2 text-sm text-slate-500 max-w-md">We&apos;re putting together before &amp; after photos of our roof replacements, Roof Rejoov treatments, gutter installs, and exterior projects across the Katy, Texas area. Check back soon.</p>
  </div>
 
  <div className="mt-10 text-center">
@@ -608,11 +669,11 @@ export default function HomePageClient() {
  </div>
 
  <h2 className="text-4xl font-extrabold sm:text-5xl lg:text-[3.25rem] leading-[1.05] tracking-tight mb-6">
- What Katy homeowners are saying.
+ What Katy, Texas homeowners are saying.
  </h2>
 
  <p className="text-[0.95rem] leading-relaxed text-white/50 max-w-sm font-medium">
- Five-star rated by real homeowners across Katy, Cypress, Cinco Ranch &amp; beyond. No paid reviews, no fake accounts — just honest feedback.
+ Five-star rated by real homeowners across Katy, Texas, Cypress, Cinco Ranch &amp; beyond. No paid reviews, no fake accounts — just honest feedback.
  </p>
 
  <div className="mt-8 flex items-center gap-5 opacity-80 hover:opacity-100 transition-opacity duration-300">
@@ -626,18 +687,18 @@ export default function HomePageClient() {
  {/* Right — review cards */}
  <div className="grid gap-4 sm:grid-cols-2">
  {siteConfig.testimonials.map((t) => (
- <div key={t.name} className="group relative p-5 sm:p-6 bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.05] hover:border-[var(--jerry-lime)]/20 transition-all duration-300">
+ <div key={t.name} className="group relative p-5 sm:p-6 rounded-xl bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.05] hover:border-[var(--jerry-lime)]/20 transition-all duration-300">
  <Stars count={5} size="h-3.5 w-3.5 text-[#FBBC05]" />
  <p className="mt-3 text-[0.85rem] leading-relaxed text-white/70 group-hover:text-white/90 transition-colors duration-300">
  &ldquo;{t.quote}&rdquo;
  </p>
  <div className="mt-4 flex items-center gap-3">
- <div className="h-8 w-8 bg-[var(--jerry-lime)]/20 flex items-center justify-center text-xs font-bold text-[var(--jerry-lime)]">
+ <div className="h-8 w-8 rounded-lg bg-[var(--jerry-lime)]/20 flex items-center justify-center text-xs font-bold text-[var(--jerry-lime)]">
  {t.name.charAt(0)}
  </div>
  <div>
  <div className="text-sm font-semibold text-white/90">{t.name}</div>
- <div className="text-[0.6rem] text-white/30">{t.reviews} review{t.reviews !== 1 ? 's' : ''} on Google</div>
+ <div className="text-[0.6rem] text-white/30">{t.location}</div>
  </div>
  </div>
  </div>
@@ -650,12 +711,12 @@ export default function HomePageClient() {
  {/* ═══ SERVICE AREAS ═══ */}
  <section className="bg-white py-10 sm:py-14">
  <div className={shell}>
- <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-center">
+ <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 items-center">
  <div>
  <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">Service Areas</p>
- <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Katy Area Roofing Specialists</h2>
+ <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Katy, Texas Area Roofing Specialists</h2>
  <p className="mt-4 text-[0.92rem] leading-relaxed text-slate-600">
- Located in downtown Katy, Texas, Jerry&apos;s Roofing serves homeowners across the greater Katy area. Being a local business has its advantages — with low overhead costs, we can charge less than what a typical corporate roofing company charges.
+ Headquartered at <strong className="text-[var(--jerry-navy)]">5713 2nd St B, Katy, TX 77493</strong>, Jerrys Roofing serves homeowners across the greater Katy area. Being a local business has its advantages — with low overhead costs, we can charge less than what a typical corporate roofing company charges.
  </p>
 
  <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -667,19 +728,36 @@ export default function HomePageClient() {
  ))}
  </div>
 
- <div className="mt-6 p-4 bg-[var(--jerry-cream)] border border-slate-100">
+ <div className="mt-6 p-4 rounded-xl bg-[var(--jerry-cream)] border border-slate-100">
  <p className="text-xs font-bold uppercase tracking-wider text-[var(--jerry-navy-light)] mb-1">Communities We Serve</p>
  <p className="text-[0.8rem] text-slate-500 leading-relaxed">{siteConfig.neighborhoods}</p>
  </div>
  </div>
 
- {/* Map placeholder */}
- <div className="relative aspect-[4/3] overflow-hidden bg-slate-100 border border-slate-200">
- <div className="absolute inset-0 flex items-center justify-center">
- <div className="text-center">
- <MapPin className="h-10 w-10 text-[var(--jerry-navy)] mx-auto mb-2 opacity-30" />
- <p className="text-sm font-semibold text-slate-400">Katy, TX Service Area Map</p>
- <p className="text-xs text-slate-300 mt-1">Google Maps integration coming soon</p>
+ {/* Live service-area map pinned to Jerry's HQ — 5713 2nd St B, Katy, TX 77493 */}
+ <div className="relative">
+ <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+ <iframe
+ title="Jerrys Roofing service area map — 5713 2nd St B, Katy, TX 77493"
+ src="https://maps.google.com/maps?q=5713%202nd%20St%20B%2C%20Katy%2C%20TX%2077493&t=m&z=10&output=embed&iwloc=near"
+ loading="lazy"
+ referrerPolicy="no-referrer-when-downgrade"
+ allowFullScreen
+ className="absolute inset-0 h-full w-full"
+ />
+ </div>
+ <div className="mt-3 flex items-start gap-2 text-[0.78rem] text-slate-600">
+ <MapPin className="h-4 w-4 shrink-0 text-[var(--jerry-lime)] mt-0.5" />
+ <div>
+ <div className="font-semibold text-[var(--jerry-navy)]">Jerrys Roofing HQ</div>
+ <a
+ href="https://www.google.com/maps/dir/?api=1&destination=5713+2nd+St+B%2C+Katy%2C+TX+77493"
+ target="_blank"
+ rel="noopener noreferrer"
+ className="hover:text-[var(--jerry-navy)] hover:underline"
+ >
+ 5713 2nd St B, Katy, TX 77493 — get directions
+ </a>
  </div>
  </div>
  </div>
@@ -721,7 +799,7 @@ export default function HomePageClient() {
  <div className={`${shell} relative z-10 text-center max-w-3xl mx-auto`}>
  <h2 className="text-3xl font-extrabold text-white sm:text-5xl tracking-tight">Ready to protect your home?</h2>
  <p className="mt-4 text-lg text-white/60 max-w-xl mx-auto">
- Get a free roof inspection and honest estimate from Jerry&apos;s Roofing. No pressure, no hidden fees — just straight talk and quality work.
+ Get a free roof inspection and honest estimate from Jerrys Roofing. No pressure, no hidden fees — just straight talk and quality work.
  </p>
  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
  <button onClick={scrollToForm} className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-8 py-4 text-[0.8rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer cta-pulse">

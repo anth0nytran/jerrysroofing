@@ -51,7 +51,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  <div className="mt-5 flex flex-wrap items-center gap-4 text-xs font-semibold text-white/40">
  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--jerry-lime)]" /> Free inspections &amp; estimates</span>
  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--jerry-lime)]" /> Available anytime</span>
- <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--jerry-lime)]" /> since 2024 experience</span>
+ <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[var(--jerry-lime)]" /> 7 years experience</span>
  </div>
  </motion.div>
  </div>
@@ -71,7 +71,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  variants={fadeUp}
  className="lg:col-span-3"
  >
- <div className="bg-white border border-slate-200 shadow-xl shadow-slate-900/5 p-6 sm:p-8">
+ <div className="rounded-2xl bg-white border border-slate-200 shadow-xl shadow-slate-900/5 p-6 sm:p-8">
  <div className="mb-6">
  <h2 className="text-xl font-extrabold text-[var(--jerry-navy)] sm:text-2xl">Request a Quote</h2>
  <p className="text-sm text-slate-400 mt-1">No cost, no pressure — just an honest quote.</p>
@@ -90,9 +90,9 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  >
 
  {/* Phone */}
- <div className=" bg-[var(--jerry-navy)] p-6 sm:p-7 text-white">
+ <div className="rounded-xl bg-[var(--jerry-navy)] p-6 sm:p-7 text-white">
  <div className="flex items-center gap-3 mb-4">
- <div className="flex h-11 w-11 items-center justify-center bg-[var(--jerry-lime)]/15 border border-[var(--jerry-lime)]/25">
+ <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--jerry-lime)]/15 border border-[var(--jerry-lime)]/25">
  <Phone className="h-5 w-5 text-[var(--jerry-lime)]" />
  </div>
  <div>
@@ -109,7 +109,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  </div>
 
  {/* Trust details */}
- <div className=" bg-white border border-slate-200 p-5 shadow-sm space-y-3">
+ <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm space-y-3">
  <div className="flex items-center gap-3">
  <Clock className="h-4 w-4 text-[var(--jerry-lime)] shrink-0" />
  <span className="text-sm font-semibold text-[var(--jerry-navy)]">Available Anytime</span>
@@ -122,7 +122,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  </div>
 
  {/* Service areas */}
- <div className=" bg-white border border-slate-200 p-5 shadow-sm">
+ <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">We Serve</div>
  <p className="text-sm font-semibold text-[var(--jerry-navy)] leading-relaxed">
  {siteConfig.serviceAreas.join(' \u00B7 ')} <span className="text-slate-400 font-normal">&amp; more</span>
@@ -130,7 +130,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  </div>
 
  {/* Reviews */}
- <div className=" bg-white border border-slate-200 p-5 shadow-sm">
+ <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
  <div className="flex items-center gap-3 mb-3">
  <Stars count={5} size="h-4 w-4" />
  <span className="text-sm font-bold text-[var(--jerry-navy)]">{siteConfig.rating} on Google</span>
@@ -142,7 +142,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  </div>
 
  {/* Email */}
- <div className=" bg-white border border-slate-200 p-5 shadow-sm">
+ <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Email</div>
  <a href={`mailto:${siteConfig.email}`} className="text-sm font-semibold text-[var(--jerry-navy)] hover:underline cursor-pointer">
  {siteConfig.email}
