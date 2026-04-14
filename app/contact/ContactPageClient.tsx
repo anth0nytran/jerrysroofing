@@ -27,7 +27,7 @@ export default function ContactPageClient({ faqs }: { faqs: { q: string; a: stri
  {/* Sub-hero */}
  <section className="relative overflow-hidden bg-[var(--jerry-navy-deep)]">
  <div className="absolute inset-0">
- <NextImage src="/roofing/jerry_service_replacement.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+ <NextImage src="/roofing/real/05-truck-yardsign.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
  </div>
  <div className={`${shell} relative z-10 py-10 sm:py-14`}>
  <nav aria-label="Breadcrumb" className="mb-5">

@@ -121,7 +121,7 @@ export default function RoofRejoovClient() {
       {/* ═══ HERO ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--jerry-navy-deep)]">
         <div className="absolute inset-0">
-          <NextImage src="/roofing/jerry_service_rejuvenation.jpg" alt="Roof Rejoov shingle restoration in Katy, Texas" fill sizes="100vw" className="object-cover opacity-15" />
+          <NextImage src="/roofing/real/13-rejoov-before.jpg" alt="Roof Rejoov shingle restoration in Katy, Texas" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/70 to-transparent" />
 
@@ -190,7 +190,7 @@ export default function RoofRejoovClient() {
       {/* ═══ THE SOLUTION ═══ */}
       <section className="relative isolate bg-[var(--jerry-ink)] py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/roofing/jerry_service_rejuvenation.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
+          <NextImage src="/roofing/real/13-rejoov-before.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-ink)]/95 via-[var(--jerry-ink)]/80 to-[var(--jerry-ink)]/40" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--jerry-ink)] to-transparent" />
         </div>

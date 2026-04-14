@@ -195,7 +195,7 @@ export default async function BlogPostPage({
  {/* Sub-hero */}
  <section className="relative overflow-hidden bg-[var(--jerry-navy-deep)]">
  <div className="absolute inset-0">
- <Image src="/roofing/jerry_service_replacement.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
+ <Image src="/roofing/real/02-hero-brick-twostory-pool.jpg" alt="" fill sizes="100vw" className="object-cover opacity-15" />
  </div>
  <div className={`${shell} relative z-10 py-10 sm:py-14`}>
  <nav aria-label="Breadcrumb" className="mb-5">

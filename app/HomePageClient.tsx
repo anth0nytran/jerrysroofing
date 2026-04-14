@@ -21,6 +21,7 @@ import {
  ThumbsUp,
 } from 'lucide-react';
 import { siteConfig, serviceData } from './config';
+import { homeStripPhotos } from './galleryData';
 import { Stars } from './components/Stars';
 import { BrandLogo } from './components/BrandLogo';
 
@@ -515,6 +516,67 @@ export default function HomePageClient() {
  </div>
  </section>
 
+ {/* ═══ RECENT WORK STRIP ═══ */}
+ <section id="recent-work" className="scroll-mt-20 bg-white py-12 sm:py-20 border-t border-slate-100">
+ <div className={shell}>
+ <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-12">
+ <div>
+ <p className="eyebrow text-[var(--jerry-navy-light)]">Recent Work · Katy, TX</p>
+ <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl tracking-[-0.03em] leading-[1.1]">
+ Real projects.<br className="hidden sm:block" /> Real homes. Real Jerry.
+ </h2>
+ <p className="mt-3 text-base text-slate-500 max-w-xl leading-relaxed">
+ Every photo on this strip is from a Jerrys Roofing job — shot on the roof, not in a stock library.
+ </p>
+ </div>
+ <Link
+ href="/gallery"
+ className="inline-flex items-center gap-2 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy)] hover:text-[var(--jerry-navy-light)] transition-colors cursor-pointer self-start sm:self-auto shrink-0"
+ >
+ View Full Gallery <ArrowRight className="h-3.5 w-3.5" />
+ </Link>
+ </div>
+
+ {/* Editorial grid — 3 across on mobile becomes 6 across on desktop.
+     First tile is wider on desktop (spans 2 cols) as a hero anchor. */}
+ <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+ {homeStripPhotos.map((photo, i) => (
+ <Link
+ key={photo.src}
+ href="/gallery"
+ aria-label={`View ${photo.caption} in the full gallery`}
+ className={`group relative block overflow-hidden bg-slate-100 ${
+ i === 0 ? 'col-span-2 row-span-2 aspect-square sm:aspect-[4/3] lg:aspect-square' : 'aspect-square'
+ }`}
+ >
+ <NextImage
+ src={photo.src}
+ alt={photo.alt}
+ fill
+ sizes={i === 0 ? '(min-width:1024px) 33vw, 66vw' : '(min-width:1024px) 16vw, 33vw'}
+ className="object-cover transition-transform duration-700 group-hover:scale-105"
+ />
+ <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+ <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
+ <p className={`font-bold text-white leading-tight ${i === 0 ? 'text-sm sm:text-base' : 'text-[0.65rem] sm:text-[0.7rem]'}`}>
+ {photo.caption}
+ </p>
+ </div>
+ </Link>
+ ))}
+ </div>
+
+ <div className="mt-8 sm:mt-10 text-center">
+ <Link
+ href="/gallery"
+ className="inline-flex items-center gap-2 bg-[var(--jerry-navy-deep)] px-7 py-3.5 text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-lime)] hover:bg-[var(--jerry-navy)] transition-colors cursor-pointer"
+ >
+ See All 49 Project Photos <ArrowRight className="h-3.5 w-3.5" />
+ </Link>
+ </div>
+ </div>
+ </section>
+
  {/* ═══ ABOUT / WHY US ═══ */}
  <section id="about" className="scroll-mt-20 bg-[var(--jerry-cream)] py-12 sm:py-16 diagonal-stripes">
  <div className={shell}>
@@ -573,7 +635,7 @@ export default function HomePageClient() {
  {/* ═══ HOW IT WORKS ═══ */}
  <section className="relative isolate bg-[var(--jerry-ink)] py-10 sm:py-16 overflow-hidden">
  <div className="absolute inset-0 z-0 pointer-events-none">
- <NextImage src="/roofing/jerry_service_replacement.jpg" alt="Roof replacement process by Jerrys Roofing" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
+ <NextImage src="/roofing/real/09-three-crew-tearoff.jpg" alt="Jerrys Roofing crew actively installing a new roof on a brick home in Katy, Texas" fill sizes="100vw" className="object-cover opacity-20 sm:opacity-25" />
  <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-ink)]/95 via-[var(--jerry-ink)]/80 to-[var(--jerry-ink)]/40" />
  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--jerry-ink)] to-transparent" />
  </div>

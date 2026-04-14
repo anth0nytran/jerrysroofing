@@ -64,7 +64,7 @@ export default function TexasMadeClient() {
       {/* ═══ HERO ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--jerry-navy-deep)]">
         <div className="absolute inset-0">
-          <NextImage src="/roofing/jerry_service_replacement.jpg" alt="Premium roofing materials for Katy, Texas homes" fill sizes="100vw" className="object-cover opacity-15" />
+          <NextImage src="/roofing/real/08-crew-dumpster-setup.jpg" alt="Premium roofing materials for Katy, Texas homes" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/70 to-transparent" />
 
@@ -187,7 +187,7 @@ export default function TexasMadeClient() {
       {/* ═══ OUR PROMISE ═══ */}
       <section className="relative isolate bg-[var(--jerry-ink)] py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/roofing/jerry_service_replacement.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
+          <NextImage src="/roofing/real/08-crew-dumpster-setup.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-ink)]/95 via-[var(--jerry-ink)]/85 to-[var(--jerry-ink)]/50" />
         </div>
 

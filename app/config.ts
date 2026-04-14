@@ -142,7 +142,7 @@ export const serviceData = [
     slug: 'roof-replacement',
     featured: true,
     title: 'Roof Replacement',
-    image: '/roofing/jerry_service_replacement.jpg',
+    image: '/roofing/real/01-replacement-pool-dusk.jpg',
     summary:
       'Complete tear-off and replacement with premium shingles from IKO, CertainTeed, GAF, or F-Wave synthetic. Built to last through Texas weather.',
     details: [
@@ -185,7 +185,7 @@ export const serviceData = [
     slug: 'roof-rejoov',
     featured: true,
     title: 'Roof Rejoov',
-    image: '/roofing/jerry_service_rejuvenation.jpg',
+    image: '/roofing/real/13-rejoov-before.jpg',
     summary:
       'Extend your roof\'s active lifespan by 5–10 years without a full replacement. A highly cost-effective, scientific solution for aging shingles.',
     details: [
@@ -227,7 +227,7 @@ export const serviceData = [
     slug: 'gutters',
     featured: true,
     title: 'Gutter Installation & Repair',
-    image: '/roofing/jerry_service_gutters.jpg',
+    image: '/roofing/real/14-seamless-gutter-guard.jpg',
     summary:
       'Seamless aluminum gutters custom-fitted dynamically to your roofline. Protect your foundation, landscaping, and siding from devastating water damage.',
     details: [
@@ -390,7 +390,7 @@ export const serviceData = [
   {
     slug: 'roof-inspection',
     title: 'Roof Inspection',
-    image: '/roofing/jerry_service_replacement.jpg',
+    image: '/roofing/real/16-inspection-2-leaks-marked.jpg',
     summary: 'Free, no-pressure roof inspection in Katy with a written damage report and photos — whether you hire us or not.',
     details: [
       'Jerry walks the roof personally — no salesperson, no drone-only flyover charging you $300',
@@ -447,7 +447,7 @@ export const serviceData = [
   {
     slug: 'roof-repair',
     title: 'Roof Repair',
-    image: '/roofing/jerry_service_replacement.jpg',
+    image: '/roofing/real/12-crew-ridgecap.jpg',
     summary: 'Targeted roof repairs in Katy — leaks, missing shingles, flashing, vent boots, and valleys. If a repair is the right call, we do it. If it is not, we tell you.',
     details: [
       'Leak tracing and patching — we find the actual entry point, not just the stain on your ceiling',
@@ -498,7 +498,7 @@ export const serviceData = [
   {
     slug: 'storm-damage',
     title: 'Storm Damage Restoration',
-    image: '/roofing/jerry_service_replacement.jpg',
+    image: '/roofing/real/17-inspection-valley-wear.jpg',
     summary: 'Hail and wind damage restoration in Katy with direct insurance adjuster coordination, emergency tarping, and full roof restoration when the claim is approved.',
     details: [
       'Free storm damage inspection with photo documentation adjusters actually accept',
