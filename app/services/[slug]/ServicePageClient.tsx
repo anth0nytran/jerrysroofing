@@ -139,6 +139,31 @@ export default function ServicePageClient({
  <p>{service.longDescription}</p>
  </div>
 
+ {/* Jerry's take — owner expert quote (GEO/E-E-A-T signal) */}
+ <figure className="mt-8 sm:mt-10 bg-[var(--jerry-cream)] border-l-4 border-[var(--jerry-lime)] p-5 sm:p-6">
+ <div className="flex items-start gap-4">
+ <div className="relative shrink-0 h-14 w-14 rounded-full overflow-hidden border-2 border-white shadow-sm">
+ <NextImage
+ src="/pictures/selfie.jpg"
+ alt="Jerry W. Pilley — Owner & Lead Roofer, Jerry's Roofing Katy TX"
+ width={56}
+ height={56}
+ className="object-cover h-full w-full"
+ sizes="56px"
+ />
+ </div>
+ <div className="flex-1 min-w-0">
+ <p className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[var(--jerry-navy-light)] mb-1.5">Jerry&apos;s take</p>
+ <blockquote className="text-[0.9rem] sm:text-[0.95rem] italic text-slate-700 leading-relaxed">
+ &quot;On {service.title.toLowerCase()} I give every Katy-area homeowner the same thing I&apos;d want on my own house: an honest on-roof inspection, a flat written price before we start, and the truth about whether the job even needs to happen. That&apos;s how we&apos;ve kept 5 stars across {siteConfig.reviewCount}+ Google reviews.&quot;
+ </blockquote>
+ <figcaption className="mt-2.5 text-xs font-bold text-[var(--jerry-navy-deep)]">
+ — Jerry W. Pilley <span className="font-normal text-slate-500">· Owner & Lead Roofer, {siteConfig.yearsExperience} years experience</span>
+ </figcaption>
+ </div>
+ </div>
+ </figure>
+
  <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-100">
  <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--jerry-navy)] mb-4 sm:mb-5">What&apos;s Included</h3>
  <ul className="space-y-3 sm:space-y-4">

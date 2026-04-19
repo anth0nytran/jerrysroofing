@@ -1,0 +1,22 @@
+{
+  "name": "Jerry's Roofing",
+  "short_name": "Jerry's Roofing",
+  "description": "Locally owned roofing contractor in Katy, Texas. Roof replacement, Roof Rejoov, gutters, siding, painting. Free inspections.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0A2E5B",
+  "icons": [
+    {
+      "src": "/pictures/logo-transparent.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pictures/logo-transparent.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -102,12 +102,14 @@ export function photosByCategory(cat: GalleryCategory): GalleryPhoto[] {
   return galleryPhotos.filter((ph) => ph.category === cat || ph.tags.includes(cat));
 }
 
-/** Used for the home page "Recent Work" strip — 6 curated photos across categories. */
+/** Used for the home page "Recent Work" strip — 8 curated photos across categories, uniform aspect. */
 export const homeStripPhotos: GalleryPhoto[] = [
-  galleryPhotos[0],  // 01 multi-gable pool dusk
-  galleryPhotos[3],  // 04 crew underlayment
-  galleryPhotos[2],  // 03 Jerry thumbs up
-  galleryPhotos[5],  // 06 shingle+gutter detail
-  galleryPhotos[4],  // 05 truck + yard sign
   galleryPhotos[1],  // 02 brick two-story with pool
+  galleryPhotos[3],  // 04 crew underlayment
+  galleryPhotos[0],  // 01 multi-gable pool dusk
+  galleryPhotos[5],  // 06 shingle+gutter detail
+  galleryPhotos[2],  // 03 Jerry thumbs up
+  galleryPhotos[11], // 12 crew ridgecap
+  galleryPhotos[4],  // 05 truck + yard sign
+  galleryPhotos[13], // 14 seamless gutter guard
 ];

@@ -43,18 +43,6 @@ export const siteConfig = {
   manufacturers: ['IKO', 'CertainTeed', 'GAF', 'F-Wave'],
   manufacturerLogos: [
     {
-      name: 'CertainTeed',
-      src: '/pictures/certainteed-transparent.png',
-      alt: 'CertainTeed shingle manufacturer logo',
-      frameClassName: 'h-14 w-full sm:h-16',
-    },
-    {
-      name: 'GAF',
-      src: '/pictures/gaf.png',
-      alt: 'GAF shingle manufacturer logo',
-      frameClassName: 'h-20 w-20 sm:h-24 sm:w-24',
-    },
-    {
       name: 'IKO',
       src: '/pictures/IKO-transparent.png',
       alt: 'IKO shingle manufacturer logo',
@@ -65,6 +53,18 @@ export const siteConfig = {
       src: '/pictures/fwave-no-bg.svg',
       alt: 'F-Wave synthetic shingle manufacturer logo',
       frameClassName: 'h-24 w-full max-w-[280px] sm:h-32 sm:max-w-[340px]',
+    },
+    {
+      name: 'CertainTeed',
+      src: '/pictures/certainteed-transparent.png',
+      alt: 'CertainTeed shingle manufacturer logo',
+      frameClassName: 'h-14 w-full sm:h-16',
+    },
+    {
+      name: 'GAF',
+      src: '/pictures/gaf.png',
+      alt: 'GAF shingle manufacturer logo',
+      frameClassName: 'h-20 w-20 sm:h-24 sm:w-24',
     },
   ],
   testimonials: [
@@ -102,6 +102,16 @@ export const siteConfig = {
       quote:
         "Jerry did a brilliant job repairing my roof. Arrived on time, worked hard, and completed the job very well. I highly recommend them.",
       name: 'Jasbir D.',
+      location: 'Verified Google Review',
+    },
+    {
+      quote: 'Very professional and responsive. Highly recommend.',
+      name: 'Huina C.',
+      location: 'Verified Google Review',
+    },
+    {
+      quote: 'Best roofing company in the greater Houston area.',
+      name: 'Baylee L.',
       location: 'Verified Google Review',
     },
   ],
@@ -268,7 +278,7 @@ export const serviceData = [
     slug: 'siding',
     featured: true,
     title: 'Siding Installation & Repair',
-    image: '/roofing/jerry_service_siding.jpg',
+    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=SIDING+PHOTO+NEEDED',
     summary:
       "Upgrade your home's exterior envelope with incredibly durable, highly attractive siding. Premium Vinyl, Fiber Cement, and engineered wood installed right.",
     details: [
@@ -309,7 +319,7 @@ export const serviceData = [
     slug: 'painting',
     featured: true,
     title: 'Exterior Painting',
-    image: '/roofing/jerry_service_painting.jpg',
+    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=PAINTING+PHOTO+NEEDED',
     summary:
       'Professional exterior painting that aggressively protects and beautifully refreshes your home. Deep prep, premium paints, and perfectly clean lines.',
     details: [
@@ -350,7 +360,7 @@ export const serviceData = [
     slug: 'driveway-repaints',
     featured: true,
     title: 'Driveway Repaints & Coatings',
-    image: '/roofing/jerry_service_driveway.jpg',
+    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=DRIVEWAY+PHOTO+NEEDED',
     summary:
       "Restore and heavily protect your driveway with professional structural repainting and thick sealing. Instantly boost curb appeal and easily extend your driveway's life.",
     details: [

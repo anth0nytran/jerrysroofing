@@ -51,7 +51,7 @@ export default function GalleryPage() {
  }}
  />
 
- {/* Sub-hero */}
+ {/* ═══ SUB-HERO ═══ */}
  <section className="relative overflow-hidden bg-[var(--jerry-navy-deep)]">
  <div className="absolute inset-0">
  <Image
@@ -60,54 +60,61 @@ export default function GalleryPage() {
  fill
  sizes="100vw"
  priority
- className="object-cover opacity-20"
+ className="object-cover opacity-[0.18]"
  />
  </div>
- <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/80 to-[var(--jerry-navy-deep)]/40" />
- <div className={`${shell} relative z-10 py-10 sm:py-14`}>
- <nav aria-label="Breadcrumb" className="mb-5">
- <ol className="flex items-center gap-2 text-sm text-white/40">
+ <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/90 to-[var(--jerry-navy-deep)]/50" />
+ <div className={`${shell} relative z-10 py-14 sm:py-20`}>
+ <nav aria-label="Breadcrumb" className="mb-6">
+ <ol className="flex items-center gap-2 text-xs sm:text-sm text-white/40">
  <li><Link href="/" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Home</Link></li>
- <li aria-hidden="true">/</li>
+ <li aria-hidden="true" className="text-white/25">/</li>
  <li className="font-semibold text-white/70">Gallery</li>
  </ol>
  </nav>
- <p className="text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--jerry-lime)] mb-3">
+ <span className="inline-flex items-center gap-2 text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[var(--jerry-lime)]">
+ <span className="h-px w-6 bg-[var(--jerry-lime)]/50" />
  Project Gallery · {galleryPhotos.length} Photos
- </p>
- <h1 className="text-3xl font-extrabold leading-[1.1] text-white sm:text-4xl max-w-xl">
+ </span>
+ <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-[-0.035em] text-white max-w-2xl">
  Our work speaks for itself.
  </h1>
- <p className="mt-3 text-base text-white/60 leading-relaxed max-w-lg">
+ <p className="mt-5 max-w-xl text-base sm:text-lg text-white/60 leading-relaxed">
  Real Jerrys Roofing projects — roof replacements, Roof Rejoov, gutters and more — across Katy, Cypress, Cinco Ranch, Richmond and Fulshear.
  </p>
  </div>
- <div className="h-px bg-gradient-to-r from-transparent via-[var(--jerry-lime)]/20 to-transparent" />
+ <div className="h-px bg-gradient-to-r from-transparent via-[var(--jerry-lime)]/30 to-transparent" />
  </section>
 
  {/* Gallery (filters + grid + lightbox) */}
  <GalleryClient />
 
- {/* CTA */}
- <section className="bg-[var(--jerry-navy)] py-12 sm:py-14">
- <div className={shell}>
- <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
- <div>
- <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Have a project? Let&apos;s talk.</h2>
- <p className="mt-2 text-base text-white/50">
- Trusted roofing &amp; exterior services for homeowners across Katy, Cypress &amp; beyond.
+ {/* ═══ CTA ═══ */}
+ <section className="relative isolate bg-[var(--jerry-navy)] py-16 sm:py-20 overflow-hidden">
+ <div className="absolute inset-0 pointer-events-none">
+ <div className="absolute -top-24 -right-24 w-80 h-80 bg-[var(--jerry-lime)]/10 blur-[100px] rounded-full" />
+ </div>
+ <div className={`${shell} relative z-10`}>
+ <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+ <div className="max-w-lg">
+ <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[var(--jerry-lime)] mb-3">Next Project?</p>
+ <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-0.02em] leading-[1.05]">
+ Have a project? Let&apos;s talk.
+ </h2>
+ <p className="mt-4 text-base text-white/55 leading-relaxed">
+ Trusted roofing &amp; exterior services for homeowners across Katy, Cypress &amp; beyond. Free inspection, honest quote.
  </p>
  </div>
- <div className="flex flex-col sm:flex-row gap-3">
+ <div className="flex flex-col sm:flex-row gap-3 shrink-0">
  <Link
  href="/contact"
- className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-all cursor-pointer"
+ className="inline-flex items-center justify-center gap-2 bg-[var(--jerry-lime)] px-7 py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer rounded-md"
  >
  Request a Quote <ArrowRight className="h-4 w-4" />
  </Link>
  <a
  href={`tel:${siteConfig.cleanPhone}`}
- className="inline-flex items-center gap-2 border border-white/15 px-7 py-3.5 text-sm font-bold text-white hover:bg-white/5 transition-all cursor-pointer"
+ className="inline-flex items-center justify-center gap-2 border border-white/20 px-7 py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.15em] text-white hover:bg-white/5 transition-colors cursor-pointer rounded-md"
  >
  <Phone className="h-4 w-4" /> {siteConfig.phone}
  </a>

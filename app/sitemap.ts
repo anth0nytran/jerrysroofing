@@ -25,6 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/roof-replacement-cost-katy-tx`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE_URL}/insurance-claims`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE_URL}/glossary`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/reviews`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   const servicePages: MetadataRoute.Sitemap = serviceData.map((s) => ({

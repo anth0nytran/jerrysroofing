@@ -249,11 +249,11 @@ export default function RoofRejoovClient() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-3 sm:gap-5 max-w-5xl mx-auto">
-            {/* Before */}
+            {/* Before — real photo */}
             <div className="relative overflow-hidden bg-slate-900">
               <div className="relative aspect-[4/3]">
                 <NextImage
-                  src="/roofing/rejoov-before.jpg"
+                  src="/roofing/real/13-rejoov-before.jpg"
                   alt="Aged asphalt shingle roof before Roof Rejoov treatment — brittle, granule loss, sun-baked in Katy, Texas"
                   fill
                   sizes="(min-width: 1024px) 45vw, 100vw"
@@ -272,16 +272,15 @@ export default function RoofRejoovClient() {
               </div>
             </div>
 
-            {/* After */}
-            <div className="relative overflow-hidden bg-slate-900">
-              <div className="relative aspect-[4/3]">
-                <NextImage
-                  src="/roofing/rejoov-after.jpg"
-                  alt="Asphalt shingle roof after Roof Rejoov bio-based treatment — restored flexibility, richer color, waterproofing restored"
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="object-cover"
-                />
+            {/* After — placeholder, awaiting real "after Rejoov" photo */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-[var(--jerry-navy-deep)] via-[var(--jerry-navy)] to-[var(--jerry-ink)]">
+              <div className="relative aspect-[4/3] flex flex-col items-center justify-center text-center px-6">
+                <div className="h-14 w-14 rounded-full border-2 border-dashed border-[var(--jerry-lime)]/60 flex items-center justify-center mb-4">
+                  <MapPin className="h-6 w-6 text-[var(--jerry-lime)]/70" />
+                </div>
+                <p className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-[var(--jerry-lime)]/80 mb-2">Placeholder</p>
+                <p className="text-sm font-semibold text-white max-w-xs">Real &ldquo;After Rejoov&rdquo; photo needed</p>
+                <p className="mt-2 text-[0.7rem] text-white/40">Pending project completion</p>
               </div>
               <div className="absolute top-4 left-4 bg-[var(--jerry-lime)] px-3 py-1.5">
                 <span className="text-[0.6rem] sm:text-[0.65rem] font-extrabold uppercase tracking-[0.25em] text-[var(--jerry-navy-deep)]">
@@ -376,7 +375,7 @@ export default function RoofRejoovClient() {
       </section>
 
       {/* ═══ WHO IS THIS FOR ═══ */}
-      <section className="bg-[var(--jerry-cream)] py-14 sm:py-20 diagonal-stripes">
+      <section className="bg-[var(--jerry-cream)] py-14 sm:py-20">
         <div className={shell}>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>

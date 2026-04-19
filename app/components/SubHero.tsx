@@ -46,7 +46,7 @@ export function SubHero({
   title,
   accent,
   subtitle,
-  bgImage = '/roofing/subhero-bg.jpg',
+  bgImage = '/roofing/real/02-hero-brick-twostory-pool.jpg',
   children,
 }: SubHeroProps) {
   // Split title on the accent substring to render it in lime, keeping the

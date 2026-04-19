@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
  ArrowRight,
  CheckCircle2,
@@ -24,6 +24,7 @@ import { siteConfig, serviceData } from './config';
 import { homeStripPhotos } from './galleryData';
 import { Stars } from './components/Stars';
 import { BrandLogo } from './components/BrandLogo';
+import { RoofMotif } from './components/RoofMotif';
 
 /* ─── INLINE HERO FORM ─── */
 function HeroEstimateForm() {
@@ -131,6 +132,114 @@ function HeroEstimateForm() {
  );
 }
 
+/* ─── ROOF REJOOV BEFORE/AFTER CAROUSEL ─── */
+// Single-photo auto-scroll — one image at a time, alternating before and after.
+// Only real photos are used; the "After Rejoov" slot has no real photo yet,
+// so it renders a visible placeholder card until Jerry provides one.
+type RejoovSlide = {
+ kind: 'image';
+ src: string;
+ alt: string;
+ label: 'Before' | 'After Rejoov';
+ note: string;
+ location: string;
+} | {
+ kind: 'placeholder';
+ label: 'Before' | 'After Rejoov';
+ note: string;
+ hint: string;
+ location: string;
+};
+
+const rejoovSlides: RejoovSlide[] = [
+ {
+  kind: 'image',
+  src: '/roofing/real/13-rejoov-before.jpg',
+  alt: 'Real aged asphalt roof in Katy, TX before Roof Rejoov bio-oil treatment',
+  label: 'Before',
+  note: 'Dried, brittle shingles losing granules after 15+ years of Texas sun.',
+  location: 'Katy, TX',
+ },
+ {
+  kind: 'placeholder',
+  label: 'After Rejoov',
+  note: 'After bio-oil treatment — flexibility and color restored.',
+  hint: 'Real "after Rejoov" photo needed',
+  location: 'Katy, TX',
+ },
+];
+
+function RejoovCarousel() {
+ const [idx, setIdx] = useState(0);
+ useEffect(() => {
+  const id = setInterval(() => setIdx((i) => (i + 1) % rejoovSlides.length), 4000);
+  return () => clearInterval(id);
+ }, []);
+ const slide = rejoovSlides[idx];
+ const isAfter = slide.label === 'After Rejoov';
+ return (
+  <div>
+   <div className="relative rounded-xl overflow-hidden bg-slate-900">
+    <AnimatePresence mode="wait">
+     <motion.div
+      key={idx}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6 }}
+      className="relative"
+     >
+      <div className="relative aspect-[4/3] sm:aspect-[5/4]">
+       {slide.kind === 'image' ? (
+        <NextImage
+         src={slide.src}
+         alt={slide.alt}
+         fill
+         sizes="(min-width: 1024px) 50vw, 100vw"
+         className="object-cover"
+        />
+       ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[var(--jerry-navy-deep)] via-[var(--jerry-navy)] to-[var(--jerry-ink)] text-center px-6">
+         <div className="h-14 w-14 rounded-full border-2 border-dashed border-[var(--jerry-lime)]/60 flex items-center justify-center mb-4">
+          <Home className="h-6 w-6 text-[var(--jerry-lime)]/70" />
+         </div>
+         <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--jerry-lime)]/80 mb-2">Placeholder</p>
+         <p className="text-sm font-semibold text-white max-w-xs">{slide.hint}</p>
+         <p className="mt-2 text-[0.7rem] text-white/40">Real photo coming soon</p>
+        </div>
+       )}
+      </div>
+      {/* Label pill */}
+      <div className={`absolute top-0 left-0 right-0 py-2 sm:py-2.5 text-center ${isAfter ? 'bg-[var(--jerry-lime)]' : 'bg-black/60 backdrop-blur-sm'}`}>
+       <span className={`text-[0.6rem] sm:text-[0.65rem] font-extrabold uppercase tracking-[0.3em] ${isAfter ? 'text-[var(--jerry-navy-deep)]' : 'text-white'}`}>{slide.label}</span>
+      </div>
+      {/* Caption */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-4 sm:p-6">
+       <p className="text-[0.75rem] sm:text-[0.85rem] font-medium text-white/90 leading-snug max-w-md">{slide.note}</p>
+      </div>
+     </motion.div>
+    </AnimatePresence>
+   </div>
+
+   {/* Location caption + dots */}
+   <div className="mt-3 flex items-center justify-between">
+    <p className="text-[0.55rem] uppercase tracking-[0.2em] text-white/30">Real Jerrys Roofing project · {slide.location}</p>
+    <div className="flex items-center gap-1.5">
+     {rejoovSlides.map((s, i) => (
+      <button
+       key={i}
+       type="button"
+       onClick={() => setIdx(i)}
+       aria-label={`Show ${s.label}`}
+       className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === idx ? 'w-6 bg-[var(--jerry-lime)]' : 'w-1.5 bg-white/25 hover:bg-white/40'}`}
+      />
+     ))}
+    </div>
+   </div>
+  </div>
+ );
+}
+
 /* ─── PAGE ─── */
 export default function HomePageClient() {
  const cleanPhone = siteConfig.cleanPhone;
@@ -198,7 +307,7 @@ export default function HomePageClient() {
      white text stays high-contrast, less "heavy blue" cast. */}
  <section className="relative isolate overflow-hidden bg-[#0f1419] flex flex-col min-h-[calc(100vh-104px)]">
  <div className="absolute inset-0">
- <NextImage src="/roofing/subhero-bg.jpg" alt="Jerrys Roofing crew performing professional roof replacement in Katy, Texas" fill priority sizes="100vw" className="object-cover object-center" />
+ <NextImage src="/roofing/real/02-hero-brick-twostory-pool.jpg" alt="Jerrys Roofing crew performing professional roof replacement on a brick two-story home in Katy, Texas" fill priority sizes="100vw" className="object-cover object-center" />
  </div>
  {/* Dark-slate overlay gradient (was navy blue) — lighter, more neutral, better image visibility */}
  <div className="absolute inset-0 bg-gradient-to-r from-[rgba(15,20,25,0.82)] via-[rgba(15,20,25,0.48)] to-[rgba(15,20,25,0.15)]" />
@@ -242,7 +351,7 @@ export default function HomePageClient() {
  {/* Trust line */}
  <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/55">
  <span className="flex items-center gap-1.5"><Shield className="h-3 w-3 text-[var(--jerry-lime)]" /> Fully Insured</span>
- <span className="flex items-center gap-1.5"><Award className="h-3 w-3 text-[var(--jerry-lime)]" /> IKO &middot; CertainTeed &middot; GAF &middot; F-Wave</span>
+ <span className="flex items-center gap-1.5"><Award className="h-3 w-3 text-[var(--jerry-lime)]" /> IKO &middot; F-Wave</span>
  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--jerry-lime)]" /> 7 Years Experience</span>
  </div>
  </motion.div>
@@ -275,9 +384,9 @@ export default function HomePageClient() {
  </section>
 
  {/* ═══ MANUFACTURERS / TRUST ═══ */}
- <section className="bg-white py-10 sm:py-14">
+ <section className="relative bg-white py-12 sm:py-16">
  <div className={shell}>
- <div className="text-center max-w-2xl mx-auto mb-10">
+ <div className="text-center max-w-2xl mx-auto mb-8">
  <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">Premium Materials</p>
  <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Shingle Manufacturers We Trust</h2>
  <p className="mt-3 text-base text-slate-500">We only use industry-leading materials built to withstand the Texas climate.</p>
@@ -305,8 +414,10 @@ export default function HomePageClient() {
  </section>
 
  {/* ═══ ROOF REJOOV SPOTLIGHT ═══ */}
- <section id="rejuvenation" className="scroll-mt-20 bg-[var(--jerry-navy-deep)] py-12 sm:py-16">
- <div className={shell}>
+ <section id="rejuvenation" className="relative isolate scroll-mt-20 bg-[var(--jerry-navy-deep)] py-12 sm:py-16 overflow-hidden">
+ {/* Rafter lines fan in from behind — reads as trusses viewed from below */}
+ <RoofMotif variant="rafters" tone="dark" />
+ <div className={`${shell} relative z-10`}>
  <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
  {/* Left — copy */}
  <div>
@@ -362,47 +473,9 @@ export default function HomePageClient() {
  </div>
  </div>
 
- {/* Right — Before & After side-by-side */}
+ {/* Right — Before & After auto-scroll carousel */}
  <div>
- <div className="grid grid-cols-2 gap-[2px] sm:gap-1 rounded-xl overflow-hidden">
- {/* Before — real project photo */}
- <div className="relative overflow-hidden">
- <div className="relative aspect-[3/4] sm:aspect-[4/5]">
- <NextImage
- src="/roofing/rejoov-before.jpg"
- alt="Aged asphalt shingle roof before Roof Rejoov treatment — brittle, losing granules, sun-baked in Katy, Texas"
- fill
- sizes="(min-width: 1024px) 25vw, 50vw"
- className="object-cover"
- />
- </div>
- <div className="absolute top-0 left-0 right-0 bg-black/60 backdrop-blur-sm py-1.5 sm:py-2 text-center">
- <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-white">Before</span>
- </div>
- <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
- <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/85 leading-snug">Dried, brittle shingles losing granules</p>
- </div>
- </div>
- {/* After — real project photo */}
- <div className="relative overflow-hidden">
- <div className="relative aspect-[3/4] sm:aspect-[4/5]">
- <NextImage
- src="/roofing/rejoov-after.jpg"
- alt="Asphalt shingle roof after Roof Rejoov bio-based treatment — restored flexibility and water resistance"
- fill
- sizes="(min-width: 1024px) 25vw, 50vw"
- className="object-cover"
- />
- </div>
- <div className="absolute top-0 left-0 right-0 bg-[var(--jerry-lime)] py-1.5 sm:py-2 text-center">
- <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-[var(--jerry-navy-deep)]">After Rejoov</span>
- </div>
- <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
- <p className="text-[0.55rem] sm:text-[0.65rem] font-medium text-white/85 leading-snug">Restored, flexible, protected</p>
- </div>
- </div>
- </div>
- <p className="mt-2.5 text-[0.55rem] uppercase tracking-[0.2em] text-white/30 text-center">Real Jerrys Roofing project · Katy, TX</p>
+ <RejoovCarousel />
 
  {/* Testimonial */}
  <div className="mt-6 rounded-xl border border-white/8 bg-white/[0.03] p-4 sm:p-5">
@@ -420,8 +493,14 @@ export default function HomePageClient() {
  </section>
 
  {/* ═══ ALL SERVICES ═══ */}
- <section id="services" className="scroll-mt-20 bg-[var(--jerry-cream)] py-12 sm:py-20">
- <div className={shell}>
+ <section id="services" className="relative isolate scroll-mt-20 bg-[var(--jerry-cream)] py-12 sm:py-20 overflow-hidden">
+ {/* Blueprint rafter cross-section — sits as a large faint backdrop behind content */}
+ <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+ <div className="relative w-full max-w-5xl aspect-[800/420] opacity-90">
+ <RoofMotif variant="blueprint" tone="cream" />
+ </div>
+ </div>
+ <div className={`${shell} relative z-10`}>
  {/* Header — editorial, left-aligned */}
  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
  <div>
@@ -512,67 +591,6 @@ export default function HomePageClient() {
  ))}
  </div>
  </div>
- </div>
- </div>
- </section>
-
- {/* ═══ RECENT WORK STRIP ═══ */}
- <section id="recent-work" className="scroll-mt-20 bg-white py-12 sm:py-20 border-t border-slate-100">
- <div className={shell}>
- <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-12">
- <div>
- <p className="eyebrow text-[var(--jerry-navy-light)]">Recent Work · Katy, TX</p>
- <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl tracking-[-0.03em] leading-[1.1]">
- Real projects.<br className="hidden sm:block" /> Real homes. Real Jerry.
- </h2>
- <p className="mt-3 text-base text-slate-500 max-w-xl leading-relaxed">
- Every photo on this strip is from a Jerrys Roofing job — shot on the roof, not in a stock library.
- </p>
- </div>
- <Link
- href="/gallery"
- className="inline-flex items-center gap-2 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy)] hover:text-[var(--jerry-navy-light)] transition-colors cursor-pointer self-start sm:self-auto shrink-0"
- >
- View Full Gallery <ArrowRight className="h-3.5 w-3.5" />
- </Link>
- </div>
-
- {/* Editorial grid — 3 across on mobile becomes 6 across on desktop.
-     First tile is wider on desktop (spans 2 cols) as a hero anchor. */}
- <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
- {homeStripPhotos.map((photo, i) => (
- <Link
- key={photo.src}
- href="/gallery"
- aria-label={`View ${photo.caption} in the full gallery`}
- className={`group relative block overflow-hidden bg-slate-100 ${
- i === 0 ? 'col-span-2 row-span-2 aspect-square sm:aspect-[4/3] lg:aspect-square' : 'aspect-square'
- }`}
- >
- <NextImage
- src={photo.src}
- alt={photo.alt}
- fill
- sizes={i === 0 ? '(min-width:1024px) 33vw, 66vw' : '(min-width:1024px) 16vw, 33vw'}
- className="object-cover transition-transform duration-700 group-hover:scale-105"
- />
- <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
- <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
- <p className={`font-bold text-white leading-tight ${i === 0 ? 'text-sm sm:text-base' : 'text-[0.65rem] sm:text-[0.7rem]'}`}>
- {photo.caption}
- </p>
- </div>
- </Link>
- ))}
- </div>
-
- <div className="mt-8 sm:mt-10 text-center">
- <Link
- href="/gallery"
- className="inline-flex items-center gap-2 bg-[var(--jerry-navy-deep)] px-7 py-3.5 text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-lime)] hover:bg-[var(--jerry-navy)] transition-colors cursor-pointer"
- >
- See All 49 Project Photos <ArrowRight className="h-3.5 w-3.5" />
- </Link>
  </div>
  </div>
  </section>
@@ -684,25 +702,50 @@ export default function HomePageClient() {
  </section>
 
  {/* ═══ OUR WORK / PORTFOLIO ═══ */}
- <section id="work" className="scroll-mt-20 bg-[var(--jerry-cream)] py-12 sm:py-16">
- <div className={shell}>
- <div className="text-center max-w-2xl mx-auto mb-12">
+ <section id="work" className="relative isolate scroll-mt-20 bg-[var(--jerry-cream)] py-12 sm:py-16 overflow-hidden">
+ {/* Shingle-field texture — offset tabs like architectural shingles viewed face-on */}
+ <RoofMotif variant="shingle-field" tone="cream" />
+ <div className={`${shell} relative z-10`}>
+ <div className="text-center max-w-2xl mx-auto mb-10">
  <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--jerry-navy-light)]">Our Work</p>
  <h2 className="mt-3 text-3xl font-extrabold text-[var(--jerry-navy)] sm:text-4xl">Recent jobs around Katy, Texas, Cypress &amp; Cinco Ranch</h2>
  <p className="mt-3 text-base text-slate-500">Every job gets the same care — from a roof patch to a full replacement.</p>
  </div>
 
- <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-white py-20 px-6 text-center">
- <Hammer className="h-12 w-12 text-[var(--jerry-navy)] opacity-20 mb-4" />
- <span className="inline-block bg-[var(--jerry-lime)]/15 px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[var(--jerry-navy)] mb-3">Coming Soon</span>
- <p className="text-lg font-bold text-[var(--jerry-navy)]">Project photos on the way!</p>
- <p className="mt-2 text-sm text-slate-500 max-w-md">We&apos;re putting together before &amp; after photos of our roof replacements, Roof Rejoov treatments, gutter installs, and exterior projects across the Katy, Texas area. Check back soon.</p>
+ {/* Uniform grid — every tile is the same aspect-square size.
+     2 cols mobile, 3 tablet, 4 desktop. Caption slides up on hover. */}
+ <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+ {homeStripPhotos.map((photo) => (
+ <Link
+ key={photo.src}
+ href="/gallery"
+ aria-label={`View ${photo.caption} in the full gallery`}
+ className="group relative block overflow-hidden aspect-square bg-slate-100 rounded-lg"
+ >
+ <NextImage
+ src={photo.src}
+ alt={photo.alt}
+ fill
+ sizes="(min-width:1024px) 25vw, (min-width:640px) 33vw, 50vw"
+ className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+ />
+ <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+ <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+ <p className="text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-[0.08em] text-white leading-tight">
+ {photo.caption}
+ </p>
+ </div>
+ </Link>
+ ))}
  </div>
 
- <div className="mt-10 text-center">
- <button onClick={scrollToForm} className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-6 py-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
- Request a Quote <ArrowRight className="h-3.5 w-3.5" />
- </button>
+ <div className="mt-8 sm:mt-10 text-center">
+ <Link
+ href="/gallery"
+ className="inline-flex items-center gap-2 bg-[var(--jerry-navy-deep)] px-7 py-3.5 text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-lime)] hover:bg-[var(--jerry-navy)] transition-colors cursor-pointer"
+ >
+ See All 49 Project Photos <ArrowRight className="h-3.5 w-3.5" />
+ </Link>
  </div>
  </div>
  </section>

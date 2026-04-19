@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Open_Sans, JetBrains_Mono } from "next/font/google";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { siteConfig } from "./config";
 import "./globals.css";
 
 const bodyFont = Open_Sans({
@@ -100,6 +101,7 @@ export const metadata: Metadata = {
     shortcut: '/pictures/logo-transparent.svg',
     apple: '/pictures/logo-transparent.png',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -144,6 +146,15 @@ export default function RootLayout({
                 "https://g.page/jerrysroofing",
                 "https://www.facebook.com/jerrysroofing",
                 "https://www.instagram.com/jerrysroofing"
+                // TODO: add confirmed URLs for the following once Jerry provides them:
+                // "https://www.yelp.com/biz/jerrys-roofing-katy"
+                // "https://www.bbb.org/us/tx/katy/profile/roofing-contractors/jerrys-roofing"
+                // "https://www.angi.com/companylist/us/tx/katy/jerrys-roofing"
+                // "https://www.homeadvisor.com/rated.JerrysRoofing.0000000.html"
+                // "https://nextdoor.com/pages/jerrys-roofing-katy-tx"
+                // "https://www.thumbtack.com/tx/katy/roofing/jerrys-roofing"
+                // "https://www.linkedin.com/company/jerrys-roofing"
+                // "https://www.youtube.com/@jerrysroofing"
               ],
               "founder": {
                 "@type": "Person",
@@ -202,8 +213,8 @@ export default function RootLayout({
               "slogan": "Straight forward roofing with quality as the focus",
               "aggregateRating": {
                 "@type": "AggregateRating",
-                "ratingValue": "5.0",
-                "reviewCount": "20",
+                "ratingValue": siteConfig.rating.toFixed(1),
+                "reviewCount": String(siteConfig.reviewCount),
                 "bestRating": "5",
                 "worstRating": "1"
               },
@@ -288,7 +299,15 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "Jerrys Roofing",
               "alternateName": ["Jerrys Roofing", "Jerrys Roofing Katy", "Jerrys Roofing Katy Texas", "Roofing By Jerry", "RoofingByJerry.com"],
-              "url": "https://roofingbyjerry.com"
+              "url": "https://roofingbyjerry.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://roofingbyjerry.com/blog?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
             })
           }}
         />
@@ -315,8 +334,14 @@ export default function RootLayout({
         className={`${bodyFont.variable} ${displayFont.variable} ${monoFont.variable} antialiased`}
       >
         <div className="jerry-site min-h-screen bg-white text-slate-900 selection:bg-[var(--jerry-navy)] selection:text-[var(--jerry-lime)]">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--jerry-navy-deep)] focus:text-[var(--jerry-lime)] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:outline-none focus:ring-2 focus:ring-[var(--jerry-lime)]"
+          >
+            Skip to main content
+          </a>
           <Header />
-          <main>
+          <main id="main-content">
             {children}
           </main>
           <Footer />

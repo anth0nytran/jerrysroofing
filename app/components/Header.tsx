@@ -20,35 +20,32 @@ const serviceIconMap: Record<string, typeof Home> = {
  'driveway-repaints': SquareStack,
 };
 
-function USFlag({ className = '' }: { className?: string }) {
+function TexasFlag({ className = '' }: { className?: string }) {
+ // Texas state flag — 2:3 ratio. Hoist (left 1/3) is Texas blue with a centered
+ // white five-pointed star. Fly half is white (top) over red (bottom).
+ const star = (cx: number, cy: number, r: number) => {
+ const pts: string[] = [];
+ for (let i = 0; i < 5; i += 1) {
+ const outer = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+ const inner = outer + Math.PI / 5;
+ pts.push(`${cx + r * Math.cos(outer)},${cy + r * Math.sin(outer)}`);
+ pts.push(`${cx + r * 0.382 * Math.cos(inner)},${cy + r * 0.382 * Math.sin(inner)}`);
+ }
+ return pts.join(' ');
+ };
  return (
  <svg
- viewBox="0 0 7410 3900"
+ viewBox="0 0 900 600"
  xmlns="http://www.w3.org/2000/svg"
  className={className}
- aria-label="United States flag"
+ aria-label="Texas state flag"
  role="img"
  preserveAspectRatio="xMidYMid meet"
  >
- <rect width="7410" height="3900" fill="#B22234" />
- <path
- d="M0,450 H7410 M0,1050 H7410 M0,1650 H7410 M0,2250 H7410 M0,2850 H7410 M0,3450 H7410"
- stroke="#ffffff"
- strokeWidth="300"
- />
- <rect width="2964" height="2100" fill="#3C3B6E" />
- <g fill="#ffffff">
- {Array.from({ length: 9 }).flatMap((_, row) => {
- const cols = row % 2 === 0 ? 6 : 5;
- const yStep = 2100 / 10;
- const xStep = 2964 / 12;
- const xOffset = row % 2 === 0 ? xStep : xStep * 2;
- const y = yStep + row * yStep;
- return Array.from({ length: cols }).map((__, col) => (
- <circle key={`${row}-${col}`} cx={xOffset + col * xStep * 2} cy={y} r={70} />
- ));
- })}
- </g>
+ <rect width="900" height="600" fill="#BF0A30" />
+ <rect width="900" height="300" fill="#ffffff" />
+ <rect width="300" height="600" fill="#002868" />
+ <polygon points={star(150, 300, 110)} fill="#ffffff" />
  </svg>
  );
 }
@@ -118,7 +115,7 @@ export function Header() {
  <Link href="/" className="flex items-center gap-0 shrink-0 min-w-0">
  {/* eslint-disable-next-line @next/next/no-img-element */}
  <img src="/pictures/logo-transparent.svg" alt="Jerrys Roofing" className="h-[5rem] sm:h-24 w-auto object-contain shrink-0 translate-y-2 sm:translate-y-2.5" />
- <USFlag className="h-[1.1rem] sm:h-5 w-auto shrink-0 rounded-[2px] ring-1 ring-slate-200/70 shadow-sm -ml-2.5 sm:-ml-3" />
+ <TexasFlag className="h-[1.1rem] sm:h-5 w-auto shrink-0 rounded-[2px] ring-1 ring-slate-200/70 shadow-sm -ml-2.5 sm:-ml-3" />
  </Link>
  <div className="flex items-center gap-2">
  <a href={`tel:${siteConfig.cleanPhone}`} className="flex items-center justify-center h-10 w-10 bg-[var(--jerry-navy)]/5 rounded-lg">
@@ -135,11 +132,11 @@ export function Header() {
  <div className="hidden lg:block mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
  <div className="flex items-center justify-between h-24 xl:h-28">
 
- {/* Logo + USA flag — left */}
+ {/* Logo + Texas flag — left */}
  <Link href="/" className="flex items-center gap-0 shrink-0">
  {/* eslint-disable-next-line @next/next/no-img-element */}
  <img src="/pictures/logo-transparent.svg" alt="Jerrys Roofing" className="h-[7rem] xl:h-[8rem] w-auto object-contain shrink-0 translate-y-3 xl:translate-y-3.5" />
- <USFlag className="h-6 xl:h-7 w-auto shrink-0 rounded-[3px] ring-1 ring-slate-200 shadow-sm -ml-4 xl:-ml-5" />
+ <TexasFlag className="h-6 xl:h-7 w-auto shrink-0 rounded-[3px] ring-1 ring-slate-200 shadow-sm -ml-4 xl:-ml-5" />
  </Link>
 
  {/* Nav + CTA — right-aligned */}

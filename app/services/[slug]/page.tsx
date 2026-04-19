@@ -57,19 +57,46 @@ export default async function ServicePage({
     '@type': 'Service',
     name: service.title,
     description: service.longDescription,
+    serviceType: service.title,
     provider: {
       '@type': 'RoofingContractor',
       name: "Jerrys Roofing",
       telephone: siteConfig.cleanPhone,
+      url: siteConfig.domain,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '5713 2nd St B',
+        addressLocality: 'Katy',
+        addressRegion: 'TX',
+        postalCode: '77493',
+        addressCountry: 'US',
+      },
       areaServed: siteConfig.allServiceAreas.map((a) => ({
         '@type': 'City',
         name: a.replace(', TX', ''),
       })),
     },
-    areaServed: {
+    areaServed: siteConfig.allServiceAreas.map((a) => ({
       '@type': 'City',
-      name: 'Katy',
+      name: a.replace(', TX', ''),
       containedInPlace: { '@type': 'State', name: 'Texas' },
+    })),
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        price: '0',
+        description: 'Free written estimates. Final pricing depends on scope, square footage, pitch, and material.',
+      },
+      availability: 'https://schema.org/InStock',
+      url: `${siteConfig.domain}/services/${service.slug}`,
+      seller: {
+        '@type': 'RoofingContractor',
+        name: "Jerrys Roofing",
+        telephone: siteConfig.cleanPhone,
+      },
     },
   };
 

@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import TexasMadeClient from './TexasMadeClient';
 
 export const metadata: Metadata = {
-  title: "Texas Made Products — Premium Roofing Materials | Jerrys Roofing — Katy, Texas",
+  title: "Built in Texas — IKO Hillsboro & F-Wave Burleson | Jerrys Roofing — Katy, Texas",
   description:
-    "Jerrys Roofing uses only premium, Texas-tough roofing materials from IKO, CertainTeed, GAF, and F-Wave synthetic. Products built to withstand the brutal Texas heat, Gulf Coast storms, and Katy weather. Call (409) 351-1529.",
+    "Why Jerrys Roofing spotlights IKO and F-Wave — the two shingle manufacturers that build their product right here in Texas. IKO's 250,000 sq ft Hillsboro plant and F-Wave's Burleson HQ. Sourced, cited, and installed across Katy.",
   alternates: { canonical: '/texas-made' },
   openGraph: {
-    title: "Texas Made Products | Jerrys Roofing — Katy, Texas",
+    title: "Built in Texas — IKO & F-Wave | Jerrys Roofing",
     description:
-      "Premium roofing materials built for Texas weather. IKO, CertainTeed, GAF, and F-Wave synthetic — the best manufacturers for Katy, Texas homes.",
+      "IKO (Hillsboro, TX) and F-Wave (Burleson, TX) — the two shingle brands actually manufactured in Texas. Here's why we install them on Katy roofs.",
     url: 'https://roofingbyjerry.com/texas-made',
   },
 };

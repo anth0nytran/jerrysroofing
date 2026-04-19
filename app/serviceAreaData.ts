@@ -777,4 +777,456 @@ export const serviceAreaData: ServiceArea[] = [
 
     nearbyCities: ['Bryan', 'Navasota', 'Brenham'],
   },
+
+  // ============================================================
+  // 7. KATY (HQ — primary service city)
+  // ============================================================
+  {
+    slug: 'katy',
+    city: 'Katy',
+    fullName: 'Katy, TX',
+    zips: ['77449', '77450', '77493', '77494'],
+    county: 'Harris / Fort Bend / Waller',
+    population: '~320,000 metro',
+
+    metaTitle: "Katy, TX Roofing Contractor | Jerry's Roofing",
+    metaDescription:
+      "Locally owned Katy roofing contractor. Roof replacement, hail damage, insurance claims, Roof Rejoov, gutters, siding. Free inspections. Call (409) 351-1529.",
+
+    geo: { latitude: 29.7858, longitude: -95.8245 },
+
+    h1: 'Roofing Contractor in Katy, TX',
+    heroTagline:
+      "Jerry's Roofing is headquartered right here in Katy. Honest inspections, fair estimates, no door-knocker tactics — just a local owner who answers his own phone.",
+
+    tldr:
+      "Jerry's Roofing is a locally owned Katy, TX roofing contractor serving homeowners across 77449, 77450, 77493, and 77494. Owner Jerry W. Pilley has 7 years of roofing experience and personally inspects every Katy roof before quoting. We install IKO, CertainTeed, GAF, and F-Wave synthetic shingles, handle insurance claims for hail and wind damage, and offer Roof Rejoov shingle restoration for aging roofs. Our office is at 5713 2nd St B, Katy, TX 77493 and Jerry is on the phone daily at (409) 351-1529. Free inspections, no pressure, no commissioned salespeople.",
+
+    cityIntro:
+      "Katy is our home. The office sits at 5713 2nd St B in old downtown Katy, and most of our jobs are within a 20-minute drive of that front door. That matters because Katy is not one roofing market — it is several. Old Katy inside the 77493 city limits has mid-century and 1980s housing stock with three-tab roofs that have seen too many Texas summers. The master-planned explosion along the Grand Parkway (77494) dropped tens of thousands of homes between 1995 and today, most with builder-grade architectural shingles that are hitting their expiration window right now. The 77449 corridor along I-10 east of the Grand Parkway has a mix of 1990s and 2000s construction with heavy HOA oversight and strict color palettes. And 77450 along Highway 6 straddles some of the oldest master-planned communities in the metro — Nottingham Country, Cinco Ranch's north edge, and the original Kelliwood neighborhoods. Every one of these sub-markets behaves differently. The 1985 roof in old Katy almost always needs a full tear-off. The 2014 roof in Cane Island usually has cosmetic issues that Roof Rejoov can solve for a fifth the price. The 2002 roof in Nottingham Country is in the classic insurance-claim window where hail damage is worth documenting carefully. Jerry knows which neighborhoods have which shingle brands from the original builder spec, which HOAs require architectural review, and which insurance adjusters actually walk the roof versus the ones who sign off from the driveway.",
+
+    commonIssues: [
+      {
+        issue: 'Hail damage from the April–May storm window',
+        detail:
+          "Katy averages one to two insurable hail events per spring. The 2024 season dropped quarter-sized hail across 77494 and 77493 within a single week, and the May 16, 2024 Houston Derecho pushed 100+ mph winds right through old Katy. Most of those roofs still have undocumented damage.",
+      },
+      {
+        issue: 'Ridge cap and field shingle wind lift',
+        detail:
+          "Two-story homes in Cane Island, Elyson, and Pin Oak Village catch wind from every direction. Ridge caps are the first thing to go in a 60+ mph gust, and the field shingles near the ridge follow within a season.",
+      },
+      {
+        issue: 'Aging builder-grade shingles on 2005–2012 homes',
+        detail:
+          "The build-out years across Grand Lakes, Firethorne, Cross Creek Ranch, and Tamarron used 25-to-30-year builder shingles that rarely make it past year 16 without losing granules and curling at the tabs.",
+      },
+      {
+        issue: 'Pipe boot cracking at year 8',
+        detail:
+          "Rubber pipe boots around plumbing vents dry out and crack almost exactly at the 8-year mark in the Texas sun. This is the single most common leak we repair in Katy, and it is a 45-minute fix per boot.",
+      },
+      {
+        issue: 'HOA color enforcement on every replacement',
+        detail:
+          "Cinco Ranch, Cane Island, Jordan Ranch, Elyson, Cross Creek Ranch, and Firethorne all require architectural review before you change shingle color. We handle the paperwork and the color match to speed approvals.",
+      },
+      {
+        issue: 'Attic decking rot near soffit lines',
+        detail:
+          "Underventilated attics on older Katy homes hold humidity against the OSB deck for years. By the time the shingles come off, there is usually some rot to replace — we budget for it up front so there are no surprises.",
+      },
+    ],
+
+    neighborhoods: [
+      'Cane Island',
+      'Elyson',
+      'Jordan Ranch',
+      'Cross Creek Ranch',
+      'Firethorne',
+      'Tamarron',
+      'Ventana Lakes',
+      'Grand Lakes',
+      'Pin Oak Village',
+      'Nottingham Country',
+      'Kelliwood',
+      'Old Katy Historic District',
+      'Katy Creek Ranch',
+      'Williamsburg Settlement',
+    ],
+
+    whyJerry: [
+      "We are headquartered in Katy, not Houston — our office sits at 5713 2nd St B and our crew lives here.",
+      "Jerry answers his own phone. No call center, no commissioned salespeople, no hand-off to a closer.",
+      "Seven years of roofing experience across every Katy zip code means we know the builder quirks, HOA rules, and insurance adjuster patterns by neighborhood.",
+      "Free inspections with written reports by text the same day — and we will tell you to your face if you do not need a new roof.",
+    ],
+
+    faqs: [
+      {
+        q: 'What does a roof replacement cost in Katy, TX?',
+        a: "A typical Katy roof replacement runs $8,000 to $18,000 depending on square footage, pitch, and shingle grade. Most single-story homes in Grand Lakes or Firethorne land around $11,000 to $13,000 for an architectural asphalt tear-off. Two-story homes in Cane Island or Elyson usually run $14,000 to $17,000. Premium F-Wave synthetic or designer shingles push higher. Free written estimates — call (409) 351-1529.",
+      },
+      {
+        q: 'Do you actually operate out of Katy, or are you one of the Houston roofers with a Katy ad?',
+        a: "We operate out of Katy. The office is at 5713 2nd St B, Katy, TX 77493 — same zip as Katy High School. Jerry lives and works here. No absentee ownership, no out-of-state storm-chaser setup.",
+      },
+      {
+        q: "How fast can you inspect my Katy roof?",
+        a: "Most Katy inspections are scheduled within 2 to 3 days. If water is actively coming in, we will be there same-day to tarp the roof and stop the damage, then do the full inspection once the weather clears.",
+      },
+      {
+        q: 'What shingles do you install on Katy homes?',
+        a: "IKO, CertainTeed, GAF, and F-Wave synthetic. For most Katy HOAs we stock architectural laminated shingles in Weathered Wood, Charcoal, and Driftwood — the three colors most Katy associations have on their approved list. F-Wave is for homeowners who want the strongest hail and UV resistance available.",
+      },
+      {
+        q: 'Is my Katy roof a candidate for Roof Rejoov instead of replacement?',
+        a: "If the roof is 10 to 18 years old, structurally sound, and just cosmetically tired or algae-streaked, yes. Roof Rejoov adds 5 to 10 years of service life for roughly 15 to 25 percent of replacement cost. We inspect first and tell you honestly whether Rejoov or full replacement is the smart move.",
+      },
+      {
+        q: 'Do you help with insurance claims in Katy?',
+        a: "Yes — we handle them constantly. Jerry meets your adjuster on the roof, documents every hit and wind-lifted shingle, and makes sure nothing gets missed on the claim scope. We do not charge extra for claim work and we are not a public adjuster. You get honest documentation and a roofer who knows how Texas carriers pay.",
+      },
+    ],
+
+    recentProject: {
+      customerName: 'The Whitman Family',
+      neighborhood: 'Cane Island, Katy',
+      scope:
+        'Full tear-off and replacement of 32 squares, IKO Dynasty architectural shingles in Driftwood, full synthetic underlayment, new ridge vent, 4 pipe boot replacements, ice and water shield in valleys',
+      detail:
+        "Two-story home in Cane Island with hail damage from the April 2024 event. Jerry met the adjuster on the roof, documented 11 hits per test square, and supplemented for the ridge vent and code-upgrade ice and water shield the original scope missed. HOA color-match submitted and approved in 8 days. Full replacement completed in 2 days.",
+    },
+
+    nearbyCities: ['Cinco Ranch', 'Cypress', 'Fulshear', 'Richmond', 'Brookshire'],
+  },
+
+  // ============================================================
+  // 8. BROOKSHIRE
+  // ============================================================
+  {
+    slug: 'brookshire',
+    city: 'Brookshire',
+    fullName: 'Brookshire, TX',
+    zips: ['77423'],
+    county: 'Waller',
+    population: '~5,800',
+
+    metaTitle: "Brookshire, TX Roofing Contractor | Jerry's Roofing",
+    metaDescription:
+      "Brookshire roofer with 7 years of Katy-area experience. Roof replacement, repair, storm damage, and Roof Rejoov. Free inspections. Call (409) 351-1529.",
+
+    geo: { latitude: 29.7861, longitude: -95.9538 },
+
+    h1: 'Roofing Contractor in Brookshire, TX',
+    heroTagline:
+      "Brookshire is a short drive from our Katy office and a regular stop on our route. Jerry handles roof replacements, repairs, and storm damage for 77423 homeowners.",
+
+    tldr:
+      "Jerry's Roofing serves Brookshire, TX homeowners in 77423 with roof replacement, storm damage repair, insurance claim support, gutters, and Roof Rejoov shingle restoration. Brookshire sits in Waller County about 12 minutes west of our Katy headquarters along I-10, and we cover it as part of our regular service area. Owner Jerry W. Pilley personally inspects every roof and provides free written estimates. We install IKO, CertainTeed, GAF, and F-Wave synthetic shingles. Call (409) 351-1529 for a straight-answer inspection — no high-pressure tactics, no commissioned salespeople, no storm-chaser games.",
+
+    cityIntro:
+      "Brookshire is a small Waller County town right off I-10 about 12 minutes west of our Katy office, and it has one of the more interesting roofing housing stocks in the greater Katy metro. The older part of town along FM 359 has ranch homes and farmhouses that date back to the 1950s and 1960s, many with metal roofs or layered-over asphalt that is past any reasonable service life. The newer subdivisions off I-10 — places like Cane Island's western edge bleeding into Brookshire, Whispering Pines, and the developments around Royal High School — have builder-grade architectural shingles from the 2010s that are just now starting to need attention. Because Brookshire sits just outside the more expensive Katy ISD lines, construction is often slightly more modest and the shingle grade was too, which means 25-year builder shingles tend to hit end of life closer to year 14. Brookshire also takes direct hits from the same spring hail corridor that pounds Katy and Sealy — the April 2024 event dropped hail across Waller County, and most Brookshire roofs still carry undocumented damage from that storm. Because Brookshire is smaller and does not have the density of roofing companies that Katy does, homeowners here often get quoted by storm-chasers first and a real local crew second. We cover Brookshire as part of our regular Katy service area at the same honest prices we charge in town.",
+
+    commonIssues: [
+      {
+        issue: 'Undocumented hail damage from the April 2024 Waller County storm',
+        detail:
+          "Waller County took quarter-sized hail across most of Brookshire in spring 2024. A lot of roofs look fine from the ground but have bruised shingles that an insurance claim would cover — if they are documented before the filing window closes.",
+      },
+      {
+        issue: 'End-of-life builder shingles on 2005–2012 construction',
+        detail:
+          "Most production-built Brookshire homes from that era used 25-year 3-tab or entry-level architectural shingles that are losing granules, curling at the tabs, and growing algae streaks on north slopes right now.",
+      },
+      {
+        issue: 'Layered-over roofs on older farmhouses',
+        detail:
+          "Older homes along FM 359 and Highway 90 sometimes have two or three layers of old shingles that were never torn off. Texas code only allows two total, and insurance replacements always require a full tear-off to the deck.",
+      },
+      {
+        issue: 'Storm-chaser fraud after every spring hailstorm',
+        detail:
+          "Out-of-state crews sweep through Brookshire neighborhoods after every storm, sign homeowners to inflated contracts, then vanish when the insurance check clears. We have rebuilt roofs from several of those failed jobs.",
+      },
+      {
+        issue: 'Flashing and pipe boot failure on ranch homes',
+        detail:
+          "The older ranch homes in central Brookshire have a lot of roof penetrations — old TV antennas, wood stoves, kitchen vents — and the rubber seals around each one crack out at year 8 to 10, letting water track into the attic.",
+      },
+    ],
+
+    neighborhoods: [
+      'Whispering Pines',
+      'Brookshire Main',
+      'Royal High School area',
+      'FM 359 corridor',
+      'I-10 south access road',
+      'Katy-Brookshire border',
+      'Highway 90 corridor',
+    ],
+
+    whyJerry: [
+      "Our Katy office is 12 minutes east of Brookshire — we cover 77423 at the same rates as Katy, no travel surcharge.",
+      "Jerry personally inspects every Brookshire roof. No subcontracted inspectors, no commissioned canvassers.",
+      "We know the difference between honest hail damage and cosmetic wear, and we will not push a claim you should not file.",
+      "Free written inspection reports with dated photos delivered by text or email the same day.",
+    ],
+
+    faqs: [
+      {
+        q: 'Do you actually come out to Brookshire, or is it outside your service area?',
+        a: "Yes — Brookshire is 12 minutes from our Katy office and we cover it as a regular part of our Katy service area. Same pricing, no travel surcharge on full-job estimates.",
+      },
+      {
+        q: 'What does a roof replacement cost in Brookshire, TX?',
+        a: "A typical Brookshire roof replacement runs $7,500 to $15,000 depending on size, pitch, and shingle grade. Most production-built homes land in the $10,000 to $13,000 range for an architectural asphalt tear-off. Older farmhouses with layered-over roofs or rotten decking trend higher. Free written estimates.",
+      },
+      {
+        q: "My roof took hail in spring 2024 — is it too late to file?",
+        a: "Probably not, but the window is closing. Texas gives you up to two years from the date of loss to file a first-party property claim, and recent legislative sessions have tightened that in some cases. We will inspect for free and tell you whether there is a real, documentable claim worth filing.",
+      },
+      {
+        q: 'What shingles do you install in Brookshire?',
+        a: "IKO, CertainTeed, GAF, and F-Wave synthetic. For most Brookshire homes we recommend a mid-grade architectural asphalt shingle in Weathered Wood, Charcoal, or Driftwood. F-Wave synthetic is the top-of-the-line option for homeowners who want the strongest hail and UV resistance.",
+      },
+      {
+        q: "Is Roof Rejoov available in Brookshire?",
+        a: "Yes. If your Brookshire roof is 10 to 18 years old, structurally sound, but dried out or algae-streaked, Roof Rejoov restores flexibility and extends life by 5 to 10 years for roughly 15 to 25 percent of replacement cost. We inspect first and tell you honestly whether it is a fit.",
+      },
+    ],
+
+    recentProject: {
+      customerName: 'The Alvarez Family',
+      neighborhood: 'Cane Island west, near the Brookshire line',
+      scope:
+        'Full tear-off and replacement of 26 squares, CertainTeed Landmark in Weathered Wood, new synthetic underlayment, 3 pipe boot replacements, new drip edge',
+      detail:
+        "Single-story home right on the Katy-Brookshire border with hail damage from the April 2024 storm. Filed an insurance claim after our free inspection documented 9 hits per test square. Adjuster approved the full replacement. Job completed in a day and a half.",
+    },
+
+    nearbyCities: ['Katy', 'Sealy', 'Fulshear', 'Cypress'],
+  },
+
+  // ============================================================
+  // 9. SEALY
+  // ============================================================
+  {
+    slug: 'sealy',
+    city: 'Sealy',
+    fullName: 'Sealy, TX',
+    zips: ['77474'],
+    county: 'Austin',
+    population: '~6,500',
+
+    metaTitle: "Sealy, TX Roofing Contractor | Jerry's Roofing",
+    metaDescription:
+      "Sealy roofer serving Austin County homeowners. Roof replacement, storm damage, insurance claims, Roof Rejoov. Free inspections. Call (409) 351-1529.",
+
+    geo: { latitude: 29.7802, longitude: -96.1577 },
+
+    h1: 'Roofing Contractor in Sealy, TX',
+    heroTagline:
+      "Sealy is a regular stop on our route west of Katy. Jerry handles roof replacements, insurance claim work, and Roof Rejoov for Austin County homeowners.",
+
+    tldr:
+      "Jerry's Roofing serves Sealy, TX homeowners in 77474 with roof replacement, storm damage restoration, insurance claim support, gutters, siding, and Roof Rejoov shingle restoration. Sealy sits about 25 minutes west of our Katy headquarters on I-10, in Austin County, and we cover it as part of our extended service area. Owner Jerry W. Pilley has 7 years of roofing experience and personally inspects every Sealy roof. We install IKO, CertainTeed, GAF, and F-Wave synthetic shingles. Call (409) 351-1529 for a free inspection with a written same-day report.",
+
+    cityIntro:
+      "Sealy is a small Austin County town on the western edge of the greater Houston roofing market, about 25 minutes west of Katy on I-10. It has a very different housing stock from the master-planned Katy suburbs. The historic part of Sealy along Main Street has Victorian-era and early-1900s homes with complex rooflines, dormers, and often original slate or old-cedar-shingle roofs that were converted to asphalt decades ago. The newer subdivisions near the I-10 corridor and Austin County ISD schools are mostly 1990s and 2000s ranch homes and two-stories with standard architectural shingles. Sealy also has a meaningful rural component — farmhouses, hunting properties, and ranch homes outside the city limits where metal roofs and layered-over asphalt are common. Because Sealy sits outside the main Houston metro roofing density, most homeowners either go to one of the big Houston-based companies (who charge Houston prices and drive in from 40 miles away) or to a chaser crew after a storm. We cover Sealy as part of our Katy service area, which keeps the pricing honest and the accountability local. Sealy takes direct hits from the same hail corridor that pounds Katy, and the spring 2024 events did land quarter-sized hail in parts of Austin County. A lot of Sealy roofs still have undocumented damage from that window.",
+
+    commonIssues: [
+      {
+        issue: 'Complex rooflines on historic Sealy homes',
+        detail:
+          "The Victorian-era and early-1900s homes along Main Street have dormers, turrets, and multi-slope rooflines that take twice as long to tear off and require step-flashing expertise most production roofers do not have.",
+      },
+      {
+        issue: 'End-of-life roofs on 1990s ranch subdivisions',
+        detail:
+          "Most of the I-10 corridor subdivisions were built with 25-year shingles that are at or past their expected life window now, with widespread granule loss and brittle tabs.",
+      },
+      {
+        issue: 'Undocumented hail damage from spring 2024',
+        detail:
+          "Austin County took hail during the 2024 spring storm cycle. A lot of Sealy roofs look fine from the driveway but have bruised shingles that an insurance claim would cover if documented in time.",
+      },
+      {
+        issue: 'Layered-over roofs on rural farmhouses',
+        detail:
+          "Older ranch homes outside the Sealy city limits often have two or three layers of shingles that were never torn off. Any insurance replacement requires a full strip to the deck.",
+      },
+      {
+        issue: 'Metal roof coating and repair on country properties',
+        detail:
+          "Sealy has a real metal-roof population — barns, ranch homes, outbuildings — and most fail at the fastener seals or the overlap seams, not across the panels.",
+      },
+    ],
+
+    neighborhoods: [
+      'Sealy Historic District',
+      'Main Street',
+      'Austin County ISD area',
+      'I-10 corridor',
+      'Highway 36 corridor',
+      'San Felipe area',
+      'Rural Austin County',
+    ],
+
+    whyJerry: [
+      "We cover Sealy out of our Katy office — no Houston overhead in your quote.",
+      "Jerry personally inspects every Sealy roof before any number is written on paper.",
+      "Seven years of experience on Texas asphalt roofs means we know what holds up in this climate and what does not.",
+      "Free written inspection reports with dated photos delivered the same day by text or email.",
+    ],
+
+    faqs: [
+      {
+        q: 'Do you actually come out to Sealy, or is it too far from Katy?',
+        a: "Yes — Sealy is about 25 minutes from our Katy office on I-10, and we cover Austin County as a regular part of our extended service area. Free inspections, no travel surcharge on full-job estimates.",
+      },
+      {
+        q: 'What does a roof replacement cost in Sealy, TX?',
+        a: "A typical Sealy roof replacement runs $8,000 to $17,000 depending on size, pitch, and shingle grade. Historic homes with complex rooflines trend higher because of the step-flashing labor. Ranch homes with simple rooflines often come in at the lower end. Free written estimates — call (409) 351-1529.",
+      },
+      {
+        q: 'My Sealy roof took hail last year — is it too late to file a claim?',
+        a: "Probably not. Texas allows up to two years from the date of loss to file a first-party property claim, though recent legislative changes have tightened that in some cases. A free inspection will tell you whether there is real documentable damage and whether the filing window is still open.",
+      },
+      {
+        q: 'Do you work on metal roofs in Sealy?',
+        a: "Yes. We repair and replace metal roofs on ranch homes, barns, and country properties around Sealy. Most metal roof failures are at the fasteners or overlap seams, not across the panels, and a targeted repair is often cheaper than full replacement.",
+      },
+      {
+        q: 'Is Roof Rejoov available in Sealy?',
+        a: "Yes. If your Sealy roof is 10 to 18 years old, structurally sound, but dried out or algae-streaked, Roof Rejoov restores shingle flexibility and extends life by 5 to 10 years for roughly 15 to 25 percent of a full replacement cost.",
+      },
+    ],
+
+    recentProject: {
+      customerName: 'The Henderson Family',
+      neighborhood: 'I-10 corridor, Sealy',
+      scope:
+        'Full tear-off and replacement of 30 squares, GAF Timberline HDZ in Charcoal, new synthetic underlayment, 2 sheets of decking replaced near soffit line, new ridge vent',
+      detail:
+        "Two-story ranch home west of Sealy city limits with widespread granule loss and brittle tabs after 19 years. Homeowner opted for a full replacement rather than an insurance claim since damage was age-related rather than storm-related. Completed in two days with a full magnetic yard sweep on the final afternoon.",
+    },
+
+    nearbyCities: ['Brookshire', 'Katy', 'Bellville', 'Columbus'],
+  },
+
+  // ============================================================
+  // 10. WEST HOUSTON (Energy Corridor / Memorial West / Westchase edge)
+  // ============================================================
+  {
+    slug: 'west-houston',
+    city: 'West Houston',
+    fullName: 'West Houston, TX',
+    zips: ['77024', '77042', '77077', '77079', '77082', '77094'],
+    county: 'Harris',
+    population: '~350,000',
+
+    metaTitle: "West Houston Roofing Contractor | Jerry's Roofing",
+    metaDescription:
+      "West Houston roofer covering Energy Corridor, Memorial West, and the Westchase area. Roof replacement, insurance claims, Roof Rejoov. Call (409) 351-1529.",
+
+    geo: { latitude: 29.7604, longitude: -95.6286 },
+
+    h1: 'West Houston Roofing Contractor',
+    heroTagline:
+      "We serve West Houston homeowners from our Katy office — Energy Corridor, Memorial West, Westchase, and the 77094/77077 corridor along I-10 west.",
+
+    tldr:
+      "Jerry's Roofing serves West Houston homeowners in 77024, 77042, 77077, 77079, 77082, and 77094 — covering Energy Corridor, Memorial West, Westchase, and the I-10 west corridor. We handle roof replacement, hail and wind damage insurance claims, gutter replacement, siding, and Roof Rejoov shingle restoration. Owner Jerry W. Pilley has 7 years of roofing experience and personally inspects every roof before quoting. We install IKO, CertainTeed, GAF, and F-Wave synthetic shingles. Call (409) 351-1529 for a free inspection with same-day written report.",
+
+    cityIntro:
+      "West Houston is a large and diverse roofing market that runs roughly from Beltway 8 west to the Katy city limits, covering the Energy Corridor along I-10, Memorial West, Westchase, and the high-density residential corridor along 77077 and 77094. Housing stock ranges widely. Memorial West and the 77024 side have high-value established homes from the 1970s through 1990s with steep pitches, tile and slate roofs in some cases, and complex rooflines. The 77077 and 77079 zips along the Energy Corridor have a mix of corporate-built 1980s and 1990s homes alongside newer infill construction. Westchase and 77042 lean toward townhomes, condos, and denser single-family built in the 1990s through 2010s. Then the 77094 corridor along I-10 near the Katy line has more master-planned, HOA-governed communities with 2000s and 2010s architectural shingle roofs. Every one of those housing types has a different roofing profile. The 1980s Memorial home usually needs a full custom job with proper step-flashing around complex brick detailing. The 1990s Energy Corridor home often has a builder-grade 25-year roof that is right at end of life. The 77094 HOA home usually needs a replacement in an approved color with proper paperwork. We have done jobs across all of these and we know what each sub-market needs.",
+
+    commonIssues: [
+      {
+        issue: 'Storm damage from the May 2024 Houston Derecho',
+        detail:
+          "The May 16, 2024 Derecho pushed 100+ mph straight-line winds across Energy Corridor and Memorial West. Many of those roofs still have undocumented lifted shingles, missing ridge caps, and hidden decking damage.",
+      },
+      {
+        issue: 'Complex rooflines on Memorial West custom homes',
+        detail:
+          "High-value 1970s and 1980s Memorial homes have steep pitches, multiple dormers, and decorative brick details that require real step-flashing skill — not production-shop roofing.",
+      },
+      {
+        issue: 'End-of-life builder shingles along Energy Corridor',
+        detail:
+          "1990s and early-2000s production homes along the I-10 corridor used 25-year builder shingles that are at or past their expected life right now, with widespread granule loss and brittle tabs.",
+      },
+      {
+        issue: 'Tile and slate roof repair on older luxury homes',
+        detail:
+          "Some Memorial and 77024 homes have original tile or slate that is worth repairing rather than replacing — but it takes a roofer who knows how to source and match the materials without destroying the roof.",
+      },
+      {
+        issue: 'HOA architectural review in 77094 master-planned communities',
+        detail:
+          "The master-planned communities along the I-10 corridor west require architectural review for every color change. We handle the submission packet and the color match.",
+      },
+      {
+        issue: 'Tree-debris valley clogs',
+        detail:
+          "The big live oaks across Memorial and the Energy Corridor drop heavy leaf and catkin debris into valleys. Water backs up, shingles rot from underneath, and the decking follows.",
+      },
+    ],
+
+    neighborhoods: [
+      'Energy Corridor',
+      'Memorial West',
+      'Westchase',
+      'Nottingham Forest',
+      'Lakeside Forest',
+      'Parkwest',
+      'Briarhills',
+      'Westwood',
+      'Memorial Thicket',
+      'Enclave at West Oaks',
+    ],
+
+    whyJerry: [
+      "We cover West Houston from our Katy office — lower overhead than the big Houston roofers, honest pricing, real accountability.",
+      "Jerry personally inspects every West Houston roof, no matter how complex the roofline.",
+      "Seven years of experience on Houston-area roofs means we know what the 2024 Derecho actually damaged and what was already failing.",
+      "Free written inspection reports with dated photos delivered same-day by text or email.",
+    ],
+
+    faqs: [
+      {
+        q: 'Do you actually serve West Houston out of Katy?',
+        a: "Yes — we cover the 77024, 77042, 77077, 77079, 77082, and 77094 zips as part of our regular service area. The drive from Katy is 15 to 25 minutes depending on traffic, and we do not add a travel surcharge on full-job estimates.",
+      },
+      {
+        q: 'What does a roof replacement cost in West Houston?',
+        a: "A typical West Houston roof replacement runs $9,000 to $25,000 depending on size, pitch, shingle grade, and roofline complexity. Energy Corridor production homes usually land in the $11,000 to $15,000 range for an architectural asphalt tear-off. Custom Memorial homes with steep pitches and complex brick detailing trend higher. Free written estimates.",
+      },
+      {
+        q: "My roof took damage from the 2024 Houston Derecho — is it too late to file?",
+        a: "Probably not. Texas gives you up to two years from the date of loss to file a first-party property claim, though recent legislative changes have narrowed that in some cases. The May 16, 2024 Derecho clock is still running but getting tighter — get an inspection in writing before the window closes.",
+      },
+      {
+        q: 'Do you do tile and slate repair on older Memorial homes?',
+        a: "We handle tile and slate repair, not full replacements on historic slate. If your roof is mostly sound but has specific cracked or slipped tiles, we can source matching material and do the repair. Full slate replacements go to a specialty crew we partner with.",
+      },
+      {
+        q: 'Is Roof Rejoov available in West Houston?',
+        a: "Yes. If your West Houston asphalt shingle roof is 10 to 18 years old, structurally sound, but cosmetically tired or algae-streaked, Roof Rejoov adds 5 to 10 years of life for roughly 15 to 25 percent of replacement cost. We inspect first and tell you honestly whether it is the right call.",
+      },
+    ],
+
+    recentProject: {
+      customerName: 'The Okonkwo Family',
+      neighborhood: 'Energy Corridor, West Houston',
+      scope:
+        'Full tear-off and replacement of 35 squares, GAF Timberline HDZ in Charcoal, full synthetic underlayment, 5 sheets of decking replaced, new ridge vent, 4 pipe boot replacements',
+      detail:
+        "Two-story Energy Corridor home hit by the May 2024 Derecho. Jerry met the adjuster on the roof, documented the wind-lifted shingles and ridge cap failures, and supplemented for the decking replacement and code-upgrade items the original scope missed. Full replacement completed in two days.",
+    },
+
+    nearbyCities: ['Katy', 'Cinco Ranch', 'Cypress', 'Sugar Land'],
+  },
 ];

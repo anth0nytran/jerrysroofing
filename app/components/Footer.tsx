@@ -103,7 +103,7 @@ export function Footer() {
  <li><Link href="/roof-replacement-cost-katy-tx" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Roof Cost Guide (Katy)</Link></li>
  <li><Link href="/insurance-claims" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Texas Insurance Claim Guide</Link></li>
  <li><Link href="/glossary" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Roofing Glossary</Link></li>
- <li><Link href="/#reviews" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Customer Reviews</Link></li>
+ <li><Link href="/reviews" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Customer Reviews</Link></li>
  <li><Link href="/roof-rejoov" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Roof Rejoov</Link></li>
  <li><Link href="/texas-made" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Texas Made Products</Link></li>
  <li><Link href="/blog" className="hover:text-[var(--jerry-lime)] transition-colors flex items-center gap-2 cursor-pointer"><ArrowRight className="h-3 w-3 text-white/20" /> Roofing Blog</Link></li>
@@ -125,7 +125,11 @@ export function Footer() {
  <div className="border-t border-white/10 bg-black/20">
  <div className={`${shell} py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-[0.7rem] text-white/30 font-medium tracking-wide`}>
  <p>&copy; {new Date().getFullYear()} Jerrys Roofing &mdash; Katy, Texas. All rights reserved.</p>
- <p>Straight forward roofing with quality as the focus.</p>
+ <div className="flex items-center gap-5">
+ <Link href="/privacy" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Privacy</Link>
+ <Link href="/terms" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Terms</Link>
+ <span className="text-white/20">Straight forward roofing with quality as the focus.</span>
+ </div>
  </div>
  </div>
 

@@ -1,0 +1,12 @@
+/* TEAM */
+
+Owner & Lead Roofer: Jerry W. Pilley
+Location: Katy, TX, USA
+Phone: (409) 351-1529
+
+/* SITE */
+
+Last update: 2026-04-19
+Standards: HTML5, CSS3, JSON-LD structured data
+Components: Next.js 16, React 19, Tailwind CSS 4, Framer Motion
+Hosting: Vercel
