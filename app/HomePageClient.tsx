@@ -512,30 +512,35 @@ export default function HomePageClient() {
  </Link>
  </div>
 
- {/* Featured — Roof Replacement (wide cinematic card) */}
+ {/* Featured — Roof Replacement (editorial split card) */}
  <div className="mb-5">
  {serviceData.filter(s => s.slug === 'roof-replacement').map((s) => (
- <div key={s.title} className="group relative overflow-hidden rounded-2xl bg-[var(--jerry-navy-deep)]">
- <div className="relative aspect-[2/1] sm:aspect-[21/8]">
- <NextImage src={s.image} alt={`${s.title} in Katy, Texas by Jerrys Roofing`} fill sizes="100vw" className="object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-700 group-hover:scale-[1.02]" />
- <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/60 to-transparent" />
- </div>
- <div className="absolute inset-0 flex items-center">
- <div className="p-5 sm:p-10 lg:p-14 max-w-2xl">
- <span className="inline-block bg-white/10 border border-white/10 px-3 py-1 text-[0.5rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-3">{s.turnaround}</span>
- <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-[-0.02em]">{s.title}</h3>
- <p className="mt-2 text-[0.75rem] sm:text-[0.9rem] leading-relaxed text-white/50 max-w-lg">{s.summary}</p>
- <div className="mt-3 sm:mt-5 hidden sm:flex flex-wrap gap-x-5 gap-y-1.5">
+ <div key={s.title} className="group relative overflow-hidden rounded-2xl bg-[var(--jerry-navy-deep)] grid md:grid-cols-[1fr_1.1fr] shadow-xl ring-1 ring-white/5">
+ {/* Left — copy panel */}
+ <div className="relative p-6 sm:p-8 lg:p-12 flex flex-col justify-center order-2 md:order-1">
+ <span className="inline-block self-start bg-white/5 border border-white/10 px-3 py-1 text-[0.55rem] sm:text-[0.6rem] font-bold uppercase tracking-[0.22em] text-white/60 mb-4">{s.turnaround}</span>
+ <h3 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-extrabold text-white tracking-[-0.02em] leading-[1.05]">{s.title}</h3>
+ <p className="mt-3 text-[0.85rem] sm:text-[0.9rem] leading-relaxed text-white/55 max-w-md">{s.summary}</p>
+ <div className="mt-5 hidden sm:flex flex-wrap gap-x-5 gap-y-1.5">
  {s.details.map((d) => (
- <span key={d} className="text-[0.65rem] sm:text-[0.7rem] text-white/45 before:content-['—'] before:mr-2 before:text-[var(--jerry-lime)]/60">
+ <span key={d} className="text-[0.7rem] text-white/45 before:content-['—'] before:mr-2 before:text-[var(--jerry-lime)]/70">
  {d}
  </span>
  ))}
  </div>
- <Link href={`/services#${s.slug}`} className="mt-4 sm:mt-6 inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-5 sm:px-6 py-2.5 text-[0.6rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
+ <div className="mt-6">
+ <Link href={`/services#${s.slug}`} className="inline-flex items-center gap-2 bg-[var(--jerry-lime)] px-6 py-3 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy-deep)] hover:bg-[var(--jerry-lime-hover)] transition-colors cursor-pointer">
  Learn More <ArrowRight className="h-3.5 w-3.5" />
  </Link>
  </div>
+ </div>
+ {/* Right — image panel, natural aspect, no stretching */}
+ <div className="relative order-1 md:order-2 aspect-[16/10] md:aspect-auto md:min-h-[340px] lg:min-h-[400px] overflow-hidden">
+ <NextImage src={s.image} alt={`${s.title} in Katy, Texas by Jerrys Roofing`} fill sizes="(min-width:768px) 55vw, 100vw" className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" />
+ {/* Soft left-edge fade on md+ so image blends into the copy panel */}
+ <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[var(--jerry-navy-deep)] via-transparent to-transparent [mask-image:linear-gradient(to_right,black,transparent_28%)]" />
+ {/* Mobile bottom fade for the badge */}
+ <div className="absolute inset-0 md:hidden bg-gradient-to-t from-[var(--jerry-navy-deep)]/60 via-transparent to-transparent" />
  </div>
  </div>
  ))}

@@ -25,13 +25,13 @@ type RoofMotifProps = {
  */
 export function RoofMotif({ variant, tone = 'light', className = '' }: RoofMotifProps) {
   const stroke =
-    tone === 'dark' ? 'var(--jerry-lime)' : 'var(--jerry-navy)';
+    tone === 'dark' ? '#ffffff' : 'var(--jerry-navy)';
   const fill =
-    tone === 'dark' ? 'var(--jerry-lime)' : 'var(--jerry-navy)';
+    tone === 'dark' ? '#ffffff' : 'var(--jerry-navy)';
 
   // Opacity scales — tuned so motifs are *felt* more than *seen*.
-  const strokeOpacity = tone === 'dark' ? 0.18 : 0.08;
-  const fillOpacity = tone === 'dark' ? 0.05 : 0.03;
+  const strokeOpacity = tone === 'dark' ? 0.07 : 0.08;
+  const fillOpacity = tone === 'dark' ? 0.025 : 0.03;
 
   const shared =
     'absolute inset-0 w-full h-full pointer-events-none select-none';
