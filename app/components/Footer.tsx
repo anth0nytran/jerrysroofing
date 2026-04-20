@@ -129,6 +129,7 @@ export function Footer() {
  <Link href="/privacy" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Privacy</Link>
  <Link href="/terms" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Terms</Link>
  <span className="text-white/20">Straight forward roofing with quality as the focus.</span>
+ <a href="https://quicklaunchweb.us" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Website by quicklaunchweb.us</a>
  </div>
  </div>
  </div>
