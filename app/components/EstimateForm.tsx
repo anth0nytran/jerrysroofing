@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { ArrowRight, Phone, User, MapPin, ClipboardList, Lock } from 'lucide-react';
 import { siteConfig } from '../config';
 import { Stars } from './Stars';
+import { FormSuccessOverlay } from './FormSuccessOverlay';
 
 export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark' }) {
  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -42,7 +43,8 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  const isDark = variant === 'dark';
 
  return (
- <div>
+ <div className="relative">
+ {formStatus === 'success' && <FormSuccessOverlay />}
  <form className="grid gap-4 sm:gap-4.5" action="/api/lead" method="POST" onSubmit={handleSubmit}>
  <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
  <input type="hidden" name="_ts" value={formTimestamp} />
@@ -113,7 +115,6 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  </div>
  </div>
 
- {formStatus === 'success' && <div className=" border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 font-medium">Got it — we&apos;ll be in touch shortly.</div>}
  {formStatus === 'error' && <div className=" border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800 font-medium">{formError}</div>}
  </form>
 

@@ -241,10 +241,14 @@ export async function POST(req: Request) {
   }).format(new Date());
   const safeName = name || 'Website Form';
   const safeService = service || 'Website Form';
-  const brandName = "Jerrys Roofing";
+  const brandName = "Jerry's Roofing";
+  const brandTagline = 'Straight forward roofing with quality as the focus';
   const brandAddress = 'Katy, TX';
   const brandPrimary = '#0A2E5B';
+  const brandPrimaryDeep = '#061D3A';
   const brandAccent = '#E3FE08';
+  const brandAccentDeep = '#C9E000';
+  const urgentRed = '#DC2626';
   const fromEmail = process.env.LEAD_FROM_EMAIL || "Jerrys Roofing <leads@roofingbyjerry.com>";
   const subject = `New Lead: ${safeService} | ${safeName}`;
 
@@ -280,72 +284,90 @@ export async function POST(req: Request) {
   const text = textLines.join('\n');
   const escapedMessage = message ? escapeHtml(message).replace(/\n/g, '<br />') : '';
   const html = `
-  <div style="background-color:#e2e8f0;margin:0;padding:24px 12px;font-family:'Barlow','Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0f172a;">
+  <div style="background-color:${brandPrimaryDeep};margin:0;padding:24px 12px;font-family:'Barlow','Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0f172a;">
     <span style="display:none!important;visibility:hidden;opacity:0;color:transparent;height:0;width:0;overflow:hidden;">
-      New quote request from ${escapeHtml(safeName)}. Respond quickly.
+      New quote request from ${escapeHtml(safeName)} &mdash; respond within 5 minutes.
     </span>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #cbd5e1;border-radius:16px;box-shadow:0 14px 36px rgba(2,6,23,0.18);overflow:hidden;">
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:640px;margin:0 auto;background:#ffffff;border:3px solid ${brandAccent};border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.35);overflow:hidden;">
+
+      <!-- HEADER: Navy with lime stripe -->
       <tr>
-        <td style="background:${brandPrimary};color:#ffffff;padding:18px 20px;border-bottom:4px solid ${brandAccent};">
+        <td style="background:${brandPrimary};padding:0;">
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td style="height:6px;background:${brandAccent};line-height:6px;font-size:0;">&nbsp;</td></tr>
             <tr>
-              <td style="font-size:18px;font-weight:800;letter-spacing:0.4px;text-transform:uppercase;">${brandName}</td>
-              <td align="right">
-                <span style="display:inline-block;background:${brandAccent};color:#ffffff;font-weight:800;font-size:11px;padding:7px 10px;border-radius:999px;letter-spacing:1.2px;">NEW LEAD</span>
+              <td style="padding:22px 24px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <div style="font-size:22px;font-weight:900;letter-spacing:0.5px;color:#ffffff;text-transform:uppercase;line-height:1;">${brandName}</div>
+                      <div style="font-size:11px;color:${brandAccent};font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px;">${brandAddress} &middot; (409) 351-1529</div>
+                    </td>
+                    <td align="right" valign="top">
+                      <span style="display:inline-block;background:${brandAccent};color:${brandPrimary};font-weight:900;font-size:11px;padding:8px 12px;border-radius:4px;letter-spacing:1.5px;text-transform:uppercase;">New Lead</span>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
+            <tr><td style="height:4px;background:${brandAccent};line-height:4px;font-size:0;">&nbsp;</td></tr>
           </table>
         </td>
       </tr>
+
+      <!-- LEAD HEADLINE -->
       <tr>
-        <td style="padding:24px 20px 14px;">
-          <div style="font-size:25px;font-weight:800;line-height:1.2;margin:0 0 6px;color:#0f172a;">${escapeHtml(safeName)}</div>
-          <div style="font-size:15px;color:${brandPrimary};font-weight:700;margin:0 0 5px;">${escapeHtml(safeService)}</div>
+        <td style="padding:24px 24px 14px;background:#ffffff;">
+          <div style="font-size:13px;color:${brandPrimary};font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px;">${escapeHtml(safeService)}</div>
+          <div style="font-size:28px;font-weight:900;line-height:1.15;margin:0 0 8px;color:${brandPrimary};">${escapeHtml(safeName)}</div>
           <div style="font-size:12px;color:#64748b;">${escapeHtml(timestamp)}</div>
         </td>
       </tr>
+
+      <!-- CTA BUTTONS -->
       <tr>
-        <td style="padding:0 20px 20px;">
+        <td style="padding:0 24px 20px;">
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
             <tr>
               <td style="padding:0 0 10px;">
-                <a href="tel:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandAccent};color:#061D3A;text-decoration:none;font-weight:800;font-size:14px;text-align:center;padding:14px 18px;border-radius:10px;">
-                  Hold to Call Lead
+                <a href="tel:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandAccent};color:${brandPrimary};text-decoration:none;font-weight:900;font-size:16px;text-align:center;padding:16px 18px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;border:2px solid ${brandPrimary};">
+                  &#9742; Call ${escapeHtml(phone)} Now
                 </a>
               </td>
             </tr>
-
-            ${pageUrlDisplay ? `
             <tr>
-              <td style="padding:0;">
-                <a href="${escapeHtml(page)}" style="font-size:12px;color:${brandAccent};text-decoration:none;">View Page</a>
+              <td>
+                <a href="sms:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandPrimary};color:${brandAccent};text-decoration:none;font-weight:900;font-size:14px;text-align:center;padding:13px 18px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;border:2px solid ${brandAccent};">
+                  &#9993; Send a Text
+                </a>
               </td>
             </tr>
-            ` : ''}
           </table>
         </td>
       </tr>
+
+      <!-- LEAD DETAILS -->
       <tr>
-        <td style="padding:0 20px 20px;">
-          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #dbe5f3;border-radius:12px;overflow:hidden;">
+        <td style="padding:0 24px 20px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:2px solid ${brandPrimary};border-radius:10px;overflow:hidden;">
             <tr>
-              <td style="background:#eff6ff;padding:14px 16px;font-weight:800;border-bottom:1px solid #dbe5f3;color:${brandPrimary};">Lead Details</td>
+              <td style="background:${brandPrimary};padding:12px 16px;font-weight:900;color:${brandAccent};font-size:12px;letter-spacing:1.5px;text-transform:uppercase;">Lead Details</td>
             </tr>
             <tr>
-              <td style="padding:0 16px;">
+              <td style="padding:4px 16px;background:#ffffff;">
                 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size:14px;">
-                  <tr><td style="padding:10px 0;color:#64748b;width:120px;">Name</td><td style="padding:10px 0;color:#0f172a;font-weight:700;">${escapeHtml(safeName)}</td></tr>
-                  <tr><td style="padding:10px 0;color:#64748b;">Phone</td><td style="padding:10px 0;"><a href="tel:${escapeHtml(phoneLink || phone)}" style="color:#0f172a;text-decoration:none;font-weight:700;">${escapeHtml(phone)}</a></td></tr>
-                  <tr><td style="padding:10px 0;color:#64748b;">Address</td><td style="padding:10px 0;color:#0f172a;font-weight:700;">${escapeHtml(address)}</td></tr>
-                  <tr><td style="padding:10px 0;color:#64748b;">Zip Code</td><td style="padding:10px 0;color:#0f172a;font-weight:700;">${escapeHtml(zipCode)}</td></tr>
-                  <tr><td style="padding:10px 0;color:#64748b;">Service</td><td style="padding:10px 0;color:#0f172a;font-weight:700;">${escapeHtml(safeService)}</td></tr>
-                  ${pageUrlDisplay ? `<tr><td style="padding:10px 0;color:#64748b;">Page URL</td><td style="padding:10px 0;"><a href="${escapeHtml(page)}" style="color:${brandAccent};text-decoration:none;">${escapeHtml(pageUrlDisplay)}</a></td></tr>` : ''}
-                  ${site ? `<tr><td style="padding:10px 0;color:#64748b;">Site</td><td style="padding:10px 0;"><a href="${escapeHtml(site)}" style="color:${brandAccent};text-decoration:none;">${escapeHtml(site)}</a></td></tr>` : ''}
-                  ${company ? `<tr><td style="padding:10px 0;color:#64748b;">Company</td><td style="padding:10px 0;color:#0f172a;font-weight:700;">${escapeHtml(company)}</td></tr>` : ''}
+                  <tr><td style="padding:10px 0;color:#64748b;width:120px;font-weight:600;">Name</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;">${escapeHtml(safeName)}</td></tr>
+                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Phone</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="tel:${escapeHtml(phoneLink || phone)}" style="color:${brandPrimary};text-decoration:none;font-weight:800;">${escapeHtml(phone)}</a></td></tr>
+                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Address</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(address)}</td></tr>
+                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Zip Code</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(zipCode)}</td></tr>
+                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Service</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(safeService)}</td></tr>
+                  ${pageUrlDisplay ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Page URL</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="${escapeHtml(page)}" style="color:${brandPrimary};text-decoration:underline;font-weight:700;">${escapeHtml(pageUrlDisplay)}</a></td></tr>` : ''}
+                  ${site ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Site</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="${escapeHtml(site)}" style="color:${brandPrimary};text-decoration:underline;font-weight:700;">${escapeHtml(site)}</a></td></tr>` : ''}
+                  ${company ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Company</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(company)}</td></tr>` : ''}
                   <tr>
-                    <td style="padding:10px 0;color:#64748b;vertical-align:top;">Message</td>
-                    <td style="padding:10px 0;color:#0f172a;">
-                      ${escapedMessage ? `<div style="font-weight:500;">${escapedMessage}</div>` : `<div style="font-style:italic;color:#64748b;">No message provided.</div>`}
+                    <td style="padding:12px 0;color:#64748b;font-weight:600;vertical-align:top;border-top:1px solid #f1f5f9;">Message</td>
+                    <td style="padding:12px 0;color:${brandPrimary};border-top:1px solid #f1f5f9;">
+                      ${escapedMessage ? `<div style="font-weight:600;line-height:1.5;">${escapedMessage}</div>` : `<div style="font-style:italic;color:#94a3b8;">No message provided.</div>`}
                     </td>
                   </tr>
                 </table>
@@ -354,14 +376,19 @@ export async function POST(req: Request) {
           </table>
         </td>
       </tr>
+
+      <!-- BRAND FOOTER -->
       <tr>
-        <td style="padding:0 20px 22px;">
-          <div style="border-left:4px solid ${brandAccent};padding:12px;background:#f8fafc;border-radius:8px;font-size:12px;color:#475569;line-height:1.5;">
-            This lead came from the Jerrys Roofing website form.
-            <span style="display:block;margin-top:6px;font-weight:700;color:${brandPrimary};">${brandAddress}</span>
+        <td style="padding:0 24px 24px;">
+          <div style="border-left:5px solid ${brandAccent};background:#f8fafc;padding:14px 16px;border-radius:6px;">
+            <div style="font-size:13px;color:${brandPrimary};font-weight:800;line-height:1.4;">${brandName} &mdash; ${brandAddress}</div>
+            <div style="font-size:11px;color:#64748b;font-style:italic;margin-top:4px;">${brandTagline}</div>
           </div>
         </td>
       </tr>
+
+      <!-- BOTTOM STRIPE -->
+      <tr><td style="height:6px;background:${brandAccent};line-height:6px;font-size:0;">&nbsp;</td></tr>
     </table>
   </div>
   `;

@@ -25,6 +25,7 @@ import { homeStripPhotos } from './galleryData';
 import { Stars } from './components/Stars';
 import { BrandLogo } from './components/BrandLogo';
 import { RoofMotif } from './components/RoofMotif';
+import { FormSuccessOverlay } from './components/FormSuccessOverlay';
 
 /* ─── INLINE HERO FORM ─── */
 function HeroEstimateForm() {
@@ -60,7 +61,8 @@ function HeroEstimateForm() {
  };
 
  return (
- <div>
+ <div className="relative">
+ {formStatus === 'success' && <FormSuccessOverlay />}
  <form className="grid gap-4" action="/api/lead" method="POST" onSubmit={handleSubmit}>
  <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
  <input type="hidden" name="_ts" value={formTimestamp} />
@@ -125,7 +127,6 @@ function HeroEstimateForm() {
  </p>
  </div>
 
- {formStatus === 'success' && <div className=" border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-sm text-emerald-800 font-medium">Got it — we&apos;ll be in touch shortly.</div>}
  {formStatus === 'error' && <div className=" border border-rose-200 bg-rose-50 px-3 py-2.5 text-sm text-rose-800 font-medium">{formError}</div>}
  </form>
  </div>

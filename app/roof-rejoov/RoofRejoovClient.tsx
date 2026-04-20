@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { siteConfig } from '../config';
 import { Stars } from '../components/Stars';
+import { FormSuccessOverlay } from '../components/FormSuccessOverlay';
 
 const shell = 'mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10';
 
@@ -57,6 +58,8 @@ function RejoovForm() {
   };
 
   return (
+    <div className="relative">
+    {formStatus === 'success' && <FormSuccessOverlay />}
     <form className="grid gap-4" action="/api/lead" method="POST" onSubmit={handleSubmit}>
       <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <input type="hidden" name="_ts" value={formTimestamp} />
@@ -109,9 +112,9 @@ function RejoovForm() {
         By submitting, you agree to receive SMS or emails. Message &amp; data rates may apply. Reply STOP to opt-out.
       </p>
 
-      {formStatus === 'success' && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-sm text-emerald-800 font-medium">Got it &mdash; we&apos;ll be in touch shortly.</div>}
       {formStatus === 'error' && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2.5 text-sm text-rose-800 font-medium">{formError}</div>}
     </form>
+    </div>
   );
 }
 
