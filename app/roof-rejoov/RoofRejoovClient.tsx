@@ -158,17 +158,17 @@ export default function RoofRejoovClient() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative justify-self-center lg:justify-self-end"
             >
-              <div className="absolute -inset-10 bg-[var(--jerry-lime)]/15 blur-[90px] rounded-full pointer-events-none" />
-              <div className="absolute -inset-6 bg-purple-500/15 blur-[70px] rounded-full pointer-events-none" />
-              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-br from-[var(--jerry-lime)]/60 via-purple-500/40 to-[var(--jerry-lime)]/60 blur-[3px] pointer-events-none" />
-              <div className="relative rounded-full overflow-hidden border-2 border-[var(--jerry-lime)]/50 bg-black shadow-2xl ring-4 ring-black/50 h-52 w-52 sm:h-60 sm:w-60 lg:h-72 lg:w-72">
+              <div className="absolute -inset-10 bg-[var(--jerry-lime)]/15 blur-[90px] rounded-2xl pointer-events-none" />
+              <div className="absolute -inset-6 bg-purple-500/15 blur-[70px] rounded-2xl pointer-events-none" />
+              <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-[var(--jerry-lime)]/60 via-purple-500/40 to-[var(--jerry-lime)]/60 blur-[3px] pointer-events-none" />
+              <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--jerry-lime)]/50 bg-black shadow-2xl ring-4 ring-black/50 h-72 w-56 sm:h-80 sm:w-64 lg:h-[26rem] lg:w-80">
                 <NextImage
                   src="/roofing/rejoov-logo.jpg"
                   alt="Roof Rejoov by Jerrys Roofing logo"
                   fill
-                  sizes="(min-width: 1024px) 288px, (min-width: 640px) 240px, 208px"
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 224px"
                   className="object-cover"
-                  style={{ objectPosition: 'center 45%' }}
+                  style={{ objectPosition: 'center 40%' }}
                   priority
                 />
               </div>
