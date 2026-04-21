@@ -152,7 +152,7 @@ export const serviceData = [
     slug: 'roof-replacement',
     featured: true,
     title: 'Roof Replacement',
-    image: '/roofing/real/01-replacement-pool-dusk.jpg',
+    image: '/roofing/real/jerry-truck-finished-roof-v2.jpg',
     summary:
       'Complete tear-off and replacement with premium shingles from IKO, CertainTeed, GAF, or F-Wave synthetic. Built to last through Texas weather.',
     details: [
@@ -195,7 +195,7 @@ export const serviceData = [
     slug: 'roof-rejoov',
     featured: true,
     title: 'Roof Rejoov',
-    image: '/roofing/real/13-rejoov-before.jpg',
+    image: '/roofing/real/rejoov-before-v2.jpg',
     summary:
       'Extend your roof\'s active lifespan by 5–10 years without a full replacement. A highly cost-effective, scientific solution for aging shingles.',
     details: [
@@ -278,7 +278,7 @@ export const serviceData = [
     slug: 'siding',
     featured: true,
     title: 'Siding Installation & Repair',
-    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=SIDING+PHOTO+NEEDED',
+    image: '/pictures/siding-texas.jpg',
     summary:
       "Upgrade your home's exterior envelope with incredibly durable, highly attractive siding. Premium Vinyl, Fiber Cement, and engineered wood installed right.",
     details: [
@@ -319,7 +319,7 @@ export const serviceData = [
     slug: 'painting',
     featured: true,
     title: 'Exterior Painting',
-    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=PAINTING+PHOTO+NEEDED',
+    image: '/pictures/painting-texas-v2.jpg',
     summary:
       'Professional exterior painting that aggressively protects and beautifully refreshes your home. Deep prep, premium paints, and perfectly clean lines.',
     details: [
@@ -360,7 +360,7 @@ export const serviceData = [
     slug: 'driveway-repaints',
     featured: true,
     title: 'Driveway Repaints & Coatings',
-    image: 'https://placehold.co/1200x900/0f1419/b0f056/png?text=DRIVEWAY+PHOTO+NEEDED',
+    image: '/pictures/driveway-texas-v2.jpg',
     summary:
       "Restore and heavily protect your driveway with professional structural repainting and thick sealing. Instantly boost curb appeal and easily extend your driveway's life.",
     details: [

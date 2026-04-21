@@ -149,14 +149,43 @@ export default function ServicesPageClient({
                   >
                     {/* Image — fixed aspect ratio */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 shrink-0">
-                      <NextImage
-                        src={s.image}
-                        alt={`${s.title} in Katy, Texas by Jerrys Roofing`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                      {s.slug === 'roof-rejoov' ? (
+                        <div className="absolute inset-0 grid grid-cols-2">
+                          <div className="relative overflow-hidden">
+                            <NextImage
+                              src="/roofing/real/13-rejoov-before.jpg"
+                              alt="Aged asphalt shingle roof before Roof Rejoov treatment in Katy, TX"
+                              fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                              className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                            />
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center justify-center bg-black/70 backdrop-blur-sm px-3 h-6">
+                              <span className="text-[0.6rem] font-extrabold uppercase tracking-[0.2em] text-white leading-none translate-y-[0.5px]">Before</span>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden border-l-2 border-[var(--jerry-lime)]">
+                            <NextImage
+                              src="/roofing/real/13-rejoov-after.jpg"
+                              alt="Same roof after Roof Rejoov bio-oil treatment — restored color and flexibility"
+                              fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                              className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                            />
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center justify-center bg-[var(--jerry-lime)] px-3 h-6">
+                              <span className="text-[0.6rem] font-extrabold uppercase tracking-[0.2em] text-[var(--jerry-navy-deep)] leading-none translate-y-[0.5px]">After</span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <NextImage
+                          src={s.image}
+                          alt={`${s.title} in Katy, Texas by Jerrys Roofing`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
                       {/* Category pill — top left */}
                       <div className="absolute top-4 left-4 inline-flex items-center bg-[var(--jerry-lime)] px-3 py-1.5">
                         <span className="text-[0.55rem] sm:text-[0.6rem] font-extrabold uppercase tracking-[0.15em] text-[var(--jerry-navy-deep)]">

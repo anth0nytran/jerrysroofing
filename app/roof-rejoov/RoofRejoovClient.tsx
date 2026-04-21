@@ -124,12 +124,12 @@ export default function RoofRejoovClient() {
       {/* ═══ HERO ═══ */}
       <section className="relative isolate overflow-hidden bg-[var(--jerry-navy-deep)]">
         <div className="absolute inset-0">
-          <NextImage src="/roofing/real/13-rejoov-before.jpg" alt="Roof Rejoov shingle restoration in Katy, Texas" fill sizes="100vw" className="object-cover opacity-15" />
+          <NextImage src="/roofing/real/rejoov-before-v2.jpg" alt="Roof Rejoov shingle restoration in Katy, Texas" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-navy-deep)] via-[var(--jerry-navy-deep)]/70 to-transparent" />
 
-        <div className={`${shell} relative z-10 py-10 sm:py-14`}>
-          <nav aria-label="Breadcrumb" className="mb-5">
+        <div className={`${shell} relative z-10 py-8 sm:py-10`}>
+          <nav aria-label="Breadcrumb" className="mb-4">
             <ol className="flex items-center gap-2 text-sm text-white/40">
               <li><Link href="/" className="hover:text-[var(--jerry-lime)] transition-colors cursor-pointer">Home</Link></li>
               <li aria-hidden="true">/</li>
@@ -137,19 +137,43 @@ export default function RoofRejoovClient() {
             </ol>
           </nav>
 
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }} className="max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
-              Your roof doesn&apos;t need replacing. <span className="text-[var(--jerry-lime)]">It needs Rejoov.</span>
-            </h1>
-            <p className="mt-4 text-base sm:text-lg leading-relaxed text-white/60 max-w-xl">
-              Most Katy homeowners are told they need a $10,000+ roof replacement when a single-day bio-based treatment would extend their roof&apos;s life by 5&ndash;10 years &mdash; for a fraction of the cost.
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/50">
-              <span className="flex items-center gap-1.5"><Shield className="h-3 w-3 text-[var(--jerry-lime)]" /> Eco-Friendly</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--jerry-lime)]" /> Done in 1 Day</span>
-              <span className="flex items-center gap-1.5"><Star className="h-3 w-3 text-[var(--jerry-lime)]" /> 5-Star Rated</span>
-            </div>
-          </motion.div>
+          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-6 lg:gap-10 items-center">
+            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }} className="max-w-2xl">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+                Your roof doesn&apos;t need replacing. <span className="text-[var(--jerry-lime)]">It needs Rejoov.</span>
+              </h1>
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-white/60 max-w-xl">
+                Most Katy homeowners are told they need a $10,000+ roof replacement when a single-day bio-based treatment would extend their roof&apos;s life by 5&ndash;10 years &mdash; for a fraction of the cost.
+              </p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[0.65rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/50">
+                <span className="flex items-center gap-1.5"><Shield className="h-3 w-3 text-[var(--jerry-lime)]" /> Eco-Friendly</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-[var(--jerry-lime)]" /> Done in 1 Day</span>
+                <span className="flex items-center gap-1.5"><Star className="h-3 w-3 text-[var(--jerry-lime)]" /> 5-Star Rated</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative justify-self-center lg:justify-self-end"
+            >
+              <div className="absolute -inset-10 bg-[var(--jerry-lime)]/15 blur-[90px] rounded-full pointer-events-none" />
+              <div className="absolute -inset-6 bg-purple-500/15 blur-[70px] rounded-full pointer-events-none" />
+              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-br from-[var(--jerry-lime)]/60 via-purple-500/40 to-[var(--jerry-lime)]/60 blur-[3px] pointer-events-none" />
+              <div className="relative rounded-full overflow-hidden border-2 border-[var(--jerry-lime)]/50 bg-black shadow-2xl ring-4 ring-black/50 h-52 w-52 sm:h-60 sm:w-60 lg:h-72 lg:w-72">
+                <NextImage
+                  src="/roofing/rejoov-logo.jpg"
+                  alt="Roof Rejoov by Jerrys Roofing logo"
+                  fill
+                  sizes="(min-width: 1024px) 288px, (min-width: 640px) 240px, 208px"
+                  className="object-cover"
+                  style={{ objectPosition: 'center 45%' }}
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-[var(--jerry-lime)]/20 to-transparent" />
       </section>
@@ -193,7 +217,7 @@ export default function RoofRejoovClient() {
       {/* ═══ THE SOLUTION ═══ */}
       <section className="relative isolate bg-[var(--jerry-ink)] py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <NextImage src="/roofing/real/13-rejoov-before.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
+          <NextImage src="/roofing/real/rejoov-before-v2.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--jerry-ink)]/95 via-[var(--jerry-ink)]/80 to-[var(--jerry-ink)]/40" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--jerry-ink)] to-transparent" />
         </div>
@@ -256,7 +280,7 @@ export default function RoofRejoovClient() {
             <div className="relative overflow-hidden bg-slate-900">
               <div className="relative aspect-[4/3]">
                 <NextImage
-                  src="/roofing/real/13-rejoov-before.jpg"
+                  src="/roofing/real/rejoov-before-v2.jpg"
                   alt="Aged asphalt shingle roof before Roof Rejoov treatment — brittle, granule loss, sun-baked in Katy, Texas"
                   fill
                   sizes="(min-width: 1024px) 45vw, 100vw"
@@ -275,15 +299,16 @@ export default function RoofRejoovClient() {
               </div>
             </div>
 
-            {/* After — placeholder, awaiting real "after Rejoov" photo */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-[var(--jerry-navy-deep)] via-[var(--jerry-navy)] to-[var(--jerry-ink)]">
-              <div className="relative aspect-[4/3] flex flex-col items-center justify-center text-center px-6">
-                <div className="h-14 w-14 rounded-full border-2 border-dashed border-[var(--jerry-lime)]/60 flex items-center justify-center mb-4">
-                  <MapPin className="h-6 w-6 text-[var(--jerry-lime)]/70" />
-                </div>
-                <p className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-[var(--jerry-lime)]/80 mb-2">Placeholder</p>
-                <p className="text-sm font-semibold text-white max-w-xs">Real &ldquo;After Rejoov&rdquo; photo needed</p>
-                <p className="mt-2 text-[0.7rem] text-white/40">Pending project completion</p>
+            {/* After — real photo */}
+            <div className="relative overflow-hidden bg-slate-900">
+              <div className="relative aspect-[4/3]">
+                <NextImage
+                  src="/roofing/real/rejoov-after-v2.jpg"
+                  alt="Same asphalt shingle roof after Roof Rejoov bio-oil treatment — restored flexibility, color and waterproofing in Katy, Texas"
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover"
+                />
               </div>
               <div className="absolute top-4 left-4 bg-[var(--jerry-lime)] px-3 py-1.5">
                 <span className="text-[0.6rem] sm:text-[0.65rem] font-extrabold uppercase tracking-[0.25em] text-[var(--jerry-navy-deep)]">

@@ -155,17 +155,18 @@ type RejoovSlide = {
 const rejoovSlides: RejoovSlide[] = [
  {
   kind: 'image',
-  src: '/roofing/real/13-rejoov-before.jpg',
+  src: '/roofing/real/rejoov-before-v2.jpg',
   alt: 'Real aged asphalt roof in Katy, TX before Roof Rejoov bio-oil treatment',
   label: 'Before',
   note: 'Dried, brittle shingles losing granules after 15+ years of Texas sun.',
   location: 'Katy, TX',
  },
  {
-  kind: 'placeholder',
+  kind: 'image',
+  src: '/roofing/real/rejoov-after-v2.jpg',
+  alt: 'Same Katy, TX roof after Roof Rejoov bio-oil treatment — restored color, flexibility and waterproofing',
   label: 'After Rejoov',
-  note: 'After bio-oil treatment — flexibility and color restored.',
-  hint: 'Real "after Rejoov" photo needed',
+  note: 'After bio-oil treatment — flexibility, color and waterproofing restored.',
   location: 'Katy, TX',
  },
 ];
