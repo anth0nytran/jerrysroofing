@@ -15,10 +15,10 @@ export function BrandLogo({
 }: BrandLogoProps) {
   return (
     <NextImage
-      src="/pictures/logo-transparent.svg"
+      src="/neon1-cropped.png"
       alt={alt}
-      width={1050}
-      height={600}
+      width={1898}
+      height={955}
       priority={priority}
       sizes={sizes}
       className={className}

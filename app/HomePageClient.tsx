@@ -330,18 +330,16 @@ export default function HomePageClient() {
  <span className="text-[0.6rem] font-bold uppercase tracking-widest text-white/80">5-Star Rated on Google</span>
  </div>
 
- {/* Logo wordmark — replaces the "Jerrys Roofing" text.
-     The SVG has whitespace at the bottom of its viewBox, so we use a large negative
-     margin on the tagline below to pull it up flush against the logo. */}
+ {/* Logo wordmark — neon version sits flush on dark hero */}
  <BrandLogo
- className="block h-auto w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[440px] -ml-2 sm:-ml-3 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
- sizes="(min-width:1024px) 440px, (min-width:640px) 360px, 280px"
+ className="block h-auto w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)]"
+ sizes="(min-width:1024px) 480px, (min-width:640px) 400px, 320px"
  priority
  alt="Jerrys Roofing — Katy, Texas"
  />
 
- {/* Tagline — pulled up into the logo's bottom whitespace */}
- <p className="-mt-6 sm:-mt-8 lg:-mt-11 text-[1rem] sm:text-[1.15rem] lg:text-[1.25rem] font-extrabold leading-[1.25] tracking-tight text-white drop-shadow-lg max-w-[34ch]">
+ {/* Tagline */}
+ <p className="mt-3 text-[1rem] sm:text-[1.15rem] lg:text-[1.25rem] font-extrabold leading-[1.25] tracking-tight text-white drop-shadow-lg max-w-[34ch]">
  Katy, Texas&apos; Straight Forward Roofing with Quality as the Focus.
  </p>
 
