@@ -421,7 +421,18 @@ export default function HomePageClient() {
  <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
  {/* Left — copy */}
  <div>
- <p className="eyebrow text-[var(--jerry-lime)]">Roof Rejoov</p>
+ <div className="flex items-center gap-3">
+ <div className="relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full border border-[var(--jerry-lime)]/40 bg-white shadow-[0_0_0_3px_rgba(255,255,255,0.04)] ring-1 ring-[var(--jerry-lime)]/20">
+ <NextImage
+ src="/roofrejoovlogo.jpg"
+ alt="Roof Rejoov logo"
+ fill
+ sizes="80px"
+ className="object-cover"
+ />
+ </div>
+ <p className="text-[0.7rem] font-bold uppercase tracking-[0.28em] text-[var(--jerry-lime)] mb-0" style={{ fontFamily: 'var(--font-app-display), "Arial Narrow", sans-serif' }}>Roof Rejoov</p>
+ </div>
  <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl section-heading">Not every roof needs replacing.</h2>
  <p className="mt-2 text-lg font-bold text-[var(--jerry-lime)] sm:text-xl">But every roof needs this.</p>
  <p className="mt-5 text-[0.85rem] sm:text-[0.9rem] leading-relaxed text-white/60 max-w-lg">
