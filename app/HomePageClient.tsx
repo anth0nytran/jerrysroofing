@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { siteConfig, serviceData } from './config';
 import { homeStripPhotos } from './galleryData';
+import { trackMarketingEvent } from './lib/analytics';
 import { Stars } from './components/Stars';
 import { BrandLogo } from './components/BrandLogo';
 import { RoofMotif } from './components/RoofMotif';
@@ -33,9 +34,6 @@ function HeroEstimateForm() {
  const [formError, setFormError] = useState('');
  const [formTimestamp] = useState(() => Date.now().toString());
  const [phoneValue, setPhoneValue] = useState('');
- const [pageUrl, setPageUrl] = useState('');
-
- useEffect(() => { setPageUrl(window.location.href); }, []);
 
  const formatPhone = (v: string) => {
  const d = v.replace(/\D/g, '').slice(0, 10);
@@ -51,11 +49,17 @@ function HeroEstimateForm() {
  setFormStatus('sending');
  const form = e.currentTarget;
  const fd = new FormData(form);
+ fd.set('page', window.location.href);
  if (String(fd.get('website') || '').trim()) { form.reset(); setPhoneValue(''); setFormStatus('success'); return; }
  try {
  const res = await fetch('/api/lead', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
  const data = await res.json().catch(() => null);
  if (!res.ok || !data?.ok) { setFormStatus('error'); setFormError(data?.error || 'Something went wrong.'); return; }
+ trackMarketingEvent('Lead Form Success', {
+ form_id: 'hero_estimate_form',
+ service: String(fd.get('service') || ''),
+ zip_code: String(fd.get('zipCode') || ''),
+ });
  form.reset(); setPhoneValue(''); setFormStatus('success');
  } catch { setFormStatus('error'); setFormError('Something went wrong. Please try again.'); }
  };
@@ -63,10 +67,10 @@ function HeroEstimateForm() {
  return (
  <div className="relative">
  {formStatus === 'success' && <FormSuccessOverlay />}
- <form className="grid gap-4" action="/api/lead" method="POST" onSubmit={handleSubmit}>
+ <form id="hero-estimate-form" className="grid gap-4" action="/api/lead" method="POST" onSubmit={handleSubmit}>
  <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
  <input type="hidden" name="_ts" value={formTimestamp} />
- <input type="hidden" name="page" value={pageUrl} />
+ <input type="hidden" name="page" value="" />
 
  <div className="grid gap-4 sm:grid-cols-2">
  <div>

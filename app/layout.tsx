@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Poppins, Open_Sans, JetBrains_Mono } from "next/font/google";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { MarketingAnalytics } from "./components/MarketingAnalytics";
 import { siteConfig } from "./config";
 import "./globals.css";
 
@@ -346,6 +349,9 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <MarketingAnalytics />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

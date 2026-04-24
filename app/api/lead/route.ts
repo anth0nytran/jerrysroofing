@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { trackServerEvent } from '../../lib/serverAnalytics';
 
 export const runtime = 'nodejs';
 
@@ -256,6 +257,13 @@ export async function POST(req: Request) {
     !!page &&
     (/localhost/i.test(page) || /127\.0\.0\.1/.test(page) || /0\.0\.0\.0/.test(page));
   const pageUrlDisplay = page ? (pageUrlIsDev ? `${page} (dev link)` : page) : '';
+  const leadAnalyticsProperties = {
+    service: safeService,
+    zip_code: zipCode,
+    source_page: pageUrlDisplay || page || 'unknown',
+    has_message: Boolean(message),
+    message_length: message.length,
+  };
   const phoneLink = (() => {
     if (!phone) return '';
     if (phone.trim().startsWith('+')) {
@@ -411,6 +419,11 @@ export async function POST(req: Request) {
       );
     }
 
+    await trackServerEvent('Lead Submitted', {
+      ...leadAnalyticsProperties,
+      delivery_mode: 'dry_run',
+    }, req);
+
     return NextResponse.json(
       {
         ok: true,
@@ -447,6 +460,11 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 });
   }
+
+  await trackServerEvent('Lead Submitted', {
+    ...leadAnalyticsProperties,
+    delivery_mode: 'email',
+  }, req);
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
