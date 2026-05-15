@@ -91,17 +91,38 @@ export async function POST(req: Request) {
 
   const name = pickField(data, ['name', 'fullName', 'fullname']);
   const phone = pickField(data, ['phone', 'phoneNumber', 'phone_number', 'tel']);
+  const email = pickField(data, ['email', 'emailAddress', 'email_address']);
   const address = pickField(data, ['address', 'streetAddress']);
   const zipCode = pickField(data, ['zipCode', 'zip_code', 'zip']);
   const message = pickField(data, ['message', 'details', 'notes']);
   const company = pickField(data, ['company', 'companyName', 'company_name']);
   const service = pickField(data, ['service', 'serviceNeeded', 'service_needed']);
+  const timeline = pickField(data, ['timeline', 'urgency', 'when']);
   const page = pickField(data, ['page', 'pageUrl', 'page_url']);
   const site = pickField(data, ['site', 'siteUrl', 'site_url']);
+  const smsConsent = pickField(data, ['sms_consent', 'smsConsent']);
+  const smsConsentText = pickField(data, ['sms_consent_text', 'smsConsentText']);
+  const ageConfirmed = pickField(data, ['age_confirmed', 'ageConfirmed']);
+  const consentTimestamp = pickField(data, ['consent_timestamp', 'consentTimestamp']);
 
-  if (!name || !phone || !address || !zipCode || !service) {
+  if (!name || !email || !address || !zipCode || !service) {
     return NextResponse.json(
-      { ok: false, error: 'Please provide your name, phone, address, zip code, and service needed.' },
+      { ok: false, error: 'Please provide your name, email, address, zip code, and service needed.' },
+      { status: 400 }
+    );
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email) || email.length > 254) {
+    return NextResponse.json(
+      { ok: false, error: 'Please enter a valid email address.' },
+      { status: 400 }
+    );
+  }
+
+  if (ageConfirmed !== 'yes') {
+    return NextResponse.json(
+      { ok: false, error: 'Please confirm you are at least 18 years old.' },
       { status: 400 }
     );
   }
@@ -115,12 +136,14 @@ export async function POST(req: Request) {
     );
   }
 
-  const phoneDigits = phone.replace(/\D/g, '');
-  if (phoneDigits.length < 10 || phoneDigits.length > 11) {
-    return NextResponse.json(
-      { ok: false, error: 'Please enter a valid 10-digit phone number.' },
-      { status: 400 }
-    );
+  if (phone) {
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      return NextResponse.json(
+        { ok: false, error: 'Please enter a valid 10-digit phone number.' },
+        { status: 400 }
+      );
+    }
   }
 
   const zipPattern = /^\d{5}$/;
@@ -279,14 +302,22 @@ export async function POST(req: Request) {
   const textLines = [
     `Timestamp: ${timestamp}`,
     name ? `Name: ${name}` : '',
+    email ? `Email: ${email}` : '',
     phone ? `Phone: ${phone}` : '',
     address ? `Address: ${address}` : '',
     zipCode ? `Zip Code: ${zipCode}` : '',
     company ? `Company: ${company}` : '',
     service ? `Service: ${service}` : '',
+    timeline ? `Timeline: ${timeline}` : '',
     pageUrlDisplay ? `Page: ${pageUrlDisplay}` : '',
     site ? `Site: ${site}` : '',
     `Message:\n${message || '(none)'}`,
+    '',
+    '--- A2P Consent Record ---',
+    `SMS Consent: ${smsConsent === 'yes' ? 'YES (opted in)' : 'NO (not opted in)'}`,
+    `Age 18+ Confirmed: ${ageConfirmed === 'yes' ? 'YES' : 'NO'}`,
+    consentTimestamp ? `Consent Timestamp: ${consentTimestamp}` : '',
+    smsConsent === 'yes' && smsConsentText ? `Consent Text Shown:\n${smsConsentText}` : '',
   ].filter(Boolean);
 
   const text = textLines.join('\n');
@@ -336,7 +367,7 @@ export async function POST(req: Request) {
       <tr>
         <td style="padding:0 24px 20px;">
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
-            <tr>
+            ${phone ? `<tr>
               <td style="padding:0 0 10px;">
                 <a href="tel:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandAccent};color:${brandPrimary};text-decoration:none;font-weight:900;font-size:16px;text-align:center;padding:16px 18px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;border:2px solid ${brandPrimary};">
                   &#9742; Call ${escapeHtml(phone)} Now
@@ -344,9 +375,16 @@ export async function POST(req: Request) {
               </td>
             </tr>
             <tr>
-              <td>
+              <td style="padding:0 0 10px;">
                 <a href="sms:${escapeHtml(phoneLink || phone)}" style="display:block;background:${brandPrimary};color:${brandAccent};text-decoration:none;font-weight:900;font-size:14px;text-align:center;padding:13px 18px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;border:2px solid ${brandAccent};">
                   &#9993; Send a Text
+                </a>
+              </td>
+            </tr>` : ''}
+            <tr>
+              <td>
+                <a href="mailto:${escapeHtml(email)}" style="display:block;background:${phone ? '#ffffff' : brandAccent};color:${brandPrimary};text-decoration:none;font-weight:900;font-size:14px;text-align:center;padding:13px 18px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;border:2px solid ${brandPrimary};">
+                  &#9993; Reply by Email
                 </a>
               </td>
             </tr>
@@ -365,10 +403,12 @@ export async function POST(req: Request) {
               <td style="padding:4px 16px;background:#ffffff;">
                 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-size:14px;">
                   <tr><td style="padding:10px 0;color:#64748b;width:120px;font-weight:600;">Name</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;">${escapeHtml(safeName)}</td></tr>
-                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Phone</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="tel:${escapeHtml(phoneLink || phone)}" style="color:${brandPrimary};text-decoration:none;font-weight:800;">${escapeHtml(phone)}</a></td></tr>
+                  <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Email</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="mailto:${escapeHtml(email)}" style="color:${brandPrimary};text-decoration:none;font-weight:800;">${escapeHtml(email)}</a></td></tr>
+                  ${phone ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Phone</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="tel:${escapeHtml(phoneLink || phone)}" style="color:${brandPrimary};text-decoration:none;font-weight:800;">${escapeHtml(phone)}</a></td></tr>` : ''}
                   <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Address</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(address)}</td></tr>
                   <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Zip Code</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(zipCode)}</td></tr>
                   <tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Service</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(safeService)}</td></tr>
+                  ${timeline ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Timeline</td><td style="padding:10px 0;color:${urgentRed};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(timeline)}</td></tr>` : ''}
                   ${pageUrlDisplay ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Page URL</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="${escapeHtml(page)}" style="color:${brandPrimary};text-decoration:underline;font-weight:700;">${escapeHtml(pageUrlDisplay)}</a></td></tr>` : ''}
                   ${site ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Site</td><td style="padding:10px 0;border-top:1px solid #f1f5f9;"><a href="${escapeHtml(site)}" style="color:${brandPrimary};text-decoration:underline;font-weight:700;">${escapeHtml(site)}</a></td></tr>` : ''}
                   ${company ? `<tr><td style="padding:10px 0;color:#64748b;font-weight:600;border-top:1px solid #f1f5f9;">Company</td><td style="padding:10px 0;color:${brandPrimary};font-weight:800;border-top:1px solid #f1f5f9;">${escapeHtml(company)}</td></tr>` : ''}
@@ -382,6 +422,20 @@ export async function POST(req: Request) {
               </td>
             </tr>
           </table>
+        </td>
+      </tr>
+
+      <!-- A2P CONSENT RECORD -->
+      <tr>
+        <td style="padding:0 24px 16px;">
+          <div style="border:1px dashed #cbd5e1;background:#f8fafc;padding:12px 14px;border-radius:6px;font-size:11px;color:#475569;">
+            <div style="font-weight:800;color:${brandPrimary};text-transform:uppercase;letter-spacing:1px;font-size:10px;margin-bottom:6px;">A2P Consent Record</div>
+            <div><strong>SMS Consent:</strong> ${smsConsent === 'yes' ? 'YES (opted in)' : 'NO (not opted in)'}</div>
+            <div><strong>Age 18+ Confirmed:</strong> ${ageConfirmed === 'yes' ? 'YES' : 'NO'}</div>
+            ${consentTimestamp ? `<div><strong>Consent Timestamp:</strong> ${escapeHtml(consentTimestamp)}</div>` : ''}
+            ${pageUrlDisplay ? `<div><strong>Source URL:</strong> ${escapeHtml(pageUrlDisplay)}</div>` : ''}
+            ${smsConsent === 'yes' && smsConsentText ? `<div style="margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;font-style:italic;color:#64748b;line-height:1.4;"><strong style="font-style:normal;">Consent text shown:</strong><br/>${escapeHtml(smsConsentText)}</div>` : ''}
+          </div>
         </td>
       </tr>
 
@@ -446,7 +500,7 @@ export async function POST(req: Request) {
     from: fromEmail,
     to: [toEmail],
     bcc,
-    replyTo: undefined,
+    replyTo: email || undefined,
     subject,
     text,
     html,

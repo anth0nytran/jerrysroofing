@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const shell = 'mx-auto w-full max-w-3xl px-5 sm:px-8 lg:px-10';
 
 export default function TermsPage() {
-  const lastUpdated = 'April 19, 2026';
+  const lastUpdated = 'May 14, 2026';
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -82,6 +82,52 @@ export default function TermsPage() {
             <p>Warranty terms for roofing work are specified in the written agreement for each job and
               reflect the manufacturer&apos;s warranty on materials plus our workmanship warranty. Nothing
               on this website creates an additional warranty beyond what is in that signed agreement.</p>
+
+            <h2 id="sms" className="text-2xl font-extrabold text-[var(--jerry-navy)] mt-8">SMS / Text Messaging Terms</h2>
+
+            <p><strong>Program Name:</strong> Jerry&apos;s Roofing SMS Program.</p>
+
+            <p className="mt-4"><strong>Program Description:</strong> When you submit a contact or quote
+              request form on our website and opt in to SMS by checking the consent checkbox, you may receive
+              the following types of service-related text messages:</p>
+            <ul className="list-disc pl-6 space-y-1 mt-2">
+              <li>Lead submission and quote request confirmations</li>
+              <li>Appointment coordination and follow-ups</li>
+              <li>Missed call text-back notifications</li>
+              <li>Project status and schedule updates</li>
+              <li>After-hours auto-reply messages</li>
+              <li>One-time review requests after a completed service</li>
+            </ul>
+
+            <p className="mt-4">You can cancel the SMS service at any time. Simply text
+              <strong> &ldquo;STOP&rdquo;</strong> to the number you received messages from. Upon sending
+              &ldquo;STOP,&rdquo; we will confirm your unsubscribe status via SMS. Following this
+              confirmation, you will no longer receive SMS messages from us. To rejoin, sign up as you did
+              initially, and we will resume sending SMS messages to you.</p>
+
+            <p className="mt-4">If you experience issues with the messaging program, reply with the keyword
+              <strong> HELP </strong> for more assistance, or reach out directly to{' '}
+              <a href={`mailto:${siteConfig.email}`} className="text-[var(--jerry-navy)] underline">
+                {siteConfig.email}
+              </a>.</p>
+
+            <p className="mt-4"><strong>Message Frequency:</strong> Message frequency varies. Approximately
+              2&ndash;6 messages per month depending on customer activity.</p>
+
+            <p className="mt-4">As always, message and data rates may apply for messages sent to you from us
+              and to us from you. For questions about your text plan or data plan, contact your wireless
+              provider.</p>
+
+            <p className="mt-4"><strong>Carrier Disclaimer:</strong> Carriers are not liable for delayed or
+              undelivered messages.</p>
+
+            <p className="mt-4"><strong>Consent:</strong> Consent to receive SMS messages is voluntary and is
+              not a condition of any purchase or service. By checking the SMS consent box on our website
+              form, you confirm that you are the subscriber or authorized user of the phone number provided
+              and consent to receive SMS messages from Jerry&apos;s Roofing.</p>
+
+            <p className="mt-4">For privacy-related inquiries, please refer to our{' '}
+              <Link href="/privacy" className="text-[var(--jerry-navy)] underline">Privacy Policy</Link>.</p>
 
             <h2 className="text-2xl font-extrabold text-[var(--jerry-navy)] mt-8">Limitation of liability</h2>
             <p>We do our best to keep the information on this site accurate, but we do not guarantee that

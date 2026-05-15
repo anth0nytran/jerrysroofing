@@ -12,6 +12,8 @@ import {
   Star,
   User,
   MapPin,
+  Mail,
+  Calendar,
 } from 'lucide-react';
 import { siteConfig } from '../config';
 import { Stars } from '../components/Stars';
@@ -31,6 +33,8 @@ function RejoovForm() {
   const [formTimestamp] = useState(() => Date.now().toString());
   const [phoneValue, setPhoneValue] = useState('');
   const [pageUrl, setPageUrl] = useState('');
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [ageConfirm, setAgeConfirm] = useState(false);
 
   useEffect(() => { setPageUrl(window.location.href); }, []);
 
@@ -45,15 +49,26 @@ function RejoovForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormError('');
+    if (!ageConfirm) {
+      setFormStatus('error');
+      setFormError('Please confirm you are at least 18 years old.');
+      return;
+    }
     setFormStatus('sending');
     const form = e.currentTarget;
     const fd = new FormData(form);
-    if (String(fd.get('website') || '').trim()) { form.reset(); setPhoneValue(''); setFormStatus('success'); return; }
+    fd.set('sms_consent', smsConsent ? 'yes' : 'no');
+    fd.set('sms_consent_text', smsConsent
+      ? `I consent to receive SMS notifications, alerts & occasional service messages from ${siteConfig.businessName}. Message frequency may vary (approximately 2-6 messages per month). Message & data rates may apply. Text HELP for help. Reply STOP to unsubscribe.`
+      : '');
+    fd.set('age_confirmed', 'yes');
+    fd.set('consent_timestamp', new Date().toISOString());
+    if (String(fd.get('website') || '').trim()) { form.reset(); setPhoneValue(''); setSmsConsent(false); setAgeConfirm(false); setFormStatus('success'); return; }
     try {
       const res = await fetch('/api/lead', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) { setFormStatus('error'); setFormError(data?.error || 'Something went wrong.'); return; }
-      form.reset(); setPhoneValue(''); setFormStatus('success');
+      form.reset(); setPhoneValue(''); setSmsConsent(false); setAgeConfirm(false); setFormStatus('success');
     } catch { setFormStatus('error'); setFormError('Something went wrong. Please try again.'); }
   };
 
@@ -75,11 +90,19 @@ function RejoovForm() {
           </div>
         </div>
         <div>
-          <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Phone <span className="text-red-500">*</span></label>
+          <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Phone <span className="text-slate-400 font-normal normal-case tracking-normal">(Optional)</span></label>
           <div className="relative">
             <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
-            <input required name="phone" type="tel" placeholder="(409) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20" />
+            <input name="phone" type="tel" placeholder="(409) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20" />
           </div>
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Email <span className="text-red-500">*</span></label>
+        <div className="relative">
+          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+          <input required name="email" type="email" placeholder="you@example.com" autoComplete="email" className="w-full border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20" />
         </div>
       </div>
 
@@ -98,8 +121,51 @@ function RejoovForm() {
       </div>
 
       <div>
+        <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Timeline <span className="text-red-500">*</span></label>
+        <div className="relative">
+          <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+          <select required name="timeline" defaultValue="" className="w-full border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm text-slate-900 outline-none transition-all focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 appearance-none cursor-pointer">
+            <option value="" disabled>When do you need this?</option>
+            <option value="ASAP (active leak / emergency)">ASAP &mdash; leak / emergency</option>
+            <option value="Within 2 weeks">Within 2 weeks</option>
+            <option value="Within 1-3 months">Within 1-3 months</option>
+            <option value="Just exploring / no rush">Just exploring &mdash; no rush</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
         <label className="block text-[0.65rem] font-bold text-slate-600 mb-1 uppercase tracking-wide">Details <span className="text-slate-400 font-normal normal-case tracking-normal">(Optional)</span></label>
         <textarea name="message" rows={2} maxLength={5000} placeholder="Tell us about your roof's age, condition, or any concerns..." className="w-full border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 min-h-[56px] resize-y" />
+      </div>
+
+      {/* A2P Consent Checkboxes */}
+      <div className="space-y-2.5 pt-0.5">
+        <label className="flex items-start gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            name="sms_consent_checkbox"
+            checked={smsConsent}
+            onChange={(e) => setSmsConsent(e.target.checked)}
+            className="mt-0.5 h-3.5 w-3.5 shrink-0 cursor-pointer accent-[var(--jerry-navy)] rounded border-slate-300"
+          />
+          <span className="text-[0.65rem] leading-snug text-slate-600">
+            I consent to receive SMS notifications, alerts &amp; occasional service messages from Jerry&apos;s Roofing. Msg frequency may vary (~2-6/mo). Msg &amp; data rates may apply. Reply HELP for help, STOP to unsubscribe. <Link href="/privacy" className="underline font-semibold hover:text-[var(--jerry-navy)]">Privacy</Link> &amp; <Link href="/terms" className="underline font-semibold hover:text-[var(--jerry-navy)]">Terms</Link>. Consent is not required to receive service.
+          </span>
+        </label>
+        <label className="flex items-start gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            name="age_confirmed_checkbox"
+            required
+            checked={ageConfirm}
+            onChange={(e) => setAgeConfirm(e.target.checked)}
+            className="mt-0.5 h-3.5 w-3.5 shrink-0 cursor-pointer accent-[var(--jerry-navy)] rounded border-slate-300"
+          />
+          <span className="text-[0.65rem] leading-snug text-slate-600">
+            I confirm I am at least 18 years old. <span className="text-red-500">*</span>
+          </span>
+        </label>
       </div>
 
       <button type="submit" disabled={formStatus === 'sending'} className="relative w-full overflow-hidden bg-[var(--jerry-lime)] py-3 text-[0.8rem] font-bold uppercase tracking-[0.15em] text-[var(--jerry-navy-deep)] shadow-lg transition-all hover:bg-[var(--jerry-lime-hover)] active:scale-[0.98] disabled:opacity-60 group cursor-pointer cta-pulse">
@@ -109,7 +175,7 @@ function RejoovForm() {
         </span>
       </button>
       <p className="text-center text-[0.6rem] leading-relaxed text-slate-400 px-1">
-        By submitting, you agree to receive SMS or emails. Message &amp; data rates may apply. Reply STOP to opt-out.
+        No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
       </p>
 
       {formStatus === 'error' && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2.5 text-sm text-rose-800 font-medium">{formError}</div>}

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { ArrowRight, Phone, User, MapPin, ClipboardList, Lock } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Phone, User, MapPin, ClipboardList, Lock, Mail, Calendar } from 'lucide-react';
 import { siteConfig } from '../config';
 import { trackMarketingEvent } from '../lib/analytics';
 import { Stars } from './Stars';
@@ -12,6 +13,8 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  const [formError, setFormError] = useState('');
  const [formTimestamp] = useState(() => Date.now().toString());
  const [phoneValue, setPhoneValue] = useState('');
+ const [smsConsent, setSmsConsent] = useState(false);
+ const [ageConfirm, setAgeConfirm] = useState(false);
 
  const formatPhone = (v: string) => {
  const d = v.replace(/\D/g, '').slice(0, 10);
@@ -24,11 +27,22 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
  e.preventDefault();
  setFormError('');
+ if (!ageConfirm) {
+ setFormStatus('error');
+ setFormError('Please confirm you are at least 18 years old.');
+ return;
+ }
  setFormStatus('sending');
  const form = e.currentTarget;
  const fd = new FormData(form);
  fd.set('page', window.location.href);
- if (String(fd.get('website') || '').trim()) { form.reset(); setPhoneValue(''); setFormStatus('success'); return; }
+ fd.set('sms_consent', smsConsent ? 'yes' : 'no');
+ fd.set('sms_consent_text', smsConsent
+   ? `I consent to receive SMS notifications, alerts & occasional service messages from ${siteConfig.businessName}. Message frequency may vary (approximately 2-6 messages per month). Message & data rates may apply. Text HELP for help. Reply STOP to unsubscribe.`
+   : '');
+ fd.set('age_confirmed', 'yes');
+ fd.set('consent_timestamp', new Date().toISOString());
+ if (String(fd.get('website') || '').trim()) { form.reset(); setPhoneValue(''); setSmsConsent(false); setAgeConfirm(false); setFormStatus('success'); return; }
  try {
  const res = await fetch('/api/lead', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
  const data = await res.json().catch(() => null);
@@ -38,7 +52,7 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  service: String(fd.get('service') || ''),
  zip_code: String(fd.get('zipCode') || ''),
  });
- form.reset(); setPhoneValue(''); setFormStatus('success');
+ form.reset(); setPhoneValue(''); setSmsConsent(false); setAgeConfirm(false); setFormStatus('success');
  } catch { setFormStatus('error'); setFormError('Something went wrong. Please try again.'); }
  };
 
@@ -61,11 +75,19 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  </div>
  </div>
  <div>
- <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Phone Number <span className="text-red-500">*</span></label>
+ <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Phone Number <span className={`font-normal normal-case tracking-normal ${isDark ? 'text-white/30' : 'text-slate-400'}`}>(Optional)</span></label>
  <div className="relative">
  <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
- <input required name="phone" type="tel" placeholder="(713) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 shadow-sm" />
+ <input name="phone" type="tel" placeholder="(713) 555-0123" autoComplete="tel" value={phoneValue} onChange={(e) => setPhoneValue(formatPhone(e.target.value))} pattern="\(\d{3}\) \d{3}-\d{4}" className="w-full border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 shadow-sm" />
  </div>
+ </div>
+ </div>
+
+ <div>
+ <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Email <span className="text-red-500">*</span></label>
+ <div className="relative">
+ <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+ <input required name="email" type="email" placeholder="you@example.com" autoComplete="email" className="w-full border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 shadow-sm" />
  </div>
  </div>
 
@@ -83,6 +105,7 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  </div>
  </div>
 
+ <div className="grid gap-4 sm:gap-4.5 sm:grid-cols-2">
  <div>
  <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Service Needed <span className="text-red-500">*</span></label>
  <div className="relative">
@@ -93,10 +116,53 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  </select>
  </div>
  </div>
+ <div>
+ <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Timeline <span className="text-red-500">*</span></label>
+ <div className="relative">
+ <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+ <select required name="timeline" defaultValue="" className="w-full border border-slate-300 bg-slate-50 pl-10 pr-4 py-3 text-sm text-slate-900 outline-none transition-all focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 shadow-sm appearance-none">
+ <option value="" disabled>When do you need this?</option>
+ <option value="ASAP (active leak / emergency)">ASAP &mdash; active leak / emergency</option>
+ <option value="Within 2 weeks">Within 2 weeks</option>
+ <option value="Within 1-3 months">Within 1-3 months</option>
+ <option value="Just exploring / no rush">Just exploring &mdash; no rush</option>
+ </select>
+ </div>
+ </div>
+ </div>
 
  <div>
  <label className={`block text-xs font-bold mb-1.5 uppercase tracking-wide ${isDark ? 'text-white/60' : 'text-slate-700'}`}>Project Details <span className={`font-normal normal-case tracking-normal ${isDark ? 'text-white/30' : 'text-slate-400'}`}>(Optional)</span></label>
  <textarea name="message" rows={3} maxLength={5000} placeholder="Describe the project or any concerns..." className="w-full border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:bg-white focus:border-[var(--jerry-navy)] focus:ring-2 focus:ring-[var(--jerry-navy)]/20 shadow-sm min-h-[80px] resize-y" />
+ </div>
+
+ {/* A2P Consent Checkboxes */}
+ <div className="space-y-3 pt-1">
+ <label className="flex items-start gap-3 cursor-pointer group">
+ <input
+ type="checkbox"
+ name="sms_consent_checkbox"
+ checked={smsConsent}
+ onChange={(e) => setSmsConsent(e.target.checked)}
+ className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[var(--jerry-navy)] rounded border-slate-300"
+ />
+ <span className={`text-[0.72rem] leading-snug ${isDark ? 'text-white/70' : 'text-slate-600'}`}>
+ I consent to receive SMS notifications, alerts &amp; occasional service messages from {siteConfig.businessName}. Message frequency may vary (approximately 2-6 messages per month). Message &amp; data rates may apply. Text HELP for help. Reply STOP to unsubscribe. <Link href="/privacy" className="underline font-semibold hover:text-[var(--jerry-navy)]">Privacy Policy</Link> &amp; <Link href="/terms" className="underline font-semibold hover:text-[var(--jerry-navy)]">Terms</Link>. Consent is not required to receive service.
+ </span>
+ </label>
+ <label className="flex items-start gap-3 cursor-pointer group">
+ <input
+ type="checkbox"
+ name="age_confirmed_checkbox"
+ required
+ checked={ageConfirm}
+ onChange={(e) => setAgeConfirm(e.target.checked)}
+ className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[var(--jerry-navy)] rounded border-slate-300"
+ />
+ <span className={`text-[0.72rem] leading-snug ${isDark ? 'text-white/70' : 'text-slate-600'}`}>
+ I confirm I am at least 18 years old. <span className="text-red-500">*</span>
+ </span>
+ </label>
  </div>
 
  <div className="pt-2">
@@ -107,8 +173,8 @@ export function EstimateForm({ variant = 'light' }: { variant?: 'light' | 'dark'
  </span>
  </button>
 
- <p className="mt-3 text-center text-[0.65rem] leading-relaxed text-slate-400 font-medium px-2">
- By clicking request, you agree to receive SMS or emails containing details for this estimate and related roofing services. Message &amp; data rates may apply. You can reply STOP to opt-out.
+ <p className={`mt-3 text-center text-[0.65rem] leading-relaxed font-medium px-2 ${isDark ? 'text-white/40' : 'text-slate-400'}`}>
+ No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. See our <Link href="/privacy" className="underline">Privacy Policy</Link> for details.
  </p>
 
  <div className="mt-3 flex items-center justify-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-widest text-emerald-700/80">
