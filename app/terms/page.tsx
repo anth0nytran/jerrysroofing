@@ -126,6 +126,13 @@ export default function TermsPage() {
               form, you confirm that you are the subscriber or authorized user of the phone number provided
               and consent to receive SMS messages from Jerry&apos;s Roofing.</p>
 
+            <p className="mt-4"><strong>Age Restriction:</strong> You must be at least 18 years of age to
+              submit a form, opt in to SMS messages, or otherwise use the services offered through this
+              website. By submitting the estimate form and/or opting in to SMS, you affirmatively represent
+              that you are 18 years of age or older. We do not knowingly collect information from or send
+              messages to individuals under 18. If we learn that we have collected information from a person
+              under 18, we will delete that information and unsubscribe the associated phone number.</p>
+
             <p className="mt-4">For privacy-related inquiries, please refer to our{' '}
               <Link href="/privacy" className="text-[var(--jerry-navy)] underline">Privacy Policy</Link>.</p>
 
