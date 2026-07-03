@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Poppins, Open_Sans, JetBrains_Mono } from "next/font/google";
@@ -352,6 +353,13 @@ export default function RootLayout({
         <MarketingAnalytics />
         <Analytics />
         <SpeedInsights />
+        {/* GoHighLevel chat widget — loads on every page for lead capture */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6a46fce2615aff07b1955b1d"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

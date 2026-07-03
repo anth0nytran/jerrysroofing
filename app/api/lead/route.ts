@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { trackServerEvent } from '../../lib/serverAnalytics';
+import { syncLeadToGhl } from '../../lib/ghl';
 
 export const runtime = 'nodejs';
 
@@ -298,6 +299,27 @@ export async function POST(req: Request) {
     if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
     return digits;
   })();
+
+  // Sync the lead into GoHighLevel as a tagged contact. Best-effort: this never
+  // throws, and email below remains the fallback if GHL is down/unconfigured.
+  const ghlResult = await syncLeadToGhl({
+    name,
+    email,
+    phone: phoneLink || phone,
+    address,
+    zipCode,
+    company,
+    service,
+    timeline,
+    message,
+    page: pageUrlDisplay || page,
+    smsConsent: smsConsent === 'yes',
+    ageConfirmed: ageConfirmed === 'yes',
+    consentTimestamp,
+  });
+  if (!ghlResult.ok && !ghlResult.skipped && process.env.NODE_ENV === 'development') {
+    console.warn('[lead] GHL sync failed:', ghlResult.error);
+  }
 
   const textLines = [
     `Timestamp: ${timestamp}`,
