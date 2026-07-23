@@ -85,7 +85,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Fort Bend / Harris',
     population: '~50,000',
 
-    metaTitle: "Cinco Ranch Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Cinco Ranch Roofer | Free Roof Inspection & Insurance Help",
     metaDescription:
       "Jerry's Roofing is a local Cinco Ranch roofing contractor offering honest pricing, insurance claim help, and HOA-approved shingles. Call (409) 351-1529.",
 
@@ -202,7 +202,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Harris',
     population: '~200,000',
 
-    metaTitle: "Cypress TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Cypress TX Roofer | Hail Damage & Insurance Claims Help",
     metaDescription:
       "Cypress, TX roofer for hail damage, insurance claims, and full roof replacement. Jerry's Roofing installs GAF, IKO, CertainTeed. Call (409) 351-1529.",
 
@@ -319,7 +319,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Fort Bend',
     population: '~42,000',
 
-    metaTitle: "Fulshear TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Fulshear TX Roofer | Free Inspection & Insurance Claims",
     metaDescription:
       "Jerry's Roofing serves Fulshear, TX and Cross Creek Ranch with roof replacement, repairs, and insurance claims. Honest pricing. Call (409) 351-1529.",
 
@@ -436,7 +436,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Fort Bend',
     population: '~12,500 city / ~130,000 area',
 
-    metaTitle: "Richmond TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Richmond TX Roofer | Free Roof Inspection & Repairs",
     metaDescription:
       "Richmond, TX roofing contractor for historic homes and new builds. Insurance claims, repairs, Roof Rejoov. Jerry's Roofing — (409) 351-1529.",
 
@@ -553,7 +553,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Fort Bend',
     population: '~120,000',
 
-    metaTitle: "Sugar Land Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Sugar Land Roofer | Tile, Shingle & Insurance Claims",
     metaDescription:
       "Sugar Land, TX roofing contractor for premium homes. Insurance claims, tile and architectural shingles, Roof Rejoov. Jerry's Roofing — (409) 351-1529.",
 
@@ -672,7 +672,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Brazos',
     population: '~120,000',
 
-    metaTitle: "College Station Roofing Contractor | Jerry's Roofing",
+    metaTitle: "College Station Roofer | Free Inspection & Hail Claims",
     metaDescription:
       "Honest College Station roofing contractor serving Aggieland. Roof replacement, hail damage, insurance claims, and Roof Rejoov. Call (409) 351-1529.",
 
@@ -789,7 +789,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Harris / Fort Bend / Waller',
     population: '~320,000 metro',
 
-    metaTitle: "Katy, TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Katy TX Roofer | Free Inspection & Insurance Claims Help",
     metaDescription:
       "Locally owned Katy roofing contractor. Roof replacement, hail damage, insurance claims, Roof Rejoov, gutters, siding. Free inspections. Call (409) 351-1529.",
 
@@ -912,7 +912,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Waller',
     population: '~5,800',
 
-    metaTitle: "Brookshire, TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Brookshire TX Roofer | Free Inspection & Insurance Help",
     metaDescription:
       "Brookshire roofer with 7 years of Katy-area experience. Roof replacement, repair, storm damage, and Roof Rejoov. Free inspections. Call (409) 351-1529.",
 
@@ -1019,7 +1019,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Austin',
     population: '~6,500',
 
-    metaTitle: "Sealy, TX Roofing Contractor | Jerry's Roofing",
+    metaTitle: "Sealy TX Roofer | Free Roof Inspection & Storm Repairs",
     metaDescription:
       "Sealy roofer serving Austin County homeowners. Roof replacement, storm damage, insurance claims, Roof Rejoov. Free inspections. Call (409) 351-1529.",
 
@@ -1126,7 +1126,7 @@ export const serviceAreaData: ServiceArea[] = [
     county: 'Harris',
     population: '~350,000',
 
-    metaTitle: "West Houston Roofing Contractor | Jerry's Roofing",
+    metaTitle: "West Houston Roofer | Free Inspection & Insurance Claims",
     metaDescription:
       "West Houston roofer covering Energy Corridor, Memorial West, and the Westchase area. Roof replacement, insurance claims, Roof Rejoov. Call (409) 351-1529.",
 

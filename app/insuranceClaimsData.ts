@@ -4,7 +4,7 @@
 // Legal facts should be verified with TDI (tdi.texas.gov) before publish — framed cautiously where appropriate.
 
 export const insuranceClaimsData = {
-  metaTitle: "Texas Roof Insurance Claim Guide for Katy Homeowners (2026) | Jerry's Roofing",
+  metaTitle: "Katy Roof Insurance Claim Help — We Deal With Your Adjuster | Jerry's",
   metaDescription:
     "Step-by-step Texas roof insurance claim guide for Katy homeowners. Filing deadlines, TDI rules, red flags, and what to expect. Free storm inspection: (409) 351-1529.",
   h1: "Texas Roof Insurance Claim Guide for Katy Homeowners",

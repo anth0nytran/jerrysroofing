@@ -13,13 +13,15 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = serviceData.find((s) => s.slug === slug);
+  const service = serviceData.find((s) => s.slug === slug) as
+    | ((typeof serviceData)[number] & { metaTitle?: string; metaDescription?: string })
+    | undefined;
 
   if (!service) return { title: 'Service Not Found' };
 
   return {
-    title: `${service.title} in Katy, Texas | Jerrys Roofing`,
-    description: `${service.longDescription.slice(0, 155)}...`,
+    title: service.metaTitle ?? `${service.title} in Katy, Texas | Jerrys Roofing`,
+    description: service.metaDescription ?? `${service.longDescription.slice(0, 155)}...`,
     keywords: service.keywords,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
