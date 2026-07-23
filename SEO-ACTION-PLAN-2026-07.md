@@ -14,11 +14,11 @@
 | P1 | Title & meta CTR rewrites | ✅ **Done** — homepage, 10 city pages, 6 service pages, insurance pillar |
 | P2 | Quick-win tuning + internal links | ✅ **Done** — FAQ schema already present; service pages already linked site-wide via footer; titles sharpened in P1 |
 | P3 | Neighborhood insurance pages | ✅ **Done** — 8 pages built (Cinco Ranch, Cane Island, Grand Lakes, Cross Creek Ranch, Firethorne, Elyson, Jordan Ranch, Nottingham Country) |
-| P4 | Canonical / redirect cleanup | ✅ **Done (code)** — www→apex 308 in `next.config.ts`. ⚠️ **Confirm Vercel primary domain = apex** (see note) |
+| P4 | Canonical / redirect cleanup | ✅ **Done** — standardized all in-app URLs on **www** (Vercel's primary, which already 308s apex→www). No conflicting redirect. |
 | P5 | Shingle content cluster | ⏳ **Deferred** — content task: hero post already ranks (pos 7.7); add 2–3 satellite posts + refresh later |
 | P6 | Tighten geo focus | ℹ️ **No code action** — no far-flung *pages* exist; distant gutter impressions are low-value query noise, not dedicated pages to prune |
 
-**⚠️ Vercel domain note:** The `next.config.ts` redirect sends `www → apex`. This only works cleanly if the Vercel project's **primary domain is the apex** (`roofingbyjerry.com`). If Vercel is set to www-primary it will redirect apex→www at the edge and fight this rule (loop). Before/after deploy, confirm in Vercel → Settings → Domains that `roofingbyjerry.com` is primary and `www` redirects to it.
+**Canonical host = `https://www.roofingbyjerry.com`.** Confirmed: Vercel's primary domain is www and already 308-redirects the apex → www at the edge. All in-app URLs (metadataBase, config domain, sitemap, OG, JSON-LD) were flipped to www to match, so canonical, sitemap, and the live redirect all agree. No Next-level redirect needed (an earlier www→apex rule was removed to avoid a loop).
 
 **Post-deploy:** In GSC, use URL Inspection → Request Indexing on the rewritten pages (homepage, `/insurance-claims`, `/service-area/*`, `/services/gutters|roof-inspection|roof-repair`) and submit the new `/insurance-claims/*` neighborhood URLs so the new titles + pages get recrawled fast.
 
