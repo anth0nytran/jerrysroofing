@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Contact & Free Estimate | Jerrys Roofing — Katy, Texas",
     description:
       'Get your free estimate today. Serving Katy, Cypress, Cinco Ranch, Richmond & surrounding areas.',
-    url: 'https://roofingbyjerry.com/contact',
+    url: 'https://www.roofingbyjerry.com/contact',
   },
 };
 

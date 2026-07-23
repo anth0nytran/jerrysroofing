@@ -7,6 +7,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { insuranceClaimsData } from '../insuranceClaimsData';
+import { neighborhoodClaims } from '../neighborhoodClaimsData';
 import { siteConfig } from '../config';
 import { SubHero } from '../components/SubHero';
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: insuranceClaimsData.metaTitle,
     description: insuranceClaimsData.metaDescription,
-    url: 'https://roofingbyjerry.com/insurance-claims',
+    url: 'https://www.roofingbyjerry.com/insurance-claims',
     type: 'article',
   },
 };
@@ -79,9 +80,9 @@ export default function InsuranceClaimsPage() {
       '@type': 'Person',
       name: 'Jerry W. Pilley',
       jobTitle: 'Owner & Lead Roofer, Jerrys Roofing',
-      url: 'https://roofingbyjerry.com/about',
+      url: 'https://www.roofingbyjerry.com/about',
     },
-    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://roofingbyjerry.com' },
+    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://www.roofingbyjerry.com' },
   };
 
   return (
@@ -343,6 +344,40 @@ export default function InsuranceClaimsPage() {
                 </summary>
                 <p className="mt-3 text-sm text-slate-700 leading-relaxed">{f.a}</p>
               </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      {/* BY NEIGHBORHOOD — internal links to subdivision claim pages       */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      <section className="bg-[var(--jerry-cream)] py-14 sm:py-20">
+        <div className={shell}>
+          <div className="max-w-2xl mb-10">
+            <p className="eyebrow text-[var(--jerry-navy-light)]">By Neighborhood</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[var(--jerry-navy)] tracking-[-0.02em] leading-[1.15]">
+              Roof insurance claim help where you live.
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
+              Every Katy-area neighborhood has its own claim pattern — build era, storm exposure, and how carriers treat it. Pick yours for local detail.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {neighborhoodClaims.map((n) => (
+              <Link
+                key={n.slug}
+                href={`/insurance-claims/${n.slug}`}
+                className="group border border-slate-200 bg-white p-4 sm:p-5 hover:border-[var(--jerry-lime)] transition-colors"
+              >
+                <h3 className="font-extrabold text-[var(--jerry-navy-deep)] text-[0.9rem] leading-snug mb-1">
+                  {n.name}
+                </h3>
+                <p className="text-[0.7rem] text-slate-500 mb-3">{n.city}</p>
+                <span className="inline-flex items-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[var(--jerry-navy)] group-hover:text-[var(--jerry-lime)] transition-colors">
+                  Claim Help <ArrowRight className="h-3 w-3" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

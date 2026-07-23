@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/api/',
         },
-        sitemap: 'https://roofingbyjerry.com/sitemap.xml',
+        sitemap: 'https://www.roofingbyjerry.com/sitemap.xml',
     };
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
  openGraph: {
  title: "Project Gallery | Jerrys Roofing — Katy, Texas",
  description: "Real roofing and exterior projects from Katy, Cypress, Cinco Ranch & surrounding areas.",
- url: 'https://roofingbyjerry.com/gallery',
+ url: 'https://www.roofingbyjerry.com/gallery',
  },
 };
 

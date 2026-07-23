@@ -44,7 +44,7 @@ export async function generateMetadata({
     openGraph: {
       title: area.metaTitle,
       description: area.metaDescription,
-      url: `https://roofingbyjerry.com/service-area/${area.slug}`,
+      url: `https://www.roofingbyjerry.com/service-area/${area.slug}`,
       type: 'website',
     },
   };

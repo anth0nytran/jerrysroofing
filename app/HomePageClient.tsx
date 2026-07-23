@@ -356,7 +356,7 @@ export default function HomePageClient() {
  "position": 1,
  "name": "Request a Free Inspection",
  "text": "Contact Jerrys Roofing at (409) 351-1529 or fill out our online form. Describe your roofing concern and we'll schedule a free inspection at your convenience.",
- "url": "https://roofingbyjerry.com/contact"
+ "url": "https://www.roofingbyjerry.com/contact"
  },
  {
  "@type": "HowToStep",

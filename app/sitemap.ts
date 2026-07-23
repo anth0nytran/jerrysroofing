@@ -2,8 +2,9 @@ import { MetadataRoute } from 'next';
 import { getAllSlugs } from './blog/posts';
 import { serviceData } from './config';
 import { serviceAreaData } from './serviceAreaData';
+import { getNeighborhoodClaimSlugs } from './neighborhoodClaimsData';
 
-const BASE_URL = 'https://roofingbyjerry.com';
+const BASE_URL = 'https://www.roofingbyjerry.com';
 
 /**
  * Regenerate sitemap hourly so staged blog posts appear in the sitemap
@@ -51,5 +52,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...serviceAreaPages, ...blogPages];
+  const neighborhoodClaimPages: MetadataRoute.Sitemap = getNeighborhoodClaimSlugs().map((slug) => ({
+    url: `${BASE_URL}/insurance-claims/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...serviceAreaPages,
+    ...blogPages,
+    ...neighborhoodClaimPages,
+  ];
 }

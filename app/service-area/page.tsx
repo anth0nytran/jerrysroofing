@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Areas We Serve | Jerrys Roofing',
     description:
       'Local roofing contractor serving Katy, TX and the surrounding communities of Cinco Ranch, Cypress, Fulshear, Richmond, Sugar Land, and College Station.',
-    url: 'https://roofingbyjerry.com/service-area',
+    url: 'https://www.roofingbyjerry.com/service-area',
   },
 };
 

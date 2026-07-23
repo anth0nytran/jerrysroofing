@@ -4,7 +4,7 @@ export const siteConfig = {
   phone: '(409) 351-1529',
   cleanPhone: '+14093511529',
   email: 'jerrysroofinginfo@gmail.com',
-  domain: 'https://roofingbyjerry.com',
+  domain: 'https://www.roofingbyjerry.com',
   googleBusinessUrl: 'https://g.page/jerrysroofing',
   primaryService: 'Roof Replacement',
   services: [
@@ -152,6 +152,9 @@ export const serviceData = [
     slug: 'roof-replacement',
     featured: true,
     title: 'Roof Replacement',
+    metaTitle: "Roof Replacement in Katy, TX | Free Estimate | Jerry's Roofing",
+    metaDescription:
+      'Full roof replacement in Katy with IKO, CertainTeed, GAF & F-Wave shingles — most homes done in 1–2 days. Free written estimate: call (409) 351-1529.',
     image: '/roofing/real/jerry-truck-finished-roof-v2.jpg',
     summary:
       'Complete tear-off and replacement with premium shingles from IKO, CertainTeed, GAF, or F-Wave synthetic. Built to last through Texas weather.',
@@ -237,6 +240,9 @@ export const serviceData = [
     slug: 'gutters',
     featured: true,
     title: 'Gutter Installation & Repair',
+    metaTitle: "Seamless Gutter Installation in Katy, TX | Jerry's Roofing",
+    metaDescription:
+      'Seamless aluminum gutters custom-fit to your Katy home — most installs done same day. Gutter guards available. Free estimate: call (409) 351-1529.',
     image: '/roofing/real/14-seamless-gutter-guard.jpg',
     summary:
       'Seamless aluminum gutters custom-fitted dynamically to your roofline. Protect your foundation, landscaping, and siding from devastating water damage.',
@@ -278,6 +284,9 @@ export const serviceData = [
     slug: 'siding',
     featured: true,
     title: 'Siding Installation & Repair',
+    metaTitle: "Siding Installation & Repair in Katy, TX | Jerry's Roofing",
+    metaDescription:
+      'Vinyl, fiber cement & engineered wood siding installed and repaired in Katy. Color-matched board replacement or full re-side. Free estimate: (409) 351-1529.',
     image: '/pictures/siding-texas.jpg',
     summary:
       "Upgrade your home's exterior envelope with incredibly durable, highly attractive siding. Premium Vinyl, Fiber Cement, and engineered wood installed right.",
@@ -400,6 +409,9 @@ export const serviceData = [
   {
     slug: 'roof-inspection',
     title: 'Roof Inspection',
+    metaTitle: "Free Roof Inspection in Katy, TX — Same-Week | Jerry's Roofing",
+    metaDescription:
+      'Free, no-pressure roof inspection in Katy with a written report and dated photos — whether you hire us or not. Call Jerry directly at (409) 351-1529.',
     image: '/roofing/real/16-inspection-2-leaks-marked.jpg',
     summary: 'Free, no-pressure roof inspection in Katy with a written damage report and photos — whether you hire us or not.',
     details: [
@@ -457,6 +469,9 @@ export const serviceData = [
   {
     slug: 'roof-repair',
     title: 'Roof Repair',
+    metaTitle: 'Roof Repair in Katy, TX | Fast, Honest, Insurance-Approved',
+    metaDescription:
+      "Roof leak, missing shingles, or storm damage in Katy? Jerry does the repair right — or tells you if you don't need one. Same-day for active leaks: (409) 351-1529.",
     image: '/roofing/real/12-crew-ridgecap.jpg',
     summary: 'Targeted roof repairs in Katy — leaks, missing shingles, flashing, vent boots, and valleys. If a repair is the right call, we do it. If it is not, we tell you.',
     details: [
@@ -508,6 +523,9 @@ export const serviceData = [
   {
     slug: 'storm-damage',
     title: 'Storm Damage Restoration',
+    metaTitle: 'Storm & Hail Damage Roof Repair in Katy, TX | Insurance Claims',
+    metaDescription:
+      'Hail or wind damage in Katy? Free storm inspection, emergency tarping, and direct adjuster coordination — Jerry meets your adjuster on the roof. (409) 351-1529.',
     image: '/roofing/real/17-inspection-valley-wear.jpg',
     summary: 'Hail and wind damage restoration in Katy with direct insurance adjuster coordination, emergency tarping, and full roof restoration when the claim is approved.',
     details: [

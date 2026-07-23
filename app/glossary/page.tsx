@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Roofing Glossary | Jerrys Roofing',
     description: 'Real definitions for the roofing terms Katy homeowners actually run into.',
-    url: 'https://roofingbyjerry.com/glossary',
+    url: 'https://www.roofingbyjerry.com/glossary',
     type: 'article',
   },
 };

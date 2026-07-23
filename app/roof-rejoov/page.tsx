@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Roof Rejoov | Jerrys Roofing — Katy, Texas",
     description:
       "Don't replace your roof — Rejoov it. Bio-based shingle restoration that extends roof life 5-10 years. Serving Katy, Texas homeowners.",
-    url: 'https://roofingbyjerry.com/roof-rejoov',
+    url: 'https://www.roofingbyjerry.com/roof-rejoov',
   },
 };
 
@@ -18,8 +18,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://roofingbyjerry.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Roof Rejoov', item: 'https://roofingbyjerry.com/roof-rejoov' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.roofingbyjerry.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Roof Rejoov', item: 'https://www.roofingbyjerry.com/roof-rejoov' },
   ],
 };
 
