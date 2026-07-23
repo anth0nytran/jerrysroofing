@@ -40,7 +40,7 @@ export async function generateMetadata({
     openGraph: {
       title: data.metaTitle,
       description: data.metaDescription,
-      url: `https://roofingbyjerry.com/insurance-claims/${data.slug}`,
+      url: `https://www.roofingbyjerry.com/insurance-claims/${data.slug}`,
       type: 'article',
     },
   };

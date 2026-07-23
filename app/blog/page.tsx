@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  openGraph: {
  title: "Roofing Blog | Jerrys Roofing — Katy, Texas",
  description: 'Expert roofing tips and guides for Katy, Cypress, Cinco Ranch & area homeowners.',
- url: 'https://roofingbyjerry.com/blog',
+ url: 'https://www.roofingbyjerry.com/blog',
  },
 };
 
@@ -35,8 +35,8 @@ export default function BlogPage() {
  '@context': 'https://schema.org',
  '@type': 'BreadcrumbList',
  itemListElement: [
- { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://roofingbyjerry.com' },
- { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://roofingbyjerry.com/blog' },
+ { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.roofingbyjerry.com' },
+ { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.roofingbyjerry.com/blog' },
  ],
  }),
  }}
@@ -50,13 +50,13 @@ export default function BlogPage() {
  '@type': 'CollectionPage',
  'name': "Roofing Blog — Katy, Cypress, Cinco Ranch & Beyond",
  'description': 'Expert roofing tips, cost guides, and storm damage advice for homeowners in Katy, Cypress, Cinco Ranch & surrounding areas.',
- 'url': 'https://roofingbyjerry.com/blog',
+ 'url': 'https://www.roofingbyjerry.com/blog',
  'mainEntity': {
  '@type': 'ItemList',
  'itemListElement': allBlogPosts.map((post, i) => ({
  '@type': 'ListItem',
  'position': i + 1,
- 'url': `https://roofingbyjerry.com/blog/${post.slug}`,
+ 'url': `https://www.roofingbyjerry.com/blog/${post.slug}`,
  'name': post.title,
  })),
  },

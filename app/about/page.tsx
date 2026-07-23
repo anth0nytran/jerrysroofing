@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "About Us | Jerrys Roofing — Katy, Texas",
     description:
       "Locally owned in Katy, Texas. Community rooted. 7 years experience. Trusted roofing & exterior services for homeowners in Katy, Cypress, Cinco Ranch, Richmond & Fulshear.",
-    url: 'https://roofingbyjerry.com/about',
+    url: 'https://www.roofingbyjerry.com/about',
   },
 };
 
@@ -18,8 +18,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://roofingbyjerry.com/' },
-    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://roofingbyjerry.com/about' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.roofingbyjerry.com/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.roofingbyjerry.com/about' },
   ],
 };
 

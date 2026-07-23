@@ -4,7 +4,7 @@ import { serviceData } from './config';
 import { serviceAreaData } from './serviceAreaData';
 import { getNeighborhoodClaimSlugs } from './neighborhoodClaimsData';
 
-const BASE_URL = 'https://roofingbyjerry.com';
+const BASE_URL = 'https://www.roofingbyjerry.com';
 
 /**
  * Regenerate sitemap hourly so staged blog posts appear in the sitemap

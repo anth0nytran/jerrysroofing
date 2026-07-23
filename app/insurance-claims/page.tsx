@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: insuranceClaimsData.metaTitle,
     description: insuranceClaimsData.metaDescription,
-    url: 'https://roofingbyjerry.com/insurance-claims',
+    url: 'https://www.roofingbyjerry.com/insurance-claims',
     type: 'article',
   },
 };
@@ -80,9 +80,9 @@ export default function InsuranceClaimsPage() {
       '@type': 'Person',
       name: 'Jerry W. Pilley',
       jobTitle: 'Owner & Lead Roofer, Jerrys Roofing',
-      url: 'https://roofingbyjerry.com/about',
+      url: 'https://www.roofingbyjerry.com/about',
     },
-    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://roofingbyjerry.com' },
+    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://www.roofingbyjerry.com' },
   };
 
   return (

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Built in Texas — IKO & F-Wave | Jerrys Roofing",
     description:
       "IKO (Hillsboro, TX) and F-Wave (Burleson, TX) — the two shingle brands actually manufactured in Texas. Here's why we install them on Katy roofs.",
-    url: 'https://roofingbyjerry.com/texas-made',
+    url: 'https://www.roofingbyjerry.com/texas-made',
   },
 };
 
@@ -18,8 +18,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://roofingbyjerry.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Texas Made Products', item: 'https://roofingbyjerry.com/texas-made' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.roofingbyjerry.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Texas Made Products', item: 'https://www.roofingbyjerry.com/texas-made' },
   ],
 };
 

@@ -27,7 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${service.title} | Jerrys Roofing — Katy, Texas`,
       description: service.summary,
-      url: `https://roofingbyjerry.com/services/${service.slug}`,
+      url: `https://www.roofingbyjerry.com/services/${service.slug}`,
     },
   };
 }

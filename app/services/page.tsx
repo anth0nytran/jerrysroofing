@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Our Services | Jerrys Roofing — Katy, Texas & Surrounding Areas",
     description:
       "Roof replacement, Roof Rejoov, gutters, siding, painting & driveway repaints. 7 years experience. Dedicated service since 2024. Honest pricing.",
-    url: 'https://roofingbyjerry.com/services',
+    url: 'https://www.roofingbyjerry.com/services',
   },
 };
 

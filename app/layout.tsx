@@ -31,7 +31,7 @@ const monoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://roofingbyjerry.com'),
+  metadataBase: new URL('https://www.roofingbyjerry.com'),
   title: {
     default: "Roof Replacement & Roofing Contractor in Katy, Texas — Cypress, Cinco Ranch TX | Jerrys Roofing",
     template: "%s | Jerrys Roofing",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Trusted Roofing Contractor in Katy, Texas — Cypress, Cinco Ranch TX | Jerrys Roofing",
     description: "Serving homeowners in Katy, Texas, Cypress, Cinco Ranch, Richmond & Fulshear. 7 years experience. Roof replacement, Roof Rejoov, gutters, siding & painting. Free inspections. Honest pricing. Call (409) 351-1529.",
-    url: 'https://roofingbyjerry.com',
+    url: 'https://www.roofingbyjerry.com',
     siteName: "Jerrys Roofing",
     locale: 'en_US',
     type: 'website',
@@ -126,9 +126,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "RoofingContractor"],
               "name": "Jerrys Roofing",
-              "image": "https://roofingbyjerry.com/roofing/og-roofing.jpg",
-              "@id": "https://roofingbyjerry.com",
-              "url": "https://roofingbyjerry.com",
+              "image": "https://www.roofingbyjerry.com/roofing/og-roofing.jpg",
+              "@id": "https://www.roofingbyjerry.com",
+              "url": "https://www.roofingbyjerry.com",
               "telephone": "+14093511529",
               "email": "jerrysroofinginfo@gmail.com",
               "description": "Trusted roofing contractor in Katy, Texas. 7 years roofing experience. Roof replacement, Roof Rejoov, gutters, siding & painting. Dedicated service since 2024. Free inspections & estimates. Honest pricing. We do what we say.",
@@ -303,12 +303,12 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "Jerrys Roofing",
               "alternateName": ["Jerrys Roofing", "Jerrys Roofing Katy", "Jerrys Roofing Katy Texas", "Roofing By Jerry", "RoofingByJerry.com"],
-              "url": "https://roofingbyjerry.com",
+              "url": "https://www.roofingbyjerry.com",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://roofingbyjerry.com/blog?q={search_term_string}"
+                  "urlTemplate": "https://www.roofingbyjerry.com/blog?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
               }

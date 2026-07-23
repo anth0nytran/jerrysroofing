@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: costPillarData.metaTitle,
     description: costPillarData.metaDescription,
-    url: 'https://roofingbyjerry.com/roof-replacement-cost-katy-tx',
+    url: 'https://www.roofingbyjerry.com/roof-replacement-cost-katy-tx',
     type: 'article',
   },
 };
@@ -65,10 +65,10 @@ export default function CostPillarPage() {
       '@type': 'Person',
       name: 'Jerry W. Pilley',
       jobTitle: 'Owner & Lead Roofer, Jerrys Roofing',
-      url: 'https://roofingbyjerry.com/about',
+      url: 'https://www.roofingbyjerry.com/about',
     },
-    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://roofingbyjerry.com' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://roofingbyjerry.com/roof-replacement-cost-katy-tx' },
+    publisher: { '@type': 'Organization', name: 'Jerrys Roofing', url: 'https://www.roofingbyjerry.com' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.roofingbyjerry.com/roof-replacement-cost-katy-tx' },
   };
 
   return (

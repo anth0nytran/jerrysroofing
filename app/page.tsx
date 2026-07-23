@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Trusted Roofing Contractor in Katy, Texas | Jerrys Roofing",
     description: "Serving homeowners in Katy, Texas, Cypress, Cinco Ranch, Richmond & Fulshear. 7 years experience. Roof replacement, Roof Rejoov, gutters, siding & painting. Free inspections. Honest pricing.",
-    url: 'https://roofingbyjerry.com',
+    url: 'https://www.roofingbyjerry.com',
   },
 };
 

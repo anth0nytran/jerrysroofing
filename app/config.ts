@@ -4,7 +4,7 @@ export const siteConfig = {
   phone: '(409) 351-1529',
   cleanPhone: '+14093511529',
   email: 'jerrysroofinginfo@gmail.com',
-  domain: 'https://roofingbyjerry.com',
+  domain: 'https://www.roofingbyjerry.com',
   googleBusinessUrl: 'https://g.page/jerrysroofing',
   primaryService: 'Roof Replacement',
   services: [
